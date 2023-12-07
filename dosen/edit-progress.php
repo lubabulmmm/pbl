@@ -9,14 +9,14 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <title>Proyek Kamu | PBL Vokasi</title>
-  <?php include("../includes/head.php") ?>
+  <?php include("./includes/head.php") ?>
 </head>
 <body class="bg-gray-50">
   
-  <?php include("../includes/navbar.php") ?>
+  <?php include("./includes/navbar.php") ?>
 
   <!-- Side Bar -->
-  <?php include("../includes/aside.php") ?>
+  <?php include("./includes/aside.php") ?>
   <div class="p-4 sm:ml-64">
       <!-- important -->
     <div class="rounded-lg mt-14 flex flex-col item-start">
