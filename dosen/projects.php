@@ -109,7 +109,7 @@
               <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                 <!-- PROGRESS MINGGU KE - 2 -->
                 
-                <?php include("./content/progress_list/progress.php") ?>
+                <?php include("../content/progress_list/progress.php") ?>
               </div>
               <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                   <!-- PROGRESS MINGGU KE - 3 -->
