@@ -1,0 +1,152 @@
+------- NAVBARRRRRR _________ ------KOKAJNKALA
+
+<nav class="fixed top-0 z-50 w-full bg-blue-900 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+  <div class="px-3 py-4 sm:py-3 lg:px-5 lg:pl-3">
+    <div class="flex items-center justify-between px-3">
+      <div class="flex items-center justify-start">
+        <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-white rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-1 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+            <span class="sr-only">Open sidebar</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+               <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+            </svg>
+         </button>
+        <a href="#" class="flex ml-2 md:mr-24 items-center">
+          <img src="./assets/img/logo.png" class="h-8 mr-3" alt="FlowBite Logo" />
+          <span class="self-center text-xl text-white font-semibold sm:text-xl whitespace-nowrap dark:text-white">PBL Vokasi</span>
+        </a>
+      </div>
+      <div class="flex items-center">
+          <div class="flex items-center ml-3">
+            <div>
+              <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                <span class="sr-only">Open user menu</span>
+                <img class="w-9 h-9 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-4.jpg" alt="user photo">
+              </button>
+            </div>
+            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+              <div class="px-4 py-3" role="none">
+                <p class="text-sm text-gray-900 dark:text-white" role="none">
+                  Neil Sims
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                  neil.sims@flowbite.com
+                </p>
+              </div>
+              <ul class="py-1" role="none">
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</nav>
+
+
+<aside aria-label="Related articles" class="py-8 lg:pb-24 lg:pt-3 bg-gray-50 dark:bg-gray-50">
+        <div class="px-6 mx-auto max-w-screen-xl">
+            <div class="flex flex-wrap justify-start">
+                <article class="max-w-lg lg:max-w-xs md:max-w-sm m-5 hover:shadow-lg duration-300 ease-in-out bg-white border flex flex-col p-5 rounded-xl  border-amber-500">
+                    <a href="#">
+                        <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 w-full rounded-lg" alt="Image 1">
+                    </a>
+                    <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-gray-900">
+                        <a href="#">Our first office</a>
+                    </h2>
+                    <p class="mb-4 text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
+                    <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 sm:text-sm lg:text-md text-primary-600 dark:text-amber-500 hover:no-underline">
+                        Baca Lebih Lanjut
+                    </a>
+                    <div class="flex mt-6 items-center space-x-4">
+                      <img class="w-7 h-7 rounded-full" src="./assets/img/flora.jpg" alt="" />
+                      <span class="font-medium dark:text-gray-900">
+                          Flora Shafiq Riyadi
+                      </span>
+                  </div>
+                </article>
+                <article class="max-w-lg lg:max-w-xs md:max-w-sm m-5 hover:shadow-lg duration-300 ease-in-out bg-white border flex flex-col p-5 rounded-xl border-amber-500">
+                    <a href="#">
+                        <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png" class="mb-5 w-full rounded-lg" alt="Image 2">
+                    </a>
+                    <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-gray-900">
+                        <a href="#">Enterprise design tips</a>
+                    </h2>
+                    <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
+                    <a href="#" class="inline-flex items-center font-medium underline underline-offsmt-4 text-md text-primary-600 dark:text-amber-500 hover:no-underline">
+                        Baca Lebih Lanjut
+                    </a>
+                    <div class="flex mt-6 items-center space-x-4">
+                      <img class="w-7 h-7 rounded-full" src="./assets/img/flora.jpg" alt="" />
+                      <span class="font-medium dark:text-gray-900">
+                          Flora Shafiq Riyadi
+                      </span>
+                  </div>
+                </article>
+                <article class="max-w-lg lg:max-w-xs md:max-w-sm m-5 hover:shadow-lg duration-300 ease-in-out bg-white border flex flex-col p-5 rounded-xl border-amber-500">
+                    <a href="#">
+                        <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-3.png" class="mb-5 w-full rounded-lg" alt="Image 3">
+                    </a>
+                    <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-gray-900">
+                        <a href="#">We partnered with Google</a>
+                    </h2>
+                    <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
+                    <a href="#" class="inline-flex items-center font-medium underline underline-offsmt-4 text-md text-primary-600 dark:text-amber-500 hover:no-underline">
+                        Baca Lebih Lanjut
+                    </a>
+                    <div class="flex mt-6 items-center space-x-4">
+                      <img class="w-7 h-7 rounded-full" src="./assets/img/flora.jpg" alt="" />
+                      <span class="font-medium dark:text-gray-900">
+                          Flora Shafiq Riyadi
+                      </span>
+                  </div>
+                </article>
+                <article class="max-w-lg lg:max-w-xs md:max-w-sm m-5 hover:shadow-lg duration-300 ease-in-out bg-white border flex flex-col p-5 rounded-xl border-amber-500">
+                    <a href="#">
+                        <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-4.png" class="mb-5 w-full rounded-lg" alt="Image 4">
+                    </a>
+                    <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-gray-900">
+                        <a href="#">Our first project with React</a>
+                    </h2>
+                    <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
+                    <a href="#" class="inline-flex items-center font-medium underline underline-offsmt-4 text-md text-primary-600 dark:text-amber-500 hover:no-underline">
+                        Baca Lebih Lanjut
+                    </a>
+                    <div class="flex mt-6 items-center space-x-4">
+                      <img class="w-7 h-7 rounded-full" src="./assets/img/flora.jpg" alt="" />
+                      <span class="font-medium dark:text-gray-900">
+                          Flora Shafiq Riyadi
+                      </span>
+                  </div>
+                </article>
+                <article class="max-w-lg lg:max-w-xs md:max-w-sm m-5 hover:shadow-lg duration-300 ease-in-out bg-white border flex flex-col p-5 rounded-xl border-amber-500">
+                    <a href="#">
+                        <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-4.png" class="mb-5 w-full rounded-lg" alt="Image 4">
+                    </a>
+                    <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-gray-900">
+                        <a href="#">Our first project with React</a>
+                    </h2>
+                    <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
+                    <a href="#" class="inline-flex items-center font-medium underline underline-offsmt-4 text-md text-primary-600 dark:text-amber-500 hover:no-underline">
+                        Baca Lebih Lanjut
+                    </a>
+                    <div class="flex mt-6 items-center space-x-4">
+                      <img class="w-7 h-7 rounded-full" src="./assets/img/flora.jpg" alt="" />
+                      <span class="font-medium dark:text-gray-900">
+                          Flora Shafiq Riyadi
+                      </span>
+                  </div>
+                </article>
+              </div>
+          </div>
+        </aside>
