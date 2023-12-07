@@ -42,7 +42,7 @@
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 grid grid-cols-3 place-items-center">   
 
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <img src="./assets/img/img_lp1.png" alt="mockup">
+            <img src="./assets/img/ecom1.png" alt="mockup">
                 <div class="p-4">
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
@@ -53,7 +53,7 @@
 
             
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <img src="./assets/img/img_lp1.png" alt="mockup">
+            <img src="./assets/img/ecom2.png" alt="mockup">
                 <div class="p-4">
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
@@ -64,7 +64,7 @@
 
             
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <img src="./assets/img/img_lp1.png" alt="mockup">
+            <img src="./assets/img/ecom3.png" alt="mockup">
                 <div class="p-4">
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
