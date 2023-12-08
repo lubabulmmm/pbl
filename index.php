@@ -57,10 +57,12 @@
     <!-- kategori pbl -->
 <section class="bg-white">
   <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-      <div class="max-w-screen-full mb-8 lg:mb-16">
-          <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 ">Kategori ShowCase PBL</h2>
-          <p class="text-gray-700 font-l sm:text-xl text-center ">Berikut adalah kategori showcase yang ada di PBL.</p>
-      </div>    
+  <div class="max-w-screen-full mb-8 lg:mb-16 text-center">
+    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Kategori ShowCase PBL</h2>
+    <p class="text-gray-700 font-l sm:text-xl mb-4">Berikut adalah kategori showcase yang ada di PBL. <a href="./showcase.php"  type="button" class="px-4 focus:outline-none text-white bg-amber-500 hover:bg-amber-300 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">More ShowCase </a> </p>
+    
+</div>
+   
       <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
           <div>
               <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-black lg:h-12 lg:w-12">
@@ -71,7 +73,7 @@
               <div class="flex justify-between items-center">
                   <div class="flex items-center space-x-4">
                   </div>
-                  <a href="#" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
+                  <a href="./detailshowcase.php" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
                       Read more
                       <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                   </a>
@@ -86,7 +88,7 @@
               <div class="flex justify-between items-center">
                   <div class="flex items-center space-x-4">
                   </div>
-                  <a href="#" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
+                  <a href="./detailshowcase.php" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
                       Read more
                       <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                   </a>
@@ -101,7 +103,7 @@
               <div class="flex justify-between items-center">
                   <div class="flex items-center space-x-4">
                   </div>
-                  <a href="#" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
+                  <a href="./detailshowcase.php" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
                       Read more
                       <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                   </a>
@@ -116,7 +118,7 @@
               <div class="flex justify-between items-center">
                   <div class="flex items-center space-x-4">
                   </div>
-                  <a href="#" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
+                  <a href="./detailshowcase.php" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
                       Read more
                       <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                   </a>
@@ -131,7 +133,7 @@
               <div class="flex justify-between items-center">
                   <div class="flex items-center space-x-4">
                   </div>
-                  <a href="#" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
+                  <a href="./detailshowcase.php" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
                       Read more
                       <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                   </a>
@@ -146,7 +148,7 @@
               <div class="flex justify-between items-center">
                   <div class="flex items-center space-x-4">
                   </div>
-                  <a href="#" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
+                  <a href="./detailshowcase.php" class="inline-flex items-center font-medium text-primary-600 text-gray-800 hover:underline">
                       Read more
                       <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                   </a>
