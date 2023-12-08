@@ -43,10 +43,7 @@
         </div>
       </form>
 
-      <p class="mt-10 text-center text-sm text-gray-500">
-        Belum memiliki akun?
-        <a href="#" class="font-semibold leading-6 text-blue-600 hover:text-blue-500">Daftar di sini</a>
-      </p>
+      
     </div>
   </div>
 </body>

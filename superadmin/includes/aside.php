@@ -51,7 +51,7 @@
             </button>
             <ul id="dropdown-admin" class="hidden py-2 space-y-2 duration-300">
                <li>
-                  <a href="./admin.php" class="flex items-center w-full od py-2 px-3 font-medium text-white transition duration-75 rounded-lg pl-11 group ">Daftar Admin</a>
+                  <a href="../admin.php" class="flex items-center w-full od py-2 px-3 font-medium text-white transition duration-75 rounded-lg pl-11 group ">Daftar Admin</a>
                </li>
             </ul>
          </li> 
