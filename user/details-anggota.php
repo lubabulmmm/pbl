@@ -59,13 +59,19 @@
 
 
             <div class="flex items-center flex-wrap">
-
               <a href="./projects.php" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
                 <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
                 </svg>
                 Kembali
               </a>
+              <button type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                  <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M8 8v1h4V8m4 7H4a1 1 0 0 1-1-1V5h14v9a1 1 0 0 1-1 1ZM2 1h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"/>
+                </svg>
+                Simpan
+              </button>
+              
             </div>
           </div>
 
@@ -85,7 +91,9 @@
                                   <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
                               </div>
                           </div>
-                        
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                            <option selected>PM</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -105,7 +113,13 @@
                                   <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
                               </div>
                           </div>
-                        
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                            <option selected>Pilih role</option>
+                            <option value="US">System Analyst</option>
+                            <option value="CA">Business Analyst</option>
+                            <option value="FR">Front End</option>
+                            <option value="DE">Back End</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -125,7 +139,13 @@
                                   <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
                               </div>
                           </div>
-                        
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                            <option selected>Pilih role</option>
+                            <option value="US">System Analyst</option>
+                            <option value="CA">Business Analyst</option>
+                            <option value="FR">Front End</option>
+                            <option value="DE">Back End</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -145,7 +165,13 @@
                                   <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
                               </div>
                           </div>
-                        
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                            <option selected>Pilih role</option>
+                            <option value="US">System Analyst</option>
+                            <option value="CA">Business Analyst</option>
+                            <option value="FR">Front End</option>
+                            <option value="DE">Back End</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -165,7 +191,13 @@
                                   <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
                               </div>
                           </div>
-                        
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                            <option selected>Pilih role</option>
+                            <option value="US">System Analyst</option>
+                            <option value="CA">Business Analyst</option>
+                            <option value="FR">Front End</option>
+                            <option value="DE">Back End</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -185,7 +217,13 @@
                                   <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
                               </div>
                           </div>
-                        
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                            <option selected>Pilih role</option>
+                            <option value="US">System Analyst</option>
+                            <option value="CA">Business Analyst</option>
+                            <option value="FR">Front End</option>
+                            <option value="DE">Back End</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -205,7 +243,13 @@
                                   <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
                               </div>
                           </div>
-                        
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                            <option selected>Pilih role</option>
+                            <option value="US">System Analyst</option>
+                            <option value="CA">Business Analyst</option>
+                            <option value="FR">Front End</option>
+                            <option value="DE">Back End</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -225,7 +269,13 @@
                                   <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
                               </div>
                           </div>
-                        
+                          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                            <option selected>Pilih role</option>
+                            <option value="US">System Analyst</option>
+                            <option value="CA">Business Analyst</option>
+                            <option value="FR">Front End</option>
+                            <option value="DE">Back End</option>
+                          </select>
                         </div>
                       </div>
                     </div>
