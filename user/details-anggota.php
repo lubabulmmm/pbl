@@ -39,7 +39,7 @@
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                   </svg>
                   <a href="./projects.php" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-amber-800">
-                    <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-amber-500 md:ms-2">Proyek Kamu</span>
+                    <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-amber-500 md:ms-2">Proyek</span>
                   </a>
                 </div>
               </li>
@@ -100,7 +100,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Business Analyst</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -126,7 +126,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Front End 1</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -152,7 +152,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Front End 2</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -178,7 +178,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Back End 1</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -204,7 +204,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Back End 2</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -230,7 +230,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">System Analyst</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -256,7 +256,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Quality Assurance</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -284,7 +284,7 @@
               </dl>
             </div>
 
-
+      </div>
     </div>
   </div>
 
