@@ -39,7 +39,7 @@
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                   </svg>
                   <a href="./projects.php" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-amber-800">
-                    <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-amber-500 md:ms-2">Proyek Kamu</span>
+                    <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-amber-500 md:ms-2">Proyek</span>
                   </a>
                 </div>
               </li>
