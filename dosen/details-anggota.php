@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  <title>Detail Proyek | PBL Vokasi</title>
+  <title>Detail Kelompok | PBL Vokasi</title>
   <?php include("../includes/head.php") ?>
 </head>
 <body class="bg-gray-50">
@@ -100,7 +100,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Business Analyst</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -126,7 +126,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Front End 1</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -152,7 +152,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Front End 2</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -178,7 +178,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Back End 1</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -204,7 +204,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Back End 2</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -230,7 +230,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">System Analyst</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
@@ -256,7 +256,7 @@
                   </dd>
                 </div>
                 <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Quality Assurance</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900"></dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <div class="w-full">
                       <!-- Start coding here -->
