@@ -57,62 +57,72 @@
           <div>
             <div class="flex flex-wrap w-full justify-between">
               <div class="px-4 sm:px-0 flex justify-center items-center">
-                <h3 class="text-2xl font-semibold leading-7 text-gray-900">Pengumpulan Proyek</h3>
+                <h3 class="text-2xl font-semibold leading-loose text-gray-900">Detail Kelompok dan Proyek</h3>
               </div>
 
-
-              <div class="flex items-center flex-wrap">
-
-                <a href="" type="button" class="text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-                  <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 5h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-2v3l-4-3H8m4-13H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2v3l4-3h4a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+              <a href="./grade.php" type="button" class="text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                  <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.479 1.712 2.367 4.8a.532.532 0 0 0 .4.292l5.294.769a.534.534 0 0 1 .3.91l-3.83 3.735a.534.534 0 0 0-.154.473l.9 5.272a.535.535 0 0 1-.775.563l-4.734-2.49a.536.536 0 0 0-.5 0l-4.73 2.487a.534.534 0 0 1-.775-.563l.9-5.272a.534.534 0 0 0-.154-.473L2.158 8.48a.534.534 0 0 1 .3-.911l5.294-.77a.532.532 0 0 0 .4-.292l2.367-4.8a.534.534 0 0 1 .96.004Z"/>
                   </svg>
-                  Komentar PIC
-                </a>
+                Beri Nilai
+              </a>
+            </div>
+          </div>
 
-                <button type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-                  <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.994 19a8.999 8.999 0 1 1 3.53-17.281M5.995 9l4 4 7-8m-1 8v5m-2.5-2.5h5"/>
-                  </svg>  
-                  
-                  Submit
-                </button>
+          <div class="mt-6 border-t border-gray-100">
+            <dl class="divide-y divide-gray-100">
+              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-md font-medium leading-6 text-gray-900">Link Youtube</dt>
+                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="https://youtu.be/PkLkiLyySDU?si=9TG3JSpMUieXmd4z" class="text-amber-500 underline">https://youtu.be/PkLkiLyySDU?si=9TG3JSpMUieXmd4z</a></dd>
               </div>
-            </div>
+              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-md font-medium leading-6 text-gray-900">URL Website/Aplikasi</dt>
+                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="https://github.com/Ibrairsyad17/project-based-learning" class="text-amber-500 underline">https://github.com/Ibrairsyad17/project-based-learning</a></dd>
+              </div>
+              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-md font-medium leading-6 text-gray-900">Laporan dan Poster Proyek</dt>
+                <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
+                  <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+                    <!-- // ! LIST FILE DISINI -->
 
-            <div class="mt-6 border-t border-gray-100">
-              <dl class="divide-y divide-gray-100">
-                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Nilai Proyek</dt>
-                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500">80</span> /100</dd>
-                </div>
-                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex items-center">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Unggah Laporan</dt>
-                  <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none sm:col-span-2" id="file_input" type="file">
-                </div>
-                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi Proyek:</dt>
-                  <textarea id="description" rows="10" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 col-span-2" placeholder="Tulis Deskripsi Kamu.."></textarea>
-                </div>
-                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex items-center">
-                  <dt class="text-md font-medium leading-6 text-gray-900">URL Video Youtube</dt>
-                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    <input type="text" id="small-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan URL Video Youtube">
-                  </dd>
-                </div>
-                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex items-center">
-                  <dt class="text-md font-medium leading-6 text-gray-900">URL Web/Aplikasi</dt>
-                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    <input type="text" id="small-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan URL Web/Aplikasi">
-                  </dd>
-                </div>
-                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex items-center">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Unggah Poster</dt>
-                  <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none sm:col-span-2" id="file_input" type="file">
-                </div>
-                
-              </dl>
-            </div>
+                    <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
+                      <div class="flex w-0 flex-1 items-center">
+                        <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                          <span class="truncate font-medium">resume_back_end_developer.pdf</span>
+                          <span class="flex-shrink-0 text-gray-400">2.4mb</span>
+                        </div>
+                      </div>
+                      <div class="ml-4 flex-shrink-0">
+                        <a href="#" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
+                      </div>
+                    </li>
+
+                    <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
+                      <div class="flex w-0 flex-1 items-center">
+                        <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                          <span class="truncate font-medium">coverletter_back_end_developer.pdf</span>
+                          <span class="flex-shrink-0 text-gray-400">4.5mb</span>
+                        </div>
+                      </div>
+                      <div class="ml-4 flex-shrink-0">
+                        <a href="#" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
+                      </div>
+                    </li>
+
+                  </ul>
+                </dd>
+              </div>
+              
+            </dl>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>

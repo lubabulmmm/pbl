@@ -150,3 +150,16 @@
               </div>
           </div>
         </aside>
+
+
+
+        <div class="mt-6 border-t border-gray-100">
+          <dl class="divide-y divide-gray-100">
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex items-center">
+              <dt class="text-md font-medium leading-6 text-gray-900">Nilai Proyek</dt>
+              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                <input type="text" id="small-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan URL Web/Aplikasi">
+              </dd>
+            </div>
+          </dl>
+        </div>
