@@ -57,6 +57,7 @@
                                 <option value="DG">Design Grafis</option>
                                 <option value="PH">Perhotelan</option>
                                 <option value="PK">Perbankan</option>
+                                <option value="AB">Administrasi Bisnis</option>
                             </select>
                         </div> 
                         <!-- <div>
