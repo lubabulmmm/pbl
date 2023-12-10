@@ -14,7 +14,7 @@
         </a>
       </div>
       <div class="flex items-center">
-          <div class="name px-3 text-sm">Hi, Ibrahim Irsad</div>
+          <div class="name px-3 text-sm">Hi, <?= $_SESSION['nama_user'] ?></div>
           <div class="flex items-center ml-3">
             <div>
               <button type="button" class="flex text-sm bg-amber-500 rounded-full focus:ring-4 focus:ring-amber-300" aria-expanded="false" data-dropdown-toggle="dropdown-user">
@@ -25,18 +25,18 @@
             <div class="z-50 hidden my-4 text-base text-gray-900 list-none divide-y rounded shadow-lg bg-white divide-gray-300" id="dropdown-user">
               <div class="px-4 py-3" role="none">
                 <p class="text-sm text-gray-900" role="none">
-                  Jake's Pierce
+                  <?= $_SESSION['nama_user'] ?>
                 </p>
                 <p class="text-sm font-medium text-gray-900 truncate" role="none">
-                  thiearsenal@gmail.com
+                  <?= $_SESSION['email'] ?>
                 </p>
               </div>
               <ul class="py-1" role="none">
                 <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Dashboard</a>
+                  <a href="/PBL/dosen/dashadmin.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Dashboard</a>
                 </li>
                 <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Sign out</a>
+                  <a href="/PBL/logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Sign out</a>
                 </li>
               </ul>
             </div>

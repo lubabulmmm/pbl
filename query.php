@@ -22,18 +22,25 @@
     return mysqli_affected_rows($conn);
   }
 
+  function delete_project($id_user){
+    global $conn;
+    mysqli_query($conn, "DELETE FROM proyek WHERE id_proyek = '$id_user'");
+
+    return mysqli_affected_rows($conn);
+  }
+
   function add_admin($data_admin){
     global $conn;
-    $nama_dosen = htmlspecialchars($data_admin["nama_user"]);
+    $nama_dosen = htmlspecialchars($data_admin["nama_dosen"]);
     $id_user = htmlspecialchars($data_admin["nip"]);
     $email = htmlspecialchars($data_admin["email"]);
     $password = htmlspecialchars(mysqli_real_escape_string($conn, $data_admin["password"]));
 
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql_add_admin = "INSERT INTO user VALUES ('$email', '$id_user', '$nama_dosen', 'admin', 'profile.png', '$password')";
+    $sql_add_admin = "INSERT INTO user (email, id, nama_user, level, gambar, password) VALUES ('$email', '$id_user', '$nama_dosen', 'admin', 'profile.png', '$password')";
 
-    mysqli_query($conn, $sql_add_admin);  
+    mysqli_query($conn, $sql_add_admin);
 
     return mysqli_affected_rows($conn);
   }
@@ -62,7 +69,7 @@
     $req = $data_project['features'];
     $minggu = $data_project['week'];
 
-    $sql_add_projects = "INSERT INTO proyek VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No')";
+    $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No')";
 
 
     mysqli_query($conn, $sql_add_projects);
