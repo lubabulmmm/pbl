@@ -15,6 +15,10 @@
     }
   }
 
+  require '../../query.php';
+
+  $projects = execThis("SELECT nama_proyek, id_user, id_proyek, status_show FROM proyek");
+
 ?>
 
 
@@ -42,7 +46,7 @@
           <nav class="flex my-10" aria-label="Breadcrumb">
               <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
-                  <a href="../dashboard.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-900">
+                  <a href="" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-900">
                     <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                       <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
                     </svg>
@@ -51,6 +55,24 @@
                 </li>
               </ol>
             </nav>
+
+            <?php if(!empty($_GET['info'])): ?>
+              <!-- Berhasil Dihapus -->
+              <?php if($_GET['info'] == "success"): ?>
+                <div class="p-4 mb-4 text-sm text-green-600 rounded-lg bg-green-50 border border-green-600" role="alert">
+                  <span class="font-bolf">Data Berhasil Dihapus!</span>
+                </div>
+              <?php endif; ?>
+
+              <!-- Gagal Dihapus -->
+              <?php if($_GET['info'] == "failed"): ?>
+                <div class="p-4 mb-4 text-sm text-red-600 rounded-lg bg-red-50 border border-red-600" role="alert">
+                  <span class="font-bolf">Data Gagal Dihapus!</span>
+                </div>
+              <?php endif; ?>
+
+            <?php endif; ?>
+
             <!-- Start coding here -->
             <div class="bg-white relative shadow-md sm:rounded-lg rounded-lg overflow-hidden">
                 <div class="bg-blue-900 flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -101,13 +123,23 @@
                                 </th>
                             </tr>
                         </thead>
+
+                        <?php $count = 1; ?>
                         <tbody>
+                          <?php foreach($projects as $project): ?>
                             <tr class="border-b hover:bg-gray-100">
-                                <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap">1.</th>
-                                <td class="px-4 py-3 px-2 py-3">Sistem Informasi E-Complain</td>
-                                <td class="px-4 py-3 px-2 py-3">Pep Guardiola</td>
-                                <td class="px-4 py-3 px-2 py-3"><span class="text-amber-500 font-semibold">2</span>/8</td>
-                                <td class="px-4 py-3 px-2 py-3"><span class="text-green-500 font-semibold text-center">Yes</span></td>
+                                <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap"><?= $count++; ?></th>
+                                <td class="px-4 py-3 px-2 py-3"><?= $project['nama_proyek'] ?></td>
+                                <td class="px-4 py-3 px-2 py-3"><?= $project['id_user'] ?></td>
+                                <td class="px-4 py-3 px-2 py-3"><span class="text-amber-500 font-semibold">0</span>/8</td>
+                                <td class="px-4 py-3 px-2 py-3">
+                                  <?php if($project['status_show'] == 'No'): ?>
+                                    <span class="text-red-500 font-semibold text-center">No</span></td>
+                                  <?php endif; ?>
+
+                                  <?php if($project['status_show'] == 'Yes'): ?>
+                                    <span class="text-green-500 font-semibold text-center">Yes</span></td>
+                                  <?php endif; ?>
                                 <td class="px-4 py-3 px-2 py-3">
                                   <a href="./details-projects.php" type="button" class="text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
                                       <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -128,84 +160,15 @@
                                       </svg>
                                     <span class="sr-only">Icon description</span>
                                   </button>
-                                  <button type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
+                                  <a href="./delete-projects.php?id=<?= $project['id_proyek'] ?>" type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
                                       <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                                       </svg>
                                     <span class="sr-only">Icon description</span>
-                                  </button>
+                                  </a>
                                 </td>
                             </tr>
-
-                            <tr class="border-b hover:bg-gray-100">
-                                <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap">2.</th>
-                                <td class="px-4 py-3 px-2 py-3">Sistem Informasi Manajemen Rapat</td>
-                                <td class="px-4 py-3 px-2 py-3">Pep Guardiola</td>
-                                <td class="px-4 py-3 px-2 py-3"><span class="text-amber-500 font-semibold">2</span>/8</td>
-                                <td class="px-4 py-3 px-2 py-3"><span class="text-red-500 font-semibold text-center">No</span></td>
-                                <td class="px-4 py-3 px-2 py-3">
-                                  <a href="./details-projects.php" type="button" class="text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                                      </svg>
-                                    <span class="sr-only">Icon description</span>
-                                  </a>
-                                  <a href="./edits-projects.php" type="button" class="text-amber-500 border-2 border-amber-500 hover:bg-amber-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center my-1 lg:m-1">
-                                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                        <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z"/>
-                                        <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z"/>
-                                      </svg>
-                                    <span class="sr-only">Icon description</span>
-                                  </a>
-                                  <button type="button" class="text-green-500 border-2 border-green-500 hover:bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center my-1 lg:m-1">
-                                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                                      </svg>
-                                    <span class="sr-only">Icon description</span>
-                                  </button>
-                                  <button type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
-                                      </svg>
-                                    <span class="sr-only">Icon description</span>
-                                  </button>
-                                </td>
-                            </tr>
-
-                            <tr class="border-b hover:bg-gray-100">
-                                <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap">3.</th>
-                                <td class="px-4 py-3 px-2 py-3">Aplikasi To Do List</td>
-                                <td class="px-4 py-3 px-2 py-3">Pep Guardiola</td>
-                                <td class="px-4 py-3 px-2 py-3"><span class="text-amber-500 font-semibold">2</span>/8</td>
-                                <td class="px-4 py-3 px-2 py-3"><span class="text-green-500 font-semibold text-center">Yes</span></td>
-                                <td class="px-4 py-3 px-2 py-3">
-                                  <a href="./details-projects.php" type="button" class="text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                                      </svg>
-                                    <span class="sr-only">Icon description</span>
-                                  </a>
-                                  <a href="./edits-projects.php" type="button" class="text-amber-500 border-2 border-amber-500 hover:bg-amber-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center my-1 lg:m-1">
-                                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                        <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z"/>
-                                        <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z"/>
-                                      </svg>
-                                    <span class="sr-only">Icon description</span>
-                                  </a>
-                                  <button type="button" class="text-green-500 border-2 border-green-500 hover:bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center my-1 lg:m-1">
-                                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                                      </svg>
-                                    <span class="sr-only">Icon description</span>
-                                  </button>
-                                  <button type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
-                                      </svg>
-                                    <span class="sr-only">Icon description</span>
-                                  </button>
-                                </td>
-                            </tr>
+                          <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
