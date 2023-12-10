@@ -1,3 +1,18 @@
+<?php 
+
+  require '../db/connectdb.php';
+  require '../query.php';
+
+  if(isset($_POST["submit"])){
+    
+    // if( add_admin($_POST) > 0 ){
+
+    // }
+
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,26 +52,33 @@
             </ol>
           </nav>
         
+          <div class="p-4 mb-4 text-sm text-red-600 rounded-lg bg-red-50 border border-red-600" role="alert">
+                <span class="font-bolf">Kata Sandi tidak Sama!</span> Masukkan dengan teliti kata sandi anda.
+            </div>
 
           <section class="bg-gray-50">
             <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">
                 <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Admin (Dosen)</h2>
-                <form action="#">
+                <form action="" method="post">
                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                         <div class="sm:col-span-2">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Admin (Dosen)</label>
-                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tambah Nama Proyek.." required="">
+                            <label for="nama_dosen" class="block mb-2 text-sm font-medium text-gray-900">Nama Admin (Dosen)</label>
+                            <input type="text" name="nama_dosen" id="nama_dosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tambah Nama Admin.." required="">
                         </div>
                         <div>
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">NIP</label>
-                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan NIP" required="">
+                            <label for="nip" class="block mb-2 text-sm font-medium text-gray-900">NIP</label>
+                            <input type="text" name="nip" id="nip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan NIP" required="">
                         </div> 
                         <div class="sm:col-span-2">
-                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
-                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan E-Mail" required="">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
+                            <input type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan E-Mail" required="">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                            <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan E-Mail" required="">
                         </div>
                     </div>
-                    <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
+                    <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
                         Tambah
                     </button>
                 </form>

@@ -41,11 +41,11 @@
           <section class="bg-gray-50">
             <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">
                 <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Mahasiswa</h2>
-                <form action="#">
+                <form action="" method="post">
                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                         <div class="sm:col-span-2">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Mahasiswa</label>
-                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tambah Nama Proyek.." required="">
+                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tambah Nama Mahasiswa.." required="">
                         </div>
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">NIM</label>
@@ -53,6 +53,10 @@
                         </div> 
                         <div class="sm:col-span-2">
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
+                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan E-Mail" required="">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
                             <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan E-Mail" required="">
                         </div>
                     </div>
