@@ -10,7 +10,7 @@
       header("Location: dosen/dashadmin.php");
       exit;
     } elseif ($_SESSION["level"] == "superadmin"){
-      header("Location: dosen/dashadmin.php");
+      header("Location: superadmin/superadmin.php");
       exit;
     }
   }
