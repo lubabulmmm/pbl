@@ -4,18 +4,16 @@
 
   function add_admin($data_admin){
     global $conn;
-    $nama_dosen = htmlspecialchars($data_admin["nam"]);
+    $nama_dosen = htmlspecialchars($data_admin["nama_user"]);
     $id_user = htmlspecialchars($data_admin["nip"]);
     $email = htmlspecialchars($data_admin["email"]);
     $password = htmlspecialchars(mysqli_real_escape_string($conn, $data_admin["password"]));
 
     $password = password_hash($password, PASSWORD_DEFAULT);
-    
+
     $sql_add_admin = "INSERT INTO user VALUES ('$email', '$id_user', '$nama_dosen', 'admin', 'profile.png', '$password')";
 
-    mysqli_query($conn, $sql_add_admin);
-
-    
+    mysqli_query($conn, $sql_add_admin);  
 
     return mysqli_affected_rows($conn);
   }

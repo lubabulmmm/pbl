@@ -1,12 +1,19 @@
 <?php
   require './db/connectdb.php';
   session_start();
-  // if(isset($_SESSION["login"])){
-  //     header("Location: beranda.php");
-  //     exit;
-    // jika sudah melakukan login dan benar akan dikembalikan
-    // ke halaman beranda
-  // }
+
+  if (isset($_SESSION["level"])) {
+    if ($_SESSION["level"] == "user") {
+      header("Location: dashboard.php");
+      exit;
+    } elseif ($_SESSION["level"] == "admin"){
+      header("Location: dosen/dashadmin.php");
+      exit;
+    } elseif ($_SESSION["level"] == "superadmin"){
+      header("Location: dosen/dashadmin.php");
+      exit;
+    }
+  }
 
   if(isset($_POST["login"])){
 
@@ -38,7 +45,7 @@
         } elseif ($_SESSION["level"] == "admin"){
           header("Location: dosen/dashadmin.php");
         } elseif ($_SESSION["level"] == "superadmin"){
-          header("Location: dosen/dashadmin.php");
+          header("Location: superadmin/superadmin.php");
         }
       }
     }
