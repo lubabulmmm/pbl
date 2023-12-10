@@ -2,6 +2,26 @@
 
   require 'db/connectdb.php';
 
+  function execThis( $query ) {
+    global $conn;
+    // Exectue Query
+    $result = mysqli_query( $conn, $query );
+    $rows = [];
+    // Fetch Data From Query
+    while ( $row = mysqli_fetch_assoc( $result ) ) {
+      $rows[] = $row;
+    }
+    return $rows;
+
+  }
+
+  function delete_user($id_user){
+    global $conn;
+    mysqli_query($conn, "DELETE FROM user WHERE id = '$id_user'");
+
+    return mysqli_affected_rows($conn);
+  }
+
   function add_admin($data_admin){
     global $conn;
     $nama_dosen = htmlspecialchars($data_admin["nama_user"]);

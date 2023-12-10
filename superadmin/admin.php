@@ -15,6 +15,10 @@
     }
   }
 
+  require '../query.php';
+
+  $admins = execThis("SELECT * FROM user WHERE level = 'admin'");
+
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +54,24 @@
                 </li>
               </ol>
             </nav>
+
+            <?php if(!empty($_GET['info'])): ?>
+              <!-- Berhasil Dihapus -->
+              <?php if($_GET['info'] == "success"): ?>
+                <div class="p-4 mb-4 text-sm text-green-600 rounded-lg bg-green-50 border border-green-600" role="alert">
+                  <span class="font-bolf">Data Berhasil Dihapus!</span>
+                </div>
+              <?php endif; ?>
+
+              <!-- Gagal Dihapus -->
+              <?php if($_GET['info'] == "failed"): ?>
+                <div class="p-4 mb-4 text-sm text-red-600 rounded-lg bg-red-50 border border-red-600" role="alert">
+                  <span class="font-bolf">Data Gagal Dihapus!</span>
+                </div>
+              <?php endif; ?>
+
+            <?php endif; ?>
+
             <!-- Start coding here -->
             <div class="bg-white relative shadow-md sm:rounded-lg rounded-lg overflow-hidden">
                 <div class="bg-blue-900 flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -100,47 +122,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                          <?php foreach ($admins as $admin) : ?>
                             <tr class="border-b hover:bg-gray-100">
-                                <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap">223140707111190</th>
-                                <td class="px-4 py-3 px-2 py-3">Ryan Armando Pasya</td>
-                                <td class="px-4 py-3 px-2 py-3">ryanhitzeed99@student.ub.ac.id</td>
+                                <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap"><?= $admin['id'] ?></th>
+                                <td class="px-4 py-3 px-2 py-3"><?= $admin['nama_user'] ?></td>
+                                <td class="px-4 py-3 px-2 py-3"><?= $admin['email'] ?></td>
                                 <td class="px-4 py-3 px-2 py-3">
-                                  <button type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
+                                  <a href="./delete-admin.php?id=<?= $admin['id'] ?>" type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
                                       <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                                       </svg>
                                     <span class="sr-only">Icon description</span>
-                                  </button>
+                                  </a>
                                 </td>
                             </tr>
-
-                            <tr class="border-b hover:bg-gray-100">
-                                <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap">223140707111190</th>
-                                <td class="px-4 py-3 px-2 py-3">Ruben Dias</td>
-                                <td class="px-4 py-3 px-2 py-3">marcmarquez@student.ub.ac.id</td>
-                                <td class="px-4 py-3 px-2 py-3">
-                                  <button type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
-                                      </svg>
-                                    <span class="sr-only">Icon description</span>
-                                  </button>
-                                </td>
-                            </tr>
-
-                            <tr class="border-b hover:bg-gray-100">
-                                <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap">223140707111190</th>
-                                <td class="px-4 py-3 px-2 py-3">Daendeles</td>
-                                <td class="px-4 py-3 px-2 py-3">daendeles@voc.ned</td>
-                                <td class="px-4 py-3 px-2 py-3">
-                                  <button type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
-                                      </svg>
-                                    <span class="sr-only">Icon description</span>
-                                  </button>
-                                </td>
-                            </tr>
+                          <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
