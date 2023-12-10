@@ -1,13 +1,14 @@
 <?php 
 
-  require '../db/connectdb.php';
   require '../query.php';
 
   if(isset($_POST["submit"])){
     
-    // if( add_admin($_POST) > 0 ){
-
-    // }
+    if( add_admin($_POST) > 0 ){
+      header("Location: add-admin.php?info=success");
+    } else {
+      header("Location: add-admin.php?info=failed");
+    }
 
   }
 
@@ -52,9 +53,23 @@
             </ol>
           </nav>
         
-          <div class="p-4 mb-4 text-sm text-red-600 rounded-lg bg-red-50 border border-red-600" role="alert">
-                <span class="font-bolf">Kata Sandi tidak Sama!</span> Masukkan dengan teliti kata sandi anda.
-            </div>
+          
+          <?php if(!empty($_GET['info'])): ?>
+            <!-- Berhasil Menambahkan -->
+            <?php if($_GET['info'] == "success"): ?>
+              <div class="p-4 mb-4 text-sm text-green-600 rounded-lg bg-green-50 border border-green-600" role="alert">
+                <span class="font-bolf">Data Berhasil Ditambahkan</span>
+              </div>
+            <?php endif; ?>
+
+            <!-- Gagal Menambahkan -->
+            <?php if($_GET['info'] == "failed"): ?>
+              <div class="p-4 mb-4 text-sm text-red-600 rounded-lg bg-red-50 border border-red-600" role="alert">
+                <span class="font-bolf">Data Berhasil Ditambahkan</span>
+              </div>
+            <?php endif; ?>
+
+          <?php endif; ?>
 
           <section class="bg-gray-50">
             <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">

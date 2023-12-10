@@ -1,19 +1,37 @@
 <?php 
 
-  require '/pbl/db/connectdb.php';
+  require 'db/connectdb.php';
 
   function add_admin($data_admin){
     global $conn;
-    $nama_dosen = $data_admin["nama_dosen"];
-    $nip = $data_admin["nip"];
-    $email = $data_admin["email"];
-    $password = mysqli_real_escape_string($conn, $data_admin["password"]);
+    $nama_dosen = htmlspecialchars($data_admin["nam"]);
+    $id_user = htmlspecialchars($data_admin["nip"]);
+    $email = htmlspecialchars($data_admin["email"]);
+    $password = htmlspecialchars(mysqli_real_escape_string($conn, $data_admin["password"]));
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    
+    $sql_add_admin = "INSERT INTO user VALUES ('$email', '$id_user', '$nama_dosen', 'admin', 'profile.png', '$password')";
+
+    mysqli_query($conn, $sql_add_admin);
+
+    
+
+    return mysqli_affected_rows($conn);
+  }
+
+  function add_user($data_mahasiswa){
+    global $conn;
+    $nama_dosen = htmlspecialchars($data_mahasiswa["name"]);
+    $id_user = htmlspecialchars($data_mahasiswa["nim"]);
+    $email = htmlspecialchars($data_mahasiswa["email"]);
+    $password = htmlspecialchars(mysqli_real_escape_string($conn, $data_mahasiswa["password"]));
 
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql_add_admin = "INSERT INTO user VALUES ('$email', '$nip', '$nama_dosen', 'admin', 'profile.png', '$password')";
+    $sql_add_user = "INSERT INTO user VALUES ('$email', '$id_user', '$nama_dosen', 'user', 'profile.png', '$password')";
 
-    mysqli_query($conn, $sql_add_admin);
+    mysqli_query($conn, $sql_add_user);
 
     return mysqli_affected_rows($conn);
   }

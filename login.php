@@ -15,7 +15,7 @@
     $email = mysqli_real_escape_string($conn, $email);
     $password = mysqli_real_escape_string($conn, $password);
 
-    $sql =  "SELECT * FROM user WHERE email='$email' AND password='$password'";
+    $sql =  "SELECT * FROM user WHERE email='$email'";
 
     $query = mysqli_query($conn, $sql);
 
@@ -72,9 +72,9 @@
 </head>
 <body>
 
-<section class="bg-gray-50 h-screen">
-  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-blue-900">
+<section class=" h-screen">
+  <div class="flex flex-col items-center bg-gray-50 justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-blue-800">
           <img class="w-8 h-8 mr-2 shadow-lg" src="./assets/img/pbl_logo.svg" alt="logo">
           PBL Vokasi    
       </a>
@@ -95,11 +95,11 @@
                   <div class="flex items-center justify-between">
                       <div class="flex items-start">
                       </div>
-                      <a href="#" class="text-sm font-medium text-blue-600 hover:underline">Lupa Kata Sandi?</a>
+                      <a href="showcase.php" class="text-sm font-medium text-blue-600 hover:underline">Lihat Showcase?</a>
                   </div>
-                  <button type="submit" name="login" class="w-full text-white bg-blue-800 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masuk</button>
+                  <button type="submit" name="login" class="w-full text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masuk</button>
                   <p class="text-sm font-light text-gray-500">
-                      Belum punya akun? <a href="register.php" class="font-medium text-blue-600 hover:underline">Registrasi</a>
+                    <span class="text-sm  sm:text-center">© 2023 <a href="index.php" class="hover:underline">PBL Vokasi</a>. All Rights Reserved.
                   </p>
               </form>
           </div>
