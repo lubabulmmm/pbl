@@ -1,13 +1,13 @@
 <?php
+  require './db/connectdb.php';
   session_start();
-  if(isset($_SESSION["login"])){
-      header("Location: beranda.php");
-      exit;
+  // if(isset($_SESSION["login"])){
+  //     header("Location: beranda.php");
+  //     exit;
     // jika sudah melakukan login dan benar akan dikembalikan
     // ke halaman beranda
-  }
+  // }
 
-  require './db/connectdb.php';
   if(isset($_POST["login"])){
 
     $email = $_POST['email'];
@@ -17,46 +17,30 @@
 
     $sql =  "SELECT * FROM user WHERE email='$email'";
 
-    $query = mysqli_query($conn, $sql);
+    $query_email_check = mysqli_query($conn, $sql);
 
-    if($query){
-      if(mysqli_num_rows($query) > 0){
-        $data = array();
-        while($row = mysqli_fetch_assoc($query)){
-          $data[] = $row;
-        }
-        mysqli_data_seek($query, 0); // Mengatur kursor kembali ke baris pertama
 
-        foreach ($data as $user) {
-          $level = $user['level']; // Ambil level pengguna dari hasil query
-          $id_user = $user['id']; // Ambil ID user dari hasil query
-          $_SESSION['id'] = $id; // Simpan ID user
+    if (mysqli_num_rows($query_email_check) === 1) {
+      $check_result = mysqli_fetch_assoc($query_email_check);
 
-          // Tentukan alamat redirect berdasarkan level pengguna
-          if($level == "user"){
-            $_SESSION['login'] = true;
-            $_SESSION['id'] = $id;
-            $_SESSION['level'] = "user"; // Simpan level pengguna
-            header('Location: dashboard.php');
-            exit;
-          } elseif($level == "admin"){
-            $_SESSION['login'] = true;
-            $_SESSION['id'] = $id;
-            $_SESSION['level'] = $level; // Simpan level admin
-            header('Location: admin/dashadmin.php');
-            exit;
-          }
-          else {
-            $_SESSION['login'] = true;
-            $_SESSION['id'] = $id;
-            $_SESSION['level'] = "super admin"; // Simpan level super admin
-            header('Location: superadmin/superadmin.php');
-            exit;
-          }
+      // cek password
+      if (password_verify($password, $check_result["password"])) {
+        // mulai session
+        $_SESSION["login"] = true;
+        $_SESSION["id"] = $check_result["id"];
+        $_SESSION["nama_user"] = $check_result["nama_user"];
+        $_SESSION["email"] = $check_result["email"];
+        $_SESSION["level"] = $check_result["level"];
+
+        if ($_SESSION["level"] == "user") {
+          header("Location: dashboard.php");
+          exit;
+        } elseif ($_SESSION["level"] == "admin"){
+          header("Location: dosen/dashadmin.php");
+        } elseif ($_SESSION["level"] == "superadmin"){
+          header("Location: dosen/dashadmin.php");
         }
       }
-    } else {
-      $error = true;
     }
   }
 ?>

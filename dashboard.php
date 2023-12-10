@@ -1,3 +1,12 @@
+<?php 
+
+  session_start();
+  if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+  }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +37,8 @@
               <div class="flex w-5/12 items-center">
               <img class="w-20 h-20 rounded-xl" src="./assets/img/pfp.jpg" alt="Default avatar">
               <div class="ml-6">
-                <h5 class="mr-3 font-semibold text-gray-900">Jake Pierce's Dashboard</h5>
-                <p class="text-gray-500 text-gray-400">thiearsenal@gmail.com</p>
+                <h5 class="mr-3 font-semibold text-gray-900"><?= $_SESSION["nama_user"] ?>'s Dashboard</h5>
+                <p class="text-gray-500 text-gray-400"><?= $_SESSION["email"] ?></p>
               </div>
             </div>
             <a href="./user/groups.php"
