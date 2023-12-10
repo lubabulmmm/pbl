@@ -59,7 +59,8 @@
   <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
   <div class="max-w-screen-full mb-8 lg:mb-16 text-center">
     <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Kategori ShowCase PBL</h2>
-    <p class="text-gray-700 font-l sm:text-xl mb-4">Berikut adalah kategori showcase yang ada di PBL. <a href="./showcase.php"  type="button" class="px-4 focus:outline-none text-white bg-amber-500 hover:bg-amber-300 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">More ShowCase </a> </p>
+    <p class="text-gray-700 font-l sm:text-xl mb-4">Berikut adalah kategori showcase yang ada di PBL. 
+        <a href="./showcase.php"  type="button" class="px-4 focus:outline-none text-white bg-amber-500 hover:bg-amber-300 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">More ShowCase </a> </p>
     
 </div>
    
