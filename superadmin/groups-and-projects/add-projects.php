@@ -15,6 +15,19 @@
     }
   }
 
+  require '../../query.php';
+
+  if(isset($_POST["submit"])){
+    
+    if( add_project($_POST) > 0 ){
+      header("Location: add-projects.php?info=success");
+    } else {
+      header("Location: add-projects.php?info=failed");
+    }
+
+  }
+
+  $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
 
 ?>
 
@@ -57,12 +70,30 @@
               </li>
             </ol>
           </nav>
+
+
+          <?php if(!empty($_GET['info'])): ?>
+            <!-- Berhasil Menambahkan -->
+            <?php if($_GET['info'] == "success"): ?>
+              <div class="p-4 mb-4 text-sm text-green-600 rounded-lg bg-green-50 border border-green-600" role="alert">
+                <span class="font-bolf">Data Berhasil Ditambahkan</span>
+              </div>
+            <?php endif; ?>
+
+            <!-- Gagal Menambahkan -->
+            <?php if($_GET['info'] == "failed"): ?>
+              <div class="p-4 mb-4 text-sm text-red-600 rounded-lg bg-red-50 border border-red-600" role="alert">
+                <span class="font-bolf">Data Gagal Ditambahkan</span>
+              </div>
+            <?php endif; ?>
+
+          <?php endif; ?>
         
 
           <section class="bg-gray-50">
             <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">
                 <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Proyek</h2>
-                <form action="#">
+                <form action="" method="post">
                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                         <div class="sm:col-span-2">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Proyek</label>
@@ -70,24 +101,27 @@
                         </div>
                         <div>
                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Dosen</label>
-                            <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
-                                <option selected="">Pilih Dosen</option>
-                                <option value="TV">daniadhitya@gmail.com</option>
-                                <option value="PC">anaknyakeren17@outlook.com</option>
-                                <option value="GA">emangboleh88@yahoo.com</option>
-                                <option value="PH">tengokkakilahmail@gmail.com</option>
+                            <select id="category" name="dosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                                <option selected>Pilih Dosen</option>
+                                <?php foreach($dos as $do): ?>
+                                <option value="<?php echo $do["email"] ?>"><?= $do["nama_user"]; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div> 
                         <div>
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Masukkan Minggu</label>
-                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Minggu" required="">
+                            <label for="week" class="block mb-2 text-sm font-medium text-gray-900">Masukkan Minggu</label>
+                            <input type="text" name="week" id="week" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Minggu" required="">
                         </div> 
                         <div class="sm:col-span-2">
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Tambah Deskripsi</label>
-                            <textarea id="description" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tambah Deskripsi Proyek.."></textarea>
+                            <textarea id="description" name="description" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tambah Deskripsi Proyek.."></textarea>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Tambah Fitur</label>
+                            <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tambah Deskripsi Proyek.."></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
+                    <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
                         Tambah
                     </button>
                 </form>
