@@ -15,6 +15,10 @@
     }
   }
 
+  require '../../query.php';
+
+  $projects = execThis("SELECT id_user, id_proyek, req, deskripsi_proyek, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_proyek = ". $_GET['id'] ."");
+
 
 ?>
 
@@ -79,43 +83,36 @@
                 </a>
               </div>
 
+              <?php foreach($projects as $project): ?>
+
               <div class="mt-6 border-t border-gray-100">
                 <dl class="divide-y divide-gray-100">
                   <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt class="text-md font-medium leading-6 text-gray-900">Nama Proyek</dt>
-                    <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Sistem Informasi E-Complain</dd>
+                    <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $project['nama_proyek'] ?></dd>
                   </div>
                   <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt class="text-md font-medium leading-6 text-gray-900">Dosen PIC</dt>
-                    <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Pep Guardiola</dd>
+                    <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $project['nama_user'] ?></dd>
                   </div>
                   <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi Proyek</dt>
-                    <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+                    <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $project['deskripsi_proyek'] ?></dd>
                   </div>
                   <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt class="text-md font-medium leading-6 text-gray-900">Kelompok yang mengambil</dt>
-                    <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500">3</span> /8</dd>
+                    <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500">0</span> /8</dd>
                   </div>
                   <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt class="text-md font-medium leading-6 text-gray-900">Kebutuhan Aplikasi</dt>
                     <dd class="text-md text-gray-900 sm:col-span-2">
-                      <ul class="max-w-xl leading-loose text-md text-gray-500 list-disc list-inside">
-                        <li class="mt-2">
-                            At least 10 characters (and up to 100 characters)
-                        </li>
-                        <li class="mt-2">
-                            At least one lowercase character
-                        </li>
-                        <li class="mt-2">
-                            Inclusion of at least one special character, e.g., ! @ # ?
-                        </li>
-                      </ul>
+                      <?= $project['req'] ?>
                     </dd>
                   </div>
                   
                 </dl>
               </div>
+              <?php endforeach; ?>
             </div>
 
         </div>
