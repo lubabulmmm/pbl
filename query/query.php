@@ -1,6 +1,6 @@
 <?php 
 
-  require 'db/connectdb.php';
+  require 'connectdb.php';
 
   function execThis( $query ) {
     global $conn;

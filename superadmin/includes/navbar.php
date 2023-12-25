@@ -35,7 +35,7 @@
                         <a href="/PBL/superadmin/superadmin.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Dashboard</a>
                       </li>
                       <li>
-                        <a href="/PBL/logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Sign out</a>
+                        <a href="/PBL/user/logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Sign out</a>
                       </li>
                     </ul>
                   </div>

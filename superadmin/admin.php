@@ -2,12 +2,12 @@
 
   session_start();
   if (!isset($_SESSION["login"])) {
-    header("Location: /PBL/login.php");
+    header("Location: /PBL/user/login.php");
   }
 
   if (isset($_SESSION["level"])) {
     if ($_SESSION["level"] == "user") {
-      header("Location: dashboard.php");
+      header("Location: user/dashboard.php");
       exit;
     } elseif ($_SESSION["level"] == "admin"){
       header("Location: dosen/dashadmin.php");
@@ -15,7 +15,7 @@
     }
   }
 
-  require '../query.php';
+  require '../query/query.php';
 
   $admins = execThis("SELECT * FROM user WHERE level = 'admin'");
 
@@ -27,7 +27,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daftar Admin | PBL Vokasi</title>
-  <?php include("../includes/head.php") ?>
+  <?php include("../user/includes/head.php") ?>
 </head>
 <body class="bg-gray-50">
 

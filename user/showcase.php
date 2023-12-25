@@ -56,18 +56,18 @@
 
         </div>
         <div class="hidden lg:mt-0 lg:col-span-3 lg:flex">
-            <img src="./assets/img/img1.png" alt="mockup">
+            <img src="../assets/img/img1.png" alt="mockup">
         </div>                
     </div>
   </section>
   
   <!-- Content -->
 
-  <?php include("./content/showcase/ti.php") ?>
-  <?php include("./content/showcase/dg.php") ?>
-  <?php include("./content/showcase/adbis.php") ?>
-  <?php include("./content/showcase/kb.php") ?>
-  <?php include("./content/showcase/mp.php") ?>
+  <?php include("../content/showcase/ti.php") ?>
+  <?php include("../content/showcase/dg.php") ?>
+  <?php include("../content/showcase/adbis.php") ?>
+  <?php include("../content/showcase/kb.php") ?>
+  <?php include("../content/showcase/mp.php") ?>
 
 
 
