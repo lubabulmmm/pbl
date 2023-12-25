@@ -1,6 +1,6 @@
 <?php 
 
-  require '../query.php';
+  require '../query/query.php';
 
   $projects = execThis("SELECT id_user, deskripsi_proyek, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_user = '". $_SESSION['email']. "'");
 

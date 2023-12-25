@@ -37,7 +37,7 @@
             </a>
          </li>
          <li>
-            <a href="/PBL/showcase.php" class="flex items-center od py-2 px-3 font-medium rounded-lg text-white  group">
+            <a href="/PBL/user/showcase.php" class="flex items-center od py-2 px-3 font-medium rounded-lg text-white  group">
             <svg class="flex-shrink-0 w-5 h-5 transition duration-75 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 5h1v12a2 2 0 0 1-2 2m0 0a2 2 0 0 1-2-2V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v15a2 2 0 0 0 2 2h14ZM10 4h2m-2 3h2m-8 3h8m-8 3h8m-8 3h8M4 4h3v3H4V4Z"/>
             </svg>
@@ -45,7 +45,7 @@
             </a>
          </li>
          <li>
-            <a href="/PBL/logout.php" class="flex items-center od py-2 px-3 font-medium rounded-lg text-white  group">
+            <a href="/PBL/user/logout.php" class="flex items-center od py-2 px-3 font-medium rounded-lg text-white  group">
             <svg class="flex-shrink-0 w-5 h-5 transition duration-75 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"/>
             </svg>

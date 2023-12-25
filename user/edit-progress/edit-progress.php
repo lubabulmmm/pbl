@@ -1,3 +1,19 @@
+<?php
+  session_start();
+  if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+  }
+
+  if (isset($_SESSION["level"])) {
+    if ($_SESSION["level"] == "superadmin") {
+      header("Location: /PBL/superadmin/superadmin.php");
+      exit;
+    } elseif ($_SESSION["level"] == "admin"){
+      header("Location: /PBL/dosen/dashadmin.php");
+      exit;
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

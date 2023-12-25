@@ -7,10 +7,10 @@
 
   if (isset($_SESSION["level"])) {
     if ($_SESSION["level"] == "superadmin") {
-      header("Location: superadmin/superadmin.php");
+      header("Location: /PBL/superadmin/superadmin.php");
       exit;
     } elseif ($_SESSION["level"] == "admin"){
-      header("Location: dosen/dashadmin.php");
+      header("Location: /PBL/dosen/dashadmin.php");
       exit;
     }
   }

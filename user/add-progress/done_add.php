@@ -1,3 +1,20 @@
+<?php
+  session_start();
+  if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+  }
+
+  if (isset($_SESSION["level"])) {
+    if ($_SESSION["level"] == "superadmin") {
+      header("Location: /PBL/superadmin/superadmin.php");
+      exit;
+    } elseif ($_SESSION["level"] == "admin"){
+      header("Location: /PBL/dosen/dashadmin.php");
+      exit;
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +25,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  <title>Proyek Kamu | PBL Vokasi</title>
+  <title>Tambah Done | PBL Vokasi</title>
   <?php include("../includes/head.php") ?>
 </head>
 <body class="bg-gray-50">

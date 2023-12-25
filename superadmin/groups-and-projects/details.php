@@ -7,7 +7,7 @@
 
   if (isset($_SESSION["level"])) {
     if ($_SESSION["level"] == "user") {
-      header("Location: user/dashboard.php");
+      header("Location: /PBL/user/dashboard.php");
       exit;
     } elseif ($_SESSION["level"] == "admin"){
       header("Location: dosen/dashadmin.php");
