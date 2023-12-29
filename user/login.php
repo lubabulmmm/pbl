@@ -1,5 +1,5 @@
 <?php
-  require './db/connectdb.php';
+  require '../query/connectdb.php';
   session_start();
 
   if (isset($_SESSION["level"])) {
@@ -7,10 +7,10 @@
       header("Location: dashboard.php");
       exit;
     } elseif ($_SESSION["level"] == "admin"){
-      header("Location: dosen/dashadmin.php");
+      header("Location: ../dosen/dashadmin.php");
       exit;
     } elseif ($_SESSION["level"] == "superadmin"){
-      header("Location: superadmin/superadmin.php");
+      header("Location: ../superadmin/superadmin.php");
       exit;
     }
   }
@@ -43,9 +43,9 @@
           header("Location: dashboard.php");
           exit;
         } elseif ($_SESSION["level"] == "admin"){
-          header("Location: dosen/dashadmin.php");
+          header("Location: ../dosen/dashadmin.php");
         } elseif ($_SESSION["level"] == "superadmin"){
-          header("Location: superadmin/superadmin.php");
+          header("Location: ../superadmin/superadmin.php");
         }
       }
     }
@@ -66,7 +66,7 @@
 <section class=" h-screen">
   <div class="flex flex-col items-center bg-gray-50 justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-blue-800">
-          <img class="w-8 h-8 mr-2 shadow-lg" src="./assets/img/pbl_logo.svg" alt="logo">
+          <img class="w-8 h-8 mr-2 shadow-lg" src="../assets/img/pbl_logo.svg" alt="logo">
           PBL Vokasi    
       </a>
       <div class="w-full rounded-2xl shadow-lg md:mt-0 sm:max-w-md xl:p-0 bg-gray-50">

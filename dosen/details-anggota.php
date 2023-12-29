@@ -7,10 +7,10 @@
 
   if (isset($_SESSION["level"])) {
     if ($_SESSION["level"] == "user") {
-      header("Location: dashboard.php");
+      header("Location: /PBL/user/dashboard.php");
       exit;
     } elseif ($_SESSION["level"] == "superadmin"){
-      header("Location: superadmin/superadmin.php");
+      header("Location: /PBL/superadmin/superadmin.php");
       exit;
     }
   }
@@ -29,7 +29,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <title>Detail Kelompok | PBL Vokasi</title>
-  <?php include("../includes/head.php") ?>
+  <?php include("../user/includes/head.php") ?>
 </head>
 <body class="bg-gray-50">
   

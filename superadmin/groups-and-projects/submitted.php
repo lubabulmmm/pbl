@@ -2,15 +2,15 @@
 
   session_start();
   if (!isset($_SESSION["login"])) {
-    header("Location: /PBl/login.php");
+    header("Location: /PBl/user/login.php");
   }
 
   if (isset($_SESSION["level"])) {
     if ($_SESSION["level"] == "user") {
-      header("Location: dashboard.php");
+      header("Location: /PBL/user/dashboard.php");
       exit;
     } elseif ($_SESSION["level"] == "admin"){
-      header("Location: dosen/dashadmin.php");
+      header("Location: /PBL/dosen/dashadmin.php");
       exit;
     }
   }
@@ -25,7 +25,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Pengumpulan | PBL Vokasi</title>
-  <?php include("../../includes/head.php") ?>
+  <?php include("../../user/includes/head.php") ?>
 </head>
 <body class="bg-gray-50">
 

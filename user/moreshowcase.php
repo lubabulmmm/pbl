@@ -76,7 +76,7 @@
     </section>
 
     <!-- More Content -->
-    <?php include("./content/showcase/more.php") ?>
+    <?php include("../content/showcase/more.php") ?>
 
     <!-- Hero Section -->
     <section class="bg-white dark:bg-gray-50">

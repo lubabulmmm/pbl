@@ -1,6 +1,6 @@
 <?php 
 
-require '../../query.php';
+require '../../query/query.php';
 
 $project_id = $_GET['id'];
 

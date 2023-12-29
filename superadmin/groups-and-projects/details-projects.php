@@ -2,20 +2,20 @@
 
   session_start();
   if (!isset($_SESSION["login"])) {
-    header("Location: /PBl/login.php");
+    header("Location: /PBl/user/login.php");
   }
 
   if (isset($_SESSION["level"])) {
     if ($_SESSION["level"] == "user") {
-      header("Location: dashboard.php");
+      header("Location: /PBL/user/dashboard.php");
       exit;
     } elseif ($_SESSION["level"] == "admin"){
-      header("Location: dosen/dashadmin.php");
+      header("Location: /PBL/dosen/dashadmin.php");
       exit;
     }
   }
 
-  require '../../query.php';
+  require '../../query/query.php';
 
   $projects = execThis("SELECT id_user, id_proyek, req, deskripsi_proyek, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_proyek = ". $_GET['id'] ."");
 
@@ -28,7 +28,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detail Proyek | PBL Vokasi</title>
-  <?php include("../../includes/head.php") ?>
+  <?php include("../../user/includes/head.php") ?>
 </head>
 <body class="bg-gray-50">
 
