@@ -139,6 +139,7 @@ $admins = execThis("SELECT * FROM user WHERE level = 'admin'");
               <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-50 uppercase bg-blue-900">
                   <tr>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">NIP</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama Admin (Dosen)</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Email</th>
@@ -147,10 +148,12 @@ $admins = execThis("SELECT * FROM user WHERE level = 'admin'");
                     </th>
                   </tr>
                 </thead>
+                <?php $count = 1; ?>
                 <tbody>
                   <?php foreach ($admins as $admin) : ?>
                     <tr class="border-b hover:bg-gray-100">
-                      <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"><?= $admin['id'] ?></th>
+                      <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"><?= $count++; ?></th>
+                      <td class="px-4 py-3"><?= $admin['id'] ?></td>
                       <td class="px-4 py-3"><?= $admin['nama_user'] ?></td>
                       <td class="px-4 py-3"><?= $admin['email'] ?></td>
                       <td class="px-4 py-3">
