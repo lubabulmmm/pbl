@@ -126,7 +126,7 @@ if (isset($_POST["submit"])) {
                 </div>
                 <div class="sm:col-span-2">
                   <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
-                  <input type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan E-Mail" required="">
+                  <input type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan E-Mail" required="@">
                 </div>
                 <div class="sm:col-span-2">
                   <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
