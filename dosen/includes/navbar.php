@@ -9,7 +9,7 @@
           </svg>
         </button>
         <a href="#" class="flex ml-2 md:mr-24 items-center">
-          <img src="https://drive.google.com/uc?export=view&id=10P_iCvy3NbLUj5G4NCGSCyxOZXyo6cZ8" class="h-8 mr-3" alt="FlowBite Logo" />
+          <img src="/pbl/assets/img/logo.png" class="h-8 mr-3" alt="PBL Logo" />
           <span class="self-center text-lg text-blue-900 font-semibold sm:text-2xl whitespace-nowrap logo-text">PBL Vokasi</span>
         </a>
       </div>

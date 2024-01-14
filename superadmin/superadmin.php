@@ -15,6 +15,11 @@ if (isset($_SESSION["level"])) {
   }
 }
 
+require '../query/query.php';
+
+$list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email');
+
+
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +57,50 @@ if (isset($_SESSION["level"])) {
               </li>
             </ol>
           </nav>
+
+
+          <?php if (!empty($_GET['info'])) : ?>
+            <!-- Berhasil Dihapus -->
+            <?php if ($_GET['info'] == "success") : ?>
+              <div id="alert-3" class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50" role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span class="sr-only">Info</span>
+                <div class="ms-3 text-sm font-medium">
+                  Data berhasil di hapus!
+                </div>
+                <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-3" aria-label="Close">
+                  <span class="sr-only">Close</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                  </svg>
+                </button>
+              </div>
+            <?php endif; ?>
+
+            <!-- Gagal Dihapus -->
+            <?php if ($_GET['info'] == "failed") : ?>
+              <div id="alert-3" class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50" role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span class="sr-only">Info</span>
+                <div class="ms-3 text-sm font-medium">
+                  Data gagal di hapus!
+                </div>
+                <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-3" aria-label="Close">
+                  <span class="sr-only">Close</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                  </svg>
+                </button>
+              </div>
+            <?php endif; ?>
+
+          <?php endif; ?>
+
+
           <!-- Start coding here -->
           <div class="bg-white relative shadow-md sm:rounded-lg rounded-lg overflow-hidden">
             <div class="bg-blue-900 flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -98,71 +147,30 @@ if (isset($_SESSION["level"])) {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="border-b hover:bg-gray-100">
-                    <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap">1.</th>
-                    <td class="px-4 py-3 px-2 py-3">Sistem Informasi E-Complain</td>
-                    <td class="px-4 py-3 px-2 py-3">Kelompok 2</td>
-                    <td class="px-4 py-3 px-2 py-3">Darwin Nunez</td>
-                    <td class="px-4 py-3 px-2 py-3">Flora Shafiq Riyadi</td>
-                    <td class="px-4 py-3 px-2 py-3">
-                      <a href="./groups-and-projects/details.php" type="button" class="text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        <span class="sr-only">Icon description</span>
-                      </a>
-                      <button type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-                        </svg>
-                        <span class="sr-only">Icon description</span>
-                      </button>
-                    </td>
-                  </tr>
-
-                  <tr class="border-b hover:bg-gray-100">
-                    <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap">2.</th>
-                    <td class="px-4 py-3 px-2 py-3">Sistem Informasi Manajemen Rapat</td>
-                    <td class="px-4 py-3 px-2 py-3">Kelompok 3</td>
-                    <td class="px-4 py-3 px-2 py-3">Bernardo Silva</td>
-                    <td class="px-4 py-3 px-2 py-3">Pep Guardiola</td>
-                    <td class="px-4 py-3 px-2 py-3">
-                      <a href="./groups-and-projects/details.php" type="button" class="text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        <span class="sr-only">Icon description</span>
-                      </a>
-                      <button type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-                        </svg>
-                        <span class="sr-only">Icon description</span>
-                      </button>
-                    </td>
-                  </tr>
-
-                  <tr class="border-b hover:bg-gray-100">
-                    <th scope="row" class="px-4 py-3 px-2 py-3 font-medium text-gray-900 whitespace-nowrap">3.</th>
-                    <td class="px-4 py-3 px-2 py-3">Aplikasi To Do List</td>
-                    <td class="px-4 py-3 px-2 py-3">Kelompok 1</td>
-                    <td class="px-4 py-3 px-2 py-3">Bukayo Saka</td>
-                    <td class="px-4 py-3 px-2 py-3">Mikel Arteta</td>
-                    <td class="px-4 py-3 px-2 py-3">
-                      <a href="./groups-and-projects/details.php" type="button" class="text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        <span class="sr-only">Icon description</span>
-                      </a>
-                      <button type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
-                        </svg>
-                        <span class="sr-only">Icon description</span>
-                      </button>
-                    </td>
-                  </tr>
+                  <?php $count = 1; ?>
+                  <?php foreach ($list_bunch as $lb) : ?>
+                    <tr class="border-b hover:bg-gray-100">
+                      <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"><?= $count++ ?></th>
+                      <td class="px-4 py-3"><?= $lb['nama_proyek'] ?></td>
+                      <td class="px-4 py-3"><?= $lb['bunch_name'] ?></td>
+                      <td class="px-4 py-3"><?= $lb['leader_name'] ?></td>
+                      <td class="px-4 py-3"><?= $lb['observer_name'] ?></td>
+                      <td class="px-4 py-3">
+                        <a href="./groups-and-projects/details.php?bid=<?= $lb['bunch_id'] ?>" type="button" class="text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
+                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                          </svg>
+                          <span class="sr-only">Icon description</span>
+                        </a>
+                        <a href="./groups-and-projects/delete-bunch.php?bid=<?= $lb['bunch_id'] ?>" type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
+                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
+                          </svg>
+                          <span class="sr-only">Icon description</span>
+                        </a>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>

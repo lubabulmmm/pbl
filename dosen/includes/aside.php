@@ -1,3 +1,11 @@
+<?php
+
+require '/xampp/htdocs/pbl/query/query.php';
+
+$project_list = execThis("SELECT id_proyek, nama_proyek FROM proyek WHERE id_user = '" . $_SESSION['email'] . "'");
+
+?>
+
 <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 px-3 transition-transform -translate-x-full bg-blue-600 border-r border-gray-200 sm:translate-x-0 dark:bg-blue-900 dark:border-gray-200" aria-label="Sidebar">
    <div class="h-full px-1 pb-4 overflow-y-auto bg-blue-600 dark:bg-blue-900">
       <ul class="space-y-2 font-medium">
@@ -20,12 +28,11 @@
                </svg>
             </button>
             <ul id="dropdown-example" class="hidden py-2 space-y-2 duration-300">
-               <li>
-                  <a href="./kelproj.php" class="flex items-center w-full od py-2 px-3 font-medium transition duration-75 rounded-lg pl-11 group text-white ">Sistem Informasi E-Complain</a>
-               </li>
-               <li>
-                  <a href="#" class="flex items-center w-full od py-2 px-3 font-medium transition duration-75 rounded-lg pl-11 group text-white ">Sistem Informasi Inventory Gudang</a>
-               </li>
+               <?php foreach ($project_list as $project) : ?>
+                  <li>
+                     <a href="/PBL/dosen/kelproj.php?id=<?= $project['id_proyek']  ?>" class="flex items-center w-full od py-2 px-3 font-medium transition duration-75 rounded-lg pl-11 group text-white "><?= $project['nama_proyek'] ?></a>
+                  </li>
+               <?php endforeach; ?>
             </ul>
          </li>
          <li>
