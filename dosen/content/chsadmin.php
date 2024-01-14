@@ -1,8 +1,7 @@
 <?php
 
-require '../query/query.php';
 
-$projects = execThis("SELECT id_user, deskripsi_proyek, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_user = '" . $_SESSION['email'] . "'");
+$projects = execThis("SELECT id_user, deskripsi_proyek, id_proyek, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_user = '" . $_SESSION['email'] . "'");
 
 ?>
 
@@ -33,7 +32,7 @@ $projects = execThis("SELECT id_user, deskripsi_proyek, nama_proyek, nama_user F
               <?= $project['nama_user'] ?>
             </span>
           </div>
-          <a href="./kelproj.php" class="inline-flex items-center font-medium text-primary-600 dark:text-blue-500 hover:underline">
+          <a href="./kelproj.php?id=<?= $project['id_proyek'] ?>" class="inline-flex items-center font-medium text-primary-600 dark:text-blue-500 hover:underline">
             Lihat Proyek
             <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>

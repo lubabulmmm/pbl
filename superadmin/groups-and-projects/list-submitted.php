@@ -72,7 +72,6 @@ if (isset($_SESSION["level"])) {
             </li>
           </ol>
         </nav>
-
         <?php include("../content/content.php") ?>
 
 
