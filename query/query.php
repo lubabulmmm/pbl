@@ -89,3 +89,20 @@ function add_project($data_project)
 
   return mysqli_affected_rows($conn);
 }
+
+function add_this_project($data_project)
+{
+  global $conn;
+  $nama_proyek = $data_project['name'];
+  $dosen = $data_project['dosen'];
+  $desc = $data_project['description'];
+  $req = $data_project['features'];
+  $minggu = $data_project['week'];
+
+  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No')";
+
+
+  mysqli_query($conn, $sql_add_projects);
+
+  return mysqli_affected_rows($conn);
+}
