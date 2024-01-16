@@ -1,6 +1,6 @@
 <?php
 
-require '/xampp/htdocs/pbl/query/query.php';
+require_once '/xampp/htdocs/pbl/query/query.php';
 
 $project_list = execThis("SELECT id_proyek, nama_proyek FROM proyek WHERE id_user = '" . $_SESSION['email'] . "'");
 

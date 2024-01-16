@@ -25,7 +25,7 @@ $bunches = execThis("SELECT bunch_id, project_id, bunch_name, nama_user, nama_pr
             </a>
             <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/ian.jpeg" alt="Rounded avatar">
           </div>
-          <a href="./projects.php?bid=<?= $bunch['bunch_id'] ?>" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white bg-blue-800 rounded-lg hover:scale-105 duration-300 ease-in-out mt-2 focus:ring-4 focus:outline-none focus:ring-blue-300">
+          <a href="./projects.php?bid=<?= $bunch['bunch_id'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white bg-blue-800 rounded-lg hover:scale-105 duration-300 ease-in-out mt-2 focus:ring-4 focus:outline-none focus:ring-blue-300">
             Detail Kelompok
             <svg class="rtlamberate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />

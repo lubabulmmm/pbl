@@ -15,6 +15,12 @@ if (isset($_SESSION["level"])) {
   }
 }
 
+require '../query/query.php';
+
+$get_week = execThis("SELECT minggu FROM proyek WHERE id_proyek =" . $_GET['id'] . "");
+$week_num = (int) $get_week[0]['minggu'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +63,7 @@ if (isset($_SESSION["level"])) {
                 <svg class="ms-1 rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <a href="./kelproj.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-800">
+                <a href="./kelproj.php?id=<?= $_GET['id'] ?>" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-800">
                   <span class="ms-1 text-lg font-medium text-gray-900 hover:text-blue-500 md:ms-2">Daftar Proyek</span>
                 </a>
               </div>
@@ -103,45 +109,30 @@ if (isset($_SESSION["level"])) {
 
         <div class="mb-4 border-b border-gray-200">
           <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
-            <li class="me-2" role="presentation">
-              <button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Minggu Ke-1</button>
-            </li>
-            <li class="me-2" role="presentation">
-              <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Minggu Ke-2</button>
-            </li>
-            <li class="me-2" role="presentation">
-              <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Minggu Ke-3</button>
-            </li>
-            <li role="presentation">
-              <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Minggu Ke-4</button>
-            </li>
+            <?php for ($i = 1; $i <= $week_num; $i++) : ?>
+              <li class="me-2" role="presentation">
+                <button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#data<?= $i ?>" type="button" role="tab" aria-controls="data<?= $i ?>" aria-selected="false">Minggu Ke-<?= $i ?></button>
+              </li>
+            <?php endfor ?>
           </ul>
         </div>
 
         <div id="default-tab-content">
-          <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <?php for ($i = 1; $i <= $week_num; $i++) : ?>
+            <?php
+            $get_task_todo = execThis("SELECT * FROM task WHERE bunch_id = " . $_GET['bid'] . " AND minggu =" . $i . " HAVING category = 'To Do'");
 
-            <!-- PROGRESS MINGGU KE - 1 -->
+            $get_task_doing = execThis("SELECT * FROM task WHERE bunch_id = " . $_GET['bid'] . " AND minggu =" . $i . " HAVING category = 'Doing'");
 
-            <?php include("./content/progress_list/progress.php") ?>
+            $get_task_done = execThis("SELECT * FROM task WHERE bunch_id = " . $_GET['bid'] . " AND minggu =" . $i . " HAVING category = 'Done'");
+
+            ?>
+            <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="data<?= $i ?>" role="tabpanel" aria-labelledby="data<?= $i ?>-tab">
+              <?php include("./content/progress_list/progress.php") ?>
 
 
-          </div>
-          <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-            <!-- PROGRESS MINGGU KE - 2 -->
-
-            <?php include("./content/progress_list/progress.php") ?>
-          </div>
-          <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-            <!-- PROGRESS MINGGU KE - 3 -->
-
-            <?php include("./content/progress_list/progress.php") ?>
-          </div>
-          <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-            <!-- PROGRESS MINGGU KE - 4 -->
-
-            <?php include("./content/progress_list/progress.php") ?>
-          </div>
+            </div>
+          <?php endfor ?>
         </div>
 
       </div>
