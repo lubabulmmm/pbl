@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if (!isset($_SESSION["login"])) {
   header("Location: /PBL/login.php");
@@ -7,27 +6,25 @@ if (!isset($_SESSION["login"])) {
 
 if (isset($_SESSION["level"])) {
   if ($_SESSION["level"] == "user") {
-    header("Location: /PBL/user/dashboard.php");
+    header("Location: dashboard.php");
     exit;
   } elseif ($_SESSION["level"] == "superadmin") {
-    header("Location: /PBL/superadmin/superadmin.php");
+    header("Location: superadmin/superadmin.php");
     exit;
   }
 }
 
-require '../query/query.php';
-
-$get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.bunch_id AS bid, category, user.nama_user, project_id, bunch_member.role AS member_role FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.id =" . $_GET['tid'] . "");
-
-$members = execThis("SELECT bunch_member.id AS member_id, nama_user, role FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $get_taskinfo[0]['bid'] . "");
+require '../../query/query.php';
 
 if (isset($_POST["submit"])) {
-  if (edit_task($_POST, $_GET['tid']) > 0) {
-    header("Location: edit-progress.php?info=success&wid=1&bid=1&id=43");
+  if (add_task($_POST, 'To Do', $_GET['wid'], $_GET['bid']) > 0) {
+    header("Location: todo_add.php?info=success&wid=1&bid=1&id=43");
   } else {
-    header("Location: edit-progress.php?info=failed&wid=1&bid=1&id=43");
+    header("Location: todo_add.php?info=failed&wid=1&bid=1&id=43");
   }
 }
+
+$members = execThis("SELECT bunch_member.id AS member_id, nama_user, role FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $_GET['bid'] . "");
 
 ?>
 
@@ -42,16 +39,16 @@ if (isset($_POST["submit"])) {
   <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  <title>Proyek Kamu | PBL Vokasi</title>
-  <?php include("./includes/head.php") ?>
+  <title>Tambah TO DO | PBL Vokasi</title>
+  <?php include("../includes/head.php") ?>
 </head>
 
 <body class="bg-gray-50">
 
-  <?php include("./includes/navbar.php") ?>
+  <?php include("../includes/navbar.php") ?>
 
   <!-- Side Bar -->
-  <?php include("./includes/aside.php") ?>
+  <?php include("../includes/aside.php") ?>
   <div class="p-4 sm:ml-64">
     <!-- important -->
     <div class="rounded-lg mt-14 flex flex-col item-start">
@@ -61,7 +58,7 @@ if (isset($_POST["submit"])) {
         <nav class="flex my-7" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
-              <a href="../dashadmin.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
+              <a href="../dashboard.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
                 <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                 </svg>
@@ -73,7 +70,7 @@ if (isset($_POST["submit"])) {
                 <svg class="ms-1 rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <a href="../projects.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
+                <a href="../projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
                   <span class="ms-1 text-lg font-medium text-gray-900 hover:text-blue-500 md:ms-2">Proyek Kamu</span>
                 </a>
               </div>
@@ -83,7 +80,7 @@ if (isset($_POST["submit"])) {
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-lg font-medium text-blue-500 md:ms-2">Edit Progress</span>
+                <span class="ms-1 text-lg font-medium text-blue-500 md:ms-2">Tambah Progress</span>
               </div>
             </li>
           </ol>
@@ -130,19 +127,20 @@ if (isset($_POST["submit"])) {
 
         <?php endif; ?>
 
+
         <section class="bg-gray-50">
           <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">
-            <h2 class="mb-4 text-xl font-bold text-gray-900">Edit Progress</h2>
+            <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Progress Ke To Do</h2>
             <form method="post">
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
                   <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Progress</label>
-                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tulis Nama Progress.." required="" value="<?= $get_taskinfo[0]['task_name'] ?>">
+                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tulis Nama Progress.." required="">
                 </div>
                 <div>
-                  <label for="member" class="block mb-2 text-sm font-medium text-gray-900">Pilih</label>
+                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Dosen</label>
                   <select id="member" name="member" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
-                    <option selected=""><?= $get_taskinfo[0]['nama_user'] ?> - <?= $get_taskinfo[0]['member_role'] ?></option>
+                    <option selected>Pilih Anggota</option>
                     <?php foreach ($members as $member) : ?>
                       <option value="<?php echo $member["member_id"] ?>"><?= $member["nama_user"]; ?> - <?= $member["role"] ?></option>
                     <?php endforeach; ?>
@@ -150,11 +148,11 @@ if (isset($_POST["submit"])) {
                 </div>
                 <div class="sm:col-span-2">
                   <label for="desc" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi Progress</label>
-                  <textarea id="desc" name="desc" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tulis Deskripsi Kamu.."><?= $get_taskinfo[0]['task_desc'] ?></textarea>
+                  <textarea id="desc" name="desc" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tulis Deskripsi Kamu.."></textarea>
                 </div>
               </div>
-              <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-500 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
-                Edit
+              <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-red-500 rounded-lg focus:ring-4 focus:ring-red-200 hover:bg-red-400">
+                Tambah ke TO DO
               </button>
             </form>
           </div>

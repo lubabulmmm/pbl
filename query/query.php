@@ -106,3 +106,38 @@ function add_this_project($data_project)
 
   return mysqli_affected_rows($conn);
 }
+
+function add_task($task_data, $category, $week, $bid)
+{
+  global $conn;
+  $task_name = $task_data['name'];
+  $task_member = $task_data['member'];
+  $task_desc = $task_data['desc'];
+
+  $sql = "INSERT INTO task (id, task_name, task_desc, category, bunch_id, member_id, minggu) VALUES ('', '" . $task_name . "', '" . $task_desc . "', '" . $category . "', $bid, $task_member, $week)";
+
+  mysqli_query($conn, $sql);
+  return mysqli_affected_rows($conn);
+}
+
+function edit_task($task_data, $tid)
+{
+  global $conn;
+  $task_name = $task_data['name'];
+  $task_member = $task_data['member'];
+  $task_desc = $task_data['desc'];
+
+  $sql = "UPDATE task SET task_name = '" . $task_name . "', task_desc = '" . $task_desc . "', member_id = " . $task_member . " WHERE task.id = " . $tid . "";
+
+  mysqli_query($conn, $sql);
+  return mysqli_affected_rows($conn);
+}
+
+function update_task($task_id, $category)
+{
+  global $conn;
+  $sql = "UPDATE task SET category = '" . $category . "' WHERE task.id =" . $task_id . "";
+
+  mysqli_query($conn, $sql);
+  return mysqli_affected_rows($conn);
+}
