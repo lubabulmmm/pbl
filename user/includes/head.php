@@ -9,24 +9,29 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap');
 
-    body{
+    body {
       font-family: 'Inter', sans-serif;
     }
 
-    html{
+    html {
       scroll-behavior: smooth;
     }
 
-    .os:hover{
+    .os:hover {
       background-color: #FFAA2A;
     }
 
-    .od:hover{
+    .od:hover {
       background-color: #53659F;
     }
 
+    .ov {
+      overflow-y: scroll;
+      overflow-x: visible;
+    }
+
     @media screen and (max-width: 600px) {
-      .name{
+      .name {
         display: none;
       }
     }

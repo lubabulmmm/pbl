@@ -48,7 +48,7 @@ $get_bunch_name = execThis("SELECT bunch_id, bunch_name, project_id, nama_proyek
     <!-- important -->
     <div class="rounded-lg mt-14 flex flex-col item-start">
       <div class="mx-auto w-full px-4 lg:px-12">
-        <nav class="flex my-7" aria-label="Breadcrumb">
+        <nav class="flex mt-7 mb-5" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
               <a href="./dashadmin.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
@@ -79,7 +79,7 @@ $get_bunch_name = execThis("SELECT bunch_id, bunch_name, project_id, nama_proyek
           </ol>
         </nav>
 
-        <div class="flex flex-wrap w-7/12">
+        <div class="flex flex-wrap w-8/12 mb-5">
           <h2 class="text-2xl"><?= $get_bunch_name[0]['nama_proyek'] ?></h2>
           <span class="bg-amber-100 lg:ml-2 lg:mt-0 text-xs mt-3 text-amber-800 font-medium me-2 px-2.5 py-0.5 rounded-xl h-5 border border-amber-300"><?= $get_bunch_name[0]['bunch_name'] ?> - <?= $get_bunch_name[0]['project_id'] ?></span>
         </div>
@@ -111,7 +111,7 @@ $get_bunch_name = execThis("SELECT bunch_id, bunch_name, project_id, nama_proyek
 
 
         <div class="mb-4 border-b border-gray-200">
-          <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+          <ul class="flex flex-wrap font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
             <?php for ($i = 1; $i <= $week_num; $i++) : ?>
               <li class="me-2" role="presentation">
                 <button class="inline-block text-sm p-3 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#data<?= $i ?>" type="button" role="tab" aria-controls="data<?= $i ?>" aria-selected="false">Minggu Ke-<?= $i ?></button>
@@ -140,6 +140,8 @@ $get_bunch_name = execThis("SELECT bunch_id, bunch_name, project_id, nama_proyek
 
 
       </div>
+
+      <?php include('./content/chat.php') ?>
     </div>
   </div>
 
