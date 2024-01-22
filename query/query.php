@@ -1,7 +1,7 @@
 <?php
 
 require 'connectdb.php';
-
+date_default_timezone_set('Asia/Jakarta');
 function execThis($query)
 {
   global $conn;
@@ -139,5 +139,71 @@ function update_task($task_id, $category)
   $sql = "UPDATE task SET category = '" . $category . "' WHERE task.id =" . $task_id . "";
 
   mysqli_query($conn, $sql);
+  return mysqli_affected_rows($conn);
+}
+
+function input_date($date_data, $c_bid)
+{
+  global $conn;
+  date_default_timezone_set('Asia/Jakarta');
+  $title = $date_data['title'];
+  $comment = $date_data['comment'];
+  $time_comment = date("Y-m-d H:i:s");
+
+  $sql = "INSERT INTO comment (comment_id, comment_title, comment, date_submit, bunch_id) VALUES (NULL, '" . $title . "', '" . $comment . "', '" . $time_comment . "', " . $c_bid . ")";
+
+  mysqli_query($conn, $sql);
+
+  return mysqli_affected_rows($conn);
+}
+
+function get_time_diff($time)
+{
+  $time_diff = time() - $time;
+
+  if ($time_diff < 1) {
+    return 'Just Now';
+  }
+
+  $condition = array(
+    12 * 30 * 24 * 60 * 60 => 'tahun',
+    30 * 24 * 60 * 60 => 'bulan',
+    24 * 60 * 60 => 'hari',
+    60 * 60 => 'jam',
+    60 => 'menit',
+    1 => 'detik'
+  );
+
+  foreach ($condition as $sec => $str) {
+    $d = $time_diff / $sec;
+
+    if ($d >= 1) {
+      $t = round($d);
+      return '' . $t . ' ' . $str . ' yang lalu ';
+    }
+  }
+}
+
+function check_user_admin($data_user, $project_id)
+{
+  global $conn;
+  $sql_check = "SELECT * FROM proyek WHERE id_user= " . $data_user . " AND id_proyek = " . $project_id . "";
+
+  $check_user = mysqli_query($conn, $sql_check);
+
+  if (mysqli_num_rows($check_user) != 1) {
+    return 404;
+  }
+
+  return 200;
+}
+
+function add_grade($grade, $bunch_id)
+{
+  global $conn;
+  $sql_add_grade = "UPDATE bunch SET grade = '" . $grade['grade'] . "' WHERE bunch.bunch_id = " . $bunch_id . "";
+
+  mysqli_query($conn, $sql_add_grade);
+
   return mysqli_affected_rows($conn);
 }

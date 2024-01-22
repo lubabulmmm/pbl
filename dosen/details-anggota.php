@@ -15,6 +15,13 @@ if (isset($_SESSION["level"])) {
   }
 }
 
+require '../query/query.php';
+
+$get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, role, nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $_GET['bid'] . "");
+
+$get_leader_name = execThis("SELECT leader_id, nama_user, nama_proyek FROM bunch INNER JOIN user ON bunch.leader_id = user.email INNER JOIN proyek ON bunch.project_id = proyek.id_proyek WHERE bunch_id = " . $_GET['bid'] . "");
+
+$roles = execThis("SELECT * FROM role")
 ?>
 
 
@@ -48,7 +55,7 @@ if (isset($_SESSION["level"])) {
         <nav class="flex my-7" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
-              <a href="../dashboard.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
+              <a href="./dashadmin.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
                 <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                 </svg>
@@ -60,7 +67,7 @@ if (isset($_SESSION["level"])) {
                 <svg class="ms-1 rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <a href="./projects.php" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
+                <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
                   <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-500 md:ms-2">Proyek</span>
                 </a>
               </div>
@@ -77,11 +84,11 @@ if (isset($_SESSION["level"])) {
         </nav>
 
         <div class="flex w-full justify-between items-center">
-          <h2 class="text-2xl mb-3 font-semibold">Sistem Informasi E-Complain</h2>
+          <h2 class="text-2xl mb-3 font-semibold"><?= $get_leader_name[0]['nama_proyek'] ?></h2>
 
 
           <div class="flex items-center flex-wrap">
-            <a href="./projects.php" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+            <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
               <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
               </svg>
@@ -109,8 +116,8 @@ if (isset($_SESSION["level"])) {
                       <div class="flex items-center gap-4">
                         <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/flora.jpg" alt="">
                         <div class="font-medium">
-                          <div>John Doe</div>
-                          <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
+                          <div><?= $get_leader_name[0]['nama_user'] ?></div>
+                          <div class="text-sm text-gray-500"><?= $get_leader_name[0]['leader_id'] ?></div>
                         </div>
                       </div>
                       <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
@@ -121,188 +128,33 @@ if (isset($_SESSION["level"])) {
                 </div>
               </dd>
             </div>
-            <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900"></dt>
-              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                <div class="w-full">
-                  <!-- Start coding here -->
-                  <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                    <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                      <div class="flex items-center gap-4">
-                        <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/ian.jpeg" alt="">
-                        <div class="font-medium">
-                          <div>John Doe</div>
-                          <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
+            <?php foreach ($get_all_members as $member) : ?>
+              <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-md font-medium leading-6 text-gray-900"></dt>
+                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                  <div class="w-full">
+                    <!-- Start coding here -->
+                    <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
+                      <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
+                        <div class="flex items-center gap-4">
+                          <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/ian.jpeg" alt="">
+                          <div class="font-medium">
+                            <div><?= $member['nama_user'] ?></div>
+                            <div class="text-sm text-gray-500"><?= $member['member_id'] ?></div>
+                          </div>
                         </div>
+                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                          <option value="<?= $member['role'] ?>" selected><?= $member['role'] ?></option>
+                          <?php foreach ($roles as $role) : ?>
+                            <option value="<?= $role['role_name'] ?>"><?= $role['role_name'] ?></option>
+                          <?php endforeach; ?>
+                        </select>
                       </div>
-                      <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                        <option selected>Pilih role</option>
-                        <option value="US">System Analyst</option>
-                        <option value="CA">Business Analyst</option>
-                        <option value="FR">Front End</option>
-                        <option value="DE">Back End</option>
-                      </select>
                     </div>
                   </div>
-                </div>
-              </dd>
-            </div>
-            <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900"></dt>
-              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                <div class="w-full">
-                  <!-- Start coding here -->
-                  <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                    <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                      <div class="flex items-center gap-4">
-                        <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/pfp.jpg" alt="">
-                        <div class="font-medium">
-                          <div>John Doe</div>
-                          <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
-                        </div>
-                      </div>
-                      <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                        <option selected>Pilih role</option>
-                        <option value="US">System Analyst</option>
-                        <option value="CA">Business Analyst</option>
-                        <option value="FR">Front End</option>
-                        <option value="DE">Back End</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </dd>
-            </div>
-            <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900"></dt>
-              <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
-                <div class="w-full">
-                  <!-- Start coding here -->
-                  <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                    <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                      <div class="flex items-center gap-4">
-                        <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/flora.jpg" alt="">
-                        <div class="font-medium">
-                          <div>John Doe</div>
-                          <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
-                        </div>
-                      </div>
-                      <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                        <option selected>Pilih role</option>
-                        <option value="US">System Analyst</option>
-                        <option value="CA">Business Analyst</option>
-                        <option value="FR">Front End</option>
-                        <option value="DE">Back End</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </dd>
-            </div>
-            <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900"></dt>
-              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                <div class="w-full">
-                  <!-- Start coding here -->
-                  <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                    <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                      <div class="flex items-center gap-4">
-                        <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/ian.jpeg" alt="">
-                        <div class="font-medium">
-                          <div>John Doe</div>
-                          <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
-                        </div>
-                      </div>
-                      <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                        <option selected>Pilih role</option>
-                        <option value="US">System Analyst</option>
-                        <option value="CA">Business Analyst</option>
-                        <option value="FR">Front End</option>
-                        <option value="DE">Back End</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </dd>
-            </div>
-            <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900"></dt>
-              <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
-                <div class="w-full">
-                  <!-- Start coding here -->
-                  <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                    <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                      <div class="flex items-center gap-4">
-                        <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/pfp.jpg" alt="">
-                        <div class="font-medium">
-                          <div>John Doe</div>
-                          <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
-                        </div>
-                      </div>
-                      <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                        <option selected>Pilih role</option>
-                        <option value="US">System Analyst</option>
-                        <option value="CA">Business Analyst</option>
-                        <option value="FR">Front End</option>
-                        <option value="DE">Back End</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </dd>
-            </div>
-            <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900"></dt>
-              <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
-                <div class="w-full">
-                  <!-- Start coding here -->
-                  <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                    <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                      <div class="flex items-center gap-4">
-                        <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/pfp.jpg" alt="">
-                        <div class="font-medium">
-                          <div>John Doe</div>
-                          <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
-                        </div>
-                      </div>
-                      <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                        <option selected>Pilih role</option>
-                        <option value="US">System Analyst</option>
-                        <option value="CA">Business Analyst</option>
-                        <option value="FR">Front End</option>
-                        <option value="DE">Back End</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </dd>
-            </div>
-            <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900"></dt>
-              <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
-                <div class="w-full">
-                  <!-- Start coding here -->
-                  <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                    <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                      <div class="flex items-center gap-4">
-                        <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/flora.jpg" alt="">
-                        <div class="font-medium">
-                          <div>John Doe</div>
-                          <div class="text-sm text-gray-500">johndoe@yahoo.com</div>
-                        </div>
-                      </div>
-                      <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                        <option selected>Pilih role</option>
-                        <option value="US">System Analyst</option>
-                        <option value="CA">Business Analyst</option>
-                        <option value="FR">Front End</option>
-                        <option value="DE">Back End</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </dd>
-            </div>
+                </dd>
+              </div>
+            <?php endforeach; ?>
           </dl>
         </div>
 
