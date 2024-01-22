@@ -183,3 +183,27 @@ function get_time_diff($time)
     }
   }
 }
+
+function check_user_admin($data_user, $project_id)
+{
+  global $conn;
+  $sql_check = "SELECT * FROM proyek WHERE id_user= " . $data_user . " AND id_proyek = " . $project_id . "";
+
+  $check_user = mysqli_query($conn, $sql_check);
+
+  if (mysqli_num_rows($check_user) != 1) {
+    return 404;
+  }
+
+  return 200;
+}
+
+function add_grade($grade, $bunch_id)
+{
+  global $conn;
+  $sql_add_grade = "UPDATE bunch SET grade = '" . $grade['grade'] . "' WHERE bunch.bunch_id = " . $bunch_id . "";
+
+  mysqli_query($conn, $sql_add_grade);
+
+  return mysqli_affected_rows($conn);
+}

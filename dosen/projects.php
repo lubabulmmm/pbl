@@ -115,7 +115,7 @@ $week_num = (int) $get_week[0]['minggu'];
             Detail Anggota
           </a>
 
-          <a href="./submit-projects.php" type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+          <a href="./submit-projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
             <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 19">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15h.01M4 12H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-3m-5.5 0V1.07M5.5 5l4-4 4 4" />
             </svg>
@@ -123,7 +123,7 @@ $week_num = (int) $get_week[0]['minggu'];
           </a>
         </div>
 
-
+        <!-- //! TAB CONTENT -->
 
         <div class="mb-4 border-b border-gray-200">
           <ul class="flex flex-wrap font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
@@ -153,10 +153,13 @@ $week_num = (int) $get_week[0]['minggu'];
           <?php endfor ?>
         </div>
 
+        <!-- //! TAB CONTENT END -->
 
       </div>
 
       <hr class="w-11/12 ml-4 lg:ml-12 my-5 lg:my-9">
+
+      <!-- //! CHAT CONTENT -->
 
       <?php include('./content/chat.php') ?>
     </div>
