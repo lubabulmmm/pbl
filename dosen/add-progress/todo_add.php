@@ -138,7 +138,7 @@ $members = execThis("SELECT bunch_member.id AS member_id, nama_user, role FROM b
                   <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tulis Nama Progress.." required="">
                 </div>
                 <div>
-                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Dosen</label>
+                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Anggota</label>
                   <select id="member" name="member" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
                     <option selected>Pilih Anggota</option>
                     <?php foreach ($members as $member) : ?>
