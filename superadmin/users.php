@@ -36,7 +36,7 @@ $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
 
 ?>
 
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">

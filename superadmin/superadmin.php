@@ -20,6 +20,20 @@ require '../query/query.php';
 $list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email');
 
 
+$itemsPerPage = 5;
+
+// Calculate the total number of pages
+$totalPages = ceil(count($list_bunch) / $itemsPerPage);
+
+// Get the current page number from the query parameter, default to 1
+$current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+// Calculate the offset to fetch the appropriate items for the current page
+$offset = ($current_page - 1) * $itemsPerPage;
+
+// Fetch only the items for the current page
+$list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
+
 ?>
 
 <!DOCTYPE html>
@@ -146,9 +160,9 @@ $list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                  <?php $count = 1; ?>
-                  <?php foreach ($list_bunch as $lb) : ?>
+                <?php $count = ($current_page - 1) * $itemsPerPage + 1; ?>
+                <tbody>                  
+                  <?php foreach ($list_bunchOnCurrentPage as $lb) : ?>
                     <tr class="border-b hover:bg-gray-100">
                       <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"><?= $count++ ?></th>
                       <td class="px-4 py-3"><?= $lb['nama_proyek'] ?></td>
@@ -178,44 +192,56 @@ $list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_
             <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
               <span class="text-sm font-normal text-gray-500">
                 Showing
-                <span class="font-semibold text-gray-900">1-10</span>
+                <span class="font-semibold text-gray-900"><?= $offset + 1 ?></span> 
+                to
+                <span class="font-semibold text-gray-900"><?= min($offset + $itemsPerPage, count($list_bunch)) ?></span>
                 of
-                <span class="font-semibold text-gray-900">1000</span>
+                <span class="font-semibold text-gray-900"><?= count($list_bunch) ?></span>
               </span>
               <ul class="inline-flex items-stretch -space-x-px">
                 <li>
-                  <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-blue-900 bg-white rounded-l-lg border border-blue-300 hover:bg-blue-100 hover:text-blue-700">
-                    <span class="sr-only">Previous</span>
-                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </a>
+                  <?php if ($current_page > 1) : ?>
+                    <a href="?page=<?= $current_page - 1 ?>" class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-blue-900 bg-white rounded-l-lg border border-blue-300 hover:bg-blue-100 hover:text-blue-700">
+                      <span class="sr-only">Previous</span>
+                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  <?php else : ?>
+                    <span class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 cursor-not-allowed">
+                      <span class="sr-only">Previous</span>
+                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                  <?php endif; ?>
                 </li>
+                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                  <li>
+                    <a href="?page=<?= $i ?>" class="flex items-center justify-center text-sm py-2 px-3 leading-tight <?php echo $current_page === $i ? 'text-blue-600 bg-blue-50' : 'text-blue-900 bg-white'; ?> border border-blue-300 hover:bg-blue-100 hover:text-blue-700">
+                      <?= $i ?>
+                    </a>
+                  </li>
+                <?php endfor; ?>
                 <li>
-                  <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-blue-900 bg-white border border-blue-300 hover:bg-blue-100 hover:text-blue-700">1</a>
-                </li>
-                <li>
-                  <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-blue-900 bg-white border border-blue-300 hover:bg-blue-100 hover:text-blue-700">2</a>
-                </li>
-                <li>
-                  <a href="#" aria-current="page" class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-blue-600 bg-blue-50 border border-blue-300 hover:bg-blue-100 hover:text-blue-700">3</a>
-                </li>
-                <li>
-                  <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-blue-900 bg-white border border-blue-300 hover:bg-blue-100 hover:text-blue-700">...</a>
-                </li>
-                <li>
-                  <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-blue-900 bg-white border border-blue-300 hover:bg-blue-100 hover:text-blue-700">100</a>
-                </li>
-                <li>
-                  <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-blue-900 bg-white rounded-r-lg border border-blue-300 hover:bg-blue-100 hover:text-blue-700">
-                    <span class="sr-only">Next</span>
-                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </a>
+                  <?php if ($current_page < $totalPages) : ?>
+                    <a href="?page=<?= $current_page + 1 ?>" class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-blue-900 bg-white rounded-r-lg border border-blue-300 hover:bg-blue-100 hover:text-blue-700">
+                      <span class="sr-only">Next</span>
+                      <svg class="w-5 h-5 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
+                      </svg>
+                    </a>
+                  <?php else : ?>
+                    <span class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 cursor-not-allowed">
+                      <span class="sr-only">Next</span>
+                      <svg class="w-5 h-5 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
+                      </svg>
+                    </span>
+                  <?php endif; ?>
                 </li>
               </ul>
-            </nav>
+            </nav>    
           </div>
         </div>
       </section>
