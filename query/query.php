@@ -187,7 +187,7 @@ function get_time_diff($time)
 function check_user_admin($data_user, $project_id)
 {
   global $conn;
-  $sql_check = "SELECT * FROM proyek WHERE id_user= " . $data_user . " AND id_proyek = " . $project_id . "";
+  $sql_check = "SELECT * FROM proyek WHERE id_user= '" . $data_user . "' AND id_proyek = " . $project_id . "";
 
   $check_user = mysqli_query($conn, $sql_check);
 

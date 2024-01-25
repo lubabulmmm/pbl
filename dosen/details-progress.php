@@ -17,7 +17,13 @@ if (isset($_SESSION["level"])) {
 
 require '../query/query.php';
 
+if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
+  header("Location: restricted.php");
+  exit;
+}
+
 $get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.bunch_id AS bid, category, user.nama_user, project_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.id =" . $_GET['tid'] . "");
+
 
 ?>
 
