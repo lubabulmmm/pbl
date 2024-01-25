@@ -20,9 +20,9 @@ require '../query/query.php';
 if (isset($_POST["submit"])) {
 
   if (add_user($_POST) > 0) {
-    header("Location: users.php?info=success");
+    header("Location: users.php");
   } else {
-    header("Location: users.php?info=failed");
+    header("Location: users.php");
   }
 }
 
