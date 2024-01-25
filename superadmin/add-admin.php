@@ -20,9 +20,9 @@ require '../query/query.php';
 if (isset($_POST["submit"])) {
 
   if (add_admin($_POST) > 0) {
-    header("Location: admin.php?info=success");
+    header("Location: add-admin.php?info=success");
   } else {
-    header("Location: admin.php?info=failed");
+    header("Location: add-admin.php?info=failed");
   }
 }
 
