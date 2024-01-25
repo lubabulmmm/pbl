@@ -94,15 +94,11 @@ $roles = execThis("SELECT * FROM role")
               </svg>
               Kembali
             </a>
-            <button type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-              <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M8 8v1h4V8m4 7H4a1 1 0 0 1-1-1V5h14v9a1 1 0 0 1-1 1ZM2 1h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z" />
-              </svg>
-              Simpan
-            </button>
 
           </div>
         </div>
+
+
 
         <div class="mt-6 border-t border-gray-100">
           <dl class="divide-y divide-gray-100">
@@ -116,13 +112,10 @@ $roles = execThis("SELECT * FROM role")
                       <div class="flex items-center gap-4">
                         <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/flora.jpg" alt="">
                         <div class="font-medium">
-                          <div><?= $get_leader_name[0]['nama_user'] ?></div>
+                          <div><?= $get_leader_name[0]['nama_user'] ?> | PM</div>
                           <div class="text-sm text-gray-500"><?= $get_leader_name[0]['leader_id'] ?></div>
                         </div>
                       </div>
-                      <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                        <option selected>PM</option>
-                      </select>
                     </div>
                   </div>
                 </div>
@@ -139,16 +132,13 @@ $roles = execThis("SELECT * FROM role")
                         <div class="flex items-center gap-4">
                           <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/ian.jpeg" alt="">
                           <div class="font-medium">
-                            <div><?= $member['nama_user'] ?></div>
+                            <div><?= $member['nama_user'] ?> | <?= $member['role'] ?></div>
                             <div class="text-sm text-gray-500"><?= $member['member_id'] ?></div>
                           </div>
                         </div>
-                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                          <option value="<?= $member['role'] ?>" selected><?= $member['role'] ?></option>
-                          <?php foreach ($roles as $role) : ?>
-                            <option value="<?= $role['role_name'] ?>"><?= $role['role_name'] ?></option>
-                          <?php endforeach; ?>
-                        </select>
+                        <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button" class="text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                          Ganti Role
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -158,6 +148,7 @@ $roles = execThis("SELECT * FROM role")
           </dl>
         </div>
 
+        <?php include("./content/role-modal.php") ?>
       </div>
     </div>
   </div>

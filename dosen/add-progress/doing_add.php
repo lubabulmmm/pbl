@@ -16,6 +16,11 @@ if (isset($_SESSION["level"])) {
 
 require '../../query/query.php';
 
+if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
+  header("Location: restricted.php");
+  exit;
+}
+
 if (isset($_POST["submit"])) {
   if (add_task($_POST, 'Doing', $_GET['wid'], $_GET['bid']) > 0) {
     header("Location: doing_add.php?info=success&wid=1&bid=1&id=43");

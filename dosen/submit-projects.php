@@ -43,6 +43,8 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
   <link rel="manifest" href="/site.webmanifest">
   <title>Pengumpulan Proyek | PBL Vokasi</title>
   <?php include("./includes/head.php") ?>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </head>
 
 <body class="bg-gray-50">
@@ -108,6 +110,11 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
 
         <?php include("./content/grade-modal.php") ?>
 
+        <?php if ($get_submit == []) { ?>
+          <p>Belum mengumpulkan</p>
+        <?php exit;
+        } ?>
+
         <div class="mt-6 border-t border-gray-100">
           <dl class="divide-y divide-gray-100">
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -166,7 +173,6 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
   </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </body>
 
 </html>

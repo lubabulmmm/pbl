@@ -15,6 +15,13 @@ if (isset($_SESSION["level"])) {
   }
 }
 
+require_once "../query/query.php";
+
+if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
+  header("Location: restricted.php");
+  exit;
+}
+
 ?>
 
 <!DOCTYPE html>
