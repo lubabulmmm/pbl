@@ -143,12 +143,9 @@ $roles = execThis("SELECT * FROM role")
                             <div class="text-sm text-gray-500"><?= $member['member_id'] ?></div>
                           </div>
                         </div>
-                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                          <option value="<?= $member['role'] ?>" selected><?= $member['role'] ?></option>
-                          <?php foreach ($roles as $role) : ?>
-                            <option value="<?= $role['role_name'] ?>"><?= $role['role_name'] ?></option>
-                          <?php endforeach; ?>
-                        </select>
+                        <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button" class="text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                          Ganti Role
+                        </button>
                       </div>
                     </div>
                   </div>
