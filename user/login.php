@@ -2,6 +2,9 @@
 require '../query/connectdb.php';
 session_start();
 
+// Initialize error messages
+$emailError = $passwordError = $loginError = '';
+
 if (isset($_SESSION["level"])) {
   if ($_SESSION["level"] == "user") {
     header("Location: dashboard.php");
@@ -16,42 +19,60 @@ if (isset($_SESSION["level"])) {
 }
 
 if (isset($_POST["login"])) {
-
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $email = mysqli_real_escape_string($conn, $email);
-  $password = mysqli_real_escape_string($conn, $password);
 
-  $sql =  "SELECT * FROM user WHERE email='$email'";
+  // Validate non-empty email and password
+  if (empty($email)) {
+    $emailError = 'Maaf, email tidak boleh kosong.';
+  }
 
-  $query_email_check = mysqli_query($conn, $sql);
+  if (empty($password)) {
+    $passwordError = 'Maaf, password tidak boleh kosong.';
+  }
 
+  // If both fields are not empty, proceed with login
+  if (empty($emailError) && empty($passwordError)) {
+    $email = mysqli_real_escape_string($conn, $email);
+    $password = mysqli_real_escape_string($conn, $password);
 
-  if (mysqli_num_rows($query_email_check) === 1) {
-    $check_result = mysqli_fetch_assoc($query_email_check);
+    $sql = "SELECT * FROM user WHERE email='$email'";
+    $query_email_check = mysqli_query($conn, $sql);
 
-    // cek password
-    if (password_verify($password, $check_result["password"])) {
-      // mulai session
-      $_SESSION["login"] = true;
-      $_SESSION["id"] = $check_result["id"];
-      $_SESSION["nama_user"] = $check_result["nama_user"];
-      $_SESSION["email"] = $check_result["email"];
-      $_SESSION["level"] = $check_result["level"];
+    if (mysqli_num_rows($query_email_check) === 1) {
+      $check_result = mysqli_fetch_assoc($query_email_check);
 
-      if ($_SESSION["level"] == "user") {
-        header("Location: dashboard.php");
-        exit;
-      } elseif ($_SESSION["level"] == "admin") {
-        header("Location: ../dosen/dashadmin.php");
-        exit;
-      } elseif ($_SESSION["level"] == "superadmin") {
-        header("Location: ../superadmin/superadmin.php");
+      // Check password
+      if (password_verify($password, $check_result["password"])) {
+        // Start session
+        $_SESSION["login"] = true;
+        $_SESSION["id"] = $check_result["id"];
+        $_SESSION["nama_user"] = $check_result["nama_user"];
+        $_SESSION["email"] = $check_result["email"];
+        $_SESSION["level"] = $check_result["level"];
+
+        if ($_SESSION["level"] == "user") {
+          header("Location: dashboard.php");
+          exit;
+        } elseif ($_SESSION["level"] == "admin") {
+          header("Location: ../dosen/dashadmin.php");
+          exit;
+        } elseif ($_SESSION["level"] == "superadmin") {
+          header("Location: ../superadmin/superadmin.php");
+          exit;
+        }
+      } else {
+        // Incorrect password
+        $loginError = "Maaf, email atau password Anda salah.";
       }
+    } else {
+      // Email not found
+      $loginError = "Maaf, email atau password Anda salah.";
     }
   }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +84,8 @@ if (isset($_POST["login"])) {
   <script src="https://cdn.tailwindcss.com"></script>
   <?php include("./includes/head.php") ?>
 </head>
+
+
 
 <body>
 
@@ -77,6 +100,18 @@ if (isset($_POST["login"])) {
           <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
             Selamat Datang Kembali, Vokasioner!
           </h1>
+          <!-- Display error messages -->
+<?php if (!empty($emailError)) : ?>
+  <div class="text-red-500 text-sm mb-4"><?php echo $emailError; ?></div>
+<?php endif; ?>
+
+<?php if (!empty($passwordError)) : ?>
+  <div class="text-red-500 text-sm mb-4"><?php echo $passwordError; ?></div>
+<?php endif; ?>
+
+<?php if (!empty($loginError)) : ?>
+  <div class="text-red-500 text-sm mb-4"><?php echo $loginError; ?></div>
+<?php endif; ?>
           <form class="space-y-4 md:space-y-6" action="" method="post">
             <div>
               <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
@@ -105,3 +140,4 @@ if (isset($_POST["login"])) {
 </body>
 
 </html>
+
