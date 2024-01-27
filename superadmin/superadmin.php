@@ -15,10 +15,33 @@ if (isset($_SESSION["level"])) {
   }
 }
 
+
+
+
 require '../query/query.php';
 
-$list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email');
 
+
+
+//button search
+if (isset($_POST["cari"])) {
+  // Get the search keyword
+  $keyword = $_POST["keyword"];
+
+  // Modify the SQL query to include the search condition
+  $list_bunch = execThis("SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name 
+                          FROM bunch 
+                          INNER JOIN proyek ON bunch.project_id = proyek.id_proyek 
+                          INNER JOIN user AS leader ON bunch.leader_id = leader.email 
+                          INNER JOIN user AS observer ON proyek.id_user = observer.email 
+                          WHERE bunch_name LIKE '%$keyword%' OR nama_proyek LIKE '%$keyword%' OR leader.nama_user LIKE '%$keyword%' OR observer.nama_user LIKE '%$keyword%'
+                          ");
+} else {
+  // Use the default query if the search form is not submitted
+  $list_bunch = execThis("SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email");
+}
+
+$list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email');
 
 $itemsPerPage = 5;
 
@@ -125,24 +148,25 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
               </div>
 
               <div class="w-full md:w-1/2">
-                <form class="flex items-center">
+              <form action="" method="post" class="flex items-center">
                   <label for="simple-search" class="sr-only">Search</label>
                   <div class="relative w-full">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                      </svg>
-                    </div>
-                    <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-blue-900 block w-full pl-10 p-2 mr-3" placeholder="Search" required="">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                          <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                          </svg>
+                      </div>
+                      <input type="text" name="keyword" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-blue-900 block w-full pl-10 p-2 mr-3" placeholder="Search" required="">
                   </div>
 
-                  <button type="button" class="flex items-center justify-center text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
-                    <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                    </svg>
-                    Search
+                  <button type="submit" name="cari" class="flex items-center justify-center text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
+                      <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                      </svg>
+                      Search
                   </button>
-                </form>
+              </form>
+
               </div>
 
             </div>
@@ -249,7 +273,7 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
     </div>
   </div>
 
-
+  <!-- <script src ="js/script.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </body>
 

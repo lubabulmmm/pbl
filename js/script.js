@@ -10,3 +10,4 @@ menu.addEventListener("click", () => {
 pfpBtn.addEventListener("click", () => {
   pfp.classList.toggle("hidden");
 });
+

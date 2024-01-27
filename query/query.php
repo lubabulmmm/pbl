@@ -207,3 +207,8 @@ function add_grade($grade, $bunch_id)
 
   return mysqli_affected_rows($conn);
 }
+
+// function cari($keyword) {
+//   $query = "SELECT * FROM bunch WHERE nama = '$keyword' ";
+//   return execThis($query);
+// }
