@@ -207,7 +207,6 @@ function add_grade($grade, $bunch_id)
 
   return mysqli_affected_rows($conn);
 }
-
 function add_bunch($user_data, $user_email, $id_project)
 {
   global $conn;
