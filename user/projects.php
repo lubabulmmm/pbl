@@ -15,6 +15,16 @@ if (isset($_SESSION["level"])) {
   }
 }
 
+require "../query/query.php";
+
+$get_bunch_name = execThis("SELECT bunch_id, bunch_name, project_id, nama_proyek FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek WHERE bunch_id =" . $_GET['bid'] . "");
+
+$get_comments = execThis("SELECT * FROM comment WHERE bunch_id =" . $_GET['bid'] . " ORDER BY date_submit DESC");
+
+$get_week = execThis("SELECT minggu FROM proyek WHERE id_proyek =" . $_GET['id'] . "");
+
+$week_num = (int) $get_week[0]['minggu'];
+
 
 ?>
 <!DOCTYPE html>
@@ -63,8 +73,10 @@ if (isset($_SESSION["level"])) {
           </ol>
         </nav>
 
-
-        <h2 class="text-2xl">Sistem Informasi E-Complain</h2>
+        <div class="flex flex-wrap w-full mb-5">
+          <h2 class="text-2xl"><?= $get_bunch_name[0]['nama_proyek'] ?></h2>
+          <span class="bg-amber-100 lg:ml-2 lg:mt-0 text-xs mt-3 text-amber-800 font-medium me-2 px-2.5 py-0.5 rounded-xl h-5 border border-amber-300"><?= $get_bunch_name[0]['bunch_name'] ?> - <?= $get_bunch_name[0]['project_id'] ?></span>
+        </div>
 
         <div class="w-full flex items-center my-4 flex-wrap">
           <a href="./dashboard.php" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
@@ -89,50 +101,37 @@ if (isset($_SESSION["level"])) {
           </a>
         </div>
 
-
+        <!-- //! TAB CONTENT -->
 
         <div class="mb-4 border-b border-gray-200">
-          <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
-            <li class="me-2" role="presentation">
-              <button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Minggu Ke-1</button>
-            </li>
-            <li class="me-2" role="presentation">
-              <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Minggu Ke-2</button>
-            </li>
-            <li class="me-2" role="presentation">
-              <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Minggu Ke-3</button>
-            </li>
-            <li role="presentation">
-              <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Minggu Ke-4</button>
-            </li>
+          <ul class="flex flex-wrap font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+            <?php for ($i = 1; $i <= $week_num; $i++) : ?>
+              <li class="me-2" role="presentation">
+                <button class="inline-block text-sm p-3 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#data<?= $i ?>" type="button" role="tab" aria-controls="data<?= $i ?>" aria-selected="false">Minggu Ke-<?= $i ?></button>
+              </li>
+            <?php endfor ?>
           </ul>
         </div>
 
         <div id="default-tab-content">
-          <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <?php for ($i = 1; $i <= $week_num; $i++) : ?>
+            <?php
+            $get_task_todo = execThis("SELECT * FROM task WHERE bunch_id = " . $_GET['bid'] . " AND minggu =" . $i . " HAVING category = 'To Do'");
 
-            <!-- PROGRESS MINGGU KE - 1 -->
+            $get_task_doing = execThis("SELECT * FROM task WHERE bunch_id = " . $_GET['bid'] . " AND minggu =" . $i . " HAVING category = 'Doing'");
 
-            <?php include("../content/progress_list/progress.php") ?>
+            $get_task_done = execThis("SELECT * FROM task WHERE bunch_id = " . $_GET['bid'] . " AND minggu =" . $i . " HAVING category = 'Done'");
+
+            ?>
+            <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="data<?= $i ?>" role="tabpanel" aria-labelledby="data<?= $i ?>-tab">
+              <?php include("../content/progress_list/progress.php") ?>
 
 
-          </div>
-          <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-            <!-- PROGRESS MINGGU KE - 2 -->
-
-            <?php include("../content/progress_list/progress.php") ?>
-          </div>
-          <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-            <!-- PROGRESS MINGGU KE - 3 -->
-
-            <?php include("../content/progress_list/progress.php") ?>
-          </div>
-          <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-            <!-- PROGRESS MINGGU KE - 4 -->
-
-            <?php include("../content/progress_list/progress.php") ?>
-          </div>
+            </div>
+          <?php endfor ?>
         </div>
+
+        <!-- //! TAB CONTENT END -->
 
       </div>
     </div>
