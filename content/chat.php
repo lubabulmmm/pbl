@@ -1,5 +1,5 @@
 <div class="w-full px-0 lg:pl-4 lg:pr-12 grid grid-cols-1 lg:grid-cols-3 m-0 lg:m-8">
-  <div class="p-5 mr-0 my-5 lg:my-0 lg:mr-10 border shadow-sm border-gray-200 rounded-lg bg-gray-50 col-span-1 lg:col-span-2">
+  <div class="p-5 mr-0 my-5 lg:my-0 lg:mr-5 border shadow-sm border-gray-200 rounded-lg bg-gray-50 col-span-1 lg:col-span-2">
     <h1 class="text-lg font-semibold text-gray-900">Komentar Anda</h1>
 
     <?php if ($get_comments == []) : ?>
@@ -23,112 +23,45 @@
 
   </div>
 
-  <!-- //! KOLOM CHAT WAKK -->
+  <!-- //! KOLOM TUGAS WAKK -->
 
   <div class="p-5 mr-0 lg:mr-10 border shadow-sm border-gray-200 rounded-lg bg-gray-50 col-span-1">
-    <h1 class="text-lg font-semibold text-gray-900">Tugas Anda</h1>
+    <h1 class="text-lg font-semibold mb-2.5 text-gray-900">Tugas Anda</h1>
 
-    <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
-      <li class="pb-3 sm:pb-4">
-        <div class="flex items-center space-x-4 rtl:space-x-reverse">
-          <div class="flex-shrink-0">
-            <svg class="w-6 h-6 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 5V4c0-.6-.4-1-1-1H9a1 1 0 0 0-.8.3l-4 4a1 1 0 0 0-.2.6V20c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-5M9 3v4c0 .6-.4 1-1 1H4m11.4.8 2.7 2.7m1.2-3.9a2 2 0 0 1 0 3l-6.6 6.6L9 18l.7-3.7 6.7-6.7a2 2 0 0 1 3 0Z" />
-            </svg>
+    <ul class="max-w-md h-48 ov">
+      <?php
+      $todo_color = "text-red-600";
+      $doing_color = "text-amber-600";
+      ?>
+      <?php foreach ($tasks_user as $task) : ?>
+        <li class="pb-3 sm:pb-4 mt-2.5 border-b border-gray-200">
+          <div class="flex items-center space-x-4 rtl:space-x-reverse">
+            <div class="flex-shrink-0">
+              <svg class="w-8 h-8 
+              <?php
+              if ($task['category'] == 'To Do') {
+                echo $todo_color;
+              } else {
+                echo $doing_color;
+              }
+              ?> " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 5V4c0-.6-.4-1-1-1H9a1 1 0 0 0-.8.3l-4 4a1 1 0 0 0-.2.6V20c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-5M9 3v4c0 .6-.4 1-1 1H4m11.4.8 2.7 2.7m1.2-3.9a2 2 0 0 1 0 3l-6.6 6.6L9 18l.7-3.7 6.7-6.7a2 2 0 0 1 3 0Z" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <a href="./details-progress.php?tid=<?= $task['task_id'] ?>&id=<?= $_GET['id'] ?>" class="text-sm hover:underline font-medium text-gray-900 truncate ">
+                <?= $task['task_name'] ?> | <?= $task['category'] ?>
+              </a>
+              <p class="text-sm text-gray-500 truncate ">
+                <?= $task['task_desc'] ?>
+              </p>
+            </div>
+            <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
+
+            </div>
           </div>
-          <div class="flex-1 min-w-0">
-            <p class="text-sm font-medium text-gray-900 truncate ">
-              Neil Sims
-            </p>
-            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-              email@flowbite.com
-            </p>
-          </div>
-          <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
-            $320
-          </div>
-        </div>
-      </li>
-      <li class="py-3 sm:py-4">
-        <div class="flex items-center space-x-4 rtl:space-x-reverse">
-          <div class="flex-shrink-0">
-            <svg class="w-6 h-6 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 5V4c0-.6-.4-1-1-1H9a1 1 0 0 0-.8.3l-4 4a1 1 0 0 0-.2.6V20c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-5M9 3v4c0 .6-.4 1-1 1H4m11.4.8 2.7 2.7m1.2-3.9a2 2 0 0 1 0 3l-6.6 6.6L9 18l.7-3.7 6.7-6.7a2 2 0 0 1 3 0Z" />
-            </svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="text-sm font-medium text-gray-900 truncate ">
-              Bonnie Green
-            </p>
-            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-              email@flowbite.com
-            </p>
-          </div>
-          <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
-            $3467
-          </div>
-        </div>
-      </li>
-      <li class="py-3 sm:py-4">
-        <div class="flex items-center space-x-4 rtl:space-x-reverse">
-          <div class="flex-shrink-0">
-            <svg class="w-6 h-6 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 5V4c0-.6-.4-1-1-1H9a1 1 0 0 0-.8.3l-4 4a1 1 0 0 0-.2.6V20c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-5M9 3v4c0 .6-.4 1-1 1H4m11.4.8 2.7 2.7m1.2-3.9a2 2 0 0 1 0 3l-6.6 6.6L9 18l.7-3.7 6.7-6.7a2 2 0 0 1 3 0Z" />
-            </svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="text-sm font-medium text-gray-900 truncate ">
-              Michael Gough
-            </p>
-            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-              email@flowbite.com
-            </p>
-          </div>
-          <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
-            $67
-          </div>
-        </div>
-      </li>
-      <li class="py-3 sm:py-4">
-        <div class="flex items-center space-x-4 rtl:space-x-reverse">
-          <div class="flex-shrink-0">
-            <svg class="w-6 h-6 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 5V4c0-.6-.4-1-1-1H9a1 1 0 0 0-.8.3l-4 4a1 1 0 0 0-.2.6V20c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-5M9 3v4c0 .6-.4 1-1 1H4m11.4.8 2.7 2.7m1.2-3.9a2 2 0 0 1 0 3l-6.6 6.6L9 18l.7-3.7 6.7-6.7a2 2 0 0 1 3 0Z" />
-            </svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="text-sm font-medium text-gray-900 truncate ">
-              Thomas Lean
-            </p>
-            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-              email@flowbite.com
-            </p>
-          </div>
-          <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
-            $2367
-          </div>
-        </div>
-      </li>
-      <li class="pt-3 pb-0 sm:pt-4">
-        <div class="flex items-center space-x-4 rtl:space-x-reverse">
-          <div class="flex-shrink-0">
-            <svg class="w-6 h-6 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 5V4c0-.6-.4-1-1-1H9a1 1 0 0 0-.8.3l-4 4a1 1 0 0 0-.2.6V20c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-5M9 3v4c0 .6-.4 1-1 1H4m11.4.8 2.7 2.7m1.2-3.9a2 2 0 0 1 0 3l-6.6 6.6L9 18l.7-3.7 6.7-6.7a2 2 0 0 1 3 0Z" />
-            </svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="text-sm font-medium text-gray-900 truncate ">
-              Lana Byrd
-            </p>
-            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-              email@flowbite.com
-            </p>
-          </div>
-          <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
-            $367
-          </div>
-        </div>
-      </li>
+        </li>
+      <?php endforeach; ?>
     </ul>
   </div>
 </div>
