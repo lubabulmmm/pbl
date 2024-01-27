@@ -15,6 +15,11 @@ if (isset($_SESSION["level"])) {
   }
 }
 
+require "../query/query.php";
+
+$fetch_project = execThis("SELECT * FROM bunch_member WHERE member_id = '" . $_SESSION['email'] . "'");
+
+$projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email");
 
 ?>
 <!DOCTYPE html>
@@ -50,7 +55,7 @@ if (isset($_SESSION["level"])) {
               <img class="w-20 h-20 rounded-xl" src="/pbl/assets/img/pfp.jpg" alt="Default avatar">
               <div class="ml-6">
                 <h5 class="mr-3 font-semibold text-gray-900"><?= $_SESSION["nama_user"] ?>'s Dashboard</h5>
-                <p class="text-gray-500 text-gray-400"><?= $_SESSION["email"] ?></p>
+                <p class=" text-gray-400"><?= $_SESSION["email"] ?></p>
               </div>
             </div>
             <a href="./groups.php" class="flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white rounded-lg bg-amber-500 hover:scale-105 duration-300 ease-in-out hover:shadow-md hover:shadow-gray-300 focus:ring-4 focus:ring-amber-300 focus:outline-none">
@@ -68,7 +73,7 @@ if (isset($_SESSION["level"])) {
 
       <div class="py-8 max-w-screen-xl lg:py-6 lg:px-6">
         <div class="grid gap-8 lg:grid-cols-2">
-          <article class="p-6 bg-amber-100 rounded-xl border border-amber-400 shadow-sm bg-white border-amber-400 hover:shadow-lg duration-300 h-72 flex box-border flex-col justify-between ease-in-out">
+          <article class="p-6 rounded-xl border shadow-sm bg-white border-amber-400 hover:shadow-lg duration-300 h-72 flex box-border flex-col justify-between ease-in-out">
             <div class="flex justify-between items-center mb-5 text-gray-500">
               <span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-amber-200 text-amber-800">
                 <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

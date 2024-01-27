@@ -17,6 +17,11 @@ if (isset($_SESSION["level"])) {
 
 require "../query/query.php";
 
+if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
+  header("Location: restricted.php");
+  exit;
+}
+
 if (isset($_POST["submit"])) {
   if (add_grade($_POST, $_GET['bid']) > 0) {
     header("Location: submit-projects.php?bid=" . $_GET['bid'] . "&id=" . $_GET['id'] . "&info=success");
@@ -26,7 +31,6 @@ if (isset($_POST["submit"])) {
 }
 
 $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] . "");
-
 
 ?>
 
