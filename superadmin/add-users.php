@@ -118,7 +118,7 @@ if (isset($_POST["submit"])) {
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
                   <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Mahasiswa</label>
-                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tambah Nama Mahasiswa.." required="">
+                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Maukkan Nama" required="">
                 </div>
                 <div>
                   <label for="nim" class="block mb-2 text-sm font-medium text-gray-900">NIM</label>
