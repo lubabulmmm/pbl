@@ -144,7 +144,7 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
 
               <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
 
-                <h2 class="text-xl font-semibold text-white">Daftar Proyek dan Kelompok</h2>
+                <h2 class="text-xl font-semibold text-white">Daftar Judul Proyek dan Kelompok</h2>
               </div>
 
               <div class="w-full md:w-1/2">
@@ -177,8 +177,8 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul Proyek</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Kelompok</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama Ketua</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama Dosen PIC</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Ketua Kelompok</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Dosen PIC Proyek</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">
                       <span class="sr-only">Action</span>
                     </th>
