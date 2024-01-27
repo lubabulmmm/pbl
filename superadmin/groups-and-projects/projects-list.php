@@ -17,8 +17,27 @@ if (isset($_SESSION["level"])) {
 
 require '../../query/query.php';
 
-$projects = execThis("SELECT nama_proyek, nama_user, id_proyek, status_show FROM proyek INNER JOIN user ON proyek.id_user = user.email");
+$allProjects = execThis("SELECT nama_proyek, nama_user, id_proyek, status_show FROM proyek INNER JOIN user ON proyek.id_user = user.email");
 
+if (isset($_GET['search'])) {
+  $searchTerm = $_GET['search'];
+  $filteredProjects = array_filter($allProjects, function ($project) use ($searchTerm) {
+    // Adjust the condition based on your specific search requirements
+    $searchTerm = strtolower($searchTerm); // Convert the search term to lowercase for case-insensitive search
+
+    // Check if the search term matches ID, name, or supervisor
+    return (
+      stripos($project['id_proyek'], $searchTerm) !== false ||
+      stripos($project['nama_proyek'], $searchTerm) !== false ||
+      stripos($project['nama_user'], $searchTerm) !== false
+    );
+  });
+
+  // Use the filtered projects for pagination and display
+  $projects = $filteredProjects;
+} else {
+  $projects = $allProjects;
+}
 
 $itemsPerPage = 5;
 
@@ -123,23 +142,30 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
               </div>
 
               <div class="w-full md:w-1/2">
-                <form class="flex items-center">
-                  <label for="simple-search" class="sr-only">Search</label>
-                  <div class="relative w-full">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                      </svg>
+                <form class="flex items-center" method="GET" action="">
+                    <label for="simple-search" class="sr-only">Search</label>
+                    <div class="relative w-full">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <input type="text" id="simple-search" name="search"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-blue-900 block w-full pl-10 p-2 mr-3"
+                            placeholder="Search" required="">
                     </div>
-                    <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-blue-900 block w-full pl-10 p-2 mr-3" placeholder="Search" required="">
-                  </div>
-
-                  <button type="button" class="flex items-center justify-center text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
-                    <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                    </svg>
-                    Search
-                  </button>
+                    <button type="submit"
+                        class="flex items-center justify-center text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
+                        <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                        Search
+                    </button>
                   <a href="./add-projects.php" type="button" class="flex items-center justify-center text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
                     <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />

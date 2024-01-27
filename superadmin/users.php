@@ -36,12 +36,6 @@ if (isset($_POST["keyword"])) {
 // ... rest of your code ...
 
 
-
-// if (isset($_POST["cari"])){
-//   $keyword = $_POST["keyword"];
-
-//   $user = execThis("SELECT ")
-// }
 // Set the number of items per page
 $itemsPerPage = 5;
 
