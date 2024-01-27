@@ -18,9 +18,9 @@ require '../../query/query.php';
 
 if (isset($_POST["submit"])) {
   if (add_task($_POST, 'To Do', $_GET['wid'], $_GET['bid']) > 0) {
-    header("Location: todo_add.php?info=success&wid=1&bid=1&id=43");
+    header("Location: todo_add.php?info=success&wid=" . $_GET['wid'] . "&bid=" . $_GET['bid'] . "&id=" . $_GET['id'] . "");
   } else {
-    header("Location: todo_add.php?info=failed&wid=1&bid=1&id=43");
+    header("Location: todo_add.php?info=failed&wid=" . $_GET['wid'] . "&bid=" . $_GET['bid'] . "&id=" . $_GET['id'] . "");
   }
 }
 

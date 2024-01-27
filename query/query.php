@@ -207,3 +207,16 @@ function add_grade($grade, $bunch_id)
 
   return mysqli_affected_rows($conn);
 }
+
+function add_bunch($user_data, $user_email, $id_project)
+{
+  global $conn;
+
+  $bunch_name = $user_data['name'];
+
+  $sql_add_bunch = "INSERT INTO bunch (bunch_id, bunch_name, leader_id, project_id, grade) VALUES ('', '" . $bunch_name . "', '" . $user_email . "', '" . $id_project . "', '0')";
+
+  mysqli_query($conn, $sql_add_bunch);
+
+  return mysqli_affected_rows($conn);
+}
