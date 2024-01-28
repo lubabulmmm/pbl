@@ -268,48 +268,7 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const liveSearchForm = document.getElementById('liveSearchForm');
-        const searchResultsContainer = document.getElementById('searchResults');
-
-        liveSearchForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-        
-            fetch('/PBL/path-to-live_search.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                
-                updateSearchResults(data);
-            })
-            .catch(error => console.error('Error:', error));
-        });
-
-        function updateSearchResults(data) {
-            
-            searchResultsContainer.innerHTML = '';
-
-            if (data.length > 0) {
-                const list = document.createElement('ul');
-                data.forEach(admin => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${admin.id} - ${admin.nama_user} - ${admin.email}`;
-                    list.appendChild(listItem);
-                });
-                searchResultsContainer.appendChild(list);
-            } else {
-                const noResultsMessage = document.createElement('p');
-                noResultsMessage.textContent = 'No results found.';
-                searchResultsContainer.appendChild(noResultsMessage);
-            }
-        }
-    });
-</script>
-
+  
   <!-- <script src ="js/script.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </body>
