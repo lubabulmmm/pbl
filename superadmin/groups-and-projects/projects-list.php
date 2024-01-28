@@ -22,10 +22,9 @@ $allProjects = execThis("SELECT nama_proyek, nama_user, id_proyek, status_show F
 if (isset($_GET['search'])) {
   $searchTerm = $_GET['search'];
   $filteredProjects = array_filter($allProjects, function ($project) use ($searchTerm) {
-    // Adjust the condition based on your specific search requirements
-    $searchTerm = strtolower($searchTerm); // Convert the search term to lowercase for case-insensitive search
+    
+    $searchTerm = strtolower($searchTerm); 
 
-    // Check if the search term matches ID, name, or supervisor
     return (
       stripos($project['id_proyek'], $searchTerm) !== false ||
       stripos($project['nama_proyek'], $searchTerm) !== false ||
@@ -33,7 +32,6 @@ if (isset($_GET['search'])) {
     );
   });
 
-  // Use the filtered projects for pagination and display
   $projects = $filteredProjects;
 } else {
   $projects = $allProjects;
@@ -41,16 +39,12 @@ if (isset($_GET['search'])) {
 
 $itemsPerPage = 5;
 
-// Calculate the total number of pages
 $totalPages = ceil(count($projects) / $itemsPerPage);
 
-// Get the current page number from the query parameter, default to 1
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-// Calculate the offset to fetch the appropriate items for the current page
 $offset = ($current_page - 1) * $itemsPerPage;
 
-// Fetch only the items for the current page
 $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
 
 ?>

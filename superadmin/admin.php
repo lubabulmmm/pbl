@@ -22,26 +22,22 @@ $admins = execThis("SELECT * FROM user WHERE level = 'admin'");
 if (isset($_POST["keyword"])) {
     $keyword = $_POST["keyword"];
 
-    // Modify the SQL query to include the search condition
+    
     $admins = execThis("SELECT * FROM user WHERE level = 'admin' AND (nama_user LIKE '%$keyword%' OR email LIKE '%$keyword%' OR id LIKE '%$keyword%')");
 } else {
-    // Use the existing query if no search keyword is provided
+    
     $admins = execThis("SELECT * FROM user WHERE level = 'admin'");
 }
 
 
 $itemsPerPage = 5;
 
-// Calculate the total number of pages
 $totalPages = ceil(count($admins) / $itemsPerPage);
 
-// Get the current page number from the query parameter, default to 1
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-// Calculate the offset to fetch the appropriate items for the current page
 $offset = ($current_page - 1) * $itemsPerPage;
 
-// Fetch only the items for the current page
 $adminsOnCurrentPage = array_slice($admins, $offset, $itemsPerPage);
 
 ?>

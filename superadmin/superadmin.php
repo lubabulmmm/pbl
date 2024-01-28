@@ -23,12 +23,11 @@ require '../query/query.php';
 
 $list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email');
 
-//button search
+
 if (isset($_POST["cari"])) {
-  // Get the search keyword
+
   $keyword = $_POST["keyword"];
 
-  // Modify the SQL query to include the search condition
   $list_bunch = execThis("SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name 
                           FROM bunch 
                           INNER JOIN proyek ON bunch.project_id = proyek.id_proyek 
@@ -37,7 +36,6 @@ if (isset($_POST["cari"])) {
                           WHERE bunch_name LIKE '%$keyword%' OR nama_proyek LIKE '%$keyword%' OR leader.nama_user LIKE '%$keyword%' OR observer.nama_user LIKE '%$keyword%'
                           ");
 } else {
-  // Use the default query if the search form is not submitted
   $list_bunch = execThis("SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email");
 }
 
@@ -45,16 +43,13 @@ if (isset($_POST["cari"])) {
 
 $itemsPerPage = 5;
 
-// Calculate the total number of pages
+
 $totalPages = ceil(count($list_bunch) / $itemsPerPage);
 
-// Get the current page number from the query parameter, default to 1
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-// Calculate the offset to fetch the appropriate items for the current page
 $offset = ($current_page - 1) * $itemsPerPage;
 
-// Fetch only the items for the current page
 $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
 
 ?>
@@ -148,7 +143,7 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
               </div>
 
               <div class="w-full md:w-1/2">
-              <form action="" method="post" class="flex items-center">
+              <form id="liveSearchForm" class="flex items-center" method="POST">
                   <label for="simple-search" class="sr-only">Search</label>
                   <div class="relative w-full">
                       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -170,7 +165,7 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
               </div>
 
             </div>
-            <div class="overflow-x-auto">
+            <div class="overflow-x-auto" id="searchResults">
               <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-50 uppercase bg-blue-900">
                   <tr>
@@ -272,6 +267,48 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
 
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const liveSearchForm = document.getElementById('liveSearchForm');
+        const searchResultsContainer = document.getElementById('searchResults');
+
+        liveSearchForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+        
+            fetch('/PBL/path-to-live_search.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+                updateSearchResults(data);
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function updateSearchResults(data) {
+            
+            searchResultsContainer.innerHTML = '';
+
+            if (data.length > 0) {
+                const list = document.createElement('ul');
+                data.forEach(admin => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${admin.id} - ${admin.nama_user} - ${admin.email}`;
+                    list.appendChild(listItem);
+                });
+                searchResultsContainer.appendChild(list);
+            } else {
+                const noResultsMessage = document.createElement('p');
+                noResultsMessage.textContent = 'No results found.';
+                searchResultsContainer.appendChild(noResultsMessage);
+            }
+        }
+    });
+</script>
 
   <!-- <script src ="js/script.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>

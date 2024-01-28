@@ -20,35 +20,31 @@ require '../query/query.php';
 $users = execThis("SELECT * FROM user WHERE level = 'user'");
 
 
-// ... your existing code ...
-
-// Check if the search form is submitted
-if (isset($_POST["keyword"])) {
-    $keyword = $_POST["keyword"];
-
-    // Modify the SQL query to include the search condition
-    $users = execThis("SELECT * FROM user WHERE level = 'user' AND (nama_user LIKE '%$keyword%' OR email LIKE '%$keyword%' OR id LIKE '%$keyword%')");
-} else {
-    // Use the existing query if no search keyword is provided
-    $users = execThis("SELECT * FROM user WHERE level = 'user'");
-}
-
-// ... rest of your code ...
 
 
-// Set the number of items per page
+
+// if (isset($_POST["keyword"])) {
+//     $keyword = $_POST["keyword"];
+
+//     // Modify the SQL query to include the search condition
+//     $users = execThis("SELECT * FROM user WHERE level = 'user' AND (nama_user LIKE '%$keyword%' OR email LIKE '%$keyword%' OR id LIKE '%$keyword%')");
+// } else {
+//     // Use the existing query if no search keyword is provided
+//     $users = execThis("SELECT * FROM user WHERE level = 'user'");
+// }
+
+
+
+
+
 $itemsPerPage = 5;
 
-// Calculate the total number of pages
 $totalPages = ceil(count($users) / $itemsPerPage);
 
-// Get the current page number from the query parameter, default to 1
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-// Calculate the offset to fetch the appropriate items for the current page
 $offset = ($current_page - 1) * $itemsPerPage;
 
-// Fetch only the items for the current page
 $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
 
 ?>
@@ -142,7 +138,7 @@ $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
               </div>
 
               <div class="w-full md:w-1/2">
-                  <form class="flex items-center" method="POST">
+                <form class="flex items-center">
                       <label for="simple-search" class="sr-only">Search</label>
                       <div class="relative w-full">
                           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -170,7 +166,7 @@ $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
 
             </div>
             <div class="overflow-x-auto">
-              <table class="w-full text-sm text-left text-gray-500">
+            <table id="user-table" class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-50 uppercase bg-blue-900">
                   <tr>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
@@ -266,6 +262,66 @@ $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
 
     </div>
   </div>
+
+
+  
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+$(document).ready(function () {
+  
+    $('form').submit(function (e) {
+        e.preventDefault();
+        liveSearch();
+    });
+
+  //input
+    $('#simple-search').on('input', function () {
+        liveSearch();
+    });
+
+    function liveSearch() {
+        //keyword
+        var keyword = $('#simple-search').val();
+
+        //request ke live_search.php
+        $.ajax({
+            type: 'POST',
+            url: 'live_search.php',
+            data: { keyword: keyword },
+            dataType: 'json',
+            success: function (data) {
+                
+                updateTable(data);
+            }
+        });
+    }
+
+    function updateTable(users) {
+        var tableBody = $('#user-table tbody');
+        tableBody.empty();
+
+        //tabel
+        $.each(users, function (index, user) {
+            var row = '<tr class="border-b hover:bg-gray-100">' +
+                '<th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">' + (index + 1) + '</th>' +
+                '<td class="px-4 py-3">' + user.id + '</td>' +
+                '<td class="px-4 py-3">' + user.nama_user + '</td>' +
+                '<td class="px-4 py-3">' + user.email + '</td>' +
+                '<td class="px-4 py-3">' +
+                '<a href="./delete-user.php?id=' + user.id + '" type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">' +
+                '<svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">' +
+                '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />' +
+                '</svg>' +
+                '<span class="sr-only">Icon description</span>' +
+                '</a>' +
+                '</td>' +
+                '</tr>';
+            tableBody.append(row);
+        });
+    }
+});
+</script>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
