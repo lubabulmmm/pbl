@@ -22,10 +22,9 @@ $allProjects = execThis("SELECT nama_proyek, nama_user, id_proyek, status_show F
 if (isset($_GET['search'])) {
   $searchTerm = $_GET['search'];
   $filteredProjects = array_filter($allProjects, function ($project) use ($searchTerm) {
-    // Adjust the condition based on your specific search requirements
-    $searchTerm = strtolower($searchTerm); // Convert the search term to lowercase for case-insensitive search
+    
+    $searchTerm = strtolower($searchTerm); 
 
-    // Check if the search term matches ID, name, or supervisor
     return (
       stripos($project['id_proyek'], $searchTerm) !== false ||
       stripos($project['nama_proyek'], $searchTerm) !== false ||
@@ -33,7 +32,6 @@ if (isset($_GET['search'])) {
     );
   });
 
-  // Use the filtered projects for pagination and display
   $projects = $filteredProjects;
 } else {
   $projects = $allProjects;
@@ -41,16 +39,12 @@ if (isset($_GET['search'])) {
 
 $itemsPerPage = 5;
 
-// Calculate the total number of pages
 $totalPages = ceil(count($projects) / $itemsPerPage);
 
-// Get the current page number from the query parameter, default to 1
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-// Calculate the offset to fetch the appropriate items for the current page
 $offset = ($current_page - 1) * $itemsPerPage;
 
-// Fetch only the items for the current page
 $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
 
 ?>
@@ -256,15 +250,15 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                   <?php if ($current_page > 1) : ?>
                     <a href="?page=<?= $current_page - 1 ?>" class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-blue-900 bg-white rounded-l-lg border border-blue-300 hover:bg-blue-100 hover:text-blue-700">
                       <span class="sr-only">Previous</span>
-                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/>
                       </svg>
                     </a>
                   <?php else : ?>
                     <span class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 cursor-not-allowed">
                       <span class="sr-only">Previous</span>
-                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/>
                       </svg>
                     </span>
                   <?php endif; ?>
@@ -280,14 +274,14 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                   <?php if ($current_page < $totalPages) : ?>
                     <a href="?page=<?= $current_page + 1 ?>" class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-blue-900 bg-white rounded-r-lg border border-blue-300 hover:bg-blue-100 hover:text-blue-700">
                       <span class="sr-only">Next</span>
-                      <svg class="w-5 h-5 "  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg class="w-4 h-4"  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
                       </svg>
                     </a>
                   <?php else : ?>
                     <span class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 cursor-not-allowed">
                       <span class="sr-only">Next</span>
-                      <svg class="w-5 h-5 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
                       </svg>
                     </span>
