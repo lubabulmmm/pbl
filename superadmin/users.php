@@ -20,9 +20,6 @@ require '../query/query.php';
 $users = execThis("SELECT * FROM user WHERE level = 'user'");
 
 
-
-
-
 if (isset($_POST["keyword"])) {
   $keyword = $_POST["keyword"];
 
@@ -30,9 +27,6 @@ if (isset($_POST["keyword"])) {
 } else {
   $users = execThis("SELECT * FROM user WHERE level = 'user'");
 }
-
-
-
 
 
 $itemsPerPage = 5;
@@ -46,8 +40,6 @@ $offset = ($current_page - 1) * $itemsPerPage;
 $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
