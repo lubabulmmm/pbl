@@ -23,15 +23,13 @@ $users = execThis("SELECT * FROM user WHERE level = 'user'");
 
 
 
-// if (isset($_POST["keyword"])) {
-//     $keyword = $_POST["keyword"];
+if (isset($_POST["keyword"])) {
+    $keyword = $_POST["keyword"];
 
-//     // Modify the SQL query to include the search condition
-//     $users = execThis("SELECT * FROM user WHERE level = 'user' AND (nama_user LIKE '%$keyword%' OR email LIKE '%$keyword%' OR id LIKE '%$keyword%')");
-// } else {
-//     // Use the existing query if no search keyword is provided
-//     $users = execThis("SELECT * FROM user WHERE level = 'user'");
-// }
+    $users = execThis("SELECT * FROM user WHERE level = 'user' AND (nama_user LIKE '%$keyword%' OR email LIKE '%$keyword%' OR id LIKE '%$keyword%')");
+} else {    
+    $users = execThis("SELECT * FROM user WHERE level = 'user'");
+}
 
 
 
