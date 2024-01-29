@@ -139,7 +139,7 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
 
               <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
 
-                <h2 class="text-xl font-semibold text-white">Daftar Proyek dan Kelompok</h2>
+                <h2 class="text-xl font-semibold text-white">Daftar Judul Proyek dan Kelompok</h2>
               </div>
 
               <div class="w-full md:w-1/2">
@@ -151,7 +151,7 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                       </svg>
                     </div>
-                    <input type="text" name="keyword" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-blue-900 block w-full pl-10 p-2 mr-3" placeholder="Cari kelompok">
+                    <input type="text" name="keyword" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-blue-900 block w-full pl-10 p-2 mr-3" placeholder="Cari Kelompok">
                   </div>
 
                   <button type="submit" name="cari" class="flex items-center justify-center text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
@@ -170,10 +170,10 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
                 <thead class="text-xs text-gray-50 uppercase bg-blue-900">
                   <tr>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul Proyek</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul Proyek Kelompok</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Kelompok</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama Ketua</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama Dosen PIC</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Ketua Kelompok</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Dosen PIC Kelompok</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">
                       <span class="sr-only">Action</span>
                     </th>

@@ -13,7 +13,7 @@
               </a>
             </div>
             <div class="flex items-center">
-                <div class="name px-3 text-sm">Hi, <?= $_SESSION['nama_user'] ?></div>
+                <div class="name px-3 text-sm">Hai, <?= $_SESSION['nama_user'] ?></div>
                 <div class="flex items-center ml-3">
                   <div>
                     <button type="button" class="flex text-sm bg-blue-500 rounded-full focus:ring-4 focus:ring-blue-300" aria-expanded="false" data-dropdown-toggle="dropdown-user">
