@@ -18,16 +18,20 @@ if (isset($_SESSION["level"])) {
 require "../query/query.php";
 
 $fetch_project = execThis("SELECT * FROM bunch_member WHERE member_id = '" . $_SESSION['email'] . "'");
+$projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email LIMIT 5");
 
 // Check if the form is submitted
 if (isset($_POST["cari"])) {
   $keyword = $_POST["keyword"];
+
+  if (empty($keyword)) {
+    $projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email LIMIT 5");
+  } else {
+    $projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email WHERE nama_proyek LIKE '%$keyword%' ");
+
+  }
   // Use LIKE in the SQL query to search for relevant projects
-  $projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email WHERE nama_proyek LIKE '%$keyword%' ");
-} else {
-  // If the form is not submitted, load all projects
-  $projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email LIMIT 5");
-}
+} 
 
 
 ?>
