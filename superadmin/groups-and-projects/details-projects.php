@@ -64,7 +64,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-lg font-medium text-blue-800 md:ms-2">Detail Proyek</span>
+                <span class="ms-1 text-lg font-medium text-blue-800 md:ms-2">Detail Proyek dan Kelompok</span>
               </div>
             </li>
           </ol>
@@ -73,7 +73,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
         <div>
           <div class="flex flex-wrap w-full justify-between">
             <div class="px-4 sm:px-0 flex justify-center items-center">
-              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Kelompok dan Proyek</h3>
+              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Proyek dan Kelompok</h3>
             </div>
 
 
@@ -83,7 +83,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7.708 2.292.706-.706A2 2 0 0 1 9.828 1h6.239A.97.97 0 0 1 17 2v12a.97.97 0 0 1-.933 1H15M6 5v4a1 1 0 0 1-1 1H1m11-4v12a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V9.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 5h5.239A.97.97 0 0 1 12 6Z" />
                 </svg>
 
-                Lihat Kelompok
+                Detail Kelompok
               </button>
             </a>
           </div>
@@ -93,7 +93,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
             <div class="mt-6 border-t border-gray-100">
               <dl class="divide-y divide-gray-100">
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Nama Proyek</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Judul Proyek</dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $project['nama_proyek'] ?></dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -105,11 +105,11 @@ $sum_num = mysqli_num_rows($sum_bunch);
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $project['deskripsi_proyek'] ?></dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Kelompok yang mengambil</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Proyek Diambil</dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-bold text-amber-500"><?= $sum_num ?></span> / 8</dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Kebutuhan Aplikasi</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Fitur Wajib</dt>
                   <dd class="text-md text-gray-900 sm:col-span-2">
                     <?= $project['req'] ?>
                   </dd>
