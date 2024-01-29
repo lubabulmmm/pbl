@@ -95,7 +95,7 @@
         <div>
           <div class="flex flex-wrap w-full justify-between">
             <div class="px-4 sm:px-0 flex justify-center items-center">
-              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Pengumpulan Proyek</h3>
+              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Data Pengumpulan</h3>
             </div>
 
 
