@@ -161,7 +161,7 @@ $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
                   <tr>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">NIM</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama Mahasiswa</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Email</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">
                       <span class="sr-only">Action</span>
