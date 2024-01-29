@@ -64,7 +64,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-lg font-medium text-blue-800 md:ms-2">Detail Proyek dan Kelompok</span>
+                <span class="ms-1 text-lg font-medium text-blue-800 md:ms-2">Detail Proyek</span>
               </div>
             </li>
           </ol>
@@ -73,7 +73,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
         <div>
           <div class="flex flex-wrap w-full justify-between">
             <div class="px-4 sm:px-0 flex justify-center items-center">
-              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Proyek dan Kelompok</h3>
+              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Proyek</h3>
             </div>
 
 
@@ -83,7 +83,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7.708 2.292.706-.706A2 2 0 0 1 9.828 1h6.239A.97.97 0 0 1 17 2v12a.97.97 0 0 1-.933 1H15M6 5v4a1 1 0 0 1-1 1H1m11-4v12a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V9.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 5h5.239A.97.97 0 0 1 12 6Z" />
                 </svg>
 
-                Detail Kelompok
+                Daftar Kelompok
               </button>
             </a>
           </div>
