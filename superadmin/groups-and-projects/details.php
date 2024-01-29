@@ -102,7 +102,7 @@ $done_sum = mysqli_num_rows($done_fetch);
         <div>
           <div class="flex flex-wrap w-full justify-between">
             <div class="px-4 sm:px-0 flex justify-center items-center">
-              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Kelompok dan Proyek</h3>
+              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Kelompok</h3>
             </div>
 
 
@@ -121,7 +121,7 @@ $done_sum = mysqli_num_rows($done_fetch);
             <div class="mt-6 border-t border-gray-100">
               <dl class="divide-y divide-gray-100">
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Nama Proyek</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Judul Proyek</dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $detail['nama_proyek'] ?></dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -176,7 +176,7 @@ $done_sum = mysqli_num_rows($done_fetch);
                 </div>
                 <!-- // ! FILE DILAMPIRKAN -->
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">File Dilampirkan</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Lampiran File</dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
                       <!-- // ! LIST FILE DISINI -->
