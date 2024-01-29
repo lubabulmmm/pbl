@@ -95,7 +95,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                 </svg>
                 <span class="sr-only">Info</span>
                 <div class="ms-3 text-sm font-medium">
-                  Data berhasil di hapus!
+                  Selamat, data berhasil di hapus!
                 </div>
                 <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-3" aria-label="Close">
                   <span class="sr-only">Close</span>
@@ -114,7 +114,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                 </svg>
                 <span class="sr-only">Info</span>
                 <div class="ms-3 text-sm font-medium">
-                  Data gagal di hapus!
+                  Mohon Maaf, data gagal di hapus!
                 </div>
                 <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-3" aria-label="Close">
                   <span class="sr-only">Close</span>
@@ -132,7 +132,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
             <div class="bg-blue-900 flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
 
               <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                <h2 class="text-xl font-semibold text-white">Daftar Proyek</h2>
+                <h2 class="text-xl font-semibold text-white">Kumpulan Daftar Proyek</h2>
               </div>
 
               <div class="w-full md:w-1/2">
@@ -144,7 +144,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                       </svg>
                     </div>
-                    <input type="text" id="simple-search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-blue-900 block w-full pl-10 p-2 mr-3" placeholder="Cari proyek">
+                    <input type="text" id="simple-search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-blue-900 block w-full pl-10 p-2 mr-3" placeholder="Cari Proyek">
                   </div>
                   <button type="submit" class="flex items-center justify-center text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
                     <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">

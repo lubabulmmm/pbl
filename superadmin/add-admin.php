@@ -55,7 +55,7 @@ if (isset($_POST["submit"])) {
                 <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                 </svg>
-                Admin (Dosen)
+                Dosen
               </a>
             </li>
             <li aria-current="page">
@@ -63,7 +63,7 @@ if (isset($_POST["submit"])) {
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-lg font-medium text-blue-800 md:ms-2">Tambah Admin (Dosen)</span>
+                <span class="ms-1 text-lg font-medium text-blue-800 md:ms-2">Tambah Dosen</span>
               </div>
             </li>
           </ol>
@@ -79,7 +79,7 @@ if (isset($_POST["submit"])) {
               </svg>
               <span class="sr-only">Info</span>
               <div class="ms-3 text-sm font-medium">
-                Data berhasil ditambahkan!
+                Selamat, data berhasil ditambahkan!
               </div>
               <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-3" aria-label="Close">
                 <span class="sr-only">Close</span>
@@ -98,7 +98,7 @@ if (isset($_POST["submit"])) {
               </svg>
               <span class="sr-only">Info</span>
               <div class="ms-3 text-sm font-medium">
-                Data gagal ditambahkan!
+                Mohon Maaf, data gagal ditambahkan!
               </div>
               <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-3" aria-label="Close">
                 <span class="sr-only">Close</span>
@@ -113,20 +113,20 @@ if (isset($_POST["submit"])) {
 
         <section class="bg-gray-50">
           <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">
-            <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Admin (Dosen)</h2>
+            <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Dosen</h2>
             <form action="" method="post">
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
-                  <label for="nama_dosen" class="block mb-2 text-sm font-medium text-gray-900">Nama Admin (Dosen)</label>
-                  <input type="text" name="nama_dosen" id="nama_dosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tambah Nama Admin.." required="">
+                  <label for="nama_dosen" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
+                  <input type="text" name="nama_dosen" id="nama_dosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Nama" required="">
                 </div>
                 <div>
                   <label for="nip" class="block mb-2 text-sm font-medium text-gray-900">NIP</label>
                   <input type="text" name="nip" id="nip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan NIP" required="">
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
-                  <input type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan E-Mail" required="@">
+                  <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+                  <input type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Email" required="@">
                 </div>
                 <div class="sm:col-span-2">
                   <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
@@ -134,7 +134,7 @@ if (isset($_POST["submit"])) {
                 </div>
               </div>
               <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
-                Tambah
+                Tambahkan
               </button>
             </form>
           </div>
