@@ -169,8 +169,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul Proyek</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Dosen PIC</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Jumlah Kelompok</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Showcase</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Jumlah Kelompok</th>                    
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">
                       <span class="sr-only">Action</span>
                     </th>
@@ -184,17 +183,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                       <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"><?= $count++; ?></th>
                       <td class="px-4 py-3"><?= $project['nama_proyek'] ?></td>
                       <td class="px-4 py-3"><?= $project['nama_user'] ?></td>
-                      <td class="px-4 py-3"><span class="text-amber-500 font-semibold">0</span>/8</td>
-                      <td class="px-4 py-3">
-                        <?php if ($project['status_show'] == 'No') : ?>
-                          <span class="text-red-500 font-semibold text-center">No</span>
-
-                        <?php endif; ?>
-
-                        <?php if ($project['status_show'] == 'Yes') : ?>
-                          <span class="text-green-500 font-semibold text-center">Yes</span>
-                        <?php endif; ?>
-                      </td>
+                      <td class="px-4 py-3"><span class="text-amber-500 font-semibold">0</span>/8</td>                      
                       <td class="px-4 py-3">
                         <a href="./details-projects.php?id=<?= $project['id_proyek'] ?>" type="button" class="text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
                           <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -208,13 +197,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                             <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z" />
                           </svg>
                           <span class="sr-only">Icon edit</span>
-                        </a>
-                        <button type="button" class="text-green-500 border-2 border-green-500 hover:bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center my-1 lg:m-1">
-                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                          </svg>
-                          <span class="sr-only">Icon plus</span>
-                        </button>
+                        </a>                      
                         <a href="./delete-projects.php?id=<?= $project['id_proyek'] ?>" type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
                           <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
@@ -333,8 +316,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
             <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${index + 1}</th>
             <td class="px-4 py-3">${project.nama_proyek}</td>
             <td class="px-4 py-3">${project.nama_user}</td>  
-            <td class="px-4 py-3"><span class="text-amber-500 font-semibold">0</span>/8</td>        
-            <td class="px-4 py-3">${getStatusBadge(project.status_show)}</td>
+            <td class="px-4 py-3"><span class="text-amber-500 font-semibold">0</span>/8</td>                    
             <td class="px-4 py-3">
               <a href="./details-projects.php?id=${project.id_proyek}" type="button" class="text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
               <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -348,13 +330,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                             <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z" />
                           </svg>
                           <span class="sr-only">Icon edit</span>
-                        </a>
-                        <button type="button" class="text-green-500 border-2 border-green-500 hover:bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center my-1 lg:m-1">
-                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                          </svg>
-                          <span class="sr-only">Icon plus</span>
-                        </button>
+                        </a>                        
                         <a href="./delete-projects.php?id=<?= $project['id_proyek'] ?>" type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
                           <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
@@ -368,27 +344,27 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
       });
     }
 
-    function getStatusBadge(status) {
-      var badgeClass = '';
-      var badgeText = '';
+    // function getStatusBadge(status) {
+    //   var badgeClass = '';
+    //   var badgeText = '';
 
-      switch (status) {
-        case 'Active':
-          badgeClass = 'bg-green-500';
-          badgeText = 'Active';
-          break;
-        case 'Inactive':
-          badgeClass = 'bg-red-500';
-          badgeText = 'Inactive';
-          break;
-        default:
-          badgeClass = 'bg-gray-500';
-          badgeText = 'Unknown';
-          break;
-      }
+    //   switch (status) {
+    //     case 'Active':
+    //       badgeClass = 'bg-green-500';
+    //       badgeText = 'Active';
+    //       break;
+    //     case 'Inactive':
+    //       badgeClass = 'bg-red-500';
+    //       badgeText = 'Inactive';
+    //       break;
+    //     default:
+    //       badgeClass = 'bg-gray-500';
+    //       badgeText = 'Unknown';
+    //       break;
+    //   }
 
-      return `<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${badgeClass} text-white">${badgeText}</span>`;
-    }
+    //   return `<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${badgeClass} text-white">${badgeText}</span>`;
+    // }
   });
 </script>
 
