@@ -56,7 +56,7 @@
                 <svg class="ms-1 rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                 </svg>
-                <a href="./details-projects.php" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
+                <a href="./details-projects.php?id=<?= $_GET['id'] ?>" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
                   <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-800 md:ms-2">Detail Proyek</span>
                 </a>
               </div>
@@ -66,8 +66,8 @@
                 <svg class="ms-1 rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                 </svg>
-                <a href="./list-submitted.php" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
-                  <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-800 md:ms-2">Data Pengumpulan Kelompok</span>
+                <a href="./list-submitted.php?id=<?= $_GET['id'] ?>" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
+                  <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-800 md:ms-2">Daftar Kelompok</span>
                 </a>
               </div>
             </li>
@@ -76,7 +76,7 @@
                 <svg class="ms-1 rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                 </svg>
-                <a href="./details.php" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
+                <a href="./details.php?id=<?= $_GET['id'] ?>&bid=<?= $_GET['bid'] ?>" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
                   <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-800 md:ms-2">Detail Kelompok</span>
                 </a>
               </div>

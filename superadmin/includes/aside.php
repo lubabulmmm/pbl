@@ -5,7 +5,6 @@
             <img src="/PBL/assets/img/vokasi.png" alt="" srcset="">
          </li>
          <li>
-            <ul>
                <li>
                   <a href="/PBL/superadmin/superadmin.php" class="flex items-center od py-2 px-3 font-medium text-white rounded-lg transition duration-300 hover:bg-white-200 group">
                   <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -16,13 +15,12 @@
                </li>
                <li>
                   <a href="/PBL/superadmin/users.php" class="flex items-center od py-2 px-3 font-medium text-white rounded-lg transition duration-300 hover:bg-white-200 group">
-                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.656 12.115a3 3 0 0 1 5.682-.015M13 5h3m-3 3h3m-3 3h3M2 1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm6.5 4.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
+                     <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.656 12.115a3 3 0 0 1 5.682-.015M13 5h3m-3 3h3m-3 3h3M2 1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm6.5 4.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
                      </svg>
                      <span class="ml-4">Mahasiswa</span>
                   </a>
                </li>
-      
                <!-- // ! Proyek --> 
                <li>
                   <button type="button" class="flex items-center w-full od py-2 px-3 font-medium text-base text-white transition duration-75 rounded-lg group " aria-controls="dropdown-project" data-collapse-toggle="dropdown-project">
@@ -42,22 +40,21 @@
                </li> 
                <!-- // ! Admin --> 
                <li>
-                  <button type="button" class="flex items-center w-full od py-2 px-3 font-medium text-base text-white transition duration-75 rounded-lg transition duration-300 group " aria-controls="dropdown-admin" data-collapse-toggle="dropdown-admin">
-                        <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+                  <a href="/PBL/superadmin/admin.php" class="flex items-center od py-2 px-3 font-medium text-white rounded-lg transition duration-300 hover:bg-white-200 group">
+                     <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 3a3 3 0 1 1-1.614 5.53M15 12a4 4 0 0 1 4 4v1h-3.348M10 4.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM5 11h3a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"/>
-                        </svg>
-                        <span class="flex-1 ml-4 text-left whitespace-nowrap">Admin</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m1 1 4 4 4-4"/>
-                        </svg>
-                  </button>
-                  <ul id="dropdown-admin" class="hidden py-2 space-y-2 duration-300">
-                     <li>
-                        <a href="/PBL/superadmin/admin.php" class="flex items-center w-full od py-2 px-3 font-medium text-white transition duration-75 rounded-lg transition duration-300 pl-11 group ">Daftar Admin</a>
-                     </li>
-                  </ul>
-               </li> 
-            </ul>
+                     </svg>
+                     <span class="ml-4">Dosen</span>
+                  </a>
+               </li>
+         </li>
+         <li>
+            <a href="/PBL/user/logout.php" class="flex items-center od py-2 px-3 font-medium text-white rounded-lg  group">
+            <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"/>
+            </svg>
+               <span class="flex-1 ml-4 whitespace-nowrap">Keluar</span>
+            </a>
          </li>
        </ul>
     </div>

@@ -73,7 +73,7 @@ $adminsOnCurrentPage = array_slice($admins, $offset, $itemsPerPage);
                   <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                     <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                   </svg>
-                  Admin
+                  Dosen
                 </a>
               </li>
             </ol>
@@ -126,7 +126,7 @@ $adminsOnCurrentPage = array_slice($admins, $offset, $itemsPerPage);
 
               <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
 
-                <h2 class="text-xl font-semibold text-white">Daftar Admin</h2>
+                <h2 class="text-xl font-semibold text-white">Daftar Dosen</h2>
               </div>
 
               <div class="w-full md:w-1/2">
@@ -138,16 +138,16 @@ $adminsOnCurrentPage = array_slice($admins, $offset, $itemsPerPage);
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                       </svg>
                     </div>
-                    <input type="text" name="keyword" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-blue-900 block w-full pl-10 p-2 mr-3" placeholder="Cari dosen">
+                    <input type="text" name="keyword" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-blue-900 block w-full pl-10 p-2 mr-3" placeholder="Cari Dosen">
                   </div>
 
                   <button type="submit" class="flex items-center justify-center text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
                     <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
-                    Search
+                    Cari
                   </button>
-                  <a href="./add-users.php" type="button" class="flex items-center justify-center text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
+                  <a href="./add-admin.php" type="button" class="flex items-center justify-center text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
                     <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
@@ -162,7 +162,7 @@ $adminsOnCurrentPage = array_slice($admins, $offset, $itemsPerPage);
                   <tr>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">NIP</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama Admin (Dosen)</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Email</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">
                       <span class="sr-only">Action</span>
