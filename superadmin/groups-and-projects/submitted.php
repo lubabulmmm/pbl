@@ -95,7 +95,7 @@
         <div>
           <div class="flex flex-wrap w-full justify-between">
             <div class="px-4 sm:px-0 flex justify-center items-center">
-              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Kelompok dan Proyek</h3>
+              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Pengumpulan Proyek</h3>
             </div>
 
 
@@ -105,7 +105,7 @@
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11h4m-2 2V9M2 5h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm5.443-4H2a1 1 0 0 0-1 1v3h9.943l-2.7-3.6a1 1 0 0 0-.8-.4Z"/>
                 </svg>
                 
-                Tambah ke Showcase
+                Tambahkan ke Showcase
               </button>
             </a>
           </div>
@@ -121,7 +121,7 @@
                 <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="https://github.com/Ibrairsyad17/project-based-learning" class="text-amber-500 underline">https://github.com/Ibrairsyad17/project-based-learning</a></dd>
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-md font-medium leading-6 text-gray-900">Laporan dan Poster Proyek</dt>
+                <dt class="text-md font-medium leading-6 text-gray-900">Laporan dan Poster</dt>
                 <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                   <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
                     <!-- // ! LIST FILE DISINI -->
