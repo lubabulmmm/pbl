@@ -95,7 +95,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                 </svg>
                 <span class="sr-only">Info</span>
                 <div class="ms-3 text-sm font-medium">
-                  Data berhasil di hapus!
+                  Selamat, data berhasil di hapus!
                 </div>
                 <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-3" aria-label="Close">
                   <span class="sr-only">Close</span>
@@ -114,7 +114,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                 </svg>
                 <span class="sr-only">Info</span>
                 <div class="ms-3 text-sm font-medium">
-                  Data gagal di hapus!
+                  Mohon Maaf, data gagal di hapus!
                 </div>
                 <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-3" aria-label="Close">
                   <span class="sr-only">Close</span>
@@ -132,7 +132,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
             <div class="bg-blue-900 flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
 
               <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                <h2 class="text-xl font-semibold text-white">Daftar Proyek</h2>
+                <h2 class="text-xl font-semibold text-white">Kumpulan Daftar Proyek</h2>
               </div>
 
               <div class="w-full md:w-1/2">
