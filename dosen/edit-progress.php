@@ -83,7 +83,7 @@ if (isset($_POST["submit"])) {
                 <svg class="ms-1 rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <a href="./details-progress.php?tid=<?= $_GET['tid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-amber-500">
+                <a href="./details-progress.php?tid=<?= $_GET['tid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
                   <span class="ms-1 text-lg font-medium text-gray-900 hover:text-amber-500 md:ms-2">Detail Tugas</span>
                 </a>
               </div>
