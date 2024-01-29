@@ -1,7 +1,7 @@
 <?php
 // live_searchadmin.php
 
-require '../query/query.php';
+require '../../query/query.php';
 
 if (isset($_POST['keyword'])) {
   $keyword = $_POST['keyword'];
@@ -12,4 +12,3 @@ if (isset($_POST['keyword'])) {
   header('Content-Type: application/json');
   echo json_encode($admins);
 }
-?>

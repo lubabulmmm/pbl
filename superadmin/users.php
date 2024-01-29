@@ -20,19 +20,13 @@ require '../query/query.php';
 $users = execThis("SELECT * FROM user WHERE level = 'user'");
 
 
-
-
-
 if (isset($_POST["keyword"])) {
-    $keyword = $_POST["keyword"];
+  $keyword = $_POST["keyword"];
 
-    $users = execThis("SELECT * FROM user WHERE level = 'user' AND (nama_user LIKE '%$keyword%' OR email LIKE '%$keyword%' OR id LIKE '%$keyword%')");
-} else {    
-    $users = execThis("SELECT * FROM user WHERE level = 'user'");
+  $users = execThis("SELECT * FROM user WHERE level = 'user' AND (nama_user LIKE '%$keyword%' OR email LIKE '%$keyword%' OR id LIKE '%$keyword%')");
+} else {
+  $users = execThis("SELECT * FROM user WHERE level = 'user'");
 }
-
-
-
 
 
 $itemsPerPage = 5;
@@ -46,8 +40,6 @@ $offset = ($current_page - 1) * $itemsPerPage;
 $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -285,7 +277,7 @@ $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
         //request ke live_search.php
         $.ajax({
           type: 'POST',
-          url: 'live_search.php',
+          url: './live-search/live_search.php',
           data: {
             keyword: keyword
           },

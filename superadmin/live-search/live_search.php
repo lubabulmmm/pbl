@@ -1,5 +1,5 @@
 <?php
-require '../query/query.php';
+require '../../query/query.php';
 
 if (isset($_POST["keyword"])) {
     $keyword = $_POST["keyword"];
@@ -8,4 +8,3 @@ if (isset($_POST["keyword"])) {
 } else {
     echo json_encode([]);
 }
-?>
