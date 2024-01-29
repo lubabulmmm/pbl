@@ -84,7 +84,7 @@ $done_sum = mysqli_num_rows($done_fetch);
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
                 <a href="./list-submitted.php?id=<?= $details_bunch[0]['id_proyek'] ?>" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
-                  <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-800 md:ms-2">Data Pengumpulan Kelompok</span>
+                  <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-800 md:ms-2">Daftar Kelompok</span>
                 </a>
               </div>
             </li>
