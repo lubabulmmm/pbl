@@ -59,6 +59,14 @@
                </li> 
             </ul>
          </li>
+         <li>
+            <a href="/PBL/user/logout.php" class="flex items-center od py-2 px-3 font-medium text-white rounded-lg  group">
+            <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"/>
+            </svg>
+               <span class="flex-1 ml-4 whitespace-nowrap">Keluar</span>
+            </a>
+         </li>
        </ul>
     </div>
  </aside>
