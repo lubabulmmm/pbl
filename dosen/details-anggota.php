@@ -26,7 +26,7 @@ $get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, rol
 
 $get_leader_name = execThis("SELECT leader_id, nama_user, nama_proyek FROM bunch INNER JOIN user ON bunch.leader_id = user.email INNER JOIN proyek ON bunch.project_id = proyek.id_proyek WHERE bunch_id = " . $_GET['bid'] . "");
 
-$roles = execThis("SELECT * FROM role")
+$roles = execThis("SELECT * FROM role");
 ?>
 
 

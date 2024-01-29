@@ -33,6 +33,9 @@
       $todo_color = "text-red-600";
       $doing_color = "text-amber-600";
       ?>
+      <?php if (empty($tasks_user)) : ?>
+        <p class="text-sm font-light text-center text-gray-400">Anda tidak memiliki tugas</p>
+      <?php endif; ?>
       <?php foreach ($tasks_user as $task) : ?>
         <li class="pb-3 sm:pb-4 mt-2.5 border-b border-gray-200">
           <div class="flex items-center space-x-4 rtl:space-x-reverse">
