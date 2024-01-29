@@ -1,7 +1,8 @@
 <?php
-// live_searchproyek.php
 
 require '../../query/query.php';
+
+$itemsPerPage = 5; // Set the desired limit
 
 if (isset($_POST['keyword'])) {
   $searchTerm = $_POST['keyword'];
@@ -16,7 +17,11 @@ if (isset($_POST['keyword'])) {
       stripos($project['nama_proyek'], $searchTerm) !== false ||
       stripos($project['nama_user'], $searchTerm) !== false
     );
+
   });
+
+  // Limit the results to $itemsPerPage
+  $filteredProjects = array_slice($filteredProjects, 0, $itemsPerPage);
 
   echo json_encode(array_values($filteredProjects));
 }
