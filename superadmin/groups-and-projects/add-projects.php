@@ -121,11 +121,11 @@ $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
             <form action="" method="post">
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
-                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Proyek</label>
-                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tambah Nama Proyek.." required="">
+                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Judul Proyek</label>
+                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Maukkan Nama Judul Proyek" required="">
                 </div>
                 <div>
-                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Dosen</label>
+                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Dosen PIC</label>
                   <select id="category" name="dosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
                     <option selected>Pilih Dosen</option>
                     <?php foreach ($dos as $do) : ?>
@@ -134,16 +134,16 @@ $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
                   </select>
                 </div>
                 <div>
-                  <label for="week" class="block mb-2 text-sm font-medium text-gray-900">Masukkan Minggu</label>
+                  <label for="week" class="block mb-2 text-sm font-medium text-gray-900">Minggu</label>
                   <input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan Angka" required>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Tambah Deskripsi</label>
-                  <textarea id="description" name="description" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tambah Deskripsi Proyek.."></textarea>
+                  <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi Proyek</label>
+                  <textarea id="description" name="description" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Deskripsi Proyek"></textarea>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Tambah Fitur</label>
-                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tambah Deskripsi Proyek.."></textarea>
+                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Wajib</label>
+                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Fitur Wajib"></textarea>
                 </div>
                 <div class="sm:col-span-2">
                   <label class="block mb-2 text-sm font-medium text-gray-900" for="small_size">File Pendukung</label>
@@ -151,7 +151,7 @@ $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
                 </div>
               </div>
               <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-md font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
-                Tambah
+                Tambahkan
               </button>
             </form>
           </div>
