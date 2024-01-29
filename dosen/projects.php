@@ -149,8 +149,8 @@ $week_num = (int) $get_week[0]['minggu'];
             $get_task_done = execThis("SELECT * FROM task WHERE bunch_id = " . $_GET['bid'] . " AND minggu =" . $i . " HAVING category = 'Done'");
 
             ?>
-            <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="data<?= $i ?> pb-5 border-b border-gray-300" role="tabpanel" aria-labelledby="data<?= $i ?>-tab">
-              <?php include("./content/progress_list/progress.php") ?>
+            <div class="hidden rounded-lg bg-gray-50 grid gap-4 lg:gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pb-5 border-b border-gray-200" id="data<?= $i ?>" role="tabpanel" aria-labelledby="data<?= $i ?>-tab">
+              <?php include("../content/progress_list/progress.php") ?>
 
 
             </div>
