@@ -26,7 +26,7 @@ $get_week = execThis("SELECT minggu FROM proyek WHERE id_proyek =" . $_GET['id']
 $week_num = (int) $get_week[0]['minggu'];
 
 
-$tasks_user = execThis("SELECT task.id AS task_id, task_name, task_desc, category, task.member_id AS tmid, bunch_member.member_id AS bmid FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id WHERE bunch_member.member_id = '" . $_SESSION['email'] . "' AND category != 'Done'");
+$tasks_user = execThis("SELECT task.id AS task_id, task_name, task_desc, category, task.member_id AS tmid, bunch_member.member_id AS bmid FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id WHERE bunch_member.member_id = '" . $_SESSION['email'] . "' AND category != 'Done' AND task.bunch_id =" . $_GET['bid'] . "");
 ?>
 
 <!DOCTYPE html>
