@@ -81,6 +81,8 @@ $sum_num = mysqli_num_rows($sum_bunch);
           </ol>
         </nav>
 
+        <?php include("../dosen/content/info.php") ?>
+
         <div class="flex w-full flex-wrap justify-between items-center">
           <div class="">
             <h2 class="text-2xl mb-2 font-semibold"><?= $projects[0]['nama_proyek'] ?></h2>

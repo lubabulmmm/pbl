@@ -102,7 +102,7 @@ $tasks_user = execThis("SELECT task.id AS task_id, task_name, task_desc, categor
             Pengumpulan Proyek
           </a>
 
-          <a href="./request.php" type="button" class="text-white bg-violet-500 hover:bg-violet-400 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+          <a href="./request.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-violet-500 hover:bg-violet-400 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
             <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8m18 0-8-4.5a2 2 0 0 0-2 0L3 8m18 0-9 6.5L3 8" />
             </svg>

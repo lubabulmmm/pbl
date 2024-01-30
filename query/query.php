@@ -219,3 +219,52 @@ function add_bunch($user_data, $user_email, $id_project)
 
   return mysqli_affected_rows($conn);
 }
+
+function add_request($role_data, $user_email, $bunch_id)
+{
+  global $conn;
+
+  $role_name = $role_data['role'];
+
+  $sql_add_request = "INSERT INTO `request` (`request_id`, `bunch_id`, `user_id`, `role`, `status_req`) VALUES ('', " . $bunch_id . ", '" . $user_email . "', '" . $role_name . "', 'Belum Diterima')";
+
+  mysqli_query($conn, $sql_add_request);
+
+  return mysqli_affected_rows($conn);
+}
+
+function reject_request($id_req)
+{
+  global $conn;
+
+  $sql_reject = "UPDATE request SET status_req = 'Ditolak' WHERE request.request_id = " . $id_req . "";
+
+  mysqli_query($conn, $sql_reject);
+
+  return mysqli_affected_rows($conn);
+}
+
+function accept_request($id_req)
+{
+  global $conn;
+
+  $sql_reject = "UPDATE request SET status_req = 'Diterima' WHERE request.request_id = " . $id_req . "";
+
+  mysqli_query($conn, $sql_reject);
+
+  return mysqli_affected_rows($conn);
+}
+
+function add_accept_member($data_member)
+{
+  global $conn;
+  $user_id = $data_member['email'];
+  $bunch_id = $data_member['bunch_id'];
+  $role = $data_member['role'];
+
+  $sql_add = "INSERT INTO bunch_member (id, bunch_id, member_id, role) VALUES (NULL, '" . $bunch_id . "', '" . $user_id . "', '" . $role . "')";
+
+  mysqli_query($conn, $sql_add);
+
+  return mysqli_affected_rows($conn);
+}
