@@ -170,9 +170,9 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
                 <thead class="text-xs text-gray-50 uppercase bg-blue-900">
                   <tr>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul Proyek</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Kelompok</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Ketua Kelompok</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Ketua Kelompok (PM)</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Dosen PIC</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">
                       <span class="sr-only">Action</span>
