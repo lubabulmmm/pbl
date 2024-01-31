@@ -36,7 +36,7 @@ $get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50">
+<body class="">
 
   <?php include("./includes/navbar.php") ?>
 

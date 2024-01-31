@@ -17,6 +17,14 @@ if (isset($_SESSION["level"])) {
 
 require '../query/query.php';
 
+if (isset($_POST["submit"])) {
+  if (change_role($_POST)) {
+    header("Location: ./details-anggota.php?bid=" . $_GET['bid'] . "&id=" . $_GET['id'] . "&cinfo=200");
+  } else {
+    header("Location: ./details-anggota.php?bid=" . $_GET['bid'] . "&id=" . $_GET['id'] . "&cinfo=404");
+  }
+}
+
 $get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, role, nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $_GET['bid'] . "");
 
 $get_leader_name = execThis("SELECT leader_id, nama_user, nama_proyek FROM bunch INNER JOIN user ON bunch.leader_id = user.email INNER JOIN proyek ON bunch.project_id = proyek.id_proyek WHERE bunch_id = " . $_GET['bid'] . "");
@@ -40,7 +48,7 @@ $roles = execThis("SELECT * FROM role");
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50">
+<body class="">
 
   <?php include("./includes/navbar.php") ?>
 
@@ -84,7 +92,7 @@ $roles = execThis("SELECT * FROM role");
         </nav>
 
         <div class="flex w-full justify-between items-center">
-          <h2 class="text-2xl mb-3 font-semibold"><?= $get_leader_name[0]['nama_proyek'] ?></h2>
+          <h2 class="text-2xl mb-1 font-semibold"><?= $get_leader_name[0]['nama_proyek'] ?></h2>
 
 
           <div class="flex items-center flex-wrap">
@@ -98,55 +106,76 @@ $roles = execThis("SELECT * FROM role");
           </div>
         </div>
 
-        <div class="mt-6 border-t border-gray-100">
+        <div class="mt-1 border-t border-gray-200">
           <dl class="divide-y divide-gray-100">
-            <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900">Ketua Kelompok (PM)</dt>
-              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                <div class="w-full">
-                  <!-- Start coding here -->
-                  <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                    <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                      <div class="flex items-center gap-4">
-                        <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/flora.jpg" alt="">
-                        <div class="font-medium">
-                          <div><?= $get_leader_name[0]['nama_user'] ?> | PM</div>
-                          <div class="text-sm text-gray-500"><?= $get_leader_name[0]['leader_id'] ?></div>
+            <div class="px-1 sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-md mt-4 font-medium leading-6 text-gray-900 flex flex-col col-span-2 lg:col-span-1">
+                <p class="text-md text-gray-900">Ketua Kelompok (PM)</p>
+
+                <div class="bg-white border shadow border-gray-200 mt-3 p-5 rounded-lg col-span-2">
+
+                  <ul class="max-w-full">
+                    <?php foreach ($get_leader_name as $all) : ?>
+                      <li class="pb-3 sm:pb-4 mt-2.5 last:border-0 last:pb-0 first:mt-0 border-b border-gray-200">
+                        <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                          <div class="flex-shrink-0">
+                            <img class="w-8 h-8 rounded-full" src="../assets/img/ian.jpeg" alt="">
+                          </div>
+                          <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate ">
+                              <?= $all['nama_user'] ?>
+                            </p>
+                            <p class="text-sm text-gray-500 truncate">
+                              <?= $all['leader_id'] ?>
+                            </p>
+                          </div>
+                          <div class="inline-flex items-center text-xs font-semibold text-gray-900 ">
+                            Ketua Kelompok
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+              </dt>
+              <dd class="mt-1 font-medium leading-6 text-gray-900 sm:col-span-2 sm:mt-4">
+                <p class="text-md text-gray-900">Daftar Anggota</p>
+
+                <div class="bg-white border shadow border-gray-200 mt-2.5 p-5 rounded-lg">
+
+                  <ul class="max-w-full">
+                    <?php if (empty($get_all_members)) : ?>
+                      <p class="text-center text-gray-500 text-sm font-light">Belum Memiliki Anggota.</p>
+                    <?php endif; ?>
+                    <?php foreach ($get_all_members as $gam) : ?>
+                      <li class="pb-3 sm:pb-4 mt-2.5 last:border-0 last:pb-0 first:mt-0 border-b border-gray-200">
+                        <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                          <div class="flex-shrink-0">
+                            <img class="w-8 h-8 rounded-full" src="../assets/img/ian.jpeg" alt="">
+                          </div>
+
+                          <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate ">
+                              <?= $gam['nama_user'] ?>
+                            </p>
+                            <p class="text-sm text-gray-500 truncate">
+                              <?= $gam['member_id'] ?>
+                            </p>
+                          </div>
+                          <div class="inline-flex items-center">
+                            <p class="focus:outline-none text-blue-700 bg-blue-200  font-medium rounded-full text-xs px-2.5 py-1.5 me-1 mb-1 "><?= $gam['role'] ?></p>
+                            <button type="button" data-modal-target="popup-modal-<?= $gam['id_member'] ?>" data-modal-toggle="popup-modal-<?= $gam['id_member'] ?>" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-md text-xs px-2.5 py-1.5 me-1 mb-1 ">Ganti role</button>
+                          </div>
+                        </div>
+                        <?php include("../content/change-role.php") ?>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
                 </div>
               </dd>
             </div>
-            <?php foreach ($get_all_members as $member) : ?>
-              <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-md font-medium leading-6 text-gray-900"></dt>
-                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  <div class="w-full">
-                    <!-- Start coding here -->
-                    <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                      <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                        <div class="flex items-center gap-4">
-                          <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/ian.jpeg" alt="">
-                          <div class="font-medium">
-                            <div><?= $member['nama_user'] ?> | <?= $member['role'] ?></div>
-                            <div class="text-sm text-gray-500"><?= $member['member_id'] ?></div>
-                          </div>
-                        </div>
-                        <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button" class="text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-                          Ganti Role
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </dd>
-              </div>
-            <?php endforeach; ?>
           </dl>
         </div>
-
-        <?php include("../dosen/content/role-modal.php") ?>
 
       </div>
     </div>

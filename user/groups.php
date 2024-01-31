@@ -36,7 +36,7 @@ $list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50">
+<body class="">
 
   <?php include("./includes/navbar.php") ?>
 
@@ -46,7 +46,7 @@ $list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_
     <!-- important -->
     <div class="rounded-lg mt-14 flex flex-col item-start">
 
-      <section class="bg-gray-50 p-3 sm:p-5">
+      <section class="bg-white p-3 sm:p-5">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
           <nav class="flex my-10" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -86,7 +86,7 @@ $list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                       </svg>
                     </div>
-                    <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-amber-500 block w-full pl-10 p-2 mr-3" placeholder="Search" required="">
+                    <input type="text" id="simple-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-amber-500 block w-full pl-10 p-2 mr-3" placeholder="Search" required="">
                   </div>
 
                   <button type="button" class="flex items-center justify-center text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
