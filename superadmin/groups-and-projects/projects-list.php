@@ -73,7 +73,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
 
       <section class="bg-gray-50 p-3 sm:p-5">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-          <nav class="flex my-10" aria-label="Breadcrumb">
+          <nav class="flex my-4" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
               <li class="inline-flex items-center">
                 <a href="" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-900">
