@@ -138,16 +138,6 @@ if (isset($_POST["cari"])) {
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
-  <script>
-    // import('tailwindcss').Config;
-    module.exports = {
-      theme: {
-        colors: {
-          'tr': '#FFAA2A'
-        },
-      },
-    }
-  </script>
 </body>
 
 </html>

@@ -70,7 +70,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
         <nav class="flex my-7" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
-              <a href="./dashboard.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-amber-500">
+              <a href="./dashboard.php" class="inline-flex items-center text-xs md:text-lg font-medium text-gray-700 hover:text-amber-500">
                 <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                 </svg>
@@ -82,8 +82,8 @@ $sum_num = mysqli_num_rows($sum_bunch);
                 <svg class="ms-1 rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <a href="./groups.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-amber-500">
-                  <span class="ms-1 text-lg font-medium text-gray-900 hover:text-amber-500 md:ms-2">Temukan Kelompok</span>
+                <a href="./groups.php" class="inline-flex items-center text-xs md:text-lg font-medium text-gray-700 hover:text-amber-500">
+                  <span class="ms-1 text-xs md:text-lg font-medium text-gray-900 hover:text-amber-500 md:ms-2">Temukan Kelompok</span>
                 </a>
               </div>
             </li>
@@ -92,7 +92,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-lg font-medium text-amber-500 md:ms-2">Detail Tugas</span>
+                <span class="ms-1 text-xs md:text-lg font-medium text-amber-500 md:ms-2">Detail Tugas</span>
               </div>
             </li>
           </ol>
@@ -139,7 +139,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
 
         <?php endif; ?>
 
-        <div class="flex w-full justify-between items-center">
+        <div class="flex w-full flex-wrap justify-between items-center">
           <h2 class="text-2xl font-semibold">Detail Kelompok</h2>
 
 
@@ -153,14 +153,14 @@ $sum_num = mysqli_num_rows($sum_bunch);
               </button>
             <?php endif; ?>
 
-            <button data-modal-target="popup-modal-req" data-modal-toggle="popup-modal-req" type="button" class="<?php if ($bunch_num == 8) : echo "hidden" ?> <?php endif; ?> text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+            <button data-modal-target="popup-modal-req" data-modal-toggle="popup-modal-req" type="button" class="<?php if ($bunch_num == 8) : echo "hidden" ?> <?php endif; ?> text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-2">
               <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               Masuk ke kelompok
             </button>
 
-            <button type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+            <button type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-2">
               <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.994 19a8.999 8.999 0 1 1 3.53-17.281M5.995 9l4 4 7-8m-1 8v5m-2.5-2.5h5" />
               </svg>
