@@ -167,7 +167,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
                 <thead class="text-xs text-gray-50 uppercase bg-blue-900">
                   <tr>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul Proyek</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Dosen PIC</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Jumlah Kelompok</th>                    
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">
