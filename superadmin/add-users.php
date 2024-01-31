@@ -20,9 +20,9 @@ require '../query/query.php';
 if (isset($_POST["submit"])) {
 
   if (add_user($_POST) > 0) {
-    header("Location: users.php?");
+    header("Location: users.php?info=success-add");
   } else {
-    header("Location: users.php?");
+    header("Location: users.php?info=failed-add");
   }
 }
 
@@ -69,7 +69,7 @@ if (isset($_POST["submit"])) {
             </li>
           </ol>
         </nav>
-
+        
         <section class="bg-gray-50">
           <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">
             <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Mahasiswa</h2>
