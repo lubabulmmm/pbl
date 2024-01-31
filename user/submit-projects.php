@@ -131,7 +131,7 @@ if (isset($_SESSION["level"])) {
                 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none sm:col-span-2" id="file_input" type="file">
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex">
-                <button type="button" class="text-white text-center w-20 bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                <button type="button" class="text-white text-center w-20 bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center me-2 my-3">
 
                   Submit
                 </button>
