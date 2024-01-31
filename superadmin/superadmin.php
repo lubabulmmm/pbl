@@ -77,7 +77,7 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
 
       <section class="bg-gray-50 p-3 sm:p-5">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-          <nav class="flex my-10" aria-label="Breadcrumb">
+          <nav class="flex my-4" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
               <li class="inline-flex items-center">
                 <a href="#" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-900">
@@ -208,15 +208,8 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
               </table>
             </div>
 
-            <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-              <span class="text-sm font-normal text-gray-500">
-                Showing
-                <span class="font-semibold text-gray-900"><?= $offset + 1 ?></span>
-                to
-                <span class="font-semibold text-gray-900"><?= min($offset + $itemsPerPage, count($list_bunch)) ?></span>
-                of
-                <span class="font-semibold text-gray-900"><?= count($list_bunch) ?></span>
-              </span>
+            <nav class="flex flex-col md:items-end justify-between items-start space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
+              
               <ul class="inline-flex items-stretch -space-x-px">
                 <li>
                   <?php if ($current_page > 1) : ?>
