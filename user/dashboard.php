@@ -28,10 +28,9 @@ if (isset($_POST["cari"])) {
     $projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email LIMIT 5");
   } else {
     $projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email WHERE nama_proyek LIKE '%$keyword%' ");
-
   }
   // Use LIKE in the SQL query to search for relevant projects
-} 
+}
 
 
 ?>
@@ -84,59 +83,61 @@ if (isset($_POST["cari"])) {
       <!-- PROYEK PENGERJAAN -->
       <h2 class="text-xl self-start font-medium px-7 w-full">Proyek kamu saat ini</h2>
 
-      <div class="py-8 max-w-screen-xl lg:py-6 lg:px-6">
+      <div class="flex px-7 mt-5 mb-3">
+        <button type="button" data-modal-target="req-list-modal" data-modal-toggle="req-list-modal" class="text-green-600 bg-white focus:ring-4 focus:outline-none focus:ring-green-100 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
+
+          <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13h3.4a1 1 0 0 1 1 .6 4 4 0 0 0 7.3 0 1 1 0 0 1 .9-.6H20M4 13v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M4 13l2-9h12l2 9" />
+          </svg>
+          Permintaan Kamu
+        </button>
+
+        <a href="#chs" type="button" class="text-violet-600 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
+          <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 12v1h4v-1m4 7H6a1 1 0 0 1-1-1V9h14v9a1 1 0 0 1-1 1ZM4 5h16c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V6c0-.6.4-1 1-1Z" />
+          </svg>
+          Proyek Lainnya
+        </a>
+      </div>
+
+      <div class="py-8 max-w-screen-xl px-7 lg:py-4 lg:px-6">
         <div class="grid gap-8 lg:grid-cols-2">
           <?php include("../content/user-project.php") ?>
         </div>
       </div>
 
-
       <!-- Proyek yang dapat dipilih -->
-      <h2 class="text-xl self-start font-medium px-7 mt-5 w-full">Judul Project Based Learning yang bisa dipilih</h2>
-
-
+      <h2 class="text-xl self-start font-medium px-7 mt-5 w-full" id="chs">Judul Project Based Learning yang bisa dipilih</h2>
       <div class="w-full md:w-1/2 px-7 mt-5">
-                <form id="liveSearchForm" class="flex items-center" method="POST">
-                  <label for="simple-search" class="sr-only">Search</label>
-                  <div class="relative w-full">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                      </svg>
-                    </div>
-                    <input type="text" name="keyword" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 block w-full pl-10 p-2 mr-3" placeholder="Cari Kelompok">
-                  </div>
+        <form id="liveSearchForm" class="flex items-center" method="POST">
+          <label for="simple-search" class="sr-only">Search</label>
+          <div class="relative w-full">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <input type="text" name="keyword" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 block w-full pl-10 p-2 mr-3" placeholder="Cari Kelompok">
+          </div>
 
-                  <button type="submit" name="cari" class="flex items-center justify-center text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
-                    <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                    </svg>
-                    Cari
-                  </button>
-                </form>
+          <button type="submit" name="cari" class="flex items-center justify-center text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
+            <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            </svg>
+            Cari
+          </button>
+        </form>
 
-              </div>
-
-
+      </div>
       <?php include("../content/chsproject.php") ?>
-
-
     </div>
   </div>
+
+  <?php include("../content/req-list.php") ?>
 
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
-  <script>
-    // import('tailwindcss').Config;
-    module.exports = {
-      theme: {
-        colors: {
-          'tr': '#FFAA2A'
-        },
-      },
-    }
-  </script>
 </body>
 
 </html>
