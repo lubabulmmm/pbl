@@ -27,6 +27,15 @@ $week_num = (int) $get_week[0]['minggu'];
 
 
 $tasks_user = execThis("SELECT task.id AS task_id, task_name, task_desc, category, task.member_id AS tmid, bunch_member.member_id AS bmid FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id WHERE bunch_member.member_id = '" . $_SESSION['email'] . "' AND category != 'Done' AND task.bunch_id =" . $_GET['bid'] . "");
+
+$get_leader = execThis("SELECT * FROM bunch WHERE leader_id ='" . $_SESSION['email'] . "' AND project_id = " . $_GET['id'] . "");
+
+$get_members = execThis("SELECT * FROM bunch_member WHERE member_id ='" . $_SESSION['email'] . "' AND bunch_id = " . $_GET['bid'] . "");
+
+if (empty($get_leader) && empty($get_members)) {
+  header("Location: restricted.php");
+  exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +63,7 @@ $tasks_user = execThis("SELECT task.id AS task_id, task_name, task_desc, categor
     <!-- important -->
     <div class="rounded-lg mt-14 flex flex-col item-start">
       <div class="mx-auto w-full px-4 lg:px-12">
+
         <nav class="flex my-7" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
@@ -75,39 +85,41 @@ $tasks_user = execThis("SELECT task.id AS task_id, task_name, task_desc, categor
           </ol>
         </nav>
 
-        <div class="flex flex-wrap w-full mb-5">
-          <h2 class="text-2xl"><?= $get_bunch_name[0]['nama_proyek'] ?></h2>
+        <div class="flex flex-wrap w-full mb-2">
+          <h2 class="text-2xl font-medium"><?= $get_bunch_name[0]['nama_proyek'] ?></h2>
           <span class="bg-amber-100 lg:ml-2 lg:mt-0 text-xs mt-3 text-amber-800 font-medium me-2 px-2.5 py-0.5 rounded-xl h-5 border border-amber-300"><?= $get_bunch_name[0]['bunch_name'] ?> - <?= $get_bunch_name[0]['project_id'] ?></span>
         </div>
 
-        <div class="w-full flex items-center my-4 flex-wrap">
-          <a href="./dashboard.php" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-            <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+        <div class="w-full flex items-center my-2 flex-wrap">
+          <a href="./dashboard.php" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-4 py-2 text-center inline-flex items-center me-2 my-3">
+            <svg class="w-3 h-3 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 5H1m0 0 4 4M1 5l4-4" />
             </svg>
             Kembali
           </a>
 
-          <a href="./details-anggota.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-blue-500 hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+          <a href="./details-anggota.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-blue-500 hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2 text-center inline-flex items-center me-2 my-3">
             <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.333 6.764a3 3 0 1 1 3.141-5.023M2.5 16H1v-2a4 4 0 0 1 4-4m7.379-8.121a3 3 0 1 1 2.976 5M15 10a4 4 0 0 1 4 4v2h-1.761M13 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-4 6h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z" />
             </svg>
             Detail Anggota
           </a>
 
-          <a href="./submit-projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+          <a href="./submit-projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs px-4 py-2 text-center inline-flex items-center me-2 my-3">
             <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 19">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15h.01M4 12H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-3m-5.5 0V1.07M5.5 5l4-4 4 4" />
             </svg>
             Pengumpulan Proyek
           </a>
 
-          <a href="./request.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-violet-500 hover:bg-violet-400 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-            <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8m18 0-8-4.5a2 2 0 0 0-2 0L3 8m18 0-9 6.5L3 8" />
-            </svg>
-            Permintaan
-          </a>
+          <?php if (!empty($get_leader)) : ?>
+            <a href="./request.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-violet-500 hover:bg-violet-400 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-xs px-4 py-2 text-center inline-flex items-center me-2 my-3">
+              <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8m18 0-8-4.5a2 2 0 0 0-2 0L3 8m18 0-9 6.5L3 8" />
+              </svg>
+              Permintaan
+            </a>
+          <?php endif; ?>
         </div>
 
         <!-- //! TAB CONTENT -->

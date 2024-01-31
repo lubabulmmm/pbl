@@ -52,7 +52,7 @@
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <a href="./details-progress.php?tid=<?= $task['task_id'] ?>&id=<?= $_GET['id'] ?>" class="text-sm hover:underline font-medium text-gray-900 truncate ">
+              <a href="./details-progress.php?tid=<?= $task['task_id'] ?>&id=<?= $_GET['id'] ?>&bid=<?= $_GET['bid'] ?>" class="text-sm hover:underline font-medium text-gray-900 truncate ">
                 <?= $task['task_name'] ?> | <?= $task['category'] ?>
               </a>
               <p class="text-sm text-gray-500 truncate ">

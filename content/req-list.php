@@ -38,6 +38,9 @@ $req_user_list = execThis("SELECT request.bunch_id, status_req, nama_proyek, nam
                     <?php if ($rul['status_req'] == 'Belum Diterima' || $rul['status_req'] == 'Ditolak') : ?>
                       <span class="text-red-600"><?= $rul['status_req'] ?></span>
                     <?php endif; ?>
+                    <?php if ($rul['status_req'] == 'Diterima') : ?>
+                      <span class="text-green-600"><?= $rul['status_req'] ?></span>
+                    <?php endif; ?>
                     | <?= $rul['nama_user'] ?>
                   </div>
                 </div>
