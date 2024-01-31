@@ -73,7 +73,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
 
       <section class="bg-gray-50 p-3 sm:p-5">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-          <nav class="flex my-10" aria-label="Breadcrumb">
+          <nav class="flex my-4" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
               <li class="inline-flex items-center">
                 <a href="" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-900">
@@ -211,15 +211,7 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
               </table>
             </div>
 
-            <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-              <span class="text-sm font-normal text-gray-500">
-                Showing
-                <span class="font-semibold text-gray-900"><?= $offset + 1 ?></span>
-                to
-                <span class="font-semibold text-gray-900"><?= min($offset + $itemsPerPage, count($projects)) ?></span>
-                of
-                <span class="font-semibold text-gray-900"><?= count($projects) ?></span>
-              </span>
+            <nav class="flex flex-col md:items-end justify-between items-start  space-y-3 md:space-y-0 p-4" aria-label="Table navigation">              
               <ul class="inline-flex items-stretch -space-x-px">
                 <li>
                   <?php if ($current_page > 1) : ?>
@@ -344,27 +336,6 @@ $projectsOnCurrentPage = array_slice($projects, $offset, $itemsPerPage);
       });
     }
 
-    // function getStatusBadge(status) {
-    //   var badgeClass = '';
-    //   var badgeText = '';
-
-    //   switch (status) {
-    //     case 'Active':
-    //       badgeClass = 'bg-green-500';
-    //       badgeText = 'Active';
-    //       break;
-    //     case 'Inactive':
-    //       badgeClass = 'bg-red-500';
-    //       badgeText = 'Inactive';
-    //       break;
-    //     default:
-    //       badgeClass = 'bg-gray-500';
-    //       badgeText = 'Unknown';
-    //       break;
-    //   }
-
-    //   return `<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${badgeClass} text-white">${badgeText}</span>`;
-    // }
   });
 </script>
 
