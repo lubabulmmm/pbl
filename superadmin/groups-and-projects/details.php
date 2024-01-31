@@ -121,7 +121,7 @@ $done_sum = mysqli_num_rows($done_fetch);
             <div class="mt-6 border-t border-gray-100">
               <dl class="divide-y divide-gray-100">
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Judul Proyek</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Judul</dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $detail['nama_proyek'] ?></dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -129,7 +129,7 @@ $done_sum = mysqli_num_rows($done_fetch);
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $detail['observer_name'] ?></dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi Proyek</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi</dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $detail['deskripsi_proyek'] ?></dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -141,12 +141,12 @@ $done_sum = mysqli_num_rows($done_fetch);
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $detail['leader_name'] ?></dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Nilai Proyek</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Nilai</dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500">80</span> /100</dd>
                 </div>
                 <!-- // ! Anggota Kelompok -->
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Anggota Kelompok</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Anggota</dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <ul class="max-w-xl leading-loose text-md text-gray-500 list-disc list-inside">
                       <?php foreach ($bunch_members as $bm) : ?>
@@ -159,7 +159,7 @@ $done_sum = mysqli_num_rows($done_fetch);
                 </div>
                 <!-- // ! Total Progress -->
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Total Progress</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Progress</dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <ul class="max-w-xl leading-loose text-md text-gray-500 list-disc list-inside">
                       <li class="mt-2 text-red-500">

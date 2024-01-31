@@ -65,11 +65,11 @@ if (isset($_SESSION["level"])) {
             <form action="#">
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
-                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Proyek</label>
-                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Edit Nama Proyek.." required="">
+                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Judul</label>
+                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Edit Judul" required="">
                 </div>
                 <div>
-                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Dosen</label>
+                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Dosen PIC</label>
                   <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
                     <option selected="">Pilih Dosen</option>
                     <option value="TV">daniadhitya@gmail.com</option>
@@ -79,12 +79,12 @@ if (isset($_SESSION["level"])) {
                   </select>
                 </div>
                 <div>
-                  <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900">Edit Minggu</label>
-                  <input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="8" required>
+                  <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900">Minggu</label>
+                  <input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Edit Angka" required>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Edit Deskripsi</label>
-                  <textarea id="description" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Edit Deskripsi Proyek.."></textarea>
+                  <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
+                  <textarea id="description" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Edit Deskripsi"></textarea>
                 </div>
               </div>
               <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
