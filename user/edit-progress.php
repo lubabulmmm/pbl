@@ -44,7 +44,7 @@ if (isset($_POST["submit"])) {
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50">
+<body class="">
 
   <?php include("./includes/navbar.php") ?>
 
@@ -98,18 +98,18 @@ if (isset($_POST["submit"])) {
         </nav>
 
 
-        <section class="bg-gray-50">
+        <section class="">
           <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">
             <h2 class="mb-4 text-xl font-bold text-gray-900">Edit Progress</h2>
             <form action="" method="post">
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
                   <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Progress</label>
-                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tulis Nama Progress.." required="" value="<?= $get_taskinfo[0]['task_name'] ?>">
+                  <input type="text" name="name" id="name" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tulis Nama Progress.." required="" value="<?= $get_taskinfo[0]['task_name'] ?>">
                 </div>
                 <div>
                   <label for="member" class="block mb-2 text-sm font-medium text-gray-900">Pilih</label>
-                  <select id="member" name="member" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                  <select id="member" name="member" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
                     <option value="<?= $get_taskinfo[0]['member_id'] ?>" selected><?= $get_taskinfo[0]['nama_user'] ?> - <?= $get_taskinfo[0]['member_role'] ?></option>
                     <?php foreach ($members as $member) : ?>
                       <option value="<?php echo $member["member_id"] ?>"><?= $member["nama_user"]; ?> - <?= $member["role"] ?></option>
@@ -118,7 +118,7 @@ if (isset($_POST["submit"])) {
                 </div>
                 <div class="sm:col-span-2">
                   <label for="desc" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi Progress</label>
-                  <textarea id="desc" name="desc" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tulis Deskripsi Kamu.."><?= $get_taskinfo[0]['task_desc'] ?></textarea>
+                  <textarea id="desc" name="desc" rows="8" class="block p-4 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tulis Deskripsi Kamu.."><?= $get_taskinfo[0]['task_desc'] ?></textarea>
                 </div>
               </div>
               <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-amber-500 rounded-lg focus:ring-4 focus:ring-amber-200 hover:bg-amber-400">

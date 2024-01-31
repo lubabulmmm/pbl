@@ -11,37 +11,8 @@ pfpBtn.addEventListener("click", () => {
   pfp.classList.toggle("hidden");
 });
 
-// var keyword = document.getElementById('keyword');
-// var tombolCari = document.getElementById('tombol-cari');
-// var container = document.getElementById('container');
+const modalReq = document.querySelector(".req-modal");
 
-// keyword.addEventListener('keyup', function(){
-//   //buat object ajax
-//   var xhr = new XMLHttpRequest();
-
-//   //cek kesiapan ajax
-//   xhr.onreadystatechange = function(){
-//     if( xhr.readyState == 4 && xhr.status == 200) {
-//       container.innerHTML = xhr.responseText;
-//     }
-//   }
-
-//   xhr.open('GET', 'ajax/mahasiswa.php?keywor=' + keyword.value, true);
-//   xhr.send();
-
-// });
-
-// script.js
-
-// function searchAdmins() {
-//   var keyword = $('#keyword').val();
-
-//   $.ajax({
-//     type: 'POST',
-//     url: '../query/search.php', // Replace with the actual path to your search script
-//     data: { keyword: keyword },
-//     success: function (data) {
-//       $('#search-results').html(data);
-//     }
-//   });
-// }
+modalReq.addEventListener("click", () => {
+  modalReq.classList.toggle("scale-1");
+});

@@ -48,7 +48,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50">
+<body class="">
 
   <?php include("./includes/navbar.php") ?>
 
@@ -80,6 +80,8 @@ $sum_num = mysqli_num_rows($sum_bunch);
             </li>
           </ol>
         </nav>
+
+        <?php include("../dosen/content/info.php") ?>
 
         <div class="flex w-full flex-wrap justify-between items-center">
           <div class="">

@@ -1,5 +1,5 @@
-<div class="w-full px-0 lg:pl-4 lg:pr-12 grid grid-cols-1 lg:grid-cols-3 m-0 lg:m-8">
-  <div class="p-5 mr-0 my-5 lg:my-0 lg:mr-5 border shadow-sm border-gray-200 rounded-lg bg-gray-50 col-span-1 lg:col-span-2">
+<div class="w-11/12 px-0 grid grid-cols-1 lg:grid-cols-3 m-0 lg:mt-8 lg:mx-auto">
+  <div class="p-5 mr-0 my-5 lg:my-0 lg:mr-5 border shadow border-gray-200 rounded-lg bg-white col-span-1 lg:col-span-2">
     <h1 class="text-lg font-semibold text-gray-900">Komentar Dosen</h1>
 
     <?php if ($get_comments == []) : ?>
@@ -25,10 +25,10 @@
 
   <!-- //! KOLOM TUGAS WAKK -->
 
-  <div class="p-5 mr-0 lg:mr-10 border shadow-sm border-gray-200 rounded-lg bg-gray-50 col-span-1">
+  <div class="p-5 mr-0 border shadow border-gray-200 rounded-lg bg-white col-span-1">
     <h1 class="text-lg font-semibold mb-2.5 text-gray-900">Tugas Anda</h1>
 
-    <ul class="max-w-md h-48 ov">
+    <ul class="max-w-full h-48 ov">
       <?php
       $todo_color = "text-red-600";
       $doing_color = "text-amber-600";

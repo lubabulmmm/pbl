@@ -3,7 +3,7 @@
 
         <?php foreach ($projects as $project) : ?>
 
-            <div class="max-w-full p-6 bg-white border-gray-200 rounded-lg shadow flex flex-col justify-between items-start">
+            <div class="max-w-full p-6 bg-white border border-gray-200 rounded-lg shadow flex flex-col justify-between items-start">
                 <div class="flex justify-between w-full items-center mb-4">
                     <a href="./detail-project.php?id=<?= $project['id_proyek'] ?>" class="flex flex-col justify-between">
                         <h5 class="mb-1 text-md font-bold tracking-tight text-gray-900 hover:underline "><?= $project['nama_proyek'] ?></h5>
