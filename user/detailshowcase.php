@@ -56,10 +56,10 @@ if (isset($_SESSION["level"])) {
     <!-- pertinjau project -->
     <section class="bg-white">
         <h2 class="pt-8 px-4 text-5xl tracking-tight font-extrabold text-center text-gray-900  ">Pertinjau Proyek</h2>
-        <p class="py-4 px-4 text-gray-500 sm:text-xl text-center text-gray-700">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+        <p class="py-4 px-4 sm:text-xl text-center text-gray-700">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 grid grid-cols-3 place-items-center">
 
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
                 <img src="./assets/img/ecom1.png" alt="mockup">
                 <div class="p-4">
                     <a href="#">

@@ -24,19 +24,17 @@
           </div>
           <div class="z-50 hidden my-4 text-base text-gray-900 list-none divide-y rounded shadow-lg bg-white divide-gray-300" id="dropdown-user">
             <div class="px-4 py-3" role="none">
-              <p class="text-sm text-gray-900" role="none">
-                Jake's Pierce
+              <p class="text-sm text-gray-900" role="none"><?= $_SESSION["nama_user"] ?>
               </p>
-              <p class="text-sm font-medium text-gray-900 truncate" role="none">
-                thiearsenal@gmail.com
+              <p class="text-sm font-medium text-gray-900 truncate" role="none"><?= $_SESSION["email"] ?>
               </p>
             </div>
             <ul class="py-1" role="none">
-              <li>
+              <!-- <li>
                 <a href="/PBL/user/dashboard.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Dashboard</a>
-              </li>
+              </li> -->
               <li>
-                <a href="/PBL/user/logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Sign out</a>
+                <a href="/PBL/user/logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Keluar</a>
               </li>
             </ul>
           </div>

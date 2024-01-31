@@ -98,7 +98,14 @@
               <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Data Pengumpulan</h3>
             </div>
 
+            <div class="flex items-center flex-wrap">
 
+            <a href="./details.php?id=<?= $_GET['id'] ?>&bid=<?= $_GET['bid'] ?>" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+              <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+              </svg>
+              Kembali
+            </a>
             <a href="" class="flex items-center flex-wrap">
               <button type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
                 <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
@@ -108,6 +115,7 @@
                 Tambahkan ke Showcase
               </button>
             </a>
+          </div>
           </div>
 
           <div class="mt-6 border-t border-gray-100">

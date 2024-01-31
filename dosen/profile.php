@@ -55,7 +55,7 @@
                   <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                   </svg>
-                  <span class="ms-1 text-lg font-medium text-blue-500 md:ms-2">Profil Kamu</span>
+                  <span class="ms-1 text-lg font-medium text-blue-500 md:ms-2">Profil</span>
                 </div>
               </li>
             </ol>
@@ -81,28 +81,28 @@
 
 
                   <div class="sm:col-span-4">
-                    <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+                    <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Nama</label>
                     <div class="mt-2">
                       <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-600 sm:max-w-md">
-                        <input type="text" name="username" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Masukkan username">
+                        <input type="text" name="username" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Masukkan Nama">
                       </div>
                     </div>
                   </div>
                   
                   <div class="sm:col-span-4">
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Kata sandi lama</label>
+                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Kata Sandi Lama</label>
                     <div class="mt-2">
                       <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-600 sm:max-w-md">
-                        <input type="password" name="password" id="password" autocomplete="password" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Masukkan kata sandi lama">
+                        <input type="password" name="password" id="password" autocomplete="password" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Masukkan Kata Sandi Lama">
                       </div>
                     </div>
                   </div>
                   
                   <div class="sm:col-span-4">
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Kata sandi baru</label>
+                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Kata Sandi Baru</label>
                     <div class="mt-2">
                       <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-600 sm:max-w-md">
-                        <input type="password" name="password" id="password" autocomplete="password" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Masukkan kata sandi baru">
+                        <input type="password" name="password" id="password" autocomplete="password" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Masukkan Kata Sandi Baru">
                       </div>
                     </div>
                   </div>
@@ -114,9 +114,9 @@
 
               
 
-            <div class="flex items-center justify-start gap-x-6">
-              <button type="submit" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 ">Save</button>
-              <button type="button" class="text-sm font-semibold text-gray-900">Cancel</button>
+            <div class="flex items-center justify-start gap-x-5">
+              <button type="submit" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 ">Simpan</button>
+              <button type="submit" class="rounded-md bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 ">Batal</button>
             </div>
           </form>
 
