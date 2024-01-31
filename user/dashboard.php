@@ -44,7 +44,7 @@ if (isset($_POST["cari"])) {
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50 ">
+<body class="bg-white">
   <!-- Navigation Bar -->
   <?php include("./includes/navbar.php") ?>
 
@@ -61,7 +61,7 @@ if (isset($_POST["cari"])) {
       <!-- INFORMASI PENGGUNA -->
       <div class="w-full px-4 lg:px-3 py-4">
         <!-- Start coding here -->
-        <div class="relative overflow-hidden bg-gray-50 sm:rounded-lg">
+        <div class="relative overflow-hidden bg-white sm:rounded-lg">
           <div class="flex-row items-center justify-between p-4 space-y-3 md:flex lg:flex-row sm:flex sm:space-y-0 sm:space-x-4">
             <div class="flex w-5/12 items-center">
               <img class="w-20 h-20 rounded-xl" src="/pbl/assets/img/pfp.jpg" alt="Default avatar">

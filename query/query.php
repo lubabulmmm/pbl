@@ -268,3 +268,17 @@ function add_accept_member($data_member)
 
   return mysqli_affected_rows($conn);
 }
+
+function change_role($data_change)
+{
+  global $conn;
+
+  $role_name = $data_change['role'];
+  $id_member = $data_change['member'];
+
+  $sql_change = "UPDATE bunch_member SET role = '" . $role_name . "' WHERE bunch_member.id = " . $id_member . "";
+
+  mysqli_query($conn, $sql_change);
+
+  return mysqli_affected_rows($conn);
+}

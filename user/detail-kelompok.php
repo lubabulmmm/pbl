@@ -55,7 +55,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-white">
 
   <?php include("./includes/navbar.php") ?>
 
@@ -145,7 +145,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
 
           <div class="flex items-center flex-wrap">
             <?php if ($bunch_num == 8) : ?>
-              <button type="button" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3" disabled>
+              <button type="button" class="text-white bg-white0 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3" disabled>
                 <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                   <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
@@ -160,7 +160,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
               Masuk ke kelompok
             </button>
 
-            <button type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-2">
+            <button type="button" data-modal-target="member-list-modal" data-modal-toggle="member-list-modal" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-2">
               <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.994 19a8.999 8.999 0 1 1 3.53-17.281M5.995 9l4 4 7-8m-1 8v5m-2.5-2.5h5" />
               </svg>
@@ -206,8 +206,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
         <?php endforeach; ?>
 
         <?php include("../content/confirm-req.php") ?>
-
-
+        <?php include("../content/list-member.php") ?>
       </div>
     </div>
 

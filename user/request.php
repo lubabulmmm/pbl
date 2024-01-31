@@ -46,7 +46,7 @@ $get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, rol
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50">
+<body class="">
   <?php include("./includes/navbar.php") ?>
 
   <!-- Side Bar -->
