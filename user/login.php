@@ -63,11 +63,11 @@ if (isset($_POST["login"])) {
         }
       } else {
         // Incorrect password
-        $loginError = "Maaf, email atau password Anda salah.";
+        $loginError = "Mohon Maaf, email atau password Anda salah.";
       }
     } else {
       // Email not found
-      $loginError = "Maaf, email atau password Anda salah.";
+      $loginError = "Mohon Maaf, email atau password Anda salah.";
     }
   }
 }
@@ -114,12 +114,12 @@ if (isset($_POST["login"])) {
 <?php endif; ?>
           <form class="space-y-4 md:space-y-6" action="" method="post">
             <div>
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
-              <input type="email" name="email" id="email" class="bg-gray-50 border border-amber-500 text-gray-900 sm:text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan email kamu" required="">
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+              <input type="email" name="email" id="email" class="bg-gray-50 border border-amber-500 text-gray-900 sm:text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan Email" required="">
             </div>
             <div>
               <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Kata Sandi</label>
-              <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-amber-500 text-gray-900 sm:text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" required="">
+              <input type="password" name="password" id="password" placeholder="Masukkan Kata Sandi" class="bg-gray-50 border border-amber-500 text-gray-900 sm:text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" required="">
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-start">
@@ -137,6 +137,8 @@ if (isset($_POST["login"])) {
   </section>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+
+  
 </body>
 
 </html>
