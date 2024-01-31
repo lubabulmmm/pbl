@@ -191,15 +191,7 @@ $adminsOnCurrentPage = array_slice($admins, $offset, $itemsPerPage);
               </table>
             </div>
 
-            <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-              <span class="text-sm font-normal text-gray-500">
-                Showing
-                <span class="font-semibold text-gray-900"><?= $offset + 1 ?></span>
-                to
-                <span class="font-semibold text-gray-900"><?= min($offset + $itemsPerPage, count($admins)) ?></span>
-                of
-                <span class="font-semibold text-gray-900"><?= count($admins) ?></span>
-              </span>
+            <nav class="flex flex-col justify-between items-start md:items-end space-y-3 md:space-y-0 p-4" aria-label="Table navigation">              
               <ul class="inline-flex items-stretch -space-x-px">
                 <li>
                   <?php if ($current_page > 1) : ?>

@@ -208,15 +208,8 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
               </table>
             </div>
 
-            <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-              <span class="text-sm font-normal text-gray-500">
-                Showing
-                <span class="font-semibold text-gray-900"><?= $offset + 1 ?></span>
-                to
-                <span class="font-semibold text-gray-900"><?= min($offset + $itemsPerPage, count($list_bunch)) ?></span>
-                of
-                <span class="font-semibold text-gray-900"><?= count($list_bunch) ?></span>
-              </span>
+            <nav class="flex flex-col md:items-end justify-between items-start space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
+              
               <ul class="inline-flex items-stretch -space-x-px">
                 <li>
                   <?php if ($current_page > 1) : ?>
