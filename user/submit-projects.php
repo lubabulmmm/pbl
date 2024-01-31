@@ -15,7 +15,16 @@ if (isset($_SESSION["level"])) {
   }
 }
 
+require "../query/query.php";
 
+$get_leader = execThis("SELECT * FROM bunch WHERE leader_id ='" . $_SESSION['email'] . "' AND project_id = " . $_GET['id'] . "");
+
+$get_members = execThis("SELECT * FROM bunch_member WHERE member_id ='" . $_SESSION['email'] . "' AND bunch_id = " . $_GET['bid'] . "");
+
+if (empty($get_leader) && empty($get_members)) {
+  header("Location: restricted.php");
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,54 +93,43 @@ if (isset($_SESSION["level"])) {
 
             <div class="flex items-center flex-wrap">
 
-              <a href="projects.php?bid=<?= $_GET['bid']  ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+              <a href="projects.php?bid=<?= $_GET['bid']  ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                <svg class="w-3 h-3 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 5H1m0 0 4 4M1 5l4-4" />
                 </svg>
                 Kembali
-              </a>
-
-              <a href="" type="button" class="text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 5h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-2v3l-4-3H8m4-13H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2v3l4-3h4a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z" />
-                </svg>
-                Komentar PIC
               </a>
             </div>
           </div>
 
-          <div class="mt-6 border-t border-gray-100">
+          <div class="mt-2 border-t border-gray-100">
             <dl class="divide-y divide-gray-100">
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt class="text-md font-medium leading-6 text-gray-900">Nilai Proyek</dt>
-                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500">80</span> /100</dd>
-              </div>
-              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex items-center">
-                <dt class="text-md font-medium leading-6 text-gray-900">Unggah Laporan</dt>
-                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none sm:col-span-2" id="file_input" type="file">
-              </div>
-              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi Proyek:</dt>
-                <textarea id="description" rows="10" class="block p-4 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 col-span-2" placeholder="Tulis Deskripsi Kamu.."></textarea>
+                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500">0</span> /100</dd>
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex items-center">
                 <dt class="text-md font-medium leading-6 text-gray-900">URL Video Youtube</dt>
                 <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  <input type="text" id="small-input" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan URL Video Youtube">
+                  <input type="text" id="small-input" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> placeholder="Masukkan URL Video Youtube">
                 </dd>
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex items-center">
                 <dt class="text-md font-medium leading-6 text-gray-900">URL Web/Aplikasi</dt>
                 <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  <input type="text" id="small-input" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan URL Web/Aplikasi">
+                  <input type="text" id="small-input" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> placeholder="Masukkan URL Web/Aplikasi">
                 </dd>
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex items-center">
                 <dt class="text-md font-medium leading-6 text-gray-900">Unggah Poster</dt>
-                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none sm:col-span-2" id="file_input" type="file">
+                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none sm:col-span-2" id="file_input" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> type="file">
+              </div>
+              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex items-center">
+                <dt class="text-md font-medium leading-6 text-gray-900">Unggah Laporan</dt>
+                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none sm:col-span-2" id="file_input" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> type="file">
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 flex">
-                <button type="button" class="text-white text-center w-20 bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                <button class="text-white text-center w-20 bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center me-2 my-3" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> type="button">
 
                   Submit
                 </button>

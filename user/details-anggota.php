@@ -31,7 +31,14 @@ $get_leader_name = execThis("SELECT leader_id, nama_user, nama_proyek FROM bunch
 
 $roles = execThis("SELECT * FROM role");
 
+$get_leader = execThis("SELECT * FROM bunch WHERE leader_id ='" . $_SESSION['email'] . "' AND project_id = " . $_GET['id'] . "");
 
+$get_members = execThis("SELECT * FROM bunch_member WHERE member_id ='" . $_SESSION['email'] . "' AND bunch_id = " . $_GET['bid'] . "");
+
+if (empty($get_leader) && empty($get_members)) {
+  header("Location: restricted.php");
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,9 +103,9 @@ $roles = execThis("SELECT * FROM role");
 
 
           <div class="flex items-center flex-wrap">
-            <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+            <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-4 py-2 text-center inline-flex items-center me-2 my-3">
               <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 5H1m0 0 4 4M1 5l4-4" />
               </svg>
               Kembali
             </a>
@@ -164,10 +171,15 @@ $roles = execThis("SELECT * FROM role");
                           </div>
                           <div class="inline-flex items-center">
                             <p class="focus:outline-none text-blue-700 bg-blue-200  font-medium rounded-full text-xs px-2.5 py-1.5 me-1 mb-1 "><?= $gam['role'] ?></p>
-                            <button type="button" data-modal-target="popup-modal-<?= $gam['id_member'] ?>" data-modal-toggle="popup-modal-<?= $gam['id_member'] ?>" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-md text-xs px-2.5 py-1.5 me-1 mb-1 ">Ganti role</button>
+
+                            <?php if (!empty($get_leader)) : ?>
+                              <button type="button" data-modal-target="popup-modal-<?= $gam['id_member'] ?>" data-modal-toggle="popup-modal-<?= $gam['id_member'] ?>" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-md text-xs px-2.5 py-1.5 me-1 mb-1 ">Ganti role</button>
+                            <?php endif; ?>
                           </div>
                         </div>
-                        <?php include("../content/change-role.php") ?>
+                        <?php if (!empty($get_leader)) : ?>
+                          <?php include("../content/change-role.php") ?>
+                        <?php endif; ?>
                       </li>
                     <?php endforeach; ?>
                   </ul>

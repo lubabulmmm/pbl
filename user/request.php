@@ -29,6 +29,15 @@ $list_request = execThis("SELECT request_id, bunch_id, user_id, role, status_req
 
 $get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, role, nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $_GET['bid'] . "");
 
+$get_leader = execThis("SELECT * FROM bunch WHERE leader_id ='" . $_SESSION['email'] . "' AND project_id = " . $_GET['id'] . "");
+
+$get_members = execThis("SELECT * FROM bunch_member WHERE member_id ='" . $_SESSION['email'] . "' AND bunch_id = " . $_GET['bid'] . "");
+
+if (empty($get_leader) && empty($get_members)) {
+  header("Location: restricted.php");
+  exit;
+}
+
 ?>
 
 <!DOCTYPE html>
