@@ -73,7 +73,7 @@ $roles = execThis("SELECT * FROM role");
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
                 <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
-                  <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-500 md:ms-2">Proyek</span>
+                  <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-500 md:ms-2">Detail Kelompok</span>
                 </a>
               </div>
             </li>
@@ -141,9 +141,6 @@ $roles = execThis("SELECT * FROM role");
                             <div class="text-sm text-gray-500"><?= $member['member_id'] ?></div>
                           </div>
                         </div>
-                        <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button" class="text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-                          Ganti Role
-                        </button>
                       </div>
                     </div>
                   </div>

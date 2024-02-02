@@ -80,11 +80,19 @@ if (isset($_SESSION["level"])) {
                 </div>
                 <div>
                   <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900">Minggu</label>
-                  <input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Edit Angka" required>
+                  <input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Edit Minggu" required>
                 </div>
                 <div class="sm:col-span-2">
                   <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
                   <textarea id="description" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Edit Deskripsi"></textarea>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Wajib</label>
+                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Edit Fitur Wajib"></textarea>
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block mb-2 text-sm font-medium text-gray-900" for="small_size">File Pendukung</label>
+                  <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="multiple_files" type="file" multiple>
                 </div>
               </div>
               <button type="submit" class="inline-flex items-center px-6 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">

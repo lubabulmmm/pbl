@@ -14,7 +14,7 @@
         </a>
       </div>
       <div class="flex items-center">
-        <div class="name px-3 text-sm">Hi, <?= $_SESSION['nama_user'] ?></div>
+        <div class="name px-3 text-sm">Hai, <?= $_SESSION['nama_user'] ?></div>
         <div class="flex items-center ml-3">
           <div>
             <button type="button" class="flex text-sm bg-amber-500 rounded-full focus:ring-4 focus:ring-blue-300" aria-expanded="false" data-dropdown-toggle="dropdown-user">
@@ -36,7 +36,7 @@
                 <a href="/PBL/dosen/dashadmin.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Dashboard</a>
               </li> -->
               <li>
-                <a href="/PBL/user/logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Sign out</a>
+                <a href="/PBL/user/logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Keluar</a>
               </li>
             </ul>
           </div>
