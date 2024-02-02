@@ -16,6 +16,15 @@ if (isset($_SESSION["level"])) {
 }
 
 require "../query/query.php";
+$projects = [];
+
+try {
+  $projects = execThis("SELECT id_user, id_proyek, req, deskripsi_proyek, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_proyek = " . $_GET['id'] . "");
+} catch (\Throwable $th) {
+  echo $th;
+  header("Location: ../content/not-found.php");
+  exit;
+}
 
 if (isset($_POST["submit"])) {
 

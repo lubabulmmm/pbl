@@ -282,3 +282,33 @@ function change_role($data_change)
 
   return mysqli_affected_rows($conn);
 }
+
+function insertData($data)
+{
+  global $conn;
+  $query = "INSERT INTO task_file (tf_id, task_id, name_file, size, ekstensi, path) VALUES ('', " . $data['tf_id'] . ", '" . $data['title'] . "', '" . $data['size'] . "', '" . $data['ekstensi'] . "', '" . $data['berkas'] . "')";
+
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+}
+
+function add_links($yt_url, $web_url, $bunch_id)
+{
+  global $conn;
+  $sql_add_links = "INSERT INTO submit_links (links_id, web_url, yt_url, bunch_id) VALUES ('', '" . $yt_url . "', '" . $web_url . "', '" . $bunch_id . "')";
+
+  mysqli_query($conn, $sql_add_links);
+
+  return mysqli_affected_rows($conn);
+}
+
+function insertDataSubmitReport($data, $type)
+{
+  global $conn;
+  $query = "INSERT INTO submit_file (sf_id, bunch_id, name_file, size, ekstensi, path) VALUES ('', " . $data['bunch_id'] . ", '" . $data['title'] . "', '" . $data['size'] . "', '" . $data['ekstensi'] . "', '" . $type . "')";
+
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+}

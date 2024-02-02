@@ -16,6 +16,18 @@ if (isset($_SESSION["level"])) {
 }
 
 require '../query/query.php';
+$bunch_members = [];
+$sum_bunch = [];
+
+try {
+  $bunch_members = execThis("SELECT nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id = " . $_GET['bid'] . "");
+
+  $sum_bunch = mysqli_query($conn, "SELECT * FROM bunch WHERE project_id = " . $_GET['id'] . "");
+} catch (\Throwable $th) {
+  echo $th;
+  header("Location: ../content/not-found.php");
+  exit;
+}
 
 if (isset($_POST["submit"])) {
 
@@ -28,13 +40,9 @@ if (isset($_POST["submit"])) {
 
 $projects = execThis("SELECT bunch_id, id_proyek, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name, deskripsi_proyek, req FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email WHERE bunch_id = " . $_GET['bid'] . "");
 
-$bunch_members = execThis("SELECT nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id = " . $_GET['bid'] . "");
-
 $bunch_sum = mysqli_query($conn, "SELECT nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id = " . $_GET['bid'] . "");
 
 $bunch_num = mysqli_num_rows($bunch_sum);
-
-$sum_bunch = mysqli_query($conn, "SELECT * FROM bunch WHERE project_id = " . $_GET['id'] . "");
 
 $sum_num = mysqli_num_rows($sum_bunch);
 

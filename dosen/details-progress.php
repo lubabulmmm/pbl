@@ -22,7 +22,15 @@ if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
   exit;
 }
 
-$get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.bunch_id AS bid, category, user.nama_user, project_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.id =" . $_GET['tid'] . "");
+$get_taskinfo = [];
+
+try {
+  $get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.bunch_id AS bid, category, user.nama_user, project_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.id =" . $_GET['tid'] . "");
+} catch (\Throwable $th) {
+  echo $th;
+  header("Location: ../content/not-found.php");
+  exit;
+}
 
 
 ?>
@@ -42,7 +50,7 @@ $get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50">
+<body class="">
 
   <?php include("./includes/navbar.php") ?>
 
