@@ -17,7 +17,7 @@ if (isset($_SESSION["level"])) {
 
 require '../../query/query.php';
 
-$projects = execThis("SELECT id_user, id_proyek, req, deskripsi_proyek, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_proyek = " . $_GET['id'] . "");
+$projects = execThis("SELECT id_user, id_proyek, minggu, req, deskripsi_proyek, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_proyek = " . $_GET['id'] . "");
 
 $sum_bunch = mysqli_query($conn, "SELECT * FROM bunch WHERE project_id = " . $_GET['id'] . "");
 $sum_num = mysqli_num_rows($sum_bunch);
@@ -113,7 +113,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt class="text-md font-medium leading-6 text-gray-900">Minggu</dt>
-                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $project['date_submit'] ?></dd>
+                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $project['minggu'] ?></dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi</dt>

@@ -60,12 +60,26 @@ if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-lg font-medium text-blue-500 md:ms-2">Daftar Kelompok</span>
+                <span class="ms-1 text-lg font-medium text-blue-500 md:ms-2">Daftar Proyek</span>
               </div>
             </li>
           </ol>
         </nav>
 
+        <div>
+          <div class="flex flex-wrap w-full justify-between">
+            <div class="px-4 sm:px-0 flex justify-center items-center">
+              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Daftar Kumpulan Kelompok</h3>
+            </div>
+
+            <div class="flex items-center flex-wrap">
+              <a href="dashadmin.php" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+                </svg>
+                Kembali
+              </a>                            
+          </div>
         <?php include("./content/content.php") ?>
 
       </div>

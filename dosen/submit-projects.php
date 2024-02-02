@@ -79,7 +79,7 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
                 <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
-                  <span class="ms-1 text-lg font-medium text-gray-900 hover:text-blue-500 md:ms-2">Proyek Kamu</span>
+                  <span class="ms-1 text-lg font-medium text-gray-900 hover:text-blue-500 md:ms-2">Detail Kelompok</span>
                 </a>
               </div>
             </li>
@@ -100,14 +100,14 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
 
           <div class="flex flex-wrap w-full justify-between">
             <div class="px-4 sm:px-0 flex justify-center items-center">
-              <h3 class="text-2xl font-semibold leading-loose text-gray-900">Detail Kelompok dan Proyek</h3>
+              <h3 class="text-2xl font-semibold leading-loose text-gray-900">Detail Data Pengumpulan</h3>
             </div>
 
             <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button" class="text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
               <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.479 1.712 2.367 4.8a.532.532 0 0 0 .4.292l5.294.769a.534.534 0 0 1 .3.91l-3.83 3.735a.534.534 0 0 0-.154.473l.9 5.272a.535.535 0 0 1-.775.563l-4.734-2.49a.536.536 0 0 0-.5 0l-4.73 2.487a.534.534 0 0 1-.775-.563l.9-5.272a.534.534 0 0 0-.154-.473L2.158 8.48a.534.534 0 0 1 .3-.911l5.294-.77a.532.532 0 0 0 .4-.292l2.367-4.8a.534.534 0 0 1 .96.004Z" />
               </svg>
-              Beri Nilai
+              Nilai
             </button>
           </div>
         </div>
@@ -130,7 +130,7 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
               <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit[0]['proyek_url'] ?>" class="text-amber-500 underline"><?= $get_submit[0]['proyek_url'] ?></a></dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900">Laporan dan Poster Proyek</dt>
+              <dt class="text-md font-medium leading-6 text-gray-900">Laporan dan Poster</dt>
               <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                 <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
                   <!-- // ! LIST FILE DISINI -->
