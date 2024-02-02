@@ -140,7 +140,7 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
             </div>
             <div class="overflow-x-auto">
               <table class="w-full text-sm text-left text-gray-500">
-                <thead class="text-xs text-blue-700 uppercase bg-white">
+                <thead class="text-xs text-blue-700 border-b uppercase bg-white">
                   <tr>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul Proyek</th>

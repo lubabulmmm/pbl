@@ -282,3 +282,13 @@ function change_role($data_change)
 
   return mysqli_affected_rows($conn);
 }
+
+function insertData($data)
+{
+  global $conn;
+  $query = "INSERT INTO task_file (tf_id, task_id, name_file, size, ekstensi, path) VALUES ('', " . $data['tf_id'] . ", '" . $data['title'] . "', '" . $data['size'] . "', '" . $data['ekstensi'] . "', '" . $data['berkas'] . "')";
+
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+}

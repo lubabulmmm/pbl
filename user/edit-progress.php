@@ -15,10 +15,18 @@ if (isset($_SESSION["level"])) {
 }
 
 require '../query/query.php';
+$get_taskinfo = [];
+$members = [];
 
-$get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.bunch_id AS bid, category, user.nama_user, project_id, bunch_member.role AS member_role, bunch_member.id AS member_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.id =" . $_GET['tid'] . "");
+try {
+  $get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.bunch_id AS bid, category, user.nama_user, project_id, bunch_member.role AS member_role, bunch_member.id AS member_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.id =" . $_GET['tid'] . "");
 
-$members = execThis("SELECT bunch_member.id AS member_id, nama_user, role FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $get_taskinfo[0]['bid'] . "");
+  $members = execThis("SELECT bunch_member.id AS member_id, nama_user, role FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $get_taskinfo[0]['bid'] . "");
+} catch (\Throwable $th) {
+  echo $th;
+  header("Location: ../content/not-found.php");
+  exit;
+}
 
 if (isset($_POST["submit"])) {
   if (edit_task($_POST, $_GET['tid']) > 0) {
@@ -81,7 +89,7 @@ if (isset($_POST["submit"])) {
                 <svg class="ms-1 rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <a href="./details-progress.php?tid=<?= $_GET['tid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-amber-500">
+                <a href="./details-progress.php?tid=<?= $_GET['tid'] ?>&id=<?= $_GET['id'] ?>&bid=<?= $get_taskinfo[0]['bid'] ?>" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-amber-500">
                   <span class="ms-1 text-lg font-medium text-gray-900 hover:text-amber-500 md:ms-2">Detail Tugas</span>
                 </a>
               </div>

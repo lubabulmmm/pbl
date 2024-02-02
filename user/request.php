@@ -17,6 +17,19 @@ if (isset($_SESSION["level"])) {
 
 require "../query/query.php";
 
+$get_leader = [];
+$get_members = [];
+
+try {
+  $get_leader = execThis("SELECT * FROM bunch WHERE leader_id ='" . $_SESSION['email'] . "' AND project_id = " . $_GET['id'] . "");
+
+  $get_members = execThis("SELECT * FROM bunch_member WHERE member_id ='" . $_SESSION['email'] . "' AND bunch_id = " . $_GET['bid'] . "");
+} catch (\Throwable $th) {
+  echo $th;
+  header("Location: ../content/not-found.php");
+  exit;
+}
+
 if (isset($_POST["submit"])) {
   if (accept_request($_POST['request_id']) > 0 && add_accept_member($_POST) > 0) {
     header("Location: ./request.php?bid=" . $_GET['bid'] . "&id=" . $_GET['id'] . "&ainfo=200");

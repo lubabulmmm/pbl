@@ -15,18 +15,34 @@ if (isset($_SESSION["level"])) {
   }
 }
 
+// if (empty($_GET['bid']) && empty($_GET['tid']) && empty($_GET['id'])) {
+//   header("Location: ../content/not-found.php");
+//   exit;
+// }
+
 require "../query/query.php";
+$get_taskinfo = [];
+$get_leader = [];
+$get_members = [];
 
-$get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.bunch_id AS bid, category, user.nama_user, project_id, bunch_member.member_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.id =" . $_GET['tid'] . "");
+try {
+  $get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.bunch_id AS bid, category, user.nama_user, project_id, bunch_member.member_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.id =" . $_GET['tid'] . "");
 
-$get_leader = execThis("SELECT * FROM bunch WHERE leader_id ='" . $_SESSION['email'] . "' AND project_id = " . $_GET['id'] . "");
+  $get_leader = execThis("SELECT * FROM bunch WHERE leader_id ='" . $_SESSION['email'] . "' AND project_id = " . $_GET['id'] . "");
 
-$get_members = execThis("SELECT * FROM bunch_member WHERE member_id ='" . $_SESSION['email'] . "' AND bunch_id = " . $_GET['bid'] . "");
+  $get_members = execThis("SELECT * FROM bunch_member WHERE member_id ='" . $_SESSION['email'] . "' AND bunch_id = " . $_GET['bid'] . "");
+} catch (\Throwable $th) {
+  echo $th;
+  header("Location: ../content/not-found.php");
+  exit;
+}
 
 if (empty($get_leader) && empty($get_members)) {
   header("Location: restricted.php");
   exit;
 }
+
+$get_files = execThis("SELECT * FROM task_file WHERE task_id =" . $_GET['tid']);
 
 ?>
 <!DOCTYPE html>
@@ -131,13 +147,13 @@ if (empty($get_leader) && empty($get_members)) {
         <div>
           <div class="flex flex-wrap w-full justify-between">
             <div class="px-4 sm:px-0 flex justify-center items-center">
-              <h3 class="text-2xl font-semibold leading-7 text-gray-900">Detail Tugas</h3>
+              <h3 class="text-2xl font-semibold leading-7 my-2 text-gray-900">Detail Tugas</h3>
             </div>
 
 
-            <div class="flex items-center flex-wrap">
+            <div class="flex items-center flex-wrap lg:px-0 px-4">
               <?php if (!empty($get_leader)) : ?>
-                <a href="./edit-progress.php?tid=<?= $_GET['tid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2">
+                <a href="./edit-progress.php?tid=<?= $_GET['tid'] ?>&id=<?= $_GET['id'] ?>&bid=<?= $_GET['bid'] ?>" type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-1">
                   <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                     <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z" />
                     <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z" />
@@ -147,16 +163,19 @@ if (empty($get_leader) && empty($get_members)) {
               <?php endif; ?>
 
               <?php if ($get_taskinfo[0]['member_id'] == $_SESSION['email'] || !empty($get_leader)) : ?>
-                <button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2">
+
+                <button type="button" data-modal-toggle="member-upload-modal" data-modal-target="member-upload-modal" class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-1">
                   <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 19">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15h.01M4 12H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-3m-5.5 0V1.07M5.5 5l4-4 4 4" />
                   </svg>
                   Unggah File
                 </button>
 
+                <?php include("../content/uptask-file.php") ?>
+
 
                 <?php if ($get_taskinfo[0]['category'] == 'To Do') : ?>
-                  <a href="./update-progress.php?tid=<?= $get_taskinfo[0]['task_id'] ?>&id=<?= $get_taskinfo[0]['project_id'] ?>&category=Doing&bid=<?= $_GET['bid'] ?>" class="text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2">
+                  <a href="./update-progress.php?tid=<?= $get_taskinfo[0]['task_id'] ?>&id=<?= $get_taskinfo[0]['project_id'] ?>&category=Doing&bid=<?= $_GET['bid'] ?>" class="text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-1">
                     <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                       <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
@@ -165,7 +184,7 @@ if (empty($get_leader) && empty($get_members)) {
                 <?php endif; ?>
 
                 <?php if ($get_taskinfo[0]['category'] == 'Doing') : ?>
-                  <a href="./update-progress.php?tid=<?= $get_taskinfo[0]['task_id'] ?>&id=<?= $get_taskinfo[0]['project_id'] ?>&category=Done&bid=<?= $_GET['bid'] ?>" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2">
+                  <a href="./update-progress.php?tid=<?= $get_taskinfo[0]['task_id'] ?>&id=<?= $get_taskinfo[0]['project_id'] ?>&category=Done&bid=<?= $_GET['bid'] ?>" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-1">
                     <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                       <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
@@ -192,37 +211,30 @@ if (empty($get_leader) && empty($get_members)) {
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt class="text-md font-medium leading-6 text-gray-900">File Dilampirkan</dt>
                 <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
-                  <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
-                    <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
-                      <div class="flex w-0 flex-1 items-center">
-                        <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                        </svg>
-                        <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                          <span class="truncate font-medium">resume_back_end_developer.pdf</span>
-                          <span class="flex-shrink-0 text-gray-400">2.4mb</span>
-                        </div>
-                      </div>
-                      <div class="ml-4 flex-shrink-0">
-                        <a href="#" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
-                      </div>
-                    </li>
-                    <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
-                      <div class="flex w-0 flex-1 items-center">
-                        <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                        </svg>
-                        <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                          <span class="truncate font-medium">coverletter_back_end_developer.pdf</span>
-                          <span class="flex-shrink-0 text-gray-400">4.5mb</span>
-                        </div>
-                      </div>
-                      <div class="ml-4 flex-shrink-0">
-                        <a href="#" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
-                      </div>
-                    </li>
-                  </ul>
+                  <?php if (empty($get_files)) {
+                    echo "<p class=\"text-amber-700\">Tidak Ada File Dilampirkan.</p>";
+                  } ?>
+                  <?php if (!empty($get_files)) : ?>
+                    <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+                      <?php foreach ($get_files as $file) : ?>
+                        <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
+                          <div class="flex w-0 flex-1 items-center">
+                            <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                            </svg>
+                            <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                              <span class="truncate font-medium"><?= $file['name_file'] ?></span>
+                              <span class="flex-shrink-0 text-gray-400"><?= number_format($file['size'] / (1024 * 1024), 2); ?>mb</span>
+                            </div>
+                          </div>
+                          <div class="ml-4 flex-shrink-0">
+                            <a href="../query/download-file.php?url=<?= $file['path']; ?>" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
+                          </div>
+                        </li>
+                      <?php endforeach; ?>
+                    </ul>
                 </dd>
+              <?php endif; ?>
               </div>
             </dl>
           </div>
