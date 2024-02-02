@@ -81,7 +81,7 @@
 
 
                   <div class="sm:col-span-4">
-                  <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+                  <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Nama</label>
                   <div class="mt-2">
                     <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-600 sm:max-w-md">
                     <div class="name px-3 text-sm block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900"> <?= $_SESSION['nama_user'] ?></div>                      
@@ -116,10 +116,7 @@
 
               
 
-            <div class="flex items-center justify-start gap-x-5">
-              <button type="submit" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 ">Simpan</button>
-              <button type="submit" class="rounded-md bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 ">Batal</button>
-            </div>
+            
           </form>
 
       </div>
