@@ -1,5 +1,5 @@
 <div class="w-full px-4 lg:px-12 grid grid-cols-1 lg:grid-cols-3 mb-8">
-  <div class="p-5 mr-0 lg:mr-10 border shadow-sm border-gray-200 rounded-lg bg-gray-50 col-span-1 lg:col-span-2">
+  <div class="p-5 mr-0 lg:mr-10 border shadow-sm border-gray-200 rounded-lg col-span-1 lg:col-span-2">
     <h1 class="text-lg font-semibold text-gray-900">Komentar Anda</h1>
 
     <?php if ($get_comments == []) : ?>

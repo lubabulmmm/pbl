@@ -10,7 +10,7 @@
         </button>
         <a href="#" class="flex ml-2 md:mr-24 items-center">
           <img src="/pbl/assets/img/logo.png" class="h-8 mr-3" alt="PBL Logo" />
-          <span class="self-center text-lg text-blue-900 font-semibold sm:text-2xl whitespace-nowrap logo-text">PBL Vokasi</span>
+          <span class="self-center text-lg text-blue-900 font-semibold sm:text-xl whitespace-nowrap logo-text">PBL Vokasi | <span class="text-amber-500 text-lg">PIC</span></span>
         </a>
       </div>
       <div class="flex items-center">

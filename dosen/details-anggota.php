@@ -16,13 +16,24 @@ if (isset($_SESSION["level"])) {
 }
 
 require '../query/query.php';
+$get_all_members = [];
+
+try {
+
+  $get_x = execThis("SELECT nama_proyek FROM proyek WHERE id_proyek =" . $_GET['id']);
+
+  $get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, role, nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $_GET['bid'] . "");
+} catch (\Throwable $th) {
+  echo $th;
+  header("Location: ../content/not-found.php");
+  exit;
+}
 
 if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
   header("Location: restricted.php");
   exit;
 }
 
-$get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, role, nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $_GET['bid'] . "");
 
 $get_leader_name = execThis("SELECT leader_id, nama_user, nama_proyek FROM bunch INNER JOIN user ON bunch.leader_id = user.email INNER JOIN proyek ON bunch.project_id = proyek.id_proyek WHERE bunch_id = " . $_GET['bid'] . "");
 
@@ -45,7 +56,7 @@ $roles = execThis("SELECT * FROM role");
   <?php include("../user/includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50">
+<body class="">
 
   <?php include("./includes/navbar.php") ?>
 
@@ -60,7 +71,7 @@ $roles = execThis("SELECT * FROM role");
         <nav class="flex my-7" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
-              <a href="./dashadmin.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
+              <a href="./dashadmin.php" class="inline-flex items-center lg:text-lg text-xs font-medium text-gray-700 hover:text-blue-500">
                 <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                 </svg>
@@ -82,7 +93,7 @@ $roles = execThis("SELECT * FROM role");
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-lg font-medium text-blue-500 md:ms-2">Detail Anggota</span>
+                <span class="ms-1 lg:text-lg text-xs font-medium text-blue-500 md:ms-2">Detail Anggota</span>
               </div>
             </li>
           </ol>
@@ -103,54 +114,81 @@ $roles = execThis("SELECT * FROM role");
           </div>
         </div>
 
+        <div class="mt-2 border-t border-gray-100">
+          <dl class="divide-y divide-gray-200">
+            <div class="px-1 sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-md mt-4 font-medium leading-6 text-gray-900 flex flex-col col-span-2 lg:col-span-1">
+                <p class="text-md text-gray-900">Ketua Kelompok (PM)</p>
 
+                <div class="bg-white border shadow border-gray-200 mt-3 p-5 rounded-lg col-span-2">
 
-        <div class="mt-6 border-t border-gray-100">
-          <dl class="divide-y divide-gray-100">
-            <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900">Ketua Kelompok (PM)</dt>
-              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                <div class="w-full">
-                  <!-- Start coding here -->
-                  <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                    <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                      <div class="flex items-center gap-4">
-                        <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/flora.jpg" alt="">
-                        <div class="font-medium">
-                          <div><?= $get_leader_name[0]['nama_user'] ?> | PM</div>
-                          <div class="text-sm text-gray-500"><?= $get_leader_name[0]['leader_id'] ?></div>
+                  <ul class="max-w-full">
+                    <?php foreach ($get_leader_name as $all) : ?>
+                      <li class="pb-3 sm:pb-4 mt-2.5 last:border-0 last:pb-0 first:mt-0 border-b border-gray-200">
+                        <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                          <div class="flex-shrink-0">
+                            <img class="w-8 h-8 rounded-full" src="../assets/img/ian.jpeg" alt="">
+                          </div>
+                          <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate ">
+                              <?= $all['nama_user'] ?>
+                            </p>
+                            <p class="text-sm text-gray-500 truncate">
+                              <?= $all['leader_id'] ?>
+                            </p>
+                          </div>
+                          <div class="inline-flex items-center text-xs font-semibold text-gray-900 ">
+                            Ketua Kelompok
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+              </dt>
+              <dd class="mt-1 font-medium leading-6 text-gray-900 sm:col-span-2 sm:mt-4">
+                <p class="text-md text-gray-900">Daftar Anggota</p>
+
+                <div class="bg-white border shadow border-gray-200 mt-2.5 p-5 rounded-lg">
+
+                  <ul class="max-w-full">
+                    <?php if (empty($get_all_members)) : ?>
+                      <p class="text-center text-gray-500 text-sm font-light">Belum Memiliki Anggota.</p>
+                    <?php endif; ?>
+                    <?php foreach ($get_all_members as $gam) : ?>
+                      <li class="pb-3 sm:pb-4 mt-2.5 last:border-0 last:pb-0 first:mt-0 border-b border-gray-200">
+                        <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                          <div class="flex-shrink-0">
+                            <img class="w-8 h-8 rounded-full" src="../assets/img/ian.jpeg" alt="">
+                          </div>
+
+                          <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate ">
+                              <?= $gam['nama_user'] ?>
+                            </p>
+                            <p class="text-sm text-gray-500 truncate">
+                              <?= $gam['member_id'] ?>
+                            </p>
+                          </div>
+                          <div class="inline-flex items-center">
+                            <p class="focus:outline-none text-blue-700 bg-blue-200  font-medium rounded-full text-xs px-2.5 py-1.5 me-1 mb-1 "><?= $gam['role'] ?></p>
+
+                            <?php if (!empty($get_leader)) : ?>
+                              <button type="button" data-modal-target="popup-modal-<?= $gam['id_member'] ?>" data-modal-toggle="popup-modal-<?= $gam['id_member'] ?>" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-md text-xs px-2.5 py-1.5 me-1 mb-1 ">Ganti role</button>
+                            <?php endif; ?>
+                          </div>
+                        </div>
+                        <?php if (!empty($get_leader)) : ?>
+                          <?php include("../content/change-role.php") ?>
+                        <?php endif; ?>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
                 </div>
               </dd>
             </div>
-            <?php foreach ($get_all_members as $member) : ?>
-              <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-md font-medium leading-6 text-gray-900"></dt>
-                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  <div class="w-full">
-                    <!-- Start coding here -->
-                    <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                      <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                        <div class="flex items-center gap-4">
-                          <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/ian.jpeg" alt="">
-                          <div class="font-medium">
-                            <div><?= $member['nama_user'] ?> | <?= $member['role'] ?></div>
-                            <div class="text-sm text-gray-500"><?= $member['member_id'] ?></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </dd>
-              </div>
-            <?php endforeach; ?>
           </dl>
         </div>
-
-        <?php include("./content/role-modal.php") ?>
       </div>
     </div>
   </div>
