@@ -29,6 +29,10 @@ try {
   exit;
 }
 
+if (empty($get_x) || empty($get_submit_links)) {
+  header("Location: restricted.php");
+}
+
 if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
   header("Location: restricted.php");
   exit;

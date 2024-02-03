@@ -28,11 +28,15 @@ try {
   exit;
 }
 
+if (empty($get_taskinfo) || empty($members)) {
+  header("Location: restricted.php");
+}
+
 if (isset($_POST["submit"])) {
   if (edit_task($_POST, $_GET['tid']) > 0) {
-    header("Location: details-progress.php?tid=" . $_GET['tid'] . "&id=" . $_GET['id'] . "&info=success");
+    header("Location: details-progress.php?tid=" . $_GET['tid'] . "&id=" . $_GET['id'] . "&bid=" . $_GET['bid'] . "&info=success");
   } else {
-    header("Location: details-progress.php?tid=1" . $_GET['tid'] . "&id=" . $_GET['id'] . "&info=failed");
+    header("Location: details-progress.php?tid=1" . $_GET['tid'] . "&id=" . $_GET['id'] . "&bid=" . $_GET['bid'] . "&info=failed");
   }
 }
 
