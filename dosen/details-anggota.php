@@ -84,7 +84,7 @@ $roles = execThis("SELECT * FROM role");
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
                 <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center lg:text-lg text-xs md:text-md font-medium text-gray-700 hover:text-blue-800">
-                  <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-500 md:ms-2">Proyek</span>
+                  <span class="ms-1 lg:text-lg text-xs md:text-md font-medium text-gray-900 hover:text-blue-500 md:ms-2">Detail Kelompok</span>
                 </a>
               </div>
             </li>
@@ -189,6 +189,27 @@ $roles = execThis("SELECT * FROM role");
                 </div>
               </dd>
             </div>
+            <?php foreach ($get_all_members as $member) : ?>
+              <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-md font-medium leading-6 text-gray-900"></dt>
+                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                  <div class="w-full">
+                    <!-- Start coding here -->
+                    <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
+                      <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
+                        <div class="flex items-center gap-4">
+                          <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/ian.jpeg" alt="">
+                          <div class="font-medium">
+                            <div><?= $member['nama_user'] ?> | <?= $member['role'] ?></div>
+                            <div class="text-sm text-gray-500"><?= $member['member_id'] ?></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </dd>
+              </div>
+            <?php endforeach; ?>
           </dl>
         </div>
       </div>

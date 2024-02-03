@@ -20,7 +20,7 @@ require "../query/query.php";
 $list_bunch = execThis('SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name, proyek.id_proyek FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email');
 
 if (isset($_POST['search'])) {
-  $searchTerm = $_POST['searchTerm'];
+  $keyword = $_POST['keyword'];
 
 
   $searchQuery = "SELECT bunch_id, bunch_name, leader.nama_user AS leader_name, 
@@ -77,10 +77,10 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
 
 <body class="">
 
-  <?php include("./includes/navbar.php") ?>
+<?php include("./includes/navbar.php") ?>
 
-  <!-- Side Bar -->
-  <?php include("./includes/aside.php") ?>
+<!-- Side Bar -->
+<?php include("./includes/aside.php") ?>
   <div class="p-4 sm:ml-64">
     <!-- important -->
     <div class="rounded-lg mt-14 flex flex-col item-start">
@@ -117,24 +117,25 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
               </div>
 
               <div class="w-full md:w-1/2">
-                <form class="flex items-center">
+              <form method="post" action="" class="flex items-center">
                   <label for="simple-search" class="sr-only">Search</label>
                   <div class="relative w-full">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                      </svg>
-                    </div>
-                    <input type="text" id="simple-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-amber-500 block w-full pl-10 p-2 mr-3" placeholder="Search" required="">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                          <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                          </svg>
+                      </div>
+                      <!-- Correct the input ID to match the jQuery selector -->
+                      <input type="text" name="keyword" id="simple-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-amber-500 block w-full pl-10 p-2 mr-3" placeholder="Search" required="">
                   </div>
 
                   <button type="submit" name="search" class="flex items-center justify-center text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
-                    <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                    </svg>
-                    Search
+                      <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                      </svg>
+                      Search
                   </button>
-                </form>
+              </form>
               </div>
 
             </div>
@@ -174,15 +175,7 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
                 </tbody>
               </table>
             </div>
-            <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-              <span class="text-sm font-normal text-gray-500">
-                Showing
-                <span class="font-semibold text-gray-900"><?= $offset + 1 ?></span>
-                to
-                <span class="font-semibold text-gray-900"><?= min($offset + $itemsPerPage, count($list_bunch)) ?></span>
-                of
-                <span class="font-semibold text-gray-900"><?= count($list_bunch) ?></span>
-              </span>
+            <nav class="flex flex-col justify-between items-start md:items-end space-y-3 md:space-y-0 p-4" aria-label="Table navigation">             
               <ul class="inline-flex items-stretch -space-x-px">
                 <li>
                   <?php if ($current_page > 1) : ?>
@@ -233,6 +226,77 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
 
     </div>
   </div>
+
+  <!-- ... (your previous HTML code) ... -->
+
+<!-- ... (your previous HTML code) ... -->
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Include jQuery library -->
+
+<script>
+$(document).ready(function () {
+
+    $('form').submit(function (e) {
+        e.preventDefault();
+        liveSearch();
+    });
+
+    // Correct the input ID to match the jQuery selector
+    $('#simple-search').on('input', function () {
+        liveSearch();
+    });
+
+    function liveSearch() {
+        // Correct the input ID to match the jQuery selector
+        var keyword = $('#simple-search').val();
+
+        $.ajax({
+            type: 'POST',
+            url: 'live_searchkel.php',
+            data: {
+                keyword: keyword
+            },
+            dataType: 'json',
+            success: function (data) {
+                updateTable(data);
+            }
+        });
+    }
+
+    function updateTable(projects) {
+        var tableBody = $('tbody');
+        tableBody.empty();
+
+        $.each(projects, function (index, project) {
+            var count = index + 1;
+
+            var row = `<tr class="border-b hover:bg-gray-100">
+                            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${count}.</th>
+                            <td class="px-4 py-3">${project['nama_proyek']}</td>
+                            <td class="px-4 py-3">${project['bunch_name']}</td>
+                            <td class="px-4 py-3">${project['leader_name']}</td>
+                            <td class="px-4 py-3">${project['observer_name']}</td>
+                            <td class="px-4 py-3">
+                                <a href="./detail-kelompok.php?bid=${project['bunch_id']}&id=${project['id_proyek']}" type="button" class="text-blue-700 border-2 border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
+                                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    <span class="sr-only">Icon description</span>
+                                </a>
+                            </td>
+                        </tr>`;
+
+            tableBody.append(row);
+        });
+    }
+});
+
+</script>
+
+<!-- ... (your previous HTML code) ... -->
+
+
+
 
 
 
