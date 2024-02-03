@@ -98,7 +98,7 @@ if (isset($_POST["login"])) {
       <div class="w-full rounded-2xl shadow-lg md:mt-0 sm:max-w-md xl:p-0 bg-gray-50">
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-            Selamat Datang Kembali, Vokasioner!
+            Selamat Datang, Vokasioner!
           </h1>
           <!-- Display error messages -->
 <?php if (!empty($emailError)) : ?>

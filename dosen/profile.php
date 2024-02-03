@@ -81,9 +81,8 @@ if (isset($_SESSION["level"])) {
                 </div>
 
 
-
-                <div class="sm:col-span-4">
-                  <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+                  <div class="sm:col-span-4">
+                  <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Nama</label>
                   <div class="mt-2">
                     <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-600 sm:max-w-md">
                       <div class="name px-3 text-sm block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900"> <?= $_SESSION['nama_user'] ?></div>
@@ -111,7 +110,8 @@ if (isset($_SESSION["level"])) {
                   </div>
                 </div>
 
-
+            
+          </form>
 
               </div>
             </div>
