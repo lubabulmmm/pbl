@@ -27,6 +27,9 @@ if (isset($_POST["submit"])) {
 }
 
 $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
+$cats = execThis("SELECT * FROM categories");
+
+$rand_pict = rand(1, 8);
 
 ?>
 
@@ -126,10 +129,20 @@ $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
                 </div>
                 <div>
                   <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Dosen PIC</label>
-                  <select id="category" name="dosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                  <select id="dosen" name="dosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
                     <option selected>Pilih Dosen</option>
                     <?php foreach ($dos as $do) : ?>
                       <option value="<?php echo $do["email"] ?>"><?= $do["nama_user"]; ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
+                <input type="hidden" value="<?= $rand_pict ?>" name="pict">
+                <div>
+                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Kategori</label>
+                  <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                    <option selected>Pilih Kategori</option>
+                    <?php foreach ($cats as $cat) : ?>
+                      <option value="<?php echo $cat["c_id"] ?>"><?= $cat["category_name"]; ?></option>
                     <?php endforeach; ?>
                   </select>
                 </div>
@@ -145,10 +158,6 @@ $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
                   <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Wajib</label>
                   <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Fitur Wajib"></textarea>
                 </div>
-                <!-- <div class="sm:col-span-2">
-                  <label class="block mb-2 text-sm font-medium text-gray-900" for="small_size">File Pendukung</label>
-                  <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="multiple_files" type="file" multiple>
-                </div> -->
               </div>
               <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
                 Tambah
@@ -157,7 +166,7 @@ $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
                 Batal
               </button>
               <a href="./projects-list.php" type="button" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-red-500 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-red-400">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
                 Kembali
               </a>
             </form>
