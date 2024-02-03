@@ -17,7 +17,7 @@ if (isset($_SESSION["level"])) {
 
 require '../../query/query.php';
 
-$details_bunch = execThis("SELECT bunch_id, id_proyek, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name, deskripsi_proyek FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email WHERE bunch_id = " . $_GET['bid'] . "");
+$details_bunch = execThis("SELECT bunch_id, id_proyek, bunch_name, grade, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name, deskripsi_proyek FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email WHERE bunch_id = " . $_GET['bid'] . "");
 
 $bunch_members = execThis("SELECT nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id = " . $_GET['bid'] . "");
 
@@ -111,17 +111,17 @@ $done_sum = mysqli_num_rows($done_fetch);
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
                 </svg>
                 Kembali
-              </a>                            
-            <a href="./submitted.php?id=<?= $details_bunch[0]['id_proyek'] ?>&bid=<?= $details_bunch[0]['bunch_id'] ?>" class="flex items-center flex-wrap">
-              <button type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7.708 2.292.706-.706A2 2 0 0 1 9.828 1h6.239A.97.97 0 0 1 17 2v12a.97.97 0 0 1-.933 1H15M6 5v4a1 1 0 0 1-1 1H1m11-4v12a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V9.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 5h5.239A.97.97 0 0 1 12 6Z" />
-                </svg>
+              </a>
+              <a href="./submitted.php?id=<?= $details_bunch[0]['id_proyek'] ?>&bid=<?= $details_bunch[0]['bunch_id'] ?>" class="flex items-center flex-wrap">
+                <button type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                  <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7.708 2.292.706-.706A2 2 0 0 1 9.828 1h6.239A.97.97 0 0 1 17 2v12a.97.97 0 0 1-.933 1H15M6 5v4a1 1 0 0 1-1 1H1m11-4v12a.97.97 0 0 1-.933 1H1.933A.97.97 0 0 1 1 18V9.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 5h5.239A.97.97 0 0 1 12 6Z" />
+                  </svg>
 
-                Data Pengumpulan
-              </button>
-            </a>
-          </div>
+                  Data Pengumpulan
+                </button>
+              </a>
+            </div>
           </div>
 
           <?php foreach ($details_bunch as $detail) : ?>
@@ -140,16 +140,12 @@ $done_sum = mysqli_num_rows($done_fetch);
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $detail['deskripsi_proyek'] ?></dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Status Pengumpulan</dt>
-                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><span class="text-green-600">Telah Mengumpulkan</span></dd>
-                </div>
-                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt class="text-md font-medium leading-6 text-gray-900">Ketua Kelompok (PM)</dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $detail['leader_name'] ?></dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt class="text-md font-medium leading-6 text-gray-900">Nilai</dt>
-                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500">80</span> /100</dd>
+                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500"><?= $detail['grade'] ?></span> /100</dd>
                 </div>
                 <!-- // ! Anggota Kelompok -->
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -185,55 +181,31 @@ $done_sum = mysqli_num_rows($done_fetch);
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt class="text-md font-medium leading-6 text-gray-900">Lampiran File</dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
-                    <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
-                      <!-- // ! LIST FILE DISINI -->
-
-                      <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
-                        <div class="flex w-0 flex-1 items-center">
-                          <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                          </svg>
-                          <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                            <span class="truncate font-medium">resume_back_end_developer.pdf</span>
-                            <span class="flex-shrink-0 text-gray-400">2.4mb</span>
-                          </div>
-                        </div>
-                        <div class="ml-4 flex-shrink-0">
-                          <a href="#" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
-                        </div>
-                      </li>
-
-                      <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
-                        <div class="flex w-0 flex-1 items-center">
-                          <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                          </svg>
-                          <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                            <span class="truncate font-medium">coverletter_back_end_developer.pdf</span>
-                            <span class="flex-shrink-0 text-gray-400">4.5mb</span>
-                          </div>
-                        </div>
-                        <div class="ml-4 flex-shrink-0">
-                          <a href="#" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
-                        </div>
-                      </li>
-
-                      <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
-                        <div class="flex w-0 flex-1 items-center">
-                          <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                          </svg>
-                          <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                            <span class="truncate font-medium">coverletter_back_end_developer.pdf</span>
-                            <span class="flex-shrink-0 text-gray-400">4.5mb</span>
-                          </div>
-                        </div>
-                        <div class="ml-4 flex-shrink-0">
-                          <a href="#" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
-                        </div>
-                      </li>
-
-                    </ul>
+                    <?php
+                    $get_files = execThis("SELECT * FROM submit_file WHERE bunch_id =" . $_GET['bid']);
+                    if (empty($get_files)) {
+                      echo "<p class=\"text-amber-700\">Tidak Ada File Dilampirkan.</p>";
+                    } ?>
+                    <?php if (!empty($get_files)) : ?>
+                      <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+                        <?php foreach ($get_files as $file) : ?>
+                          <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
+                            <div class="flex w-0 flex-1 items-center">
+                              <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                              </svg>
+                              <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                                <span class="truncate font-medium"><?= $file['name_file'] ?></span>
+                                <span class="flex-shrink-0 text-gray-400"><?= number_format($file['size'] / (1024 * 1024), 2); ?>mb</span>
+                              </div>
+                            </div>
+                            <div class="ml-4 flex-shrink-0">
+                              <a href="../query/download-file.php?url=<?= $file['path']; ?>" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
+                            </div>
+                          </li>
+                        <?php endforeach; ?>
+                      </ul>
+                    <?php endif; ?>
                   </dd>
                 </div>
 

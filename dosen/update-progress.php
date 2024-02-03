@@ -6,7 +6,7 @@ $task_id = $_GET['tid'];
 $category = $_GET['category'];
 
 if (update_task($task_id, $category) > 0) {
-  header("Location: ./details-progress.php?info=success&tid=" . $task_id . "&id=" . $_GET['id'] . "");
+  header("Location: ./details-progress.php?info=success&tid=" . $task_id . "&id=" . $_GET['id'] . "&bid=" . $_GET['bid']);
 } else {
-  header("Location: ./details-progress.php?info=failed&tid=" . $task_id . "&id=" . $_GET['id'] . "");
+  header("Location: ./details-progress.php?info=failed&tid=" . $task_id . "&id=" . $_GET['id'] . "&bid=" . $_GET['bid']);
 }

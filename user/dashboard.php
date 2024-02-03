@@ -82,7 +82,7 @@ if (isset($_POST["cari"])) {
 
       <!-- PROYEK PENGERJAAN -->
       <div class="flex px-7 mb-6 flex-wrap">
-        <a href="./groups.php" type="button" class="text-amber-500 bg-white focus:ring-4 focus:outline-none focus:ring-amber-300 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 m-2 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
+        <a href="./groups.php" type="button" class="text-amber-500 bg-white focus:ring-4 focus:outline-none focus:ring-amber-300 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 ml-0 mr-2 my-2 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
           <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.333 6.764a3 3 0 1 1 3.141-5.023M2.5 16H1v-2a4 4 0 0 1 4-4m7.379-8.121a3 3 0 1 1 2.976 5M15 10a4 4 0 0 1 4 4v2h-1.761M13 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-4 6h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z" />
           </svg>
@@ -110,6 +110,7 @@ if (isset($_POST["cari"])) {
 
       <div class="py-8 max-w-screen-xl px-7 lg:py-4 lg:px-6">
         <div class="grid gap-8 lg:grid-cols-2">
+
           <?php include("../content/user-project.php") ?>
         </div>
       </div>

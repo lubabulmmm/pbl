@@ -23,9 +23,9 @@ $members = execThis("SELECT bunch_member.id AS member_id, nama_user, role FROM b
 
 if (isset($_POST["submit"])) {
   if (edit_task($_POST, $_GET['tid']) > 0) {
-    header("Location: details-progress.php?tid=" . $_GET['tid']);
+    header("Location: details-progress.php?tid=" . $_GET['tid'] . "&id=" . $_GET['id'] . "&bid=1" . $_GET['bid']);
   } else {
-    header("Location: details-progress.php?tid=1" . $_GET['tid']);
+    header("Location: details-progress.php?tid=" . $_GET['tid'] . "&id=" . $_GET['id'] . "&bid=1" . $_GET['bid']);
   }
 }
 

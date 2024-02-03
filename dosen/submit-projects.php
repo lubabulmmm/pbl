@@ -16,6 +16,16 @@ if (isset($_SESSION["level"])) {
 }
 
 require "../query/query.php";
+$get_submit_links = [];
+
+try {
+  $get_x = execThis("SELECT nama_proyek FROM proyek WHERE id_proyek =" . $_GET['id']);
+  $get_submit_links = execThis("SELECT * FROM submit_links WHERE bunch_id =" . $_GET['bid']);
+} catch (\Throwable $th) {
+  echo $th;
+  header("Location: ../content/not-found.php");
+  exit;
+}
 
 if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
   header("Location: restricted.php");
@@ -30,8 +40,8 @@ if (isset($_POST["submit"])) {
   }
 }
 
-$get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] . "");
 
+$get_files = execThis("SELECT * FROM submit_file WHERE bunch_id =" . $_GET['bid']);
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +61,7 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-white">
 
   <?php include("./includes/navbar.php") ?>
 
@@ -66,7 +76,7 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
         <nav class="flex my-7" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
-              <a href="./dashadmin.php" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
+              <a href="./dashadmin.php" class="inline-flex items-center lg:text-lg text-md font-medium text-gray-700 hover:text-blue-500">
                 <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                 </svg>
@@ -78,8 +88,8 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
                 <svg class="ms-1 rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-500">
-                  <span class="ms-1 text-lg font-medium text-gray-900 hover:text-blue-500 md:ms-2">Detail Kelompok</span>
+                <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center lg:text-lg text-md font-medium text-gray-700 hover:text-blue-500">
+                  <span class="ms-1 lg:text-lg text-md font-medium text-gray-900 hover:text-blue-500 md:ms-2">Proyek Kamu</span>
                 </a>
               </div>
             </li>
@@ -88,7 +98,7 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-lg font-medium text-blue-500 md:ms-2">Pengumpulan Proyek</span>
+                <span class="ms-1 lg:text-lg text-md font-medium text-blue-500 md:ms-2">Pengumpulan Proyek</span>
               </div>
             </li>
           </ol>
@@ -121,7 +131,7 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
 
         <?php include("./content/grade-modal.php") ?>
 
-        <?php if ($get_submit == []) { ?>
+        <?php if ($get_submit_links == []) { ?>
           <p>Belum mengumpulkan</p>
         <?php exit;
         } ?>
@@ -130,50 +140,40 @@ $get_submit = execThis("SELECT * FROM submit WHERE bunch_id = " . $_GET['bid'] .
           <dl class="divide-y divide-gray-100">
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt class="text-md font-medium leading-6 text-gray-900">Link Youtube</dt>
-              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit[0]['link_youtube'] ?>" class="text-amber-500 underline"><?= $get_submit[0]['link_youtube'] ?></a></dd>
+              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit_links[0]['yt_url'] ?>" class="text-amber-500 underline"><?= $get_submit_links[0]['yt_url'] ?></a></dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt class="text-md font-medium leading-6 text-gray-900">URL Website/Aplikasi</dt>
-              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit[0]['proyek_url'] ?>" class="text-amber-500 underline"><?= $get_submit[0]['proyek_url'] ?></a></dd>
+              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit_links[0]['web_url'] ?>" class="text-amber-500 underline"><?= $get_submit_links[0]['web_url'] ?></a></dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt class="text-md font-medium leading-6 text-gray-900">Laporan dan Poster</dt>
               <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
-                <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
-                  <!-- // ! LIST FILE DISINI -->
-
-                  <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
-                    <div class="flex w-0 flex-1 items-center">
-                      <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                      </svg>
-                      <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                        <span class="truncate font-medium">resume_back_end_developer.pdf</span>
-                        <span class="flex-shrink-0 text-gray-400">2.4mb</span>
-                      </div>
-                    </div>
-                    <div class="ml-4 flex-shrink-0">
-                      <a href="#" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
-                    </div>
-                  </li>
-
-                  <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
-                    <div class="flex w-0 flex-1 items-center">
-                      <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                      </svg>
-                      <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                        <span class="truncate font-medium">coverletter_back_end_developer.pdf</span>
-                        <span class="flex-shrink-0 text-gray-400">4.5mb</span>
-                      </div>
-                    </div>
-                    <div class="ml-4 flex-shrink-0">
-                      <a href="#" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
-                    </div>
-                  </li>
-
-                </ul>
+                <?php if (empty($get_files)) {
+                  echo "<p class=\"text-amber-700\">Tidak Ada File Dilampirkan.</p>";
+                } ?>
+                <?php if (!empty($get_files)) : ?>
+                  <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+                    <?php foreach ($get_files as $file) : ?>
+                      <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
+                        <div class="flex w-0 flex-1 items-center">
+                          <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                          </svg>
+                          <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                            <span class="truncate font-medium"><?= $file['name_file'] ?></span>
+                            <span class="flex-shrink-0 text-gray-400"><?= number_format($file['size'] / (1024 * 1024), 2); ?>mb</span>
+                          </div>
+                        </div>
+                        <div class="ml-4 flex-shrink-0">
+                          <a href="../query/download-file.php?url=<?= $file['path']; ?>" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
+                        </div>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
+                <?php endif; ?>
               </dd>
+
             </div>
 
           </dl>

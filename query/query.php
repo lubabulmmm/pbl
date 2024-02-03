@@ -98,8 +98,9 @@ function add_this_project($data_project)
   $desc = $data_project['description'];
   $req = $data_project['features'];
   $minggu = $data_project['week'];
+  $pict = $data_project['pict'];
 
-  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No')";
+  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show, pict) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No', '$pict')";
 
 
   mysqli_query($conn, $sql_add_projects);
@@ -207,6 +208,7 @@ function add_grade($grade, $bunch_id)
 
   return mysqli_affected_rows($conn);
 }
+
 function add_bunch($user_data, $user_email, $id_project)
 {
   global $conn;
@@ -310,5 +312,28 @@ function insertDataSubmitReport($data, $type)
 
   mysqli_query($conn, $query);
 
+  return mysqli_affected_rows($conn);
+}
+
+function edit_project($proyek_data, $id)
+{
+  global $conn;
+  $proyek_name = $proyek_data['name'];
+  $proyek_pic = $proyek_data['dosen'];
+  $proyek_desc = $proyek_data['desc'];
+  $proyek_week = $proyek_data['week'];
+
+  $sql = "UPDATE proyek SET nama_proyek = '" . $proyek_name . "', deskripsi_proyek = '" . $proyek_desc . "', id_user = '" . $proyek_pic . "', minggu = $proyek_week WHERE proyek.id_proyek = " . $id . "";
+
+  mysqli_query($conn, $sql);
+  return mysqli_affected_rows($conn);
+}
+
+function update_to_yes($id)
+{
+  global $conn;
+  $sql = "UPDATE bunch SET status_show = 'Yes' WHERE bunch_id = $id";
+
+  mysqli_query($conn, $sql);
   return mysqli_affected_rows($conn);
 }
