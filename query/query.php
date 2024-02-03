@@ -350,3 +350,39 @@ function add_pm_req($user_data, $user_email, $id_project)
 
   return mysqli_affected_rows($conn);
 }
+
+function reject_request_pm($id_req)
+{
+  global $conn;
+
+  $sql_reject = "UPDATE request_project SET status_req = 'Ditolak' WHERE request_project.r_id = " . $id_req . "";
+
+  mysqli_query($conn, $sql_reject);
+
+  return mysqli_affected_rows($conn);
+}
+
+function accept_request_pm($id_req)
+{
+  global $conn;
+
+  $sql_reject = "UPDATE request_project SET status_req = 'Diterima' WHERE request_project.r_id = " . $id_req . "";
+
+  mysqli_query($conn, $sql_reject);
+
+  return mysqli_affected_rows($conn);
+}
+
+function add_accept_bunch($data_bunch)
+{
+  global $conn;
+  $user_id = $data_bunch['email'];
+  $bunch_name = $data_bunch['name'];
+  $project_id = $data_bunch['project_id'];
+
+  $sql_add = "INSERT INTO bunch (bunch_id, bunch_name, leader_id, project_id, grade, status_show) VALUES (NULL, '" . $bunch_name . "', '" . $user_id . "', '" . $project_id . "', '0', 'No')";
+
+  mysqli_query($conn, $sql_add);
+
+  return mysqli_affected_rows($conn);
+}

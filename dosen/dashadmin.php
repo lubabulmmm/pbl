@@ -71,16 +71,17 @@ if (isset($_SESSION["level"])) {
           Tambah Proyek
         </a>
 
-        <a href="./request-pm.php" type="button" data-modal-target="req-list-modal" data-modal-toggle="req-list-modal" class="text-green-600 bg-white focus:ring-4 focus:outline-none focus:ring-green-100 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 m-2 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
+        <button type="button" data-modal-target="req-list" data-modal-toggle="req-list" class="text-green-600 bg-white focus:ring-4 focus:outline-none focus:ring-green-100 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 m-2 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
 
           <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13h3.4a1 1 0 0 1 1 .6 4 4 0 0 0 7.3 0 1 1 0 0 1 .9-.6H20M4 13v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M4 13l2-9h12l2 9" />
           </svg>
           Permintaan Bergabung
-        </a>
+        </button>
       </div>
 
       <?php include("./content/chsadmin.php") ?>
+      <?php include("../content/req-list-pm.php") ?>
 
 
     </div>

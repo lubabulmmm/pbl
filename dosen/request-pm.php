@@ -15,6 +15,35 @@ if (isset($_SESSION["level"])) {
   }
 }
 
+require "../query/query.php";
+
+try {
+  $list_request = execThis("SELECT r_id, project_id, user_id, bunch_name, nama_user FROM request_project INNER JOIN user ON request_project.user_id = user.email WHERE project_id =" . $_GET['id'] . " AND status_req = 'Belum Diterima'");
+
+  $get_all_pms = execThis("SELECT nama_user, leader_id FROM bunch INNER JOIN user ON bunch.leader_id = user.email WHERE project_id =" . $_GET['id']);
+} catch (\Throwable $th) {
+  echo $th;
+  header("Location: ../content/not-found.php");
+  exit;
+}
+
+if (empty($_GET['id'])) {
+  header("Location: restricted.php");
+}
+
+if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
+  header("Location: restricted.php");
+  exit;
+}
+
+if (isset($_POST["submit"])) {
+  if (accept_request_pm($_POST['r_id']) > 0 && add_accept_bunch($_POST) > 0) {
+    header("Location: ./request-pm.php?id=" . $_GET['id'] . "&ainfo=200");
+  } else {
+    header("Location: ./request-pm.php?id=" . $_GET['id'] . "&ainfo=404");
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +99,83 @@ if (isset($_SESSION["level"])) {
             </a>
 
           </div>
+        </div>
+
+        <div class="pt-4 border-t border-gray-200">
+          <dl class="divide-y divide-gray-100">
+            <div class="px-1 sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-md font-medium leading-6 text-gray-900 flex flex-col col-span-2 lg:col-span-1">
+                <p class="text-md text-gray-900">Daftar Anggota & Role</p>
+
+                <div class="bg-white border shadow border-gray-200 mt-5 p-5 rounded-lg col-span-2">
+
+                  <ul class="max-w-full">
+                    <?php if (empty($get_all_pms)) : ?>
+                      <p class="text-center text-gray-500 text-sm font-light">Belum ada kelompok mengambil.</p>
+                    <?php endif; ?>
+                    <?php foreach ($get_all_pms as $all) : ?>
+                      <li class="pb-3 sm:pb-4 mt-2.5 last:border-0 last:pb-0 first:mt-0 border-b border-gray-200">
+                        <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                          <div class="flex-shrink-0">
+                            <img class="w-8 h-8 rounded-full" src="../assets/img/ian.jpeg" alt="">
+                          </div>
+                          <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate ">
+                              <?= $all['nama_user'] ?>
+                            </p>
+                            <p class="text-sm text-gray-500 truncate">
+                              <?= $all['leader_id'] ?>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+              </dt>
+              <dd class="mt-1 font-medium leading-6 text-gray-900 sm:col-span-2 sm:mt-0">
+                <p class="text-md text-gray-900">Daftar Permintaan Bergabung</p>
+
+                <div class="bg-white border shadow border-gray-200 mt-5 p-5 rounded-lg">
+
+                  <ul class="max-w-full">
+                    <?php if (empty($list_request)) : ?>
+                      <p class="text-center text-gray-500 text-sm font-light">Belum ada permintaan.</p>
+                    <?php endif; ?>
+                    <?php foreach ($list_request as $lr) : ?>
+                      <li class="pb-3 sm:pb-4 mt-2.5 last:border-0 last:pb-0 first:mt-0 border-b border-gray-200">
+                        <form action="" method="post">
+                          <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                            <div class="flex-shrink-0">
+                              <img class="w-8 h-8 rounded-full" src="../assets/img/ian.jpeg" alt="">
+                            </div>
+
+                            <div class="flex-1 min-w-0">
+                              <p class="text-sm font-medium text-gray-900 truncate ">
+                                <?= $lr['nama_user'] ?>
+                              </p>
+                              <input type="hidden" name="project_id" value="<?= $lr['project_id'] ?>" />
+                              <input type="hidden" name="r_id" value="<?= $lr['r_id'] ?>" />
+                              <input type="hidden" name="email" value="<?= $lr['user_id'] ?>" />
+                              <input type="hidden" name="name" value="<?= $lr['bunch_name'] ?>" />
+                              <p class="text-sm text-gray-500 truncate">
+                                <?= $lr['user_id'] ?>
+                              </p>
+                            </div>
+                            <div class="inline-flex items-center">
+                              <button type="submit" name="submit" class="focus:outline-none text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 ">Terima</button>
+                              <button type="button" data-modal-target="popup-modal-rp" data-modal-toggle="popup-modal-rp" class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 ">Tolak</button>
+                            </div>
+                          </div>
+                        </form>
+                        <?php include("../content/reject-pm.php") ?>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+              </dd>
+            </div>
+          </dl>
         </div>
       </div>
     </div>
