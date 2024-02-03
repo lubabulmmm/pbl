@@ -34,7 +34,7 @@ if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50 ">
+<body class="">
   <!-- Navigation Bar -->
   <?php include("./includes/navbar.php") ?>
 

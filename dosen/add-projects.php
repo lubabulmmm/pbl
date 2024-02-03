@@ -25,6 +25,8 @@ if (isset($_POST["submit"])) {
   }
 }
 
+$rand_pict = rand(1, 8);
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ if (isset($_POST["submit"])) {
   <?php include("./includes/head.php") ?>
 </head>
 
-<body class="bg-gray-50 ">
+<body class=" ">
   <!-- Navigation Bar -->
   <?php include("./includes/navbar.php") ?>
 
@@ -71,36 +73,33 @@ if (isset($_POST["submit"])) {
         </nav>
 
 
-        <section class="bg-gray-50">
+        <section class="">
           <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">
             <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Judul Proyek</h2>
             <form action="" method="post">
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
                   <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Proyek</label>
-                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tambah Nama Proyek.." required="">
+                  <input type="text" name="name" id="name" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tambah Nama Proyek.." required="">
                 </div>
                 <div class="hidden">
                   <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Dosen</label>
-                  <select id="category" name="dosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                  <select id="category" name="dosen" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
                     <option value="<?php echo $_SESSION["email"] ?>" selected><?= $_SESSION['email'] ?></option>
                   </select>
                 </div>
                 <div>
                   <label for="week" class="block mb-2 text-sm font-medium text-gray-900">Masukkan Minggu</label>
-                  <input type="number" name="week" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan Angka" required>
+                  <input type="number" name="week" id="number-input" aria-describedby="helper-text-explanation" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan Angka" required>
                 </div>
                 <div class="sm:col-span-2">
                   <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Tambah Deskripsi</label>
-                  <textarea id="description" name="description" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tambah Deskripsi Proyek.."></textarea>
+                  <textarea id="description" name="description" rows="8" class="block p-4 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tambah Deskripsi Proyek.."></textarea>
                 </div>
+                <input type="hidden" value="<?= $rand_pict ?>" name="pict">
                 <div class="sm:col-span-2">
                   <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Tambah Fitur</label>
-                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tuliskan Fitur Proyek.."></textarea>
-                </div>
-                <div class="sm:col-span-2">
-                  <label class="block mb-2 text-sm font-medium text-gray-900" for="small_size">File Pendukung</label>
-                  <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="multiple_files" type="file" multiple>
+                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tuliskan Fitur Proyek.."></textarea>
                 </div>
               </div>
               <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">

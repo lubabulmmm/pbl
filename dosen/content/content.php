@@ -17,7 +17,7 @@ $bunches = execThis("SELECT bunch_id, project_id, bunch_name, nama_user, nama_pr
     <div class="grid gap-8 lg:grid-cols-3">
 
       <?php foreach ($bunches as $bunch) : ?>
-        <div class="max-w-full shadow-lg p-6 bg-white border border-blue-800 flex flex-col justify-between items-start rounded-lg">
+        <div class="max-w-full shadow-md p-6 bg-white border border-gray-200 flex flex-col justify-between items-start rounded-lg">
           <div class="flex justify-between w-full items-center mb-4">
             <a href="./projects.php?bid=<?= $bunch['bunch_id'] ?>&id=<?= $_GET['id'] ?>" class="flex flex-col justify-between">
               <h5 class="mb-1 text-md font-bold tracking-tight text-gray-900 hover:underline ">Kelompok <?= $bunch['bunch_name'] ?></h5>
