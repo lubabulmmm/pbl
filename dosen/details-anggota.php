@@ -114,8 +114,6 @@ $roles = execThis("SELECT * FROM role");
           </div>
         </div>
 
-
-
         <div class="mt-2 border-t border-gray-100">
           <dl class="divide-y divide-gray-200">
             <div class="px-1 sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-4 sm:px-0">
@@ -189,27 +187,6 @@ $roles = execThis("SELECT * FROM role");
                 </div>
               </dd>
             </div>
-            <?php foreach ($get_all_members as $member) : ?>
-              <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-md font-medium leading-6 text-gray-900"></dt>
-                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  <div class="w-full">
-                    <!-- Start coding here -->
-                    <div class="relative overflow-hidden bg-white shadow-md sm:rounded-xl">
-                      <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
-                        <div class="flex items-center gap-4">
-                          <img class="w-10 h-10 rounded-full" src="/PBL/assets/img/ian.jpeg" alt="">
-                          <div class="font-medium">
-                            <div><?= $member['nama_user'] ?> | <?= $member['role'] ?></div>
-                            <div class="text-sm text-gray-500"><?= $member['member_id'] ?></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </dd>
-              </div>
-            <?php endforeach; ?>
           </dl>
         </div>
       </div>

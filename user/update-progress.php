@@ -18,7 +18,7 @@ $category = $_GET['category'];
 $bunch_id = $_GET['bid'];
 
 if (update_task($task_id, $category) > 0) {
-  header("Location: ./details-progress.php?info=success&tid=" . $task_id . "&id=" . $_GET['id'] . "&bid=" . $bunch_id . "");
+  header("Location: ./projects.php?id=" . $_GET['id'] . "&bid=" . $bunch_id . "");
 } else {
-  header("Location: ./details-progress.php?info=failed&tid=" . $task_id . "&id=" . $_GET['id'] . "&bid=" . $bunch_id . "");
+  header("Location: ./details-progress.php?tid=" . $task_id . "&id=" . $_GET['id'] . "&bid=" . $bunch_id . "");
 }

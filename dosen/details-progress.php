@@ -155,7 +155,7 @@ $get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.
               </a>
 
               <?php if ($get_taskinfo[0]['category'] == 'To Do') : ?>
-                <a href="./update-progress.php?tid=<?= $get_taskinfo[0]['task_id'] ?>&id=<?= $get_taskinfo[0]['project_id'] ?>&category=Doing" class="text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                <a href="./update-progress.php?tid=<?= $get_taskinfo[0]['task_id'] ?>&id=<?= $get_taskinfo[0]['project_id'] ?>&category=Doing&bid=<?= $_GET['bid'] ?>" class="text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
                   <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
@@ -164,7 +164,7 @@ $get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.
               <?php endif; ?>
 
               <?php if ($get_taskinfo[0]['category'] == 'Doing') : ?>
-                <a href="./update-progress.php?tid=<?= $get_taskinfo[0]['task_id'] ?>&id=<?= $get_taskinfo[0]['project_id'] ?>&category=Done" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                <a href="./update-progress.php?tid=<?= $get_taskinfo[0]['task_id'] ?>&id=<?= $get_taskinfo[0]['project_id'] ?>&category=Done&bid=<?= $_GET['bid'] ?>" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
                   <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
