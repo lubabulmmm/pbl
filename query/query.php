@@ -337,3 +337,16 @@ function update_to_yes($id)
   mysqli_query($conn, $sql);
   return mysqli_affected_rows($conn);
 }
+
+function add_pm_req($user_data, $user_email, $id_project)
+{
+  global $conn;
+
+  $bunch_name = $user_data['name'];
+
+  $sql_add_req = "INSERT INTO request_project (r_id, bunch_name, user_id, project_id, status_req) VALUES ('', '" . $bunch_name . "', '" . $user_email . "', " . $id_project . ", 'Belum Diterima')";
+
+  mysqli_query($conn, $sql_add_req);
+
+  return mysqli_affected_rows($conn);
+}
