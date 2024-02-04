@@ -150,7 +150,7 @@ if (empty($get_leader) && empty($get_members)) {
                             </p>
                           </div>
                           <div class="inline-flex items-center text-xs font-semibold text-gray-900 ">
-                            Ketua Kelompok
+                            Ketua Kelompok (PM)
                           </div>
                         </div>
                       </li>
@@ -186,7 +186,7 @@ if (empty($get_leader) && empty($get_members)) {
                             <p class="focus:outline-none text-blue-700 bg-blue-200  font-medium rounded-full text-xs px-2.5 py-1.5 me-1 mb-1 "><?= $gam['role'] ?></p>
 
                             <?php if (!empty($get_leader)) : ?>
-                              <button type="button" data-modal-target="popup-modal-<?= $gam['id_member'] ?>" data-modal-toggle="popup-modal-<?= $gam['id_member'] ?>" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-md text-xs px-2.5 py-1.5 me-1 mb-1 ">Ganti role</button>
+                              <button type="button" data-modal-target="popup-modal-<?= $gam['id_member'] ?>" data-modal-toggle="popup-modal-<?= $gam['id_member'] ?>" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-md text-xs px-2.5 py-1.5 me-1 mb-1 ">Ubah Role</button>
                             <?php endif; ?>
                           </div>
                         </div>

@@ -124,7 +124,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-bold text-amber-500"><?= $sum_num ?></span> / 8</dd>
                 </div>
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Fitur Wajib</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Fitur Utama</dt>
                   <dd class="text-md text-gray-900 sm:col-span-2">
                     <?= $project['req'] ?>
                   </dd>

@@ -91,7 +91,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
                 <a href="./groups.php" class="inline-flex items-center text-xs md:text-lg font-medium text-gray-700 hover:text-amber-500">
-                  <span class="ms-1 text-xs md:text-lg font-medium text-gray-900 hover:text-amber-500 md:ms-2">Temukan Kelompok</span>
+                  <span class="ms-1 text-xs md:text-lg font-medium text-gray-900 hover:text-amber-500 md:ms-2">Cari Kelompok</span>
                 </a>
               </div>
             </li>
@@ -161,11 +161,17 @@ $sum_num = mysqli_num_rows($sum_bunch);
               </button>
             <?php endif; ?>
 
+            <a href="groups.php?" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+                </svg>
+                Kembali
+              </a>
             <button data-modal-target="popup-modal-req" data-modal-toggle="popup-modal-req" type="button" class="<?php if ($bunch_num == 8) : echo "hidden" ?> <?php endif; ?> text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-2">
               <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
-              Masuk ke kelompok
+              Bergabung
             </button>
 
             <button type="button" data-modal-target="member-list-modal" data-modal-toggle="member-list-modal" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-2">
@@ -173,7 +179,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.994 19a8.999 8.999 0 1 1 3.53-17.281M5.995 9l4 4 7-8m-1 8v5m-2.5-2.5h5" />
               </svg>
 
-              Anggota Kelompok
+              Anggota
             </button>
           </div>
         </div>
@@ -183,7 +189,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
           <div class="mt-6 border-t border-gray-100">
             <dl class="divide-y divide-gray-100">
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-md font-medium leading-6 text-gray-900">Nama Proyek</dt>
+                <dt class="text-md font-medium leading-6 text-gray-900">Judul</dt>
                 <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $project['nama_proyek'] ?></dd>
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -191,7 +197,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                 <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $project['observer_name'] ?></dd>
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi Proyek</dt>
+                <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi</dt>
                 <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $project['deskripsi_proyek'] ?></dd>
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -203,7 +209,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
                 <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500"><?= $bunch_num ?></span> /8</dd>
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-md font-medium leading-6 text-gray-900">Fitur Wajib</dt>
+                <dt class="text-md font-medium leading-6 text-gray-900">Fitur Utama</dt>
                 <dd class="text-md text-gray-900 sm:col-span-2">
                   <?= $project['req'] ?>
                 </dd>

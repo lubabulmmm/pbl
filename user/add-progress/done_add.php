@@ -79,7 +79,7 @@ if (empty($get_leader) && empty($get_members)) {
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
                 <a href="../projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center text-lg font-medium text-gray-700 hover:text-amber-500">
-                  <span class="ms-1 text-lg font-medium text-gray-900 hover:text-amber-500 md:ms-2">Proyek Kamu</span>
+                  <span class="ms-1 text-lg font-medium text-gray-900 hover:text-amber-500 md:ms-2">Cek Proyek</span>
                 </a>
               </div>
             </li>
@@ -141,11 +141,11 @@ if (empty($get_leader) && empty($get_members)) {
             <form action="" method="post">
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
-                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Progress</label>
-                  <input type="text" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> name="name" id="name" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tulis Nama Progress.." required="">
+                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
+                  <input type="text" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> name="name" id="name" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Nama Progress" required="">
                 </div>
                 <div>
-                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Dosen</label>
+                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Anggota</label>
                   <select id="member" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> name="member" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
                     <option selected>Pilih Anggota</option>
                     <?php foreach ($members as $member) : ?>
@@ -154,12 +154,12 @@ if (empty($get_leader) && empty($get_members)) {
                   </select>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi Progress</label>
-                  <textarea <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> id="description" name="desc" rows="8" class="block p-4 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Tulis Deskripsi Kamu.."></textarea>
+                  <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
+                  <textarea <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> id="description" name="desc" rows="8" class="block p-4 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Deskripsi"></textarea>
                 </div>
               </div>
               <button type="submit" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-green-500 rounded-lg focus:ring-4 focus:ring-green-200 hover:bg-green-400">
-                Tambah ke Done
+                Tambah
               </button>
             </form>
           </div>

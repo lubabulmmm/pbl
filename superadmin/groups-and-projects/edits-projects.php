@@ -110,7 +110,7 @@ $cats = execThis("SELECT * FROM categories");
                   <textarea id="description" name="desc" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Edit Deskripsi"><?= $project[0]['deskripsi_proyek'] ?></textarea>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Wajib</label>
+                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Utama</label>
                   <textarea id="req" name="req" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Edit Fitur Wajib"><?= $project[0]['req'] ?></textarea>
                 </div>
               </div>

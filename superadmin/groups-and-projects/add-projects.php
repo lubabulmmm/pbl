@@ -155,8 +155,8 @@ $rand_pict = rand(1, 8);
                   <textarea id="description" name="description" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Deskripsi"></textarea>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Wajib</label>
-                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Fitur Wajib"></textarea>
+                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Utama</label>
+                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Fitur Utama"></textarea>
                 </div>
               </div>
               <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">

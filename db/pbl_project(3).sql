@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2024 at 01:15 PM
+-- Generation Time: Feb 04, 2024 at 02:11 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -46,7 +46,8 @@ INSERT INTO `bunch` (`bunch_id`, `bunch_name`, `leader_id`, `project_id`, `grade
 (3, 'SI B3', 'marcelladwi@gmail.com', 44, 60, 'No'),
 (10, 'SI A4', 'azeezee12@gmail.com', 44, 0, 'No'),
 (12, 'SI C6', 'ifan@gmail.com', 48, 0, 'No'),
-(13, 'TI C6', 'pedro123@gmail.com', 49, 0, 'No');
+(13, 'TI C6', 'pedro123@gmail.com', 49, 0, 'No'),
+(15, 'SI D3', 'ibrahim1712@gmail.com', 44, 0, 'No');
 
 -- --------------------------------------------------------
 
@@ -80,6 +81,26 @@ INSERT INTO `bunch_member` (`id`, `bunch_id`, `member_id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `c_id` int(11) NOT NULL,
+  `category_name` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`c_id`, `category_name`) VALUES
+(1, 'Web'),
+(2, 'Internet Of Things'),
+(3, 'Mobile Apps');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `comment`
 --
 
@@ -106,20 +127,6 @@ INSERT INTO `comment` (`comment_id`, `comment_title`, `comment`, `date_submit`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `file_project`
---
-
-CREATE TABLE `file_project` (
-  `id` int(20) NOT NULL,
-  `project_id` int(20) NOT NULL,
-  `filename` varchar(250) NOT NULL,
-  `path` varchar(250) NOT NULL,
-  `upload_time` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `proyek`
 --
 
@@ -131,19 +138,22 @@ CREATE TABLE `proyek` (
   `req` varchar(2500) NOT NULL,
   `minggu` int(10) NOT NULL,
   `status_show` varchar(10) NOT NULL,
-  `pict` varchar(250) NOT NULL
+  `pict` varchar(250) NOT NULL,
+  `category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `proyek`
 --
 
-INSERT INTO `proyek` (`id_proyek`, `nama_proyek`, `deskripsi_proyek`, `id_user`, `req`, `minggu`, `status_show`, `pict`) VALUES
-(43, 'Sistem Informasi Manajemen Rapat', 'Sistem Informasi Manajemen Rapat (SIM-Rapat) adalah aplikasi atau platform yang dirancang khusus untuk membantu dalam pengelolaan dan pelaksanaan rapat di sebuah kelompok.', 'jurgenthboss@kop.co.uk', 'Perencanaan Rapat, Manajemen Agenda, Konfirmasi Kehadiran dan Pemantauan Rapat', 7, 'Yes', '1'),
-(44, 'Sistem Informasi Antrian Pujasera', 'Sistem Informasi Antrian adalah solusi teknologi yang dirancang untuk mengelola dan mengoptimalkan proses antrian di berbagai jenis organisasi atau layanan, seperti rumah sakit, pusat perbelanjaan, bank, kantor pemerintah, dan tempat-tempat lainnya yang menerima layanan publik.', 'jurgenthboss@kop.co.uk', 'Pendaftaran dan Pengambilan Nomor Antrian, Panggilan dan Pemanggilan Antrian dan Manajemen Antrian', 8, 'No', '2'),
-(48, 'Sistem Informasi Pajak', 'Sistem informasi perpajakan merupakan suatu sistem yang dirancang untuk membantu pengelolaan dan pengendalian terkait bidang keuangan dan perpajakan.', 'vincent@gmail.com', 'Sistem informasi perpajakan menyediakan informasi yang dibutuhkan untuk memenuhi tujuan-tujuan manajemen dalam bidang perpajakan.', 9, 'No', '3'),
-(49, 'Website PSIK Vokasi', 'Website buat apa ajalah', 'vincent@gmail.com', 'menfess', 10, 'No', '4'),
-(50, 'Sistem Informasi Gudang Inventory', 'Suatu sistem yang dirancang untuk membantu perusahaan dalam mengelola persediaan barang di gudang. Sistem ini dapat membantu perusahaan dalam melacak barang masuk dan keluar, memantau stok barang, dan membuat laporan persediaan.', 'jurgenthboss@kop.co.uk', 'Manajemen Stok: Fitur ini memungkinkan perusahaan untuk melacak barang masuk dan keluar, memantau stok barang, dan menentukan level stok minimum dan maksimum, Penerimaan Barang: Fitur ini memungkinkan perusahaan untuk mencatat penerimaan.', 10, 'No', '8');
+INSERT INTO `proyek` (`id_proyek`, `nama_proyek`, `deskripsi_proyek`, `id_user`, `req`, `minggu`, `status_show`, `pict`, `category`) VALUES
+(43, 'Sistem Informasi Manajemen Rapat', 'Sistem Informasi Manajemen Rapat (SIM-Rapat) adalah aplikasi atau platform yang dirancang khusus untuk membantu dalam pengelolaan dan pelaksanaan rapat di sebuah kelompok.', 'jurgenthboss@kop.co.uk', 'Perencanaan Rapat, Manajemen Agenda, Konfirmasi Kehadiran dan Pemantauan Rapat Organisasi', 8, 'Yes', '1', 1),
+(44, 'Sistem Informasi Antrian Pujasera', 'Sistem Informasi Antrian adalah solusi teknologi yang dirancang untuk mengelola dan mengoptimalkan proses antrian di berbagai jenis organisasi atau layanan, seperti rumah sakit, pusat perbelanjaan, bank, kantor pemerintah, dan tempat-tempat lainnya yang menerima layanan publik.', 'jurgenthboss@kop.co.uk', 'Pendaftaran dan Pengambilan Nomor Antrian, Panggilan dan Pemanggilan Antrian dan Manajemen Antrian', 8, 'No', '2', 1),
+(48, 'Sistem Informasi Pajak', 'Sistem informasi perpajakan merupakan suatu sistem yang dirancang untuk membantu pengelolaan dan pengendalian terkait bidang keuangan dan perpajakan.', 'vincent@gmail.com', 'Sistem informasi perpajakan menyediakan informasi yang dibutuhkan untuk memenuhi tujuan-tujuan manajemen dalam bidang perpajakan.', 9, 'No', '3', 1),
+(49, 'Website PSIK Vokasi', 'Website buat apa ajalah', 'vincent@gmail.com', 'menfess', 10, 'No', '4', 1),
+(50, 'Sistem Informasi Gudang Inventory', 'Suatu sistem yang dirancang untuk membantu perusahaan dalam mengelola persediaan barang di gudang. Sistem ini dapat membantu perusahaan dalam melacak barang masuk dan keluar, memantau stok barang, dan membuat laporan persediaan.', 'jurgenthboss@kop.co.uk', 'Manajemen Stok: Fitur ini memungkinkan perusahaan untuk melacak barang masuk dan keluar, memantau stok barang, dan menentukan level stok minimum dan maksimum, Penerimaan Barang: Fitur ini memungkinkan perusahaan untuk mencatat penerimaan.', 10, 'No', '8', 1),
+(53, 'Aplikasi To Do List with Kotlin', 'To Do List App', 'mikelarteta@ars.co.uk', 'Menambahkan tugas', 0, 'No', '3', 3),
+(54, 'Eye Tracking', 'Eye tracking is the process of measuring either the point of gaze or the motion of an eye relative to the head. An eye tracker is a device for measuring eye positions and eye movement.', 'mikelarteta@ars.co.uk', 'Mengikuti gerak mata', 8, 'No', '7', 2);
 
 -- --------------------------------------------------------
 
@@ -164,11 +174,32 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`request_id`, `bunch_id`, `user_id`, `role`, `status_req`) VALUES
-(1, 13, 'arfi@gmail.com', 'Front End', 'Belum Diterima'),
+(1, 13, 'arfi@gmail.com', 'Front End', 'Ditolak'),
 (2, 13, 'kelvindwipangga15@gmail.com', 'System Analyst', 'Belum Diterima'),
 (3, 1, 'makelor123@gmail.com', 'System Analyst', 'Belum Diterima'),
 (5, 13, 'ifan@gmail.com', 'System Analyst', 'Ditolak'),
 (6, 1, 'azeezee12@gmail.com', 'System Analyst', 'Diterima');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request_project`
+--
+
+CREATE TABLE `request_project` (
+  `r_id` int(20) NOT NULL,
+  `project_id` int(20) NOT NULL,
+  `user_id` varchar(250) NOT NULL,
+  `bunch_name` varchar(250) NOT NULL,
+  `status_req` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `request_project`
+--
+
+INSERT INTO `request_project` (`r_id`, `project_id`, `user_id`, `bunch_name`, `status_req`) VALUES
+(2, 44, 'ibrahim1712@gmail.com', 'SI D3', 'Diterima');
 
 -- --------------------------------------------------------
 
@@ -259,7 +290,7 @@ CREATE TABLE `task` (
 INSERT INTO `task` (`id`, `task_name`, `task_desc`, `category`, `bunch_id`, `member_id`, `minggu`) VALUES
 (1, 'Wireframe UI / UX', 'Buat Wireframe UI / UX', 'Done', 1, 2, 1),
 (6, 'Rancangan UI / UX', 'Buat rancangan', 'Doing', 1, 1, 1),
-(7, 'DFD Diagram', 'Buat DFD Diagram', 'Doing', 1, 2, 1),
+(7, 'DFD Diagram', 'Buat DFD Diagram', 'Done', 1, 2, 1),
 (10, 'Metode SDLC', 'Memilih metode SDLC (Disarankan agile atau prototype)', 'Doing', 1, 2, 2),
 (11, 'Rancangan Aplikasi', 'Buat Rancangan Aplikasi', 'Done', 1, 2, 1),
 (12, 'Membuat Laporan Bab 2', 'Bab 2 tentang requirement', 'To Do', 1, 1, 3),
@@ -366,6 +397,12 @@ ALTER TABLE `bunch_member`
   ADD KEY `member_id_fk` (`member_id`);
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`c_id`);
+
+--
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
@@ -377,7 +414,8 @@ ALTER TABLE `comment`
 --
 ALTER TABLE `proyek`
   ADD PRIMARY KEY (`id_proyek`),
-  ADD KEY `id_user_projects` (`id_user`);
+  ADD KEY `id_user_projects` (`id_user`),
+  ADD KEY `id_category_fk` (`category`);
 
 --
 -- Indexes for table `request`
@@ -386,6 +424,14 @@ ALTER TABLE `request`
   ADD PRIMARY KEY (`request_id`),
   ADD KEY `request_bunch_fk` (`bunch_id`),
   ADD KEY `user_request_fk` (`user_id`);
+
+--
+-- Indexes for table `request_project`
+--
+ALTER TABLE `request_project`
+  ADD PRIMARY KEY (`r_id`),
+  ADD KEY `user_fk_req` (`user_id`),
+  ADD KEY `project_fk_req` (`project_id`);
 
 --
 -- Indexes for table `role`
@@ -437,13 +483,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bunch`
 --
 ALTER TABLE `bunch`
-  MODIFY `bunch_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `bunch_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `bunch_member`
 --
 ALTER TABLE `bunch_member`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -455,13 +507,19 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `proyek`
 --
 ALTER TABLE `proyek`
-  MODIFY `id_proyek` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_proyek` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
   MODIFY `request_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `request_project`
+--
+ALTER TABLE `request_project`
+  MODIFY `r_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -521,6 +579,7 @@ ALTER TABLE `comment`
 -- Constraints for table `proyek`
 --
 ALTER TABLE `proyek`
+  ADD CONSTRAINT `id_category_fk` FOREIGN KEY (`category`) REFERENCES `categories` (`c_id`),
   ADD CONSTRAINT `id_user_projects` FOREIGN KEY (`id_user`) REFERENCES `user` (`email`);
 
 --
@@ -529,6 +588,13 @@ ALTER TABLE `proyek`
 ALTER TABLE `request`
   ADD CONSTRAINT `request_bunch_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`),
   ADD CONSTRAINT `user_request_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`email`);
+
+--
+-- Constraints for table `request_project`
+--
+ALTER TABLE `request_project`
+  ADD CONSTRAINT `project_fk_req` FOREIGN KEY (`project_id`) REFERENCES `proyek` (`id_proyek`),
+  ADD CONSTRAINT `user_fk_req` FOREIGN KEY (`user_id`) REFERENCES `user` (`email`);
 
 --
 -- Constraints for table `submit_file`
