@@ -1,6 +1,8 @@
-<?php 
+<?php
 
 session_start();
+require "../query/query.php";
+$categories = execThis("SELECT * FROM categories");
 
 ?>
 
@@ -32,21 +34,11 @@ session_start();
             </button>
             <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
               <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdown-button">
-                <li>
-                  <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 text-left">Teknologi Informasi</button>
-                </li>
-                <li>
-                  <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 text-left">Desain Grafis</button>
-                </li>
-                <li>
-                  <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 text-left">Administrasi Bisnis</button>
-                </li>
-                <li>
-                  <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 text-left">Keuangan dan Perbankan</button>
-                </li>
-                <li>
-                  <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 text-left">Manajemen Perhotelan</button>
-                </li>
+                <?php foreach ($categories as $category) :  ?>
+                  <li>
+                    <a href="./moreshowcase.php?cid=<?= $category['c_id'] ?>" type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 text-left"><?= $category['category_name'] ?></a>
+                  </li>
+                <?php endforeach; ?>
               </ul>
             </div>
             <div class="relative w-full">
@@ -72,12 +64,6 @@ session_start();
   <!-- Content -->
 
   <?php include("../content/showcase/ti.php") ?>
-  <?php include("../content/showcase/dg.php") ?>
-  <?php include("../content/showcase/adbis.php") ?>
-  <?php include("../content/showcase/kb.php") ?>
-  <?php include("../content/showcase/mp.php") ?>
-
-
 
   <!-- Hero Section -->
   <section class="">
