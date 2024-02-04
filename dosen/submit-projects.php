@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
   }
 }
 
-
+$status_info = execThis("SELECT status_show FROM bunch WHERE bunch_id =" . $_GET['bid']);
 $get_files = execThis("SELECT * FROM submit_file WHERE bunch_id =" . $_GET['bid']);
 ?>
 
@@ -114,74 +114,86 @@ $get_files = execThis("SELECT * FROM submit_file WHERE bunch_id =" . $_GET['bid'
             </div>
 
             <div class="flex items-center flex-wrap">
-            <a href="./projects.php?id=<?= $_GET['id'] ?>&bid=<?= $_GET['bid'] ?>" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-              <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
-              </svg>
-              Kembali
-            </a>
-            <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button" class="text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-              <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.479 1.712 2.367 4.8a.532.532 0 0 0 .4.292l5.294.769a.534.534 0 0 1 .3.91l-3.83 3.735a.534.534 0 0 0-.154.473l.9 5.272a.535.535 0 0 1-.775.563l-4.734-2.49a.536.536 0 0 0-.5 0l-4.73 2.487a.534.534 0 0 1-.775-.563l.9-5.272a.534.534 0 0 0-.154-.473L2.158 8.48a.534.534 0 0 1 .3-.911l5.294-.77a.532.532 0 0 0 .4-.292l2.367-4.8a.534.534 0 0 1 .96.004Z" />
-              </svg>
-              Nilai
-            </button>
+              <a href="./projects.php?id=<?= $_GET['id'] ?>&bid=<?= $_GET['bid'] ?>" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+                </svg>
+                Kembali
+              </a>
+              <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button" class="text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.479 1.712 2.367 4.8a.532.532 0 0 0 .4.292l5.294.769a.534.534 0 0 1 .3.91l-3.83 3.735a.534.534 0 0 0-.154.473l.9 5.272a.535.535 0 0 1-.775.563l-4.734-2.49a.536.536 0 0 0-.5 0l-4.73 2.487a.534.534 0 0 1-.775-.563l.9-5.272a.534.534 0 0 0-.154-.473L2.158 8.48a.534.534 0 0 1 .3-.911l5.294-.77a.532.532 0 0 0 .4-.292l2.367-4.8a.534.534 0 0 1 .96.004Z" />
+                </svg>
+                Nilai
+              </button>
+
+              <?php if ($status_info[0]['status_show'] == 'No') : ?>
+                <a href="to-showcase.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="flex items-center flex-wrap">
+                  <button type="button" class="text-white bg-green-500 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                    <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11h4m-2 2V9M2 5h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm5.443-4H2a1 1 0 0 0-1 1v3h9.943l-2.7-3.6a1 1 0 0 0-.8-.4Z" />
+                    </svg>
+
+                    Tambahkan ke Showcase
+                  </button>
+                </a>
+              <?php endif; ?>
+            </div>
+          </div>
+
+          <?php include("./content/grade-modal.php") ?>
+
+          <?php if ($get_submit_links == []) { ?>
+            <p>Belum mengumpulkan</p>
+          <?php exit;
+          } ?>
+
+          <div class="mt-6 border-t border-gray-100">
+            <dl class="divide-y divide-gray-100">
+              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-md font-medium leading-6 text-gray-900">Link Youtube</dt>
+                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit_links[0]['yt_url'] ?>" class="text-amber-500 underline"><?= $get_submit_links[0]['yt_url'] ?></a></dd>
+              </div>
+              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-md font-medium leading-6 text-gray-900">URL Website/Aplikasi</dt>
+                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit_links[0]['web_url'] ?>" class="text-amber-500 underline"><?= $get_submit_links[0]['web_url'] ?></a></dd>
+              </div>
+              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-md font-medium leading-6 text-gray-900">Laporan dan Poster</dt>
+                <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
+                  <?php if (empty($get_files)) {
+                    echo "<p class=\"text-amber-700\">Tidak Ada File Dilampirkan.</p>";
+                  } ?>
+                  <?php if (!empty($get_files)) : ?>
+                    <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+                      <?php foreach ($get_files as $file) : ?>
+                        <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
+                          <div class="flex w-0 flex-1 items-center">
+                            <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                            </svg>
+                            <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                              <span class="truncate font-medium"><?= $file['name_file'] ?></span>
+                              <span class="flex-shrink-0 text-gray-400"><?= number_format($file['size'] / (1024 * 1024), 2); ?>mb</span>
+                            </div>
+                          </div>
+                          <div class="ml-4 flex-shrink-0">
+                            <a href="../query/download-file.php?url=<?= $file['path']; ?>" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
+                          </div>
+                        </li>
+                      <?php endforeach; ?>
+                    </ul>
+                  <?php endif; ?>
+                </dd>
+
+              </div>
+
+            </dl>
           </div>
         </div>
-
-        <?php include("./content/grade-modal.php") ?>
-
-        <?php if ($get_submit_links == []) { ?>
-          <p>Belum mengumpulkan</p>
-        <?php exit;
-        } ?>
-
-        <div class="mt-6 border-t border-gray-100">
-          <dl class="divide-y divide-gray-100">
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900">Link Youtube</dt>
-              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit_links[0]['yt_url'] ?>" class="text-amber-500 underline"><?= $get_submit_links[0]['yt_url'] ?></a></dd>
-            </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900">URL Website/Aplikasi</dt>
-              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit_links[0]['web_url'] ?>" class="text-amber-500 underline"><?= $get_submit_links[0]['web_url'] ?></a></dd>
-            </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900">Laporan dan Poster</dt>
-              <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
-                <?php if (empty($get_files)) {
-                  echo "<p class=\"text-amber-700\">Tidak Ada File Dilampirkan.</p>";
-                } ?>
-                <?php if (!empty($get_files)) : ?>
-                  <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
-                    <?php foreach ($get_files as $file) : ?>
-                      <li class="flex items-center justify-between py-4 pl-4 pr-5 text-md leading-6">
-                        <div class="flex w-0 flex-1 items-center">
-                          <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                          </svg>
-                          <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                            <span class="truncate font-medium"><?= $file['name_file'] ?></span>
-                            <span class="flex-shrink-0 text-gray-400"><?= number_format($file['size'] / (1024 * 1024), 2); ?>mb</span>
-                          </div>
-                        </div>
-                        <div class="ml-4 flex-shrink-0">
-                          <a href="../query/download-file.php?url=<?= $file['path']; ?>" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
-                        </div>
-                      </li>
-                    <?php endforeach; ?>
-                  </ul>
-                <?php endif; ?>
-              </dd>
-
-            </div>
-
-          </dl>
-        </div>
       </div>
-    </div>
 
-  </div>
+    </div>
   </div>
 
 </body>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2024 at 06:40 AM
+-- Generation Time: Feb 03, 2024 at 01:15 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -32,20 +32,21 @@ CREATE TABLE `bunch` (
   `bunch_name` varchar(250) NOT NULL,
   `leader_id` varchar(250) NOT NULL,
   `project_id` int(20) NOT NULL,
-  `grade` int(20) NOT NULL
+  `grade` int(20) NOT NULL,
+  `status_show` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bunch`
 --
 
-INSERT INTO `bunch` (`bunch_id`, `bunch_name`, `leader_id`, `project_id`, `grade`) VALUES
-(1, 'SI A7', 'ifan@gmail.com', 43, 60),
-(2, 'SI A6', 'kelvindwipangga15@gmail.com', 43, 0),
-(3, 'SI B3', 'marcelladwi@gmail.com', 44, 60),
-(10, 'SI A4', 'azeezee12@gmail.com', 44, 0),
-(12, 'SI C6', 'ifan@gmail.com', 48, 0),
-(13, 'TI C6', 'pedro123@gmail.com', 49, 0);
+INSERT INTO `bunch` (`bunch_id`, `bunch_name`, `leader_id`, `project_id`, `grade`, `status_show`) VALUES
+(1, 'SI A7', 'ifan@gmail.com', 43, 60, 'Yes'),
+(2, 'SI A6', 'kelvindwipangga15@gmail.com', 43, 0, 'No'),
+(3, 'SI B3', 'marcelladwi@gmail.com', 44, 60, 'No'),
+(10, 'SI A4', 'azeezee12@gmail.com', 44, 0, 'No'),
+(12, 'SI C6', 'ifan@gmail.com', 48, 0, 'No'),
+(13, 'TI C6', 'pedro123@gmail.com', 49, 0, 'No');
 
 -- --------------------------------------------------------
 
@@ -99,19 +100,8 @@ INSERT INTO `comment` (`comment_id`, `comment_title`, `comment`, `date_submit`, 
 (6, 'Lanjutkan laporan', 'Tolong minggu ke 4 fokus ke laporan UTS', '2024-01-22 16:43:46', 1),
 (7, 'Mana ini', 'Kok belum ngapa ngapain', '2024-01-23 11:12:46', 2),
 (8, 'Pengumpulan', 'segera di kumpulkan', '2024-01-23 12:04:51', 1),
-(9, 'Minggu Ke-5', 'Untuk minggu ke-5 saya harap semuanya fokus pada proses pengkodean', '2024-01-29 15:34:31', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `features_project`
---
-
-CREATE TABLE `features_project` (
-  `id` int(20) NOT NULL,
-  `project_id` int(20) NOT NULL,
-  `feature_name` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(9, 'Minggu Ke-5', 'Untuk minggu ke-5 saya harap semuanya fokus pada proses pengkodean', '2024-01-29 15:34:31', 1),
+(10, 'Halo', 'Halo semuanya', '2024-02-03 09:05:25', 1);
 
 -- --------------------------------------------------------
 
@@ -141,18 +131,19 @@ CREATE TABLE `proyek` (
   `req` varchar(2500) NOT NULL,
   `minggu` int(10) NOT NULL,
   `status_show` varchar(10) NOT NULL,
-  `feature_id` int(20) NOT NULL
+  `pict` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `proyek`
 --
 
-INSERT INTO `proyek` (`id_proyek`, `nama_proyek`, `deskripsi_proyek`, `id_user`, `req`, `minggu`, `status_show`, `feature_id`) VALUES
-(43, 'Sistem Informasi Manajemen Rapat', 'Sistem Informasi Manajemen Rapat (SIM-Rapat) adalah aplikasi atau platform yang dirancang khusus untuk membantu dalam pengelolaan dan pelaksanaan rapat di sebuah organisasi.', 'jurgenthboss@kop.co.uk', 'Perencanaan Rapat, Manajemen Agenda, Konfirmasi Kehadiran dan Pemantauan Rapat', 8, 'Yes', 43),
-(44, 'Sistem Informasi Antrian Pujasera', 'Sistem Informasi Antrian adalah solusi teknologi yang dirancang untuk mengelola dan mengoptimalkan proses antrian di berbagai jenis organisasi atau layanan, seperti rumah sakit, pusat perbelanjaan, bank, kantor pemerintah, dan tempat-tempat lainnya yang menerima layanan publik.', 'jurgenthboss@kop.co.uk', 'Pendaftaran dan Pengambilan Nomor Antrian, Panggilan dan Pemanggilan Antrian dan Manajemen Antrian', 8, 'No', 44),
-(48, 'Sistem Informasi Pajak', 'Sistem informasi perpajakan merupakan suatu sistem yang dirancang untuk membantu pengelolaan dan pengendalian terkait bidang keuangan dan perpajakan.', 'vincent@gmail.com', 'Sistem informasi perpajakan menyediakan informasi yang dibutuhkan untuk memenuhi tujuan-tujuan manajemen dalam bidang perpajakan.', 9, 'No', 2),
-(49, 'Website PSIK Vokasi', 'Website buat apa ajalah', 'vincent@gmail.com', 'menfess', 10, 'No', 0);
+INSERT INTO `proyek` (`id_proyek`, `nama_proyek`, `deskripsi_proyek`, `id_user`, `req`, `minggu`, `status_show`, `pict`) VALUES
+(43, 'Sistem Informasi Manajemen Rapat', 'Sistem Informasi Manajemen Rapat (SIM-Rapat) adalah aplikasi atau platform yang dirancang khusus untuk membantu dalam pengelolaan dan pelaksanaan rapat di sebuah kelompok.', 'jurgenthboss@kop.co.uk', 'Perencanaan Rapat, Manajemen Agenda, Konfirmasi Kehadiran dan Pemantauan Rapat', 7, 'Yes', '1'),
+(44, 'Sistem Informasi Antrian Pujasera', 'Sistem Informasi Antrian adalah solusi teknologi yang dirancang untuk mengelola dan mengoptimalkan proses antrian di berbagai jenis organisasi atau layanan, seperti rumah sakit, pusat perbelanjaan, bank, kantor pemerintah, dan tempat-tempat lainnya yang menerima layanan publik.', 'jurgenthboss@kop.co.uk', 'Pendaftaran dan Pengambilan Nomor Antrian, Panggilan dan Pemanggilan Antrian dan Manajemen Antrian', 8, 'No', '2'),
+(48, 'Sistem Informasi Pajak', 'Sistem informasi perpajakan merupakan suatu sistem yang dirancang untuk membantu pengelolaan dan pengendalian terkait bidang keuangan dan perpajakan.', 'vincent@gmail.com', 'Sistem informasi perpajakan menyediakan informasi yang dibutuhkan untuk memenuhi tujuan-tujuan manajemen dalam bidang perpajakan.', 9, 'No', '3'),
+(49, 'Website PSIK Vokasi', 'Website buat apa ajalah', 'vincent@gmail.com', 'menfess', 10, 'No', '4'),
+(50, 'Sistem Informasi Gudang Inventory', 'Suatu sistem yang dirancang untuk membantu perusahaan dalam mengelola persediaan barang di gudang. Sistem ini dapat membantu perusahaan dalam melacak barang masuk dan keluar, memantau stok barang, dan membuat laporan persediaan.', 'jurgenthboss@kop.co.uk', 'Manajemen Stok: Fitur ini memungkinkan perusahaan untuk melacak barang masuk dan keluar, memantau stok barang, dan menentukan level stok minimum dan maksimum, Penerimaan Barang: Fitur ini memungkinkan perusahaan untuk mencatat penerimaan.', 10, 'No', '8');
 
 -- --------------------------------------------------------
 
@@ -205,23 +196,45 @@ INSERT INTO `role` (`role_id`, `role_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `submit`
+-- Table structure for table `submit_file`
 --
 
-CREATE TABLE `submit` (
-  `submit_id` int(11) NOT NULL,
-  `link_youtube` varchar(250) NOT NULL,
-  `proyek_url` varchar(250) NOT NULL,
-  `proyek_file` int(11) NOT NULL,
+CREATE TABLE `submit_file` (
+  `sf_id` int(20) NOT NULL,
+  `name_file` varchar(2000) NOT NULL,
+  `size` int(20) NOT NULL,
+  `ekstensi` varchar(250) NOT NULL,
+  `path` varchar(2000) NOT NULL,
   `bunch_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `submit`
+-- Dumping data for table `submit_file`
 --
 
-INSERT INTO `submit` (`submit_id`, `link_youtube`, `proyek_url`, `proyek_file`, `bunch_id`) VALUES
-(1, 'https://youtu.be/i8yknBXEQ7o?si=RQyWL7eG2EWT4ddx', 'https://github.com/Ibrairsyad17/project-based-learning', 1, 1);
+INSERT INTO `submit_file` (`sf_id`, `name_file`, `size`, `ekstensi`, `path`, `bunch_id`) VALUES
+(3, 'GExYEndawAApmy6.jpeg', 76634, 'jpeg', 'submit-path/GExYEndawAApmy6.jpeg', 1),
+(4, 'shaking-hands.svg', 50640, 'svg', 'submit-path/shaking-hands.svg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `submit_links`
+--
+
+CREATE TABLE `submit_links` (
+  `links_id` int(20) NOT NULL,
+  `web_url` varchar(2000) NOT NULL,
+  `yt_url` varchar(2000) NOT NULL,
+  `bunch_id` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `submit_links`
+--
+
+INSERT INTO `submit_links` (`links_id`, `web_url`, `yt_url`, `bunch_id`) VALUES
+(3, 'youtube.com', 'https://ibrahimirsad-crud.vercel.app/', 1);
 
 -- --------------------------------------------------------
 
@@ -244,27 +257,55 @@ CREATE TABLE `task` (
 --
 
 INSERT INTO `task` (`id`, `task_name`, `task_desc`, `category`, `bunch_id`, `member_id`, `minggu`) VALUES
-(1, 'Wireframe UI / UX', 'Buat Wireframe UI / UX', 'Doing', 1, 2, 1),
-(2, 'System Requirement', 'Buat System Requirement', 'Done', 1, 2, 1),
-(3, 'Jadwal Perancangan', 'Buat Jadwal Perancangan', 'Done', 1, 1, 1),
-(4, 'Template', 'Cari Wireframe', 'Done', 1, 2, 2),
-(5, 'Konsultasi PIC', 'Konsultasi offline dengan PIC (1)', 'Done', 1, 1, 1),
+(1, 'Wireframe UI / UX', 'Buat Wireframe UI / UX', 'Done', 1, 2, 1),
 (6, 'Rancangan UI / UX', 'Buat rancangan', 'Doing', 1, 1, 1),
-(7, 'DFD Diagram', 'Buat DFD Diagram', 'Done', 1, 2, 1),
-(10, 'Metode SDLC', 'Memilih metode SDLC (Disarankan agile atau prototype)', 'Done', 1, 2, 2),
-(11, 'Rancangan Aplikasi', 'Buat Rancangan Aplikasi', 'Doing', 1, 2, 1),
-(12, 'Membuat Laporan Bab 2', 'Bab 2 tentang requirement', 'Done', 1, 1, 3),
+(7, 'DFD Diagram', 'Buat DFD Diagram', 'Doing', 1, 2, 1),
+(10, 'Metode SDLC', 'Memilih metode SDLC (Disarankan agile atau prototype)', 'Doing', 1, 2, 2),
+(11, 'Rancangan Aplikasi', 'Buat Rancangan Aplikasi', 'Done', 1, 2, 1),
+(12, 'Membuat Laporan Bab 2', 'Bab 2 tentang requirement', 'To Do', 1, 1, 3),
 (13, 'Use Case Scenario Login', 'Menyusun Use Case Scenario Halaman Login', 'Done', 1, 1, 3),
-(14, 'Wireframe', 'Buat wireframe minimal halaman admin', 'Doing', 10, 6, 1),
-(15, 'First Gathering', 'FG di Suhat', 'To Do', 1, 2, 1),
-(16, 'Wireframe', 'Buat Wireframe', 'Doing', 2, 3, 1),
+(14, 'Wireframe', 'Buat wireframe minimal halaman admin', 'To Do', 10, 6, 1),
+(15, 'First Gathering', 'FG di Suhat', 'Done', 1, 2, 1),
+(16, 'Wireframe', 'Buat Wireframe', 'Done', 2, 3, 1),
 (17, 'Diagram Context', 'Buat Diagram Context / DFD Diagram Level 0', 'Done', 10, 6, 1),
 (18, 'System Requirement', 'Buat System Requirement', 'Done', 10, 6, 1),
 (19, 'Konsultasi PIC', 'Konsultasi mengenai timeline perancangan', 'Done', 10, 6, 2),
 (20, 'Rancangan Aplikasi', 'Rancangan UI / UX, minggu 3 jadi', 'Done', 10, 6, 1),
 (21, 'Jadwal Perancangan', 'Buat jadwal perancangan minggu ke 1 s/d 5', 'Doing', 10, 7, 1),
 (22, 'Activity Diagram', 'Buat activity diagram', 'Doing', 10, 7, 2),
-(23, 'Rancangan Bussines Case', 'Business yang terjadi di lapangan', 'Doing', 10, 7, 3);
+(23, 'Rancangan Bussines Case', 'Business yang terjadi di lapangan', 'Doing', 10, 7, 3),
+(24, 'Merancang Desain Database', 'Beserta relasinya, foreign key user menggunakan email saja', 'Done', 1, 12, 3),
+(25, 'Laporan Bab 1', 'Bab 1 tentang pendahuluan', 'Done', 1, 12, 1),
+(26, 'Tabel Quality Assurance', 'Tabel dalam excel', 'Done', 1, 12, 2),
+(27, 'Layanan Hosting', 'Hostinger atau Niagahoster', 'Done', 1, 1, 2),
+(28, 'Dosen', 'Konsultasi', 'Doing', 1, 12, 4),
+(30, 'SR', 'asdf', 'Done', 3, 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `task_file`
+--
+
+CREATE TABLE `task_file` (
+  `tf_id` int(20) NOT NULL,
+  `name_file` varchar(250) NOT NULL,
+  `size` int(20) NOT NULL,
+  `ekstensi` varchar(50) NOT NULL,
+  `path` varchar(2000) NOT NULL,
+  `task_id` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `task_file`
+--
+
+INSERT INTO `task_file` (`tf_id`, `name_file`, `size`, `ekstensi`, `path`, `task_id`) VALUES
+(6, '108_110_149.pdf', 267999, 'pdf', 'path/108_110_149.pdf', 22),
+(7, 'b9b5fbe0ce482fb220303222f70fcac0.jpg', 61787, 'jpg', 'path/b9b5fbe0ce482fb220303222f70fcac0.jpg', 11),
+(8, 'Yellow Playful Illustration Brainstorm Presentation.pdf', 1457, 'pdf', 'path/Yellow Playful Illustration Brainstorm Presentation.pdf', 1),
+(9, 'artworks-000655564504-zeq9sm-t500x500.jpg', 32456, 'jpg', 'path/artworks-000655564504-zeq9sm-t500x500.jpg', 1),
+(10, 'E_TK5o-VUAMgIdn.jpg', 70076, 'jpg', 'path/E_TK5o-VUAMgIdn.jpg', 25);
 
 -- --------------------------------------------------------
 
@@ -290,6 +331,7 @@ INSERT INTO `user` (`email`, `id`, `nama_user`, `level`, `gambar`, `password`) V
 ('abcdefghij@gmail.com', '234242342', 'halo teman', 'admin', 'profile.png', '$2y$10$R3jcZNX80K.54Qhdz2H09uFqAWKf7aSx4vZP16Qcwh8N58sFXIVqC'),
 ('arfi@gmail.com', '223140707111061', 'Arfianto Nugroho', 'user', 'profile.png', '$2y$10$94F5GNTIYNWqkbxvU.fH9OvaVepkxSb9L2vFSpdlE8/F766xNWini'),
 ('azeezee12@gmail.com', '223140707111096', 'Ahmad Azizi', 'user', 'profile.png', '$2y$10$kYFfEUoKTh6q0BuZ36SC9e5W1A4SN41o2NhkXTbXvYo5CatY777Pu'),
+('ibrahim1712@gmail.com', '223140707111108', 'Ibrahim Irsad', 'user', 'profile.png', '$2y$10$MJ70FyeplnJiGp191MjlA.1bxtedAHOzNzFFS6sgWbB4EmOFZhSWW'),
 ('icad@student.ub.ac.id', '223140707111111', 'Muhammad Irsyad Arif Nashrullah', 'user', 'profile.png', '$2y$10$/QFV/00BFBmB4RDXOVcOpeiU6ZuyudbtZhIqv/A6okNS81wKeNCS.'),
 ('ifan@gmail.com', '33000', 'Ifan', 'user', 'profile.png', '$2y$10$bQEzVWjgRY8wecb/rEo52OVmoUFc20W5edES0iYeOOs6yTn9V3HWW'),
 ('jurgenthboss@kop.co.uk', '20142023', 'Jurgen Klopp', 'admin', 'profile.png', '$2y$10$8Tzux6rAzVZNfEbYNK/tPOkKnOCc76gMdx12VrYmAD7QvGOrkJC0i'),
@@ -352,11 +394,18 @@ ALTER TABLE `role`
   ADD PRIMARY KEY (`role_id`);
 
 --
--- Indexes for table `submit`
+-- Indexes for table `submit_file`
 --
-ALTER TABLE `submit`
-  ADD PRIMARY KEY (`submit_id`),
-  ADD KEY `bunch_submit_fk` (`bunch_id`);
+ALTER TABLE `submit_file`
+  ADD PRIMARY KEY (`sf_id`),
+  ADD KEY `submit_f_fk` (`bunch_id`);
+
+--
+-- Indexes for table `submit_links`
+--
+ALTER TABLE `submit_links`
+  ADD PRIMARY KEY (`links_id`),
+  ADD KEY `submit_l_fk` (`bunch_id`);
 
 --
 -- Indexes for table `task`
@@ -365,6 +414,13 @@ ALTER TABLE `task`
   ADD PRIMARY KEY (`id`),
   ADD KEY `bid` (`bunch_id`),
   ADD KEY `mid` (`member_id`);
+
+--
+-- Indexes for table `task_file`
+--
+ALTER TABLE `task_file`
+  ADD PRIMARY KEY (`tf_id`),
+  ADD KEY `tf_task_fk` (`task_id`);
 
 --
 -- Indexes for table `user`
@@ -393,13 +449,13 @@ ALTER TABLE `bunch_member`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `comment_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `proyek`
 --
 ALTER TABLE `proyek`
-  MODIFY `id_proyek` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_proyek` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `request`
@@ -414,16 +470,28 @@ ALTER TABLE `role`
   MODIFY `role_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `submit`
+-- AUTO_INCREMENT for table `submit_file`
 --
-ALTER TABLE `submit`
-  MODIFY `submit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `submit_file`
+  MODIFY `sf_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `submit_links`
+--
+ALTER TABLE `submit_links`
+  MODIFY `links_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `task`
 --
 ALTER TABLE `task`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `task_file`
+--
+ALTER TABLE `task_file`
+  MODIFY `tf_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -463,10 +531,16 @@ ALTER TABLE `request`
   ADD CONSTRAINT `user_request_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`email`);
 
 --
--- Constraints for table `submit`
+-- Constraints for table `submit_file`
 --
-ALTER TABLE `submit`
-  ADD CONSTRAINT `bunch_submit_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`);
+ALTER TABLE `submit_file`
+  ADD CONSTRAINT `submit_f_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`);
+
+--
+-- Constraints for table `submit_links`
+--
+ALTER TABLE `submit_links`
+  ADD CONSTRAINT `submit_l_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`);
 
 --
 -- Constraints for table `task`
@@ -474,6 +548,12 @@ ALTER TABLE `submit`
 ALTER TABLE `task`
   ADD CONSTRAINT `bid` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `mid` FOREIGN KEY (`member_id`) REFERENCES `bunch_member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `task_file`
+--
+ALTER TABLE `task_file`
+  ADD CONSTRAINT `tf_task_fk` FOREIGN KEY (`task_id`) REFERENCES `task` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

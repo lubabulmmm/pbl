@@ -81,8 +81,10 @@ function add_project($data_project)
   $desc = $data_project['description'];
   $req = $data_project['features'];
   $minggu = $data_project['week'];
+  $pict = $data_project['pict'];
+  $category = $data_project['category'];
 
-  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No')";
+  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show, pict, category) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No', '$pict', '$category')";
 
 
   mysqli_query($conn, $sql_add_projects);
@@ -99,8 +101,9 @@ function add_this_project($data_project)
   $req = $data_project['features'];
   $minggu = $data_project['week'];
   $pict = $data_project['pict'];
+  $category = $data_project['category'];
 
-  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show, pict) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No', '$pict')";
+  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show, pict, category) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No', '$pict', $category)";
 
 
   mysqli_query($conn, $sql_add_projects);
@@ -322,8 +325,10 @@ function edit_project($proyek_data, $id)
   $proyek_pic = $proyek_data['dosen'];
   $proyek_desc = $proyek_data['desc'];
   $proyek_week = $proyek_data['week'];
+  $proyek_cat = $proyek_data['category'];
+  $req = $proyek_data['req'];
 
-  $sql = "UPDATE proyek SET nama_proyek = '" . $proyek_name . "', deskripsi_proyek = '" . $proyek_desc . "', id_user = '" . $proyek_pic . "', minggu = $proyek_week WHERE proyek.id_proyek = " . $id . "";
+  $sql = "UPDATE proyek SET nama_proyek = '" . $proyek_name . "', deskripsi_proyek = '" . $proyek_desc . "', id_user = '" . $proyek_pic . "', minggu = $proyek_week, category = $proyek_cat, req = '$req' WHERE proyek.id_proyek = " . $id . "";
 
   mysqli_query($conn, $sql);
   return mysqli_affected_rows($conn);
@@ -335,5 +340,54 @@ function update_to_yes($id)
   $sql = "UPDATE bunch SET status_show = 'Yes' WHERE bunch_id = $id";
 
   mysqli_query($conn, $sql);
+  return mysqli_affected_rows($conn);
+}
+
+function add_pm_req($user_data, $user_email, $id_project)
+{
+  global $conn;
+
+  $bunch_name = $user_data['name'];
+
+  $sql_add_req = "INSERT INTO request_project (r_id, bunch_name, user_id, project_id, status_req) VALUES ('', '" . $bunch_name . "', '" . $user_email . "', " . $id_project . ", 'Belum Diterima')";
+
+  mysqli_query($conn, $sql_add_req);
+
+  return mysqli_affected_rows($conn);
+}
+
+function reject_request_pm($id_req)
+{
+  global $conn;
+
+  $sql_reject = "UPDATE request_project SET status_req = 'Ditolak' WHERE request_project.r_id = " . $id_req . "";
+
+  mysqli_query($conn, $sql_reject);
+
+  return mysqli_affected_rows($conn);
+}
+
+function accept_request_pm($id_req)
+{
+  global $conn;
+
+  $sql_reject = "UPDATE request_project SET status_req = 'Diterima' WHERE request_project.r_id = " . $id_req . "";
+
+  mysqli_query($conn, $sql_reject);
+
+  return mysqli_affected_rows($conn);
+}
+
+function add_accept_bunch($data_bunch)
+{
+  global $conn;
+  $user_id = $data_bunch['email'];
+  $bunch_name = $data_bunch['name'];
+  $project_id = $data_bunch['project_id'];
+
+  $sql_add = "INSERT INTO bunch (bunch_id, bunch_name, leader_id, project_id, grade, status_show) VALUES (NULL, '" . $bunch_name . "', '" . $user_id . "', '" . $project_id . "', '0', 'No')";
+
+  mysqli_query($conn, $sql_add);
+
   return mysqli_affected_rows($conn);
 }

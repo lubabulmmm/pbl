@@ -1,6 +1,8 @@
 <?php
 
-$req_user_list = execThis("SELECT request.bunch_id, status_req, nama_proyek, nama_user, project_id FROM request INNER JOIN bunch ON request.bunch_id = bunch.bunch_id INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user ON bunch.leader_id = user.email WHERE user_id = '" . $_SESSION['email'] . "'")
+$req_user_list = execThis("SELECT request.bunch_id, status_req, nama_proyek, nama_user, project_id FROM request INNER JOIN bunch ON request.bunch_id = bunch.bunch_id INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user ON bunch.leader_id = user.email WHERE user_id = '" . $_SESSION['email'] . "'");
+
+$req_user_pm = execThis("SELECT project_id, status_req, nama_proyek, nama_user FROM request_project INNER JOIN proyek ON request_project.project_id = proyek.id_proyek INNER JOIN user ON proyek.id_user = user.email WHERE user_id = '" . $_SESSION['email'] . "'");
 
 ?>
 
@@ -24,7 +26,7 @@ $req_user_list = execThis("SELECT request.bunch_id, status_req, nama_proyek, nam
       <div class="p-4 md:p-5">
         <p class="text-gray-500 mb-4 ml-2">Daftar proyek:</p>
         <ul class="space-y-4 mb-4">
-          <?php if (empty($req_user_list)) : ?>
+          <?php if (empty($req_user_list) && empty($req_user_pm)) : ?>
             <p class="my-3 text-sm text-gray-400 text-center">Tidak ada permintaan</p>
           <?php endif; ?>
           <?php foreach ($req_user_list as $rul) : ?>
@@ -42,6 +44,29 @@ $req_user_list = execThis("SELECT request.bunch_id, status_req, nama_proyek, nam
                       <span class="text-green-600"><?= $rul['status_req'] ?></span>
                     <?php endif; ?>
                     | <?= $rul['nama_user'] ?>
+                  </div>
+                </div>
+                <svg class="w-4 h-4 ms-3 rtl:rotate-180 text-amber-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                </svg>
+              </a>
+            </li>
+          <?php endforeach; ?>
+          <?php foreach ($req_user_pm as $rup) : ?>
+            <li>
+
+              <a href="./detail-project.php?id=<?= $rup['project_id'] ?>" for="job-1" class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100">
+                <div class="block">
+                  <div class="w-full text-sm font-semibold"><?= $rup['nama_proyek'] ?></div>
+                  <div class="w-full text-gray-500 text-xs mt-1">
+
+                    <?php if ($rup['status_req'] == 'Belum Diterima' || $rup['status_req'] == 'Ditolak') : ?>
+                      <span class="text-red-600"><?= $rup['status_req'] ?></span>
+                    <?php endif; ?>
+                    <?php if ($rup['status_req'] == 'Diterima') : ?>
+                      <span class="text-green-600"><?= $rup['status_req'] ?></span>
+                    <?php endif; ?>
+                    | <?= $rup['nama_user'] ?>
                   </div>
                 </div>
                 <svg class="w-4 h-4 ms-3 rtl:rotate-180 text-amber-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
