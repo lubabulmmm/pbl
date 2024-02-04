@@ -105,7 +105,7 @@ if (isset($_POST["submit"])) {
           <dl class="divide-y divide-gray-100">
             <div class="px-1 sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-4 sm:px-0">
               <dt class="text-md font-medium leading-6 text-gray-900 flex flex-col col-span-2 lg:col-span-1">
-                <p class="text-md text-gray-900">Daftar Anggota & Role</p>
+                <p class="text-md text-gray-900">Daftar Ketua Mengambil</p>
 
                 <div class="bg-white border shadow border-gray-200 mt-5 p-5 rounded-lg col-span-2">
 
@@ -134,7 +134,7 @@ if (isset($_POST["submit"])) {
                 </div>
               </dt>
               <dd class="mt-1 font-medium leading-6 text-gray-900 sm:col-span-2 sm:mt-0">
-                <p class="text-md text-gray-900">Daftar Permintaan Bergabung</p>
+                <p class="text-md text-gray-900">Daftar Permintaan Ketua</p>
 
                 <div class="bg-white border shadow border-gray-200 mt-5 p-5 rounded-lg">
 
@@ -164,7 +164,7 @@ if (isset($_POST["submit"])) {
                             </div>
                             <div class="inline-flex items-center">
                               <button type="submit" name="submit" class="focus:outline-none text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 ">Terima</button>
-                              <button type="button" data-modal-target="popup-modal-rp" data-modal-toggle="popup-modal-rp" class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 ">Tolak</button>
+                              <button type="button" data-modal-target="popup-modal-rp-<?= $lr['r_id'] ?>" data-modal-toggle="popup-modal-rp-<?= $lr['r_id'] ?>" class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 ">Tolak</button>
                             </div>
                           </div>
                         </form>
