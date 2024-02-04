@@ -111,8 +111,8 @@ if (isset($_SESSION["level"])) {
                 </div>
 
             
-         <form>
-            <!-- <div class="flex items-center justify-start gap-x-5">
+          <form>
+          <!-- <div class="flex items-center justify-start gap-x-5">
               <button type="submit" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 ">Simpan</button>
               <button type="submit" class="rounded-md bg-red-500 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 ">Batal</button>
             </div> -->

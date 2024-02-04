@@ -186,8 +186,8 @@ $get_files = execThis("SELECT * FROM submit_file WHERE bunch_id =" . $_GET['bid'
                   <?php endif; ?>
                 </dd>
               </div>
-    </div>
-  </div>
+            </div>
+          </div>
 
 </body>
 
