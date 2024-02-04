@@ -102,18 +102,28 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
                   <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                   </svg>
-                  <span class="ms-1 text-lg font-medium text-amber-500 md:ms-2">Temukan Kelompok</span>
+                  <span class="ms-1 text-lg font-medium text-amber-500 md:ms-2">Cari Kelompok</span>
                 </div>
               </li>
             </ol>
+            <div class="flex items-center flex-wrap ml-auto">
+                <a href="dashboard.php" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+                  <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+                  </svg>
+                  Kembali
+                </a>
+              </div>
           </nav>
+
+          
           <!-- Start coding here -->
           <div class="bg-white relative shadow-md sm:rounded-lg rounded-lg overflow-hidden border border-gray-50">
             <div class="bg-white flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
 
               <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
 
-                <h2 class="text-xl font-semibold text-blue-700">Temukan Kelompok Kamu!</h2>
+                <h2 class="text-xl font-semibold text-blue-700">Cari Dan Temukan Kelompok</h2>
               </div>
 
               <div class="w-full md:w-1/2">
@@ -126,14 +136,14 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
                       </svg>
                     </div>
                     <!-- Correct the input ID to match the jQuery selector -->
-                    <input type="text" name="keyword" id="simple-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-amber-500 block w-full pl-10 p-2 mr-3" placeholder="Search" required="">
+                    <input type="text" name="keyword" id="simple-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-amber-500 block w-full pl-10 p-2 mr-3" placeholder="Cari" required="">
                   </div>
 
                   <button type="submit" name="search" class="flex items-center justify-center text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
                     <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
-                    Search
+                    Cari
                   </button>
                 </form>
               </div>
@@ -144,10 +154,10 @@ $list_bunchOnCurrentPage = array_slice($list_bunch, $offset, $itemsPerPage);
                 <thead class="text-xs text-blue-700 border-b uppercase bg-white">
                   <tr>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">No</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul Proyek</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Judul</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Kelompok</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama Ketua</th>
-                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Nama Dosen PIC</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Ketua Kelompok (PM)</th>
+                    <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">Dosen PIC</th>
                     <th scope="col" class="lg:px-4 lg:py-3 px-2 py-3">
                       <span class="sr-only">Action</span>
                     </th>

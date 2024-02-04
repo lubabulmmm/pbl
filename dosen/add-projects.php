@@ -79,8 +79,8 @@ $rand_pict = rand(1, 8);
             <form action="" method="post">
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
-                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Proyek</label>
-                  <input type="text" name="name" id="name" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tambah Nama Proyek.." required="">
+                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Judul</label>
+                  <input type="text" name="name" id="name" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Judul" required="">
                 </div>
                 <div class="hidden">
                   <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Dosen</label>
@@ -100,13 +100,21 @@ $rand_pict = rand(1, 8);
                 <input type="hidden" value="<?= $rand_pict ?>" name="pict">
                 <div class="sm:col-span-2">
 
-                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Wajib</label>
-                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Fitur Wajib"></textarea>
+                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Utama</label>
+                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Fitur Utama"></textarea>
                 </div>
               </div>
               <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
                 Tambah
               </button>
+              </button>
+              <button type="cancle" name="cancle" class="inline-flex items-center px-7 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-amber-500 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-amber-400">
+                Batal
+              </button>
+              <a href="./dashadmin.php" type="button" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-red-500 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-red-400">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+                Kembali
+              </a>
             </form>
           </div>
         </section>

@@ -11,18 +11,18 @@
         <svg class="mx-auto mb-4 text-red-500 w-12 h-12 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
         </svg>
-        <h3 class="mb-5 text-md font-normal text-gray-800 ">Jika kamu memilih proyek ini, kamu otomatis akan menjadi <span class="font-semibold">Ketua Kelompok</span> atau <span class="font-semibold italic">Project Manager (PM)</span></h3>
+        <h3 class="mb-5 text-md font-normal text-gray-800 ">Jika Anda Memilih Judul Ini, Maka Akan Otomatis menjadi <span class="font-semibold">Ketua Kelompok</span> Atau <span class="font-semibold italic">Project Manager (PM)</span></h3>
         <form action="" method="post">
           <div class="flex flex-col">
             <div class="mb-6">
-              <label for="default-input" class="block mb-2 text-sm font-medium text-amber-600">Masukkan nama Kelompok kamu:</label>
-              <input type="text" name="name" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Tulis nama kelompok kamu...">
+              <label for="default-input" class="block mb-2 text-sm font-medium text-amber-600">Silahkan Buat Nama Kelompok:</label>
+              <input type="text" name="name" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan Nama Kelompok">
             </div>
             <div class="flex justify-evenly">
               <button type="submit" name="submit" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                Ya, saya setuju!
+                Pilih
               </button>
-              <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-200 rounded-lg border hover:border-red-500 border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-white focus:z-10 ">Tidak, saya malas</button>
+              <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">Batal</button>
             </div>
           </div>
         </form>

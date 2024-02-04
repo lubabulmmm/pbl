@@ -11,7 +11,7 @@ $req_user_list = execThis("SELECT request.bunch_id, status_req, nama_proyek, nam
       <!-- Modal header -->
       <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
         <h3 class="text-lg font-semibold text-gray-900">
-          Daftar Permintaan
+          Daftar Riwayat Permintaan Bergabung
         </h3>
         <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="req-list-modal">
           <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -22,7 +22,7 @@ $req_user_list = execThis("SELECT request.bunch_id, status_req, nama_proyek, nam
       </div>
       <!-- Modal body -->
       <div class="p-4 md:p-5">
-        <p class="text-gray-500 mb-4 ml-2">Daftar proyek:</p>
+        <p class="text-black-500 mb-4 ml-2">Daftar Judul:</p>
         <ul class="space-y-4 mb-4">
           <?php if (empty($req_user_list)) : ?>
             <p class="my-3 text-sm text-gray-400 text-center">Tidak ada permintaan</p>
@@ -52,7 +52,7 @@ $req_user_list = execThis("SELECT request.bunch_id, status_req, nama_proyek, nam
           <?php endforeach; ?>
         </ul>
         <button data-modal-toggle="req-list-modal" class="text-white inline-flex w-full justify-center bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-          Tutup
+          Kembali
         </button>
       </div>
     </div>

@@ -96,7 +96,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
           <div class="">
             <h2 class="text-2xl mb-2 font-semibold"><?= $projects[0]['nama_proyek'] ?></h2>
             <?php if ($sum_num == 3) : ?>
-              <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">Proyek penuh</span>
+              <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">Proyek Penuh</span>
             <?php endif; ?>
           </div>
 
@@ -114,15 +114,15 @@ $sum_num = mysqli_num_rows($sum_bunch);
                 <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                   <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M8 8v1h4V8m4 7H4a1 1 0 0 1-1-1V5h14v9a1 1 0 0 1-1 1ZM2 1h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z" />
                 </svg>
-                Pilih Proyek Ini
+                Pilih Judul
               </button>
             <?php endif; ?>
             <?php if ($sum_num < 3) : ?>
-              <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" type="button" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
+              <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" type="button" class="text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
                 <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                   <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M8 8v1h4V8m4 7H4a1 1 0 0 1-1-1V5h14v9a1 1 0 0 1-1 1ZM2 1h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z" />
                 </svg>
-                Pilih Proyek Ini
+                Pilih Judul
               </button>.
             <?php endif; ?>
 
@@ -140,11 +140,11 @@ $sum_num = mysqli_num_rows($sum_bunch);
               <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500"><?= $sum_num ?></span> /3</dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi Proyek</dt>
+              <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi</dt>
               <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $projects[0]['deskripsi_proyek'] ?></dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900">Kebutuhan Aplikasi</dt>
+              <dt class="text-md font-medium leading-6 text-gray-900">Fitur Utama</dt>
               <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                 <?= $projects[0]['req'] ?>
               </dd>

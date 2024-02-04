@@ -142,8 +142,8 @@ $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
                   <textarea id="description" name="description" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Deskripsi"></textarea>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Wajib</label>
-                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Fitur Wajib"></textarea>
+                  <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Utama</label>
+                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Fitur Utama"></textarea>
                 </div>
                 <!-- <div class="sm:col-span-2">
                   <label class="block mb-2 text-sm font-medium text-gray-900" for="small_size">File Pendukung</label>

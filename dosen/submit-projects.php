@@ -166,7 +166,7 @@ $get_files = execThis("SELECT * FROM submit_file WHERE bunch_id =" . $_GET['bid'
                           </div>
                         </div>
                         <div class="ml-4 flex-shrink-0">
-                          <a href="../query/download-file.php?url=<?= $file['path']; ?>" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
+                          <a href="../query/download-file.php?url=<?= $file['path']; ?>" class="font-medium text-amber-600 hover:text-amber-500">Unduh</a>
                         </div>
                       </li>
                     <?php endforeach; ?>

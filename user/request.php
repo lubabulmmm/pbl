@@ -104,14 +104,14 @@ if (empty($get_leader) && empty($get_members)) {
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 lg:text-lg text-sm font-medium text-amber-500 md:ms-2">Permintaan Masuk</span>
+                <span class="ms-1 lg:text-lg text-sm font-medium text-amber-500 md:ms-2">Kotak Masuk</span>
               </div>
             </li>
           </ol>
         </nav>
 
         <div class="flex w-full flex-wrap justify-between items-center">
-          <h2 class="lg:text-2xl text-xl mb-3 font-semibold">Pemintaan Bergabung Kelompok</h2>
+          <h2 class="lg:text-2xl text-xl mb-3 font-semibold">Pemintaan Bergabung Ke Kelompok</h2>
 
           <div class="flex items-center flex-wrap">
             <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">

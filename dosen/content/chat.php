@@ -26,7 +26,7 @@
   <!-- //! KOLOM CHAT WAKK -->
 
   <form class="my-7 lg:my-0 lg:mr-5" method="post">
-    <label for="comment" class="text-gray-800 text-lg font-semibold">Tulis komentar</label>
+    <label for="comment" class="text-gray-800 text-lg font-semibold">Tulis Komentar</label>
     <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-gray-200  my-3 focus:border-gray-200 block w-full p-2.5" placeholder="Tulis Subjek" required="">
     <input type="text" name="bid" id="bid" value="<?= $get_bunch_name[0]['bunch_id'] ?>" class="sr-only" placeholder="bid" required="">
     <input type="text" name="pid" id="pid" value="<?= $get_bunch_name[0]['project_id'] ?>" class="sr-only" placeholder="pid" required="">

@@ -7,7 +7,7 @@
                 <div class="flex justify-between w-full items-center mb-4">
                     <a href="./detail-project.php?id=<?= $project['id_proyek'] ?>" class="flex flex-col justify-between">
                         <h5 class="mb-1 text-md font-bold tracking-tight text-gray-900 hover:underline "><?= $project['nama_proyek'] ?></h5>
-                        <span class="text-sm text-gray-500">PIC: <?= $project['nama_user'] ?></span>
+                        <span class="text-sm text-gray-500">Dosen PIC: <?= $project['nama_user'] ?></span>
                     </a>
                     <img class="w-10 h-10 rounded-full" src="../assets/img/ian.jpeg" alt="Rounded avatar">
                 </div>

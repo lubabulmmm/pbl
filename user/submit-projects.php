@@ -83,7 +83,7 @@ if (empty($get_leader) && empty($get_members)) {
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
                 <a href="projects.php?bid=<?= $_GET['bid']  ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center lg:text-lg text-sm font-medium text-gray-700 hover:text-amber-500">
-                  <span class="ms-1 lg:text-lg text-sm font-medium text-gray-900 hover:text-amber-500 md:ms-2">Proyek Kamu</span>
+                  <span class="ms-1 lg:text-lg text-sm font-medium text-gray-900 hover:text-amber-500 md:ms-2">Cek Proyek</span>
                 </a>
               </div>
             </li>
@@ -92,7 +92,7 @@ if (empty($get_leader) && empty($get_members)) {
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 lg:text-lg text-sm font-medium text-amber-500 md:ms-2">Pengumpulan Proyek</span>
+                <span class="ms-1 lg:text-lg text-sm font-medium text-amber-500 md:ms-2">Pengumpulan</span>
               </div>
             </li>
           </ol>
@@ -120,7 +120,7 @@ if (empty($get_leader) && empty($get_members)) {
             <form action="../query/submit-upload.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" method="post" enctype="multipart/form-data">
               <dl class="divide-y divide-gray-100">
                 <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Nilai Proyek</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Nilai</dt>
                   <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500">0</span> /100</dd>
                 </div>
                 <?php if (empty($get_sfiles) && empty($get_slinks)) { ?>
@@ -156,7 +156,7 @@ if (empty($get_leader) && empty($get_members)) {
                     <svg class="w-16 h-16 text-green-500 mx-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9 9 0 1 1 3-17.5m-8 6 4 4L19.3 5M17 14v6m-3-3h6" />
                     </svg>
-                    <p class="w-full text-center mt-5 text-gray-500">Kelompok kamu telah mengumpulkan, <a href="dashboard.php" class="text-amber-500 hover:underline">ke beranda.</a></p>
+                    <p class="w-full text-center mt-5 text-gray-500">Proyek Telah Selesai Dikumpulkan, <a href="dashboard.php" class="text-amber-500 hover:underline">Kembali Ke Beranda.</a></p>
                   </div>
                 <?php } ?>
               </dl>
