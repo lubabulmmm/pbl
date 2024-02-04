@@ -190,7 +190,7 @@ if (empty($get_leader) && empty($get_members)) {
                             </div>
                             <div class="inline-flex items-center">
                               <button type="submit" name="submit" class="focus:outline-none text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 ">Terima</button>
-                              <button type="button" data-modal-target="popup-modal-reject" data-modal-toggle="popup-modal-reject" class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 ">Tolak</button>
+                              <button type="button" data-modal-target="popup-modal-reject-<?= $lr['request_id'] ?>" data-modal-toggle="popup-modal-reject-<?= $lr['request_id'] ?>" class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 ">Tolak</button>
                             </div>
                           </div>
                         </form>

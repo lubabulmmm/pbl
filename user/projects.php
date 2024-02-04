@@ -105,13 +105,6 @@ if (empty($get_leader) && empty($get_members)) {
             Detail Anggota
           </a>
 
-          <a href="./submit-projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="shadow text-green-500 hover:text-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs px-4 py-2 text-center inline-flex items-center me-2 my-2">
-            <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 19">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15h.01M4 12H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-3m-5.5 0V1.07M5.5 5l4-4 4 4" />
-            </svg>
-            Pengumpulan
-          </a>
-
           <?php if (!empty($get_leader)) : ?>
             <a href="./request.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="shadow text-violet-500 hover:text-violet-400 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-xs px-4 py-2 text-center inline-flex items-center me-2 my-2">
               <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -120,6 +113,14 @@ if (empty($get_leader) && empty($get_members)) {
               Kotak Masuk
             </a>
           <?php endif; ?>
+
+          <a href="./submit-projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" type="button" class="shadow text-green-500 hover:text-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs px-4 py-2 text-center inline-flex items-center me-2 my-2">
+            <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 19">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15h.01M4 12H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-3m-5.5 0V1.07M5.5 5l4-4 4 4" />
+            </svg>
+            Pengumpulan
+          </a>
+
         </div>
 
         <!-- //! TAB CONTENT -->
