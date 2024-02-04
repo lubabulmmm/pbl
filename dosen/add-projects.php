@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
 }
 
 $rand_pict = rand(1, 8);
-
+$cats = execThis("SELECT * FROM categories");
 ?>
 
 <!DOCTYPE html>
@@ -98,6 +98,15 @@ $rand_pict = rand(1, 8);
                   <textarea id="description" name="description" rows="8" class="block p-4 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Masukkan Deskripsi"></textarea>
                 </div>
                 <input type="hidden" value="<?= $rand_pict ?>" name="pict">
+                <div>
+                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Kategori</label>
+                  <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                    <option selected>Pilih Kategori</option>
+                    <?php foreach ($cats as $cat) : ?>
+                      <option value="<?php echo $cat["c_id"] ?>"><?= $cat["category_name"]; ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
                 <div class="sm:col-span-2">
 
                   <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Utama</label>

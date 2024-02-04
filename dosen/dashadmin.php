@@ -63,7 +63,25 @@ if (isset($_SESSION["level"])) {
         </div>
       </div>
 
+      <div class="flex px-7 mb-6 flex-wrap">
+        <a href="./add-projects.php" type="button" class="text-blue-600 bg-white focus:ring-4 focus:outline-none focus:ring-blue-100 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 mr-2 my-2 ml-0 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
+          <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+          Tambah Proyek
+        </a>
+
+        <button type="button" data-modal-target="req-list" data-modal-toggle="req-list" class="text-green-600 bg-white focus:ring-4 focus:outline-none focus:ring-green-100 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 m-2 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
+
+          <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13h3.4a1 1 0 0 1 1 .6 4 4 0 0 0 7.3 0 1 1 0 0 1 .9-.6H20M4 13v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M4 13l2-9h12l2 9" />
+          </svg>
+          Permintaan Bergabung
+        </button>
+      </div>
+
       <?php include("./content/chsadmin.php") ?>
+      <?php include("../content/req-list-pm.php") ?>
 
 
     </div>

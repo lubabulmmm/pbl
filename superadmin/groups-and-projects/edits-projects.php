@@ -26,10 +26,10 @@ if (isset($_POST["submit"])) {
   }
 }
 
-$project = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, id_user, nama_user, minggu FROM proyek INNER JOIN user ON proyek.id_user = user.email WHERE id_proyek =" . $_GET['id']);
+$project = execThis("SELECT id_proyek, nama_proyek, category, deskripsi_proyek, id_user, req, nama_user, minggu FROM proyek INNER JOIN user ON proyek.id_user = user.email WHERE id_proyek =" . $_GET['id']);
 
 $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
-
+$cats = execThis("SELECT * FROM categories");
 ?>
 
 
@@ -93,6 +93,15 @@ $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
                   </select>
                 </div>
                 <div>
+                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Pilih Kategori</label>
+                  <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                    <option value="<?= $project[0]['category'] ?>" selected>Pilih Kategori</option>
+                    <?php foreach ($cats as $cat) : ?>
+                      <option value="<?php echo $cat["c_id"] ?>"><?= $cat["category_name"]; ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
+                <div>
                   <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900">Minggu</label>
                   <input type="number" name="week" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Edit Angka" value="<?= $project[0]['minggu'] ?>" required>
                 </div>
@@ -102,12 +111,8 @@ $dos = execThis("SELECT * FROM user WHERE level = 'admin'");
                 </div>
                 <div class="sm:col-span-2">
                   <label for="features" class="block mb-2 text-sm font-medium text-gray-900">Fitur Utama</label>
-                  <textarea id="features" name="features" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Edit Fitur Utama"></textarea>
+                  <textarea id="req" name="req" rows="8" class="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Edit Fitur Wajib"><?= $project[0]['req'] ?></textarea>
                 </div>
-                <!-- <div class="sm:col-span-2">
-                  <label class="block mb-2 text-sm font-medium text-gray-900" for="small_size">File Pendukung</label>
-                  <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="multiple_files" type="file" multiple>
-                </div> -->
               </div>
               <button type="submit" name="submit" class="inline-flex items-center px-6 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
                 Simpan
