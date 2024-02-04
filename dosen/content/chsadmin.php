@@ -4,7 +4,7 @@ $projects = execThis("SELECT id_user, deskripsi_proyek, id_proyek, pict, nama_pr
 
 ?>
 
-<h2 class="text-xl self-start font-medium px-7 w-full">Daftar Proyek PBL</h2>
+<h2 class="text-xl self-start font-medium px-7 w-full">Daftar Proyek</h2>
 
 <div class="py-8 px-4 max-w-screen-xl lg:py-6 lg:px-6">
   <div class="grid gap-8 lg:grid-cols-2">

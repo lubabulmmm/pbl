@@ -22,7 +22,7 @@ $get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, rol
       </div>
       <!-- Modal body -->
       <div class="p-4 md:p-5">
-        <p class="text-gray-500 mb-2 text-sm ml-2">Daftar anggota:</p>
+        <p class="text-black-500 mb-2 text-sm ml-2">Daftar Anggota:</p>
         <div class="bg-white border shadow border-gray-200 my-3 p-5 rounded-lg col-span-2">
 
           <ul class="max-w-full">
@@ -52,7 +52,7 @@ $get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, rol
           </ul>
         </div>
         <button data-modal-toggle="member-list-modal" class="text-white inline-flex w-full justify-center bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-          Tutup
+          Kembali
         </button>
       </div>
     </div>

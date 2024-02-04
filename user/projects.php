@@ -79,7 +79,7 @@ if (empty($get_leader) && empty($get_members)) {
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 lg:text-lg text-sm font-medium text-amber-500 md:ms-2">Proyek Kamu</span>
+                <span class="ms-1 lg:text-lg text-sm font-medium text-amber-500 md:ms-2">Cek Proyek</span>
               </div>
             </li>
           </ol>
@@ -110,7 +110,7 @@ if (empty($get_leader) && empty($get_members)) {
               <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8m18 0-8-4.5a2 2 0 0 0-2 0L3 8m18 0-9 6.5L3 8" />
               </svg>
-              Permintaan
+              Kotak Masuk
             </a>
           <?php endif; ?>
 
@@ -118,7 +118,7 @@ if (empty($get_leader) && empty($get_members)) {
             <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 19">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15h.01M4 12H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-3m-5.5 0V1.07M5.5 5l4-4 4 4" />
             </svg>
-            Pengumpulan Proyek
+            Pengumpulan
           </a>
 
         </div>

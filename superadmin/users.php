@@ -214,6 +214,7 @@ $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
                       <td class="px-4 py-3"><?= $user['id'] ?></td>
                       <td class="px-4 py-3"><?= $user['nama_user'] ?></td>
                       <td class="px-4 py-3"><?= $user['email'] ?></td>
+
                       <td class="px-4 py-3">
                         <button data-modal-target="popup-modal-delete-<?= $user['id'] ?>" data-modal-toggle="popup-modal-delete-<?= $user['id'] ?>" type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
                           <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">

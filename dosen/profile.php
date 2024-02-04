@@ -111,14 +111,23 @@ if (isset($_SESSION["level"])) {
                 </div>
 
             
-          </form>
-
-              </div>
-            </div>
-            <div class="flex items-center justify-start gap-x-5">
+          <form>
+          <!-- <div class="flex items-center justify-start gap-x-5">
               <button type="submit" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 ">Simpan</button>
-              <button type="submit" class="rounded-md bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 ">Batal</button>
-            </div>
+              <button type="submit" class="rounded-md bg-red-500 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 ">Batal</button>
+            </div> -->
+            <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-800 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
+                Simpan
+              </button>
+              </button>
+              <button type="cancle" name="cancle" class="inline-flex items-center px-7 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-amber-500 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-amber-400">
+                Batal
+              </button>
+              <a href="./dashboard.php" type="button" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-red-500 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-red-400">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+                Kembali
+              </a>
+          </form>
         </form>
 
       </div>

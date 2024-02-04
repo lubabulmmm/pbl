@@ -1,10 +1,10 @@
 <div class="w-11/12 px-0 grid grid-cols-1 lg:grid-cols-3 m-0 lg:mt-8 lg:mx-auto">
   <div class="p-5 mr-0 my-5 lg:my-0 lg:mr-5 border shadow border-gray-200 rounded-lg bg-white col-span-1 lg:col-span-2">
-    <h1 class="text-lg font-semibold text-gray-900">Komentar Dosen</h1>
+    <h1 class="text-lg font-semibold text-gray-900">Komentar Dosen PIC</h1>
 
     <?php if ($get_comments == []) : ?>
       <div class="w-full py-6">
-        <p class="text-gray-400 font-light text-center">Dosen belum memberikan komentar apapun.</p>
+        <p class="text-gray-400 font-light text-center">Dosen PIC belum memberikan komentar</p>
       </div>
     <?php endif; ?>
 
@@ -26,7 +26,7 @@
   <!-- //! KOLOM TUGAS WAKK -->
 
   <div class="p-5 mr-0 border shadow border-gray-200 rounded-lg bg-white col-span-1">
-    <h1 class="text-lg font-semibold mb-2.5 text-gray-900">Tugas Anda</h1>
+    <h1 class="text-lg font-semibold mb-2.5 text-gray-900">Tugas</h1>
 
     <ul class="max-w-full h-48 ov">
       <?php
@@ -34,7 +34,7 @@
       $doing_color = "text-amber-600";
       ?>
       <?php if (empty($tasks_user)) : ?>
-        <p class="text-sm font-light text-center text-gray-400">Anda tidak memiliki tugas</p>
+        <p class="text-sm font-light text-center text-gray-400">Tidak Ada</p>
       <?php endif; ?>
       <?php foreach ($tasks_user as $task) : ?>
         <li class="pb-3 sm:pb-4 mt-2.5 border-b border-gray-200">

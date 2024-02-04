@@ -162,17 +162,17 @@ $done_sum = mysqli_num_rows($done_fetch);
                 </div>
                 <!-- // ! Total Progress -->
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-md font-medium leading-6 text-gray-900">Progress</dt>
+                  <dt class="text-md font-medium leading-6 text-gray-900">Perkembangan</dt>
                   <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                     <ul class="max-w-xl leading-loose text-md text-gray-500 list-disc list-inside">
                       <li class="mt-2 text-red-500">
-                        To Do: <?= $todo_sum ?> Progress
+                        To Do: <?= $todo_sum ?> Perkembangan
                       </li>
                       <li class="mt-2 text-amber-500">
-                        Doing: <?= $doing_sum ?> Progress
+                        Doing: <?= $doing_sum ?> Perkembangan
                       </li>
                       <li class="mt-2 text-green-500">
-                        Done: <?= $done_sum ?> Progress
+                        Done: <?= $done_sum ?> Perkembangan
                       </li>
                     </ul>
                   </dd>
@@ -200,7 +200,7 @@ $done_sum = mysqli_num_rows($done_fetch);
                               </div>
                             </div>
                             <div class="ml-4 flex-shrink-0">
-                              <a href="../query/download-file.php?url=<?= $file['path']; ?>" class="font-medium text-amber-600 hover:text-amber-500">Download</a>
+                              <a href="../query/download-file.php?url=<?= $file['path']; ?>" class="font-medium text-amber-600 hover:text-amber-500">Unduh</a>
                             </div>
                           </li>
                         <?php endforeach; ?>
