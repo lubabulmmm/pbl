@@ -26,16 +26,6 @@ try {
   exit;
 }
 
-// if (isset($_POST["submit"])) {
-
-//   if (add_bunch($_POST, $_SESSION['email'], $_GET['id']) > 0) {
-//     $get_sheet = execThis("SELECT * FROM bunch WHERE project_id = " . $_GET['id'] . " AND leader_id = '" . $_SESSION['email'] . "'");
-//     header("Location: projects.php?bid=" . $get_sheet[0]['bunch_id'] . "&id=" . $_GET['id'] . "&info=success");
-//   } else {
-//     header("Location: detail-project.php?id=" . $_GET['id'] . "&info=failed");
-//   }
-// }
-
 if (isset($_POST["submit"])) {
 
   if (add_pm_req($_POST, $_SESSION['email'], $_GET['id']) > 0) {
