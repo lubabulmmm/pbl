@@ -50,6 +50,7 @@ if (isset($_POST["login"])) {
         $_SESSION["nama_user"] = $check_result["nama_user"];
         $_SESSION["email"] = $check_result["email"];
         $_SESSION["level"] = $check_result["level"];
+        $_SESSION["gambar"] = $check_result["gambar"];
 
         if ($_SESSION["level"] == "user") {
           header("Location: dashboard.php");
@@ -101,17 +102,17 @@ if (isset($_POST["login"])) {
             Selamat Datang, Vokasioner!
           </h1>
           <!-- Display error messages -->
-<?php if (!empty($emailError)) : ?>
-  <div class="text-red-500 text-sm mb-4"><?php echo $emailError; ?></div>
-<?php endif; ?>
+          <?php if (!empty($emailError)) : ?>
+            <div class="text-red-500 text-sm mb-4"><?php echo $emailError; ?></div>
+          <?php endif; ?>
 
-<?php if (!empty($passwordError)) : ?>
-  <div class="text-red-500 text-sm mb-4"><?php echo $passwordError; ?></div>
-<?php endif; ?>
+          <?php if (!empty($passwordError)) : ?>
+            <div class="text-red-500 text-sm mb-4"><?php echo $passwordError; ?></div>
+          <?php endif; ?>
 
-<?php if (!empty($loginError)) : ?>
-  <div class="text-red-500 text-sm mb-4"><?php echo $loginError; ?></div>
-<?php endif; ?>
+          <?php if (!empty($loginError)) : ?>
+            <div class="text-red-500 text-sm mb-4"><?php echo $loginError; ?></div>
+          <?php endif; ?>
           <form class="space-y-4 md:space-y-6" action="" method="post">
             <div>
               <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
@@ -138,8 +139,7 @@ if (isset($_POST["login"])) {
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 
-  
+
 </body>
 
 </html>
-
