@@ -66,7 +66,7 @@ if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
           </ol>
         </nav>
 
-        
+
         <div>
           <div class="flex flex-wrap w-full justify-between">
             <div class="px-4 sm:px-0 flex justify-center items-center">
@@ -80,11 +80,8 @@ if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
                 </svg>
                 Kembali
               </a>                            
-            </div>
-
-            
           </div>
-          
+          </div>
           <?php include("./content/content.php") ?>
         </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>

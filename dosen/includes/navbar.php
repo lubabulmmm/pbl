@@ -19,7 +19,7 @@
           <div>
             <button type="button" class="flex text-sm bg-amber-500 rounded-full focus:ring-4 focus:ring-blue-300" aria-expanded="false" data-dropdown-toggle="dropdown-user">
               <span class="sr-only">Open user menu</span>
-              <img class="w-9 h-9 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="user photo">
+              <img class="w-9 h-9 rounded-full" src="/pbl/assets/img/<?= $_SESSION['gambar'] ?>" alt="user photo">
             </button>
           </div>
           <div class="z-50 hidden my-4 text-base text-gray-900 list-none divide-y rounded shadow-lg bg-white divide-gray-300" id="dropdown-user">

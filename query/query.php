@@ -420,3 +420,65 @@ function reg_user($entry){
 
   return mysqli_affected_rows($conn);
 }
+
+function add_roles($data)
+{
+  global $conn;
+  $role_name = $data['role'];
+  $c_id = $data['c_id'];
+
+  $sql_add_roles = "INSERT INTO role (role_id, role_name, category) VALUES ('', '$role_name', '$c_id')";
+
+  mysqli_query($conn, $sql_add_roles);
+
+  return mysqli_affected_rows($conn);
+}
+
+function add_category($data)
+{
+  global $conn;
+  $category_name = $data['category'];
+
+  $sql_add_cats = "INSERT INTO categories (c_id, category_name) VALUES ('', '$category_name')";
+
+  mysqli_query($conn, $sql_add_cats);
+
+  return mysqli_affected_rows($conn);
+}
+
+function edit_role($data)
+{
+  global $conn;
+  $role_name = $data['role'];
+  $id = $data['id'];
+
+  $sql_edit_roles = "UPDATE role SET role_name = '$role_name' WHERE role_id = $id";
+
+  mysqli_query($conn, $sql_edit_roles);
+
+  return mysqli_affected_rows($conn);
+}
+
+function edit_cats($data)
+{
+  global $conn;
+  $c_name = $data['category'];
+  $id = $data['id'];
+
+  $sql_edit_roles = "UPDATE categories SET category_name = '$c_name' WHERE c_id = $id";
+
+  mysqli_query($conn, $sql_edit_roles);
+
+  return mysqli_affected_rows($conn);
+}
+
+function delete_role($data)
+{
+  global $conn;
+
+  $sql_delete_role = "DELETE FROM role WHERE role_id = '$data'";
+
+  mysqli_query($conn, $sql_delete_role);
+
+  return mysqli_affected_rows($conn);
+}

@@ -64,7 +64,7 @@ if (isset($_POST["cari"])) {
         <div class="relative overflow-hidden bg-white sm:rounded-lg">
           <div class="flex-row items-center justify-between p-4 space-y-3 md:flex lg:flex-row sm:flex sm:space-y-0 sm:space-x-4">
             <div class="flex w-5/12 items-center">
-              <img class="w-20 h-20 rounded-xl" src="/pbl/assets/img/pfp.jpg" alt="Default avatar">
+              <img class="w-20 h-20 rounded-xl" src="/pbl/assets/img/<?= $_SESSION['gambar'] ?>" alt="Default avatar">
               <div class="ml-6">
                 <h5 class="mr-3 font-semibold text-gray-900"><?= $_SESSION["nama_user"] ?>'s Dashboard</h5>
                 <p class=" text-gray-400"><?= $_SESSION["email"] ?></p>
@@ -94,12 +94,6 @@ if (isset($_POST["cari"])) {
           </svg>
           Kotak Masuk
         </button>
-        <a href="#chs" type="button" class="text-violet-600 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 m-2 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
-          <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 12v1h4v-1m4 7H6a1 1 0 0 1-1-1V9h14v9a1 1 0 0 1-1 1ZM4 5h16c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V6c0-.6.4-1 1-1Z" />
-          </svg>
-          Proyek Lainnya
-        </a>
       </div>
 
       <h2 class="text-xl self-start font-medium px-7 w-full">Proyek Yang Sedang Dikerjakan</h2>
