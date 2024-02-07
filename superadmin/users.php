@@ -290,58 +290,72 @@ $usersOnCurrentPage = array_slice($users, $offset, $itemsPerPage);
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
+  $('form').submit(function (e) {
+    e.preventDefault();
+    liveSearch();
+  });
 
-      $('form').submit(function(e) {
-        e.preventDefault();
-        liveSearch();
-      });
+  $('#simple-search').on('input', function () {
+    liveSearch();
+  });
 
-      //input
-      $('#simple-search').on('input', function() {
-        liveSearch();
-      });
+  function liveSearch() {
+    var keyword = $('#simple-search').val();
 
-      function liveSearch() {
-        //keyword
-        var keyword = $('#simple-search').val();
+    $.ajax({
+      type: 'POST',
+      url: './live_search.php', // Update the path accordingly
+      data: { keyword: keyword },
+      dataType: 'json',
+      success: function (data) {
+        updateTable(data);
+      },
+    });
+  }
 
-        //request ke live_search.php
-        $.ajax({
-          type: 'POST',
-          url: './live-search/live_search.php',
-          data: {
-            keyword: keyword
-          },
-          dataType: 'json',
-          success: function(data) {
+  function updateTable(users) {
+    var tableBody = $('#user-table tbody');
+    tableBody.empty();
 
-            updateTable(data);
-          }
-        });
-      }
-
-      function updateTable(users) {
-        var tableBody = $('#user-table tbody');
-        tableBody.empty();
-
-        //tabel
-        $.each(users, function(index, user) {
-          var row = '<tr class="border-b hover:bg-gray-100">' +
-            '<th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">' + (index + 1) + '</th>' +
-            '<td class="px-4 py-3">' + user.id + '</td>' +
-            '<td class="px-4 py-3">' + user.nama_user + '</td>' +
-            '<td class="px-4 py-3">' + user.email + '</td>' +
-            '<td class="px-4 py-3">' +
-            '<a href="./delete-user.php?id=' + user.id + '" type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">' +
-            '<svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">' +
-            '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />' +
-            '</svg>' +
-            '<span class="sr-only">Icon description</span>' +
-            '</a>' +
-            '</td>' +
-            '</tr>';
+    $.each(users, function (index, user) {
+      var row = `<tr class="border-b hover:bg-gray-100">
+        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">${index + 1}</th>
+        <td class="px-4 py-3">${user.id}</td>
+        <td class="px-4 py-3">${user.nama_user}</td>
+        <td class="px-4 py-3">${user.email}</td>
+        <td class="px-4 py-3">
+          <button data-modal-target="popup-modal-delete-${user.id}" data-modal-toggle="popup-modal-delete-${user.id}" type="button" class="text-red-700 border-2 border-red-700 hover:bg-red-700 hover:text-white ml-2 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" />
+            </svg>
+            <span class="sr-only">Icon description</span>
+          </button>
+          <div id="popup-modal-delete-${user.id}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div class="relative p-4 w-full max-w-md max-h-full">
+  <div class="relative bg-white rounded-lg shadow ">
+    <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal-delete-${user.id}">
+      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+      </svg>
+      <span class="sr-only">Close modal</span>
+    </button>
+    <div class="p-4 md:p-5 text-center">
+      <svg class="mx-auto mb-4 text-red-600 w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </svg>
+      <h3 class="mb-5 text-md font-normal text-gray-500 dark:text-gray-400">Apakah kamu yakin menolak <span class="font-medium"> + user.id </span> ?</h3>
+      <a href="./delete-user.php?id=${user.id}" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2 text-center me-2">
+        Ya, saya yakin
+      </a>
+      <button data-modal-hide="popup-modal-delete-${user.id}" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2 hover:text-gray-900 focus:z-10">Batal</button>
+    </div>
+  </div>
+</div>
+            </td> +
+            </tr>`;
           tableBody.append(row);
+          
         });
       }
     });

@@ -392,6 +392,35 @@ function add_accept_bunch($data_bunch)
   return mysqli_affected_rows($conn);
 }
 
+function reg_user($entry){
+  global $conn;
+  
+  $username  = $entry["username"];
+  $nim = $entry["nim"];
+  $email = strtolower(stripslashes($entry["email"]));
+  $password = mysqli_real_escape_string($conn, $entry["password"]);
+  $confirm = mysqli_real_escape_string($conn, $entry["confirm-password"]);
+
+  if( $password != $confirm) {
+    return -4;
+  }
+
+  // Encrypt the password
+  $password = password_hash($password, PASSWORD_DEFAULT);
+
+  // Check there is same username or not
+  $username_checker = mysqli_query( $conn,"SELECT nama_user FROM user WHERE nama_user = '$username'");
+  
+  if(mysqli_fetch_assoc($username_checker)) {
+    return -3;
+  }
+  
+  // Add user to database
+  mysqli_query( $conn,"INSERT INTO user VALUES('$email', '$nim', '$username', 'user', 'profile.png', '$password') ");
+
+  return mysqli_affected_rows($conn);
+}
+
 function add_roles($data)
 {
   global $conn;

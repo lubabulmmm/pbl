@@ -79,16 +79,11 @@ if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
                 </svg>
                 Kembali
-              </a>
-            </div>
-
+              </a>                            
+          </div>
           </div>
           <?php include("./content/content.php") ?>
         </div>
-      </div>
-
-
-
       <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </body>
 

@@ -12,7 +12,7 @@
         <svg class="mx-auto mb-4 text-amber-500 w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8m18 0-8-4.5a2 2 0 0 0-2 0L3 8m18 0-9 6.5L3 8" />
         </svg>
-        <h3 class="mb-5 text-md font-normal text-gray-800 ">"Silahkan Menunggu Sampai Ketua Kelompok (PM) Memberikan Respon Mengenai Permintaan Bergabungmu, Mohon Selalu Cek Fitur Kotak Masuk Secara Berkala Untuk Mengetahui Hasil Respon Permintaan Bergabungmu"</h3>
+        <h3 class="mb-5 text-md font-normal text-gray-800 ">"Silahkan Menunggu Sampai Ketua Kelompok (PM) Memberikan Respon Mengenai Permintaan Bergabungmu."</h3>
         <form action="" method="post">
           <div class="flex flex-col">
             <div class="mb-6">
@@ -26,9 +26,9 @@
             </div>
             <div class="flex justify-evenly">
               <button type="submit" name="submit" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                Kirim
+                Kirim permintaan
               </button>
-              <button data-modal-hide="popup-modal-req" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">Batal</button>
+              <button data-modal-hide="popup-modal-req" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">Batalkan permintaan</button>
             </div>
           </div>
         </form>
