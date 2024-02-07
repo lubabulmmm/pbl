@@ -38,7 +38,7 @@ if (isset($_POST["submit"])) {
   }
 }
 
-$projects = execThis("SELECT bunch_id, id_proyek, bunch_name, leader.nama_user AS leader_name, nama_proyek, observer.nama_user AS observer_name, deskripsi_proyek, req FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email WHERE bunch_id = " . $_GET['bid'] . "");
+$projects = execThis("SELECT bunch_id, id_proyek, bunch_name, leader.nama_user AS leader_name, nama_proyek, category, observer.nama_user AS observer_name, deskripsi_proyek, req FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN user AS leader ON bunch.leader_id = leader.email INNER JOIN user AS observer ON proyek.id_user = observer.email WHERE bunch_id = " . $_GET['bid'] . "");
 
 $bunch_sum = mysqli_query($conn, "SELECT nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id = " . $_GET['bid'] . "");
 
@@ -162,11 +162,11 @@ $sum_num = mysqli_num_rows($sum_bunch);
             <?php endif; ?>
 
             <a href="groups.php?" type="button" class="text-white bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-3">
-                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
-                </svg>
-                Kembali
-              </a>
+              <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+              </svg>
+              Kembali
+            </a>
             <button data-modal-target="popup-modal-req" data-modal-toggle="popup-modal-req" type="button" class="<?php if ($bunch_num == 8) : echo "hidden" ?> <?php endif; ?> text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 my-2">
               <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />

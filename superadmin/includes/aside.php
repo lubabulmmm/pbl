@@ -36,6 +36,9 @@
                <li>
                   <a href="/PBL/superadmin/groups-and-projects/projects-list.php" class="flex items-center w-full od py-2 px-3 font-medium text-white transition duration-75 rounded-lg pl-11 group ">Daftar Proyek</a>
                </li>
+               <li>
+                  <a href="/PBL/superadmin/groups-and-projects/cats-roles-list.php" class="flex items-center w-full od py-2 px-3 font-medium text-white transition duration-75 rounded-lg pl-11 group ">Kategori dan Roles</a>
+               </li>
             </ul>
          </li>
          <!-- // ! Admin -->
