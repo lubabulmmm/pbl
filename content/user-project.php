@@ -21,7 +21,7 @@ $user_projects_member = execThis("SELECT bunch.bunch_id, project_id, pict, bunch
     <div class="flex flex-col justify-between p-4 leading-normal">
       <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900"><?= $upm['nama_proyek'] ?> <span class="bg-purple-800 text-purple-200 text-xs font-medium me-2 ml-1.5 px-2.5 py-0.5 rounded"><?= $upm['bunch_name'] ?></span></h5>
       <div class="mb-3 font-normal text-sm text-gray-700">
-        <p class="hover:underline  text-amber-500 text-md font-semibold flex align-center">Cek Proyek <svg class="w-5 h-5 text-amber-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <p class="hover:underline  text-amber-500 text-md font-semibold flex align-center">Kunjungi Proyek <svg class="w-5 h-5 text-amber-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
           </svg></p>
       </div>

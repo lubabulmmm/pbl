@@ -88,18 +88,18 @@ if (isset($_POST["cari"])) {
           </svg>
           Cari Kelompok
         </a>
-        <a href="#chs" type="button" class="text-green-600 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 m-2 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
-          <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 12v1h4v-1m4 7H6a1 1 0 0 1-1-1V9h14v9a1 1 0 0 1-1 1ZM4 5h16c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V6c0-.6.4-1 1-1Z" />
-          </svg>
-          Judul Lain
-        </a>
-        <button type="button" data-modal-target="req-list-modal" data-modal-toggle="req-list-modal" class="text-blue-600 bg-white focus:ring-4 focus:outline-none focus:ring-blue-100 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 m-2 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
+        <button type="button" data-modal-target="req-list-modal" data-modal-toggle="req-list-modal" class="text-green-600 bg-white focus:ring-4 focus:outline-none focus:ring-green-100 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 m-2 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
           <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13h3.4a1 1 0 0 1 1 .6 4 4 0 0 0 7.3 0 1 1 0 0 1 .9-.6H20M4 13v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M4 13l2-9h12l2 9" />
           </svg>
           Kotak Masuk
         </button>
+        <a href="#chs" type="button" class="text-violet-600 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 m-2 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
+          <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 12v1h4v-1m4 7H6a1 1 0 0 1-1-1V9h14v9a1 1 0 0 1-1 1ZM4 5h16c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V6c0-.6.4-1 1-1Z" />
+          </svg>
+          Proyek Lainnya
+        </a>
       </div>
 
       <h2 class="text-xl self-start font-medium px-7 w-full">Proyek Yang Sedang Dikerjakan</h2>
@@ -126,7 +126,7 @@ if (isset($_POST["cari"])) {
             <input type="text" name="keyword" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 block w-full pl-10 p-2 mr-3" placeholder="Cari">
           </div>
 
-          <button type="submit" name="cari" class="flex items-center justify-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
+          <button type="submit" name="cari" class="flex items-center justify-center text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ml-4">
             <svg class="h-3.5 w-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
             </svg>

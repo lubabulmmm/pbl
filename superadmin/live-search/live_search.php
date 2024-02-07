@@ -8,6 +8,9 @@ if (isset($_POST['keyword'])) {
   $keyword = $_POST['keyword'];
 
   $users = execThis("SELECT * FROM user WHERE level = 'user' AND (nama_user LIKE '%$keyword%' OR email LIKE '%$keyword%' OR id LIKE '%$keyword%')");
+// } else {
+//   $users = execThis("SELECT * FROM user WHERE level = 'user'");
+
 
   // Limit $itemsPerPage
   $users = array_slice($users, 0, $itemsPerPage);

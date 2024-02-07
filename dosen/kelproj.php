@@ -80,14 +80,13 @@ if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
                 </svg>
                 Kembali
               </a>                            
+            </div>
+
+            
           </div>
+          
           <?php include("./content/content.php") ?>
-
         </div>
-      </div>
-
-
-
       <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </body>
 
