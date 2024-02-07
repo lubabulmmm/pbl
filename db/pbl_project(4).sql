@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2024 at 02:11 PM
+-- Generation Time: Feb 07, 2024 at 02:02 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -43,11 +43,16 @@ CREATE TABLE `bunch` (
 INSERT INTO `bunch` (`bunch_id`, `bunch_name`, `leader_id`, `project_id`, `grade`, `status_show`) VALUES
 (1, 'SI A7', 'ifan@gmail.com', 43, 60, 'Yes'),
 (2, 'SI A6', 'kelvindwipangga15@gmail.com', 43, 0, 'No'),
-(3, 'SI B3', 'marcelladwi@gmail.com', 44, 60, 'No'),
+(3, 'SI B3', 'marcelladwi@gmail.com', 44, 60, 'Yes'),
 (10, 'SI A4', 'azeezee12@gmail.com', 44, 0, 'No'),
 (12, 'SI C6', 'ifan@gmail.com', 48, 0, 'No'),
 (13, 'TI C6', 'pedro123@gmail.com', 49, 0, 'No'),
-(15, 'SI D3', 'ibrahim1712@gmail.com', 44, 0, 'No');
+(15, 'SI D3', 'ibrahim1712@gmail.com', 44, 0, 'No'),
+(16, 'SI H4', 'galih123@gmail.com', 48, 0, 'No'),
+(17, 'SI Y5', 'baskaraadi@gmail.com', 55, 0, 'No'),
+(18, 'SI Y7', 'aagusawan@gmail.com', 55, 0, 'No'),
+(19, 'SI B6', 'nirmanaayu12@gmail.com', 50, 0, 'No'),
+(20, 'SI D7', 'nirmanaayu12@gmail.com', 53, 0, 'No');
 
 -- --------------------------------------------------------
 
@@ -76,7 +81,11 @@ INSERT INTO `bunch_member` (`id`, `bunch_id`, `member_id`, `role`) VALUES
 (8, 12, 'pedro123@gmail.com', 'System Analyst'),
 (9, 12, 'kelvindwipangga15@gmail.com', 'Front End'),
 (10, 13, 'nacellaa@gmail.com', 'System Analyst'),
-(12, 1, 'azeezee12@gmail.com', 'System Analyst');
+(12, 1, 'azeezee12@gmail.com', 'System Analyst'),
+(13, 13, 'mohdiaby@gmail.com', 'Back End'),
+(14, 18, 'stefano99@gmail.com', 'Quality Assurance'),
+(15, 1, 'baskaraadi@gmail.com', 'Front End'),
+(16, 19, 'aagusawan@gmail.com', 'Business Analyst');
 
 -- --------------------------------------------------------
 
@@ -94,9 +103,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`c_id`, `category_name`) VALUES
-(1, 'Web'),
+(1, 'Web Development'),
 (2, 'Internet Of Things'),
-(3, 'Mobile Apps');
+(3, 'Mobile Apps'),
+(4, 'Artificial Intelligence');
 
 -- --------------------------------------------------------
 
@@ -122,7 +132,8 @@ INSERT INTO `comment` (`comment_id`, `comment_title`, `comment`, `date_submit`, 
 (7, 'Mana ini', 'Kok belum ngapa ngapain', '2024-01-23 11:12:46', 2),
 (8, 'Pengumpulan', 'segera di kumpulkan', '2024-01-23 12:04:51', 1),
 (9, 'Minggu Ke-5', 'Untuk minggu ke-5 saya harap semuanya fokus pada proses pengkodean', '2024-01-29 15:34:31', 1),
-(10, 'Halo', 'Halo semuanya', '2024-02-03 09:05:25', 1);
+(10, 'Halo', 'Halo semuanya', '2024-02-03 09:05:25', 1),
+(11, 'Kerjakan UI', 'Terakhir minggu 5', '2024-02-04 22:29:56', 12);
 
 -- --------------------------------------------------------
 
@@ -153,7 +164,9 @@ INSERT INTO `proyek` (`id_proyek`, `nama_proyek`, `deskripsi_proyek`, `id_user`,
 (49, 'Website PSIK Vokasi', 'Website buat apa ajalah', 'vincent@gmail.com', 'menfess', 10, 'No', '4', 1),
 (50, 'Sistem Informasi Gudang Inventory', 'Suatu sistem yang dirancang untuk membantu perusahaan dalam mengelola persediaan barang di gudang. Sistem ini dapat membantu perusahaan dalam melacak barang masuk dan keluar, memantau stok barang, dan membuat laporan persediaan.', 'jurgenthboss@kop.co.uk', 'Manajemen Stok: Fitur ini memungkinkan perusahaan untuk melacak barang masuk dan keluar, memantau stok barang, dan menentukan level stok minimum dan maksimum, Penerimaan Barang: Fitur ini memungkinkan perusahaan untuk mencatat penerimaan.', 10, 'No', '8', 1),
 (53, 'Aplikasi To Do List with Kotlin', 'To Do List App', 'mikelarteta@ars.co.uk', 'Menambahkan tugas', 0, 'No', '3', 3),
-(54, 'Eye Tracking', 'Eye tracking is the process of measuring either the point of gaze or the motion of an eye relative to the head. An eye tracker is a device for measuring eye positions and eye movement.', 'mikelarteta@ars.co.uk', 'Mengikuti gerak mata', 8, 'No', '7', 2);
+(54, 'Eye Tracking', 'Eye tracking is the process of measuring either the point of gaze or the motion of an eye relative to the head. An eye tracker is a device for measuring eye positions and eye movement.', 'mikelarteta@ars.co.uk', 'Mengikuti gerak mata', 8, 'No', '7', 2),
+(55, 'Sistem Informasi Penanganan Sampah Desa', 'Saat ini sampah telah menjadi masalah serius yang harus ditangani, terutama dalam memelihara kelestarian dan kesehatan lingkungan. Sampah yang berserakan dapat merusak lingkungan yang berakibat terjadinya pencemaran lingkungan.', 'kevin56@gmail.com', 'CRUD (Create, Read, Update, Delete)', 8, 'No', '7', 1),
+(56, 'Aplikasi Timer', 'Timer Aplikas', 'mikelarteta@ars.co.uk', 'Stop', 9, 'No', '3', 3);
 
 -- --------------------------------------------------------
 
@@ -178,7 +191,13 @@ INSERT INTO `request` (`request_id`, `bunch_id`, `user_id`, `role`, `status_req`
 (2, 13, 'kelvindwipangga15@gmail.com', 'System Analyst', 'Belum Diterima'),
 (3, 1, 'makelor123@gmail.com', 'System Analyst', 'Belum Diterima'),
 (5, 13, 'ifan@gmail.com', 'System Analyst', 'Ditolak'),
-(6, 1, 'azeezee12@gmail.com', 'System Analyst', 'Diterima');
+(6, 1, 'azeezee12@gmail.com', 'System Analyst', 'Diterima'),
+(7, 13, 'galih123@gmail.com', 'Front End', 'Ditolak'),
+(8, 13, 'mohdiaby@gmail.com', 'Back End', 'Diterima'),
+(9, 18, 'stefano99@gmail.com', 'Quality Assurance', 'Diterima'),
+(10, 1, 'baskaraadi@gmail.com', 'Front End', 'Diterima'),
+(11, 19, 'aagusawan@gmail.com', 'Business Analyst', 'Diterima'),
+(12, 20, 'baskaraadi@gmail.com', 'Front End Apps', 'Belum Diterima');
 
 -- --------------------------------------------------------
 
@@ -199,7 +218,15 @@ CREATE TABLE `request_project` (
 --
 
 INSERT INTO `request_project` (`r_id`, `project_id`, `user_id`, `bunch_name`, `status_req`) VALUES
-(2, 44, 'ibrahim1712@gmail.com', 'SI D3', 'Diterima');
+(2, 44, 'ibrahim1712@gmail.com', 'SI D3', 'Diterima'),
+(3, 48, 'galih123@gmail.com', 'SI H4', 'Diterima'),
+(4, 48, 'mohdiaby@gmail.com', 'SI F4', 'Ditolak'),
+(5, 55, 'baskaraadi@gmail.com', 'SI Y5', 'Diterima'),
+(6, 55, 'aagusawan@gmail.com', 'SI Y7', 'Diterima'),
+(7, 55, 'gustiseptiawan@gmail.com', 'SI Y3', 'Belum Diterima'),
+(8, 55, 'nirmanaayu12@gmail.com', 'SI Y2', 'Belum Diterima'),
+(9, 50, 'nirmanaayu12@gmail.com', 'SI B6', 'Diterima'),
+(10, 53, 'nirmanaayu12@gmail.com', 'SI D7', 'Diterima');
 
 -- --------------------------------------------------------
 
@@ -209,20 +236,23 @@ INSERT INTO `request_project` (`r_id`, `project_id`, `user_id`, `bunch_name`, `s
 
 CREATE TABLE `role` (
   `role_id` int(20) NOT NULL,
-  `role_name` varchar(250) NOT NULL
+  `role_name` varchar(250) NOT NULL,
+  `category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `role`
 --
 
-INSERT INTO `role` (`role_id`, `role_name`) VALUES
-(2, 'Business Analyst'),
-(3, 'System Analyst'),
-(4, 'Front End'),
-(5, 'Back End'),
-(6, 'Quality Assurance'),
-(7, 'Technical Writer');
+INSERT INTO `role` (`role_id`, `role_name`, `category`) VALUES
+(2, 'Business Analyst (BA)', 1),
+(3, 'System Analyst', 1),
+(4, 'Front End', 1),
+(5, 'Back End', 1),
+(6, 'Quality Assurance', 1),
+(8, 'Front End Apps', 3),
+(9, 'Hardware Engineers', 2),
+(13, 'AI Consultans', 4);
 
 -- --------------------------------------------------------
 
@@ -288,13 +318,13 @@ CREATE TABLE `task` (
 --
 
 INSERT INTO `task` (`id`, `task_name`, `task_desc`, `category`, `bunch_id`, `member_id`, `minggu`) VALUES
-(1, 'Wireframe UI / UX', 'Buat Wireframe UI / UX', 'Done', 1, 2, 1),
+(1, 'Wireframe UI / UX', 'Buat Wireframe UI / UX', 'To Do', 1, 2, 1),
 (6, 'Rancangan UI / UX', 'Buat rancangan', 'Doing', 1, 1, 1),
-(7, 'DFD Diagram', 'Buat DFD Diagram', 'Done', 1, 2, 1),
-(10, 'Metode SDLC', 'Memilih metode SDLC (Disarankan agile atau prototype)', 'Doing', 1, 2, 2),
-(11, 'Rancangan Aplikasi', 'Buat Rancangan Aplikasi', 'Done', 1, 2, 1),
+(7, 'DFD Diagram', 'Buat DFD Diagram', 'To Do', 1, 2, 1),
+(10, 'Metode SDLC', 'Memilih metode SDLC (Disarankan agile atau prototype)', 'To Do', 1, 2, 2),
+(11, 'Rancangan Aplikasi', 'Buat Rancangan Aplikasi', 'Doing', 1, 2, 1),
 (12, 'Membuat Laporan Bab 2', 'Bab 2 tentang requirement', 'To Do', 1, 1, 3),
-(13, 'Use Case Scenario Login', 'Menyusun Use Case Scenario Halaman Login', 'Done', 1, 1, 3),
+(13, 'Use Case Scenario Login', 'Menyusun Use Case Scenario Halaman Login', 'To Do', 1, 1, 3),
 (14, 'Wireframe', 'Buat wireframe minimal halaman admin', 'To Do', 10, 6, 1),
 (15, 'First Gathering', 'FG di Suhat', 'Done', 1, 2, 1),
 (16, 'Wireframe', 'Buat Wireframe', 'Done', 2, 3, 1),
@@ -305,12 +335,24 @@ INSERT INTO `task` (`id`, `task_name`, `task_desc`, `category`, `bunch_id`, `mem
 (21, 'Jadwal Perancangan', 'Buat jadwal perancangan minggu ke 1 s/d 5', 'Doing', 10, 7, 1),
 (22, 'Activity Diagram', 'Buat activity diagram', 'Doing', 10, 7, 2),
 (23, 'Rancangan Bussines Case', 'Business yang terjadi di lapangan', 'Doing', 10, 7, 3),
-(24, 'Merancang Desain Database', 'Beserta relasinya, foreign key user menggunakan email saja', 'Done', 1, 12, 3),
-(25, 'Laporan Bab 1', 'Bab 1 tentang pendahuluan', 'Done', 1, 12, 1),
-(26, 'Tabel Quality Assurance', 'Tabel dalam excel', 'Done', 1, 12, 2),
-(27, 'Layanan Hosting', 'Hostinger atau Niagahoster', 'Done', 1, 1, 2),
-(28, 'Dosen', 'Konsultasi', 'Doing', 1, 12, 4),
-(30, 'SR', 'asdf', 'Done', 3, 4, 1);
+(24, 'Merancang Desain Database', 'Beserta relasinya, foreign key user menggunakan email saja', 'Doing', 1, 12, 3),
+(25, 'Laporan Bab 1', 'Bab 1 tentang pendahuluan', 'Doing', 1, 12, 1),
+(26, 'Tabel Quality Assurance', 'Tabel dalam excel', 'To Do', 1, 12, 2),
+(27, 'Layanan Hosting', 'Hostinger atau Niagahoster', 'To Do', 1, 1, 2),
+(28, 'Dosen', 'Konsultasi', 'To Do', 1, 12, 4),
+(30, 'SR', 'asdf', 'Done', 3, 4, 1),
+(31, 'Tabel Quality Assurance', 'Buat tabel mengenai black box testing', 'To Do', 18, 14, 1),
+(32, 'Rancangan Dokumentasi Proyek', 'Buatlah dokumentasi berdasarkan perintah dosen', 'To Do', 18, 14, 1),
+(33, 'Memilih Framework (Plus/Minusnya)', 'Tailwind, Materialize, Bootstrap', 'Doing', 1, 15, 2),
+(34, 'Notulensi FG', 'FG di minggu ke-1', 'Done', 1, 12, 2),
+(35, 'Wireframe', 'Buat Wireframe', 'Done', 1, 15, 2),
+(36, 'Memilih Framework Back-End', 'Laravel or Codeigniter', 'Done', 1, 1, 3),
+(37, 'System Requirements', 'SR sesuai riset di minggu ke-1', 'Done', 1, 2, 3),
+(38, 'Github', 'Undang semua anggota ke github proyek', 'Done', 1, 12, 3),
+(39, 'Tampilan Admin', 'Tampilan admin sesuai wireframe, kecuali bagian tabel halaman daftar member', 'Doing', 1, 15, 4),
+(40, 'Halaman Login Back-End', 'Halaman login yang kemarin tolong koneksikan ke db', 'Doing', 1, 1, 4),
+(41, 'Laporan Mingguan', 'Laporan Minggu Ke -4', 'Done', 1, 12, 4),
+(42, 'Wireframe UI / UX', 'Buat Wireframe', 'Done', 19, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -336,7 +378,9 @@ INSERT INTO `task_file` (`tf_id`, `name_file`, `size`, `ekstensi`, `path`, `task
 (7, 'b9b5fbe0ce482fb220303222f70fcac0.jpg', 61787, 'jpg', 'path/b9b5fbe0ce482fb220303222f70fcac0.jpg', 11),
 (8, 'Yellow Playful Illustration Brainstorm Presentation.pdf', 1457, 'pdf', 'path/Yellow Playful Illustration Brainstorm Presentation.pdf', 1),
 (9, 'artworks-000655564504-zeq9sm-t500x500.jpg', 32456, 'jpg', 'path/artworks-000655564504-zeq9sm-t500x500.jpg', 1),
-(10, 'E_TK5o-VUAMgIdn.jpg', 70076, 'jpg', 'path/E_TK5o-VUAMgIdn.jpg', 25);
+(10, 'E_TK5o-VUAMgIdn.jpg', 70076, 'jpg', 'path/E_TK5o-VUAMgIdn.jpg', 25),
+(11, 'Yellow Playful Illustration Brainstorm Presentation-1.pdf', 1457, 'pdf', 'path/Yellow Playful Illustration Brainstorm Presentation-1.pdf', 42),
+(12, 'b9b5fbe0ce482fb220303222f70fcac0.jpg', 61787, 'jpg', 'path/b9b5fbe0ce482fb220303222f70fcac0.jpg', 42);
 
 -- --------------------------------------------------------
 
@@ -358,21 +402,29 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`email`, `id`, `nama_user`, `level`, `gambar`, `password`) VALUES
+('aagusawan@gmail.com', '2478900111', 'Ahmad Agus Kurniawan', 'user', 'profile.png', '$2y$10$IcCDtj4RT50p2cIJVJWpQ.qaRsAIsGjBZAjxw.viJmlx6IlNepQ4K'),
 ('aba@gmail.com', '123', 'o', 'admin', 'profile.png', '$2y$10$uRmO9j8fPKxxvxjFVIHS0el3nPnIrzJJBtygIDSTfpokYfkU43kRe'),
 ('abcdefghij@gmail.com', '234242342', 'halo teman', 'admin', 'profile.png', '$2y$10$R3jcZNX80K.54Qhdz2H09uFqAWKf7aSx4vZP16Qcwh8N58sFXIVqC'),
 ('arfi@gmail.com', '223140707111061', 'Arfianto Nugroho', 'user', 'profile.png', '$2y$10$94F5GNTIYNWqkbxvU.fH9OvaVepkxSb9L2vFSpdlE8/F766xNWini'),
 ('azeezee12@gmail.com', '223140707111096', 'Ahmad Azizi', 'user', 'profile.png', '$2y$10$kYFfEUoKTh6q0BuZ36SC9e5W1A4SN41o2NhkXTbXvYo5CatY777Pu'),
+('baskaraadi@gmail.com', '24780897', 'Baskara Adi', 'user', 'profile.png', '$2y$10$7gFNqCH7IKW03n3fh46DPOFueupVw6dFplTznUMon4VzNA5Hmsesi'),
+('galih123@gmail.com', '123123128', 'galih', 'user', 'profile.png', '$2y$10$ZO8ASqJfF9McGoLIRv40AeNDRgiGO8rOeF3lRJowUaqmSgJDna3Ru'),
+('gustiseptiawan@gmail.com', '2467889901', 'Gusti Andika Septiawan', 'user', 'profile.png', '$2y$10$0L9O7HZjrJNnI9OAQ3T6euD9OTRyyHNztbblv2WuHUEcn/I1xPeZq'),
 ('ibrahim1712@gmail.com', '223140707111108', 'Ibrahim Irsad', 'user', 'profile.png', '$2y$10$MJ70FyeplnJiGp191MjlA.1bxtedAHOzNzFFS6sgWbB4EmOFZhSWW'),
 ('icad@student.ub.ac.id', '223140707111111', 'Muhammad Irsyad Arif Nashrullah', 'user', 'profile.png', '$2y$10$/QFV/00BFBmB4RDXOVcOpeiU6ZuyudbtZhIqv/A6okNS81wKeNCS.'),
 ('ifan@gmail.com', '33000', 'Ifan', 'user', 'profile.png', '$2y$10$bQEzVWjgRY8wecb/rEo52OVmoUFc20W5edES0iYeOOs6yTn9V3HWW'),
 ('jurgenthboss@kop.co.uk', '20142023', 'Jurgen Klopp', 'admin', 'profile.png', '$2y$10$8Tzux6rAzVZNfEbYNK/tPOkKnOCc76gMdx12VrYmAD7QvGOrkJC0i'),
 ('kelvindwipangga15@gmail.com', '223140707111115', 'Kelvin Dwipangga', 'user', 'profile.png', '$2y$10$ZnAlf/daxlHb9Q5G1naSa.HvH4KXBD7cog8Q/m59q9qxmxc/E3eT.'),
+('kevin56@gmail.com', '256887698', 'Kevin Sanjaya', 'admin', 'profile.png', '$2y$10$ZH81BSbX5JLTJKPJFVcCuej.BkNf..SeO/K4Ywvnra.LpRalMHQYi'),
 ('lubabullm@gmail.com', '223140707111082', 'Lubabul Ilmi', 'user', 'profile.png', '$2y$10$7VSqoc0mydAeoLzZZTS6wOSjRXjuyc0KDFPZr9jh3nWDrOF4Mq3Qq'),
 ('makelor123@gmail.com', '890034', 'Makelor Goreng', 'user', 'profile.png', '$2y$10$cVyO/xDQrVVwSeoqAb6PBuwvBKzVZ0oeRy2EcY49Hc4Ymgz4mK0IG'),
 ('marcelladwi@gmail.com', '670045', 'Marcella Dwi Arkana', 'user', 'profile.png', '$2y$10$UfYsRZ7IBliCbIApjbitV.AMJcwo95bnKwiIwq8TansI.zb1zzEf.'),
 ('mikelarteta@ars.co.uk', '20202023', 'Mikel Arteta', 'admin', 'profile.png', '$2y$10$mofKga8.Ig.uL0tknvCMtO8MMfrUijhAUUbXY6vV6OcnIlIgM.S5C'),
+('mohdiaby@gmail.com', '45898589', 'mohdiaby@gmail.com', 'user', 'profile.png', '$2y$10$6qXSk9PIm73NWCAOKXHaIOrkfn3AbhKYesMOSfm0k1ZO8n537BLe6'),
 ('nacellaa@gmail.com', '360023', 'Nacela Jessica Yolland', 'user', 'profile.png', '$2y$10$LWsAoFaLRJU7dtxQzSjbHuqi6rY7p9/m7UlX6Mqd93xGoXbeD4B42'),
+('nirmanaayu12@gmail.com', '245871926001', 'Nirmana Ayu Setiowati', 'user', 'profile.png', '$2y$10$xr9dff4xEiyMhP.zArx6L.nWNQhQx0Ob.CUqrNuvoxj9Hn8G7/6P.'),
 ('pedro123@gmail.com', '223112', 'Pedro Duarte', 'user', 'profile.png', '$2y$10$zilsknbC.rqwtoRv0dDBLO30iPTGFPRI1.MxeRuArLwrp4lsbrTqm'),
+('stefano99@gmail.com', '2456818230', 'Stefano Cahyadi', 'user', 'profile.png', '$2y$10$Ff/eM3s3t.67utquQ7EsxubOkhrrw4X3wcAsV.T/kyec3naAO6hva'),
 ('superadmin@vok.ub.ac.id', '20222025', 'Superadmin', 'superadmin', 'profile.png', '$2y$10$pTRDr8V/tgzuJuFkUb5ng.3FTkMLDQgIhi6lAhoggv9dzBQK02yOK'),
 ('vincent@gmail.com', '20162024', 'Vincent Kompany', 'admin', 'profile.png', '$2y$10$/7gCfTAbCY8PS9OipU4DHuWCUvClMsScY42d77JzD/gU.WEx3wOn2');
 
@@ -437,7 +489,8 @@ ALTER TABLE `request_project`
 -- Indexes for table `role`
 --
 ALTER TABLE `role`
-  ADD PRIMARY KEY (`role_id`);
+  ADD PRIMARY KEY (`role_id`),
+  ADD KEY `cat_fk` (`category`);
 
 --
 -- Indexes for table `submit_file`
@@ -483,49 +536,49 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bunch`
 --
 ALTER TABLE `bunch`
-  MODIFY `bunch_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `bunch_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `bunch_member`
 --
 ALTER TABLE `bunch_member`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `comment_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `proyek`
 --
 ALTER TABLE `proyek`
-  MODIFY `id_proyek` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_proyek` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `request_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `request_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `request_project`
 --
 ALTER TABLE `request_project`
-  MODIFY `r_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `r_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `role_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `role_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `submit_file`
@@ -543,13 +596,13 @@ ALTER TABLE `submit_links`
 -- AUTO_INCREMENT for table `task`
 --
 ALTER TABLE `task`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `task_file`
 --
 ALTER TABLE `task_file`
-  MODIFY `tf_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `tf_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -595,6 +648,12 @@ ALTER TABLE `request`
 ALTER TABLE `request_project`
   ADD CONSTRAINT `project_fk_req` FOREIGN KEY (`project_id`) REFERENCES `proyek` (`id_proyek`),
   ADD CONSTRAINT `user_fk_req` FOREIGN KEY (`user_id`) REFERENCES `user` (`email`);
+
+--
+-- Constraints for table `role`
+--
+ALTER TABLE `role`
+  ADD CONSTRAINT `cat_fk` FOREIGN KEY (`category`) REFERENCES `categories` (`c_id`);
 
 --
 -- Constraints for table `submit_file`
