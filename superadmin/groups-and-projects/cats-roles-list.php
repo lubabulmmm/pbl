@@ -120,7 +120,7 @@ if (isset($_POST["edit_cats"])) {
           <section class="flex items-center bg-gray-50 mt-3 mb-5">
             <div class="w-full max-w-screen-xl px-4 mx-auto lg:px-12">
               <!-- Start coding here -->
-              <div class="relative overflow-hidden bg-white shadow-lg border shadow-gray-100 sm:rounded-lg">
+              <div class="relative overflow-hidden bg-white shadow-lg border shadow-gray-100 sm:rounded-lg pb-3">
                 <div class="flex-row items-center justify-between py-4 px-5 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
                   <div>
                     <h5 class="mr-3 font-semibold text-xl"><?= $category['category_name'] ?></h5>
@@ -141,9 +141,9 @@ if (isset($_POST["edit_cats"])) {
                 </div>
                 <div class="px-7">
                   <?php $roles = execThis("SELECT * FROM role WHERE category =" . $category['c_id']) ?>
-                  <ul class="w-full">
+                  <ul class="w-full divide-gray-200 divide-y">
                     <?php foreach ($roles as $role) : ?>
-                      <li class="text-md pb-4 flex flex-wrap justify-between mx-1 focus:ring-green-200"><span>- <?= $role['role_name'] ?></span>
+                      <li class="text-md py-4 flex flex-wrap justify-between mx-1 focus:ring-green-200"><span><?= $role['role_name'] ?></span>
                         <div><button data-modal-target="popup-edit-roles-<?= $role['role_id'] ?>" data-modal-toggle="popup-edit-roles-<?= $role['role_id'] ?>" class="bg-green-500 hover:bg-green-400 text-white text-xs px-2 py-1 rounded-lg">Edit</button><button data-modal-target="popup-modal-delete-<?= $role['role_id'] ?>" data-modal-toggle="popup-modal-delete-<?= $role['role_id'] ?>" class="bg-red-500 mx-1 focus:ring-red-200 hover:bg-red-400 text-white text-xs px-2 py-1 rounded-lg">Hapus</button></div>
                       </li>
                       <?php include("../content/edit-roles.php") ?>
