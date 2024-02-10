@@ -164,7 +164,7 @@ if (isset($_POST["submit"])) {
                 </div>
               </div>
               <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-500 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-400">
-                Edit
+                Simpan
               </button>
             </form>
           </div>

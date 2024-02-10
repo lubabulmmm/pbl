@@ -80,7 +80,7 @@ $done_sum = mysqli_num_rows($done_fetch);
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                   </svg>
                   <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center text-md lg:text-lg font-medium text-gray-700 hover:text-blue-800">
-                    <span class="ms-1 text-md lg:text-lg font-medium text-gray-900 hover:text-blue-500 md:ms-2">Proyek Kamu</span>
+                    <span class="ms-1 text-md lg:text-lg font-medium text-gray-900 hover:text-blue-500 md:ms-2">Detail Kelompok</span>
                   </a>
                 </div>
               </li>
