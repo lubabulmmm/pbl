@@ -137,6 +137,22 @@ function edit_task($task_data, $tid)
   return mysqli_affected_rows($conn);
 }
 
+
+function edit_user($user_data, $user_id)
+{
+  global $conn;
+  $nama_user = $user_data['name'];
+  $user_id = $user_data['nim'];
+  $email = $user_data['email'];
+
+  $sql = "UPDATE user SET nama_user = '" . $nama_user . "', id = '" . $user_id . "', email = '" . $email . "' WHERE id = " . $user_id;
+
+  mysqli_query($conn, $sql);
+  return mysqli_affected_rows($conn);
+}
+
+
+
 function update_task($task_id, $category)
 {
   global $conn;
@@ -392,16 +408,17 @@ function add_accept_bunch($data_bunch)
   return mysqli_affected_rows($conn);
 }
 
-function reg_user($entry){
+function reg_user($entry)
+{
   global $conn;
-  
-  $username  = $entry["username"];
+
+  $username = $entry["username"];
   $nim = $entry["nim"];
   $email = strtolower(stripslashes($entry["email"]));
   $password = mysqli_real_escape_string($conn, $entry["password"]);
   $confirm = mysqli_real_escape_string($conn, $entry["confirm-password"]);
 
-  if( $password != $confirm) {
+  if ($password != $confirm) {
     return -4;
   }
 
@@ -409,14 +426,14 @@ function reg_user($entry){
   $password = password_hash($password, PASSWORD_DEFAULT);
 
   // Check there is same username or not
-  $username_checker = mysqli_query( $conn,"SELECT nama_user FROM user WHERE nama_user = '$username'");
-  
-  if(mysqli_fetch_assoc($username_checker)) {
+  $username_checker = mysqli_query($conn, "SELECT nama_user FROM user WHERE nama_user = '$username'");
+
+  if (mysqli_fetch_assoc($username_checker)) {
     return -3;
   }
-  
+
   // Add user to database
-  mysqli_query( $conn,"INSERT INTO user VALUES('$email', '$nim', '$username', 'user', 'profile.png', '$password') ");
+  mysqli_query($conn, "INSERT INTO user VALUES('$email', '$nim', '$username', 'user', 'profile.png', '$password') ");
 
   return mysqli_affected_rows($conn);
 }
