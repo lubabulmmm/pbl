@@ -89,7 +89,7 @@ $get_files = execThis("SELECT * FROM submit_file WHERE bunch_id =" . $_GET['bid'
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
                 <a href="./projects.php?bid=<?= $_GET['bid'] ?>&id=<?= $_GET['id'] ?>" class="inline-flex items-center lg:text-lg text-md font-medium text-gray-700 hover:text-blue-500">
-                  <span class="ms-1 lg:text-lg text-md font-medium text-gray-900 hover:text-blue-500 md:ms-2">Proyek Kamu</span>
+                  <span class="ms-1 lg:text-lg text-md font-medium text-gray-900 hover:text-blue-500 md:ms-2">Detail Kelompok</span>
                 </a>
               </div>
             </li>

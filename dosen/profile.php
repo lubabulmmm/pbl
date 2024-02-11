@@ -108,7 +108,7 @@ if (isset($_SESSION["level"])) {
 
                       <input type="file" name="" id="" class="text-sm file:bg-white file:border-blue-700 file:text-blue-700 file:text-sm file:border file:py-1 file:px-3 file:rounded-full">
                     </div>
-                    <button class="bg-amber-500 text-white rounded-xl mx-3 px-2 py-1 text-sm ">Ubah</button>
+                    <button class="flex items-center flex-wrap ml-auto bg-amber-500 text-white rounded-xl mx-3 px-2 py-1 text-sm ">Ubah</button>
                   </div>
 
                 </div>

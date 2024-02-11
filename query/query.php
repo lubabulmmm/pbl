@@ -137,6 +137,22 @@ function edit_task($task_data, $tid)
   return mysqli_affected_rows($conn);
 }
 
+
+function edit_user($user_data, $user_id)
+{
+  global $conn;
+  $nama_user = $user_data['name'];
+  $user_id = $user_data['nim'];
+  $email = $user_data['email'];
+
+  $sql = "UPDATE user SET nama_user = '" . $nama_user . "', id = '" . $user_id . "', email = '" . $email . "' WHERE id = " . $user_id;
+
+  mysqli_query($conn, $sql);
+  return mysqli_affected_rows($conn);
+}
+
+
+
 function update_task($task_id, $category)
 {
   global $conn;
@@ -396,7 +412,7 @@ function reg_user($entry)
 {
   global $conn;
 
-  $username  = $entry["username"];
+  $username = $entry["username"];
   $nim = $entry["nim"];
   $email = strtolower(stripslashes($entry["email"]));
   $password = mysqli_real_escape_string($conn, $entry["password"]);
