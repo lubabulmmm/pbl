@@ -17,7 +17,7 @@
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
         </svg>
-        <h3 class="mb-5 text-md font-normal text-gray-500 dark:text-gray-400">Apakah kamu yakin menolak <span
+        <h3 class="mb-5 text-md font-normal text-gray-500 dark:text-gray-400">Apakah kamu yakin menghapus <span
             class="font-medium">
             <?= $lb['nama_proyek'] ?>
           </span> ?</h3>
