@@ -174,6 +174,9 @@ $done_sum = mysqli_num_rows($done_fetch);
                       <li class="mt-2 text-green-500">
                         Done: <?= $done_sum ?> Perkembangan
                       </li>
+                      <li class="mt-2 text-gray-700  ">
+                        <a href="list-task.php?bid=<?= $_GET['bid'] ?>" class="bg-gray-100 px-3 py-1 text-sm rounded-lg hover:underline hover:text-gray-800">Lihat Selengkapnya</a>
+                      </li>
                     </ul>
                   </dd>
                 </div>

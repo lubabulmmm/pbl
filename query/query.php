@@ -392,16 +392,17 @@ function add_accept_bunch($data_bunch)
   return mysqli_affected_rows($conn);
 }
 
-function reg_user($entry){
+function reg_user($entry)
+{
   global $conn;
-  
+
   $username  = $entry["username"];
   $nim = $entry["nim"];
   $email = strtolower(stripslashes($entry["email"]));
   $password = mysqli_real_escape_string($conn, $entry["password"]);
   $confirm = mysqli_real_escape_string($conn, $entry["confirm-password"]);
 
-  if( $password != $confirm) {
+  if ($password != $confirm) {
     return -4;
   }
 
@@ -409,14 +410,14 @@ function reg_user($entry){
   $password = password_hash($password, PASSWORD_DEFAULT);
 
   // Check there is same username or not
-  $username_checker = mysqli_query( $conn,"SELECT nama_user FROM user WHERE nama_user = '$username'");
-  
-  if(mysqli_fetch_assoc($username_checker)) {
+  $username_checker = mysqli_query($conn, "SELECT nama_user FROM user WHERE nama_user = '$username'");
+
+  if (mysqli_fetch_assoc($username_checker)) {
     return -3;
   }
-  
+
   // Add user to database
-  mysqli_query( $conn,"INSERT INTO user VALUES('$email', '$nim', '$username', 'user', 'profile.png', '$password') ");
+  mysqli_query($conn, "INSERT INTO user VALUES('$email', '$nim', '$username', 'user', 'profile.png', '$password') ");
 
   return mysqli_affected_rows($conn);
 }
@@ -479,6 +480,17 @@ function delete_role($data)
   $sql_delete_role = "DELETE FROM role WHERE role_id = '$data'";
 
   mysqli_query($conn, $sql_delete_role);
+
+  return mysqli_affected_rows($conn);
+}
+
+function delete_task($tid)
+{
+  global $conn;
+
+  $sql_delete_task = "DELETE FROM task WHERE id = '$tid'";
+
+  mysqli_query($conn, $sql_delete_task);
 
   return mysqli_affected_rows($conn);
 }
