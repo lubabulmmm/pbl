@@ -102,19 +102,19 @@ if (isset($_POST["login"])) {
             Selamat Datang, Vokasioner!
           </h1>
           <!-- Display error messages -->
-          <?php if (!empty($emailError)): ?>
+          <?php if (!empty($emailError)) : ?>
             <div class="text-red-500 text-sm mb-4">
               <?php echo $emailError; ?>
             </div>
           <?php endif; ?>
 
-          <?php if (!empty($passwordError)): ?>
+          <?php if (!empty($passwordError)) : ?>
             <div class="text-red-500 text-sm mb-4">
               <?php echo $passwordError; ?>
             </div>
           <?php endif; ?>
 
-          <?php if (!empty($loginError)): ?>
+          <?php if (!empty($loginError)) : ?>
             <div class="text-red-500 text-sm mb-4">
               <?php echo $loginError; ?>
             </div>
@@ -122,25 +122,20 @@ if (isset($_POST["login"])) {
           <form class="space-y-4 md:space-y-6" action="" method="post">
             <div>
               <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-              <input type="email" name="email" id="email"
-                class="bg-gray-50 border border-amber-500 text-gray-900 sm:text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"
-                placeholder="Masukkan Email" required="">
+              <input type="email" name="email" id="email" class="bg-gray-50 border border-amber-500 text-gray-900 sm:text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan Email" required="">
             </div>
             <div>
               <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Kata Sandi</label>
-              <input type="password" name="password" id="password" placeholder="Masukkan Kata Sandi"
-                class="bg-gray-50 border border-amber-500 text-gray-900 sm:text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"
-                required="">
+              <input type="password" name="password" id="password" placeholder="Masukkan Kata Sandi" class="bg-gray-50 border border-amber-500 text-gray-900 sm:text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" required="">
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-start">
               </div>
-              <a href="register.php" class="text-sm font-medium text-blue-600 hover:underline">Buat Akun</a>
+              <a href="register.php" class="text-sm font-medium text-blue-600 hover:underline">Belum Punya Akun?</a>
             </div>
-            <button type="submit" name="login"
-              class="w-full text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masuk</button>
+            <button type="submit" name="login" class="w-full text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masuk</button>
             <p class="text-sm font-light text-gray-500">
-              <span class="text-sm  sm:text-center">© 2023 <a href="index.php" class="hover:underline">PBL Vokasi</a>.
+              <span class="text-sm  sm:text-center">© 2024 <a href="index.php" class="hover:underline">PBL Vokasi</a>.
                 All Rights Reserved.
             </p>
           </form>
