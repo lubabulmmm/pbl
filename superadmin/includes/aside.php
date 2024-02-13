@@ -50,7 +50,6 @@
                <span class="ml-4">Dosen</span>
             </a>
          </li>
-         </li>
          <li>
             <a href="/PBL/user/logout.php" class="flex items-center od py-2 px-3 font-medium text-white rounded-lg  group">
                <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">

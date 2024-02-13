@@ -47,7 +47,7 @@ if (isset($_SESSION["level"])) {
         <div class="relative overflow-hidden bg-white dark:sm:rounded-lg">
           <div class="flex-row items-center justify-between p-4 space-y-3 md:flex lg:flex-row sm:flex sm:space-y-0 sm:space-x-4">
             <div class="flex w-5/12 items-center">
-              <img class="w-20 h-20 rounded-xl" src="../assets/img/<?= $_SESSION['gambar'] ?>" alt="Default avatar">
+              <img class="w-20 h-20 rounded-xl" src="/pbl/assets/img/<?= $_SESSION['gambar'] ?>" alt="Default avatar">
               <div class="ml-6">
                 <h5 class="mr-3 font-semibold dark:text-gray-900"><?= $_SESSION['nama_user'] ?>'s Dashboard</h5>
                 <p class="text-gray-500 dark:text-gray-400"><?= $_SESSION['email'] ?></p>
