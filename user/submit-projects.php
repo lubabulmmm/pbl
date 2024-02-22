@@ -123,9 +123,7 @@ if (empty($get_leader) && empty($get_members)) {
               <dl class="divide-y divide-gray-100">
                 <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt class="text-md font-medium leading-6 text-gray-900">Nilai</dt>
-                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500">0</span> /100</dd>
-                  <!-- <dt class="text-md font-medium leading-6 text-gray-900">Nilai Proyek</dt>
-                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500"><?= $get_grade[0]['grade'] ?></span> /100</dd> -->
+                  <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500"><?= $get_grade[0]['grade'] ?></span> /100</dd>
                 </div>
                 <?php if (empty($get_sfiles) && empty($get_slinks)) { ?>
                   <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 my-1 sm:gap-4 sm:px-0 flex items-center">

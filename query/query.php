@@ -142,10 +142,10 @@ function edit_user($user_data, $user_id)
 {
   global $conn;
   $nama_user = $user_data['name'];
-  $user_id = $user_data['nim'];
+  $new_user_id = $user_data['nim'];
   $email = $user_data['email'];
 
-  $sql = "UPDATE user SET nama_user = '" . $nama_user . "', id = '" . $user_id . "', email = '" . $email . "' WHERE id = " . $user_id;
+  $sql = "UPDATE user SET nama_user = '" . $nama_user . "', id = '" . $new_user_id . "', email = '" . $email . "' WHERE id = " . $user_id;
 
   mysqli_query($conn, $sql);
   return mysqli_affected_rows($conn);
@@ -496,6 +496,37 @@ function delete_role($data)
   $sql_delete_role = "DELETE FROM role WHERE role_id = '$data'";
 
   mysqli_query($conn, $sql_delete_role);
+
+  return mysqli_affected_rows($conn);
+}
+
+function delete_task($tid)
+{
+  global $conn;
+
+  $sql_delete_task = "DELETE FROM task WHERE id = '$tid'";
+
+  mysqli_query($conn, $sql_delete_task);
+
+  return mysqli_affected_rows($conn);
+}
+
+function pass_user($entry, $username)
+{
+  global $conn;
+
+  $password = mysqli_real_escape_string($conn, $entry["password"]);
+  $confirm = mysqli_real_escape_string($conn, $entry["confirm-password"]);
+
+  if ($password != $confirm) {
+    return -4;
+  }
+
+  // Encrypt the password
+  $password = password_hash($password, PASSWORD_DEFAULT);
+
+  // Add user to database
+  mysqli_query($conn, "UPDATE user SET password = '$password' WHERE email = '$username'");
 
   return mysqli_affected_rows($conn);
 }

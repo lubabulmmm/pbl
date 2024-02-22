@@ -17,15 +17,12 @@ if (isset($_SESSION["level"])) {
 require '../query/query.php';
 
 $get_userinfo = execThis("SELECT * FROM user WHERE id =" . $_GET['uid']);
-$user_id = $_GET['uid'];
 
-
-
-if (isset($_POST["submit"])) {
-  if (edit_user($_POST, $user_id) > 0) {
-    header("Location: users.php?info=success");
+if (isset($_POST["edit-pass"])) {
+  if (pass_user($_POST, $get_userinfo[0]['email']) > 0) {
+    header("Location: /pbl/superadmin/users.php");
   } else {
-    header("Location: users.php?info=failed");
+    header("Location: /pbl/superadmin/pass-user.php?info=failed&uid=" . $_GET['uid']);
   }
 }
 
@@ -63,12 +60,13 @@ if (isset($_POST["submit"])) {
                   Daftar Proyek
                 </a>
               </li>
+
               <li aria-current="page">
                 <div class="flex items-center">
                   <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                   </svg>
-                  <span class="ms-1 text-lg font-medium text-blue-800 md:ms-2">Edit User</span>
+                  <span class="ms-1 text-lg font-medium text-blue-800 md:ms-2">Edit Password <?= $get_userinfo[0]['nama_user'] ?></span>
                 </div>
               </li>
             </ol>
@@ -77,26 +75,23 @@ if (isset($_POST["submit"])) {
 
           <section class="">
             <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">
-              <h2 class="mb-4 text-xl font-bold text-gray-900">Edit User</h2>
+              <h2 class="mb-4 text-xl font-bold text-gray-900">Edit Password</h2>
               <form action="" method="post">
-                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                  <div class="sm:col-span-2">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama User</label>
-                    <input type="text" name="name" id="name" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tulis Nama User.." value="<?php echo $get_userinfo[0]['nama_user']; ?>" required>
+                <div class="flex flex-col">
+                  <div class="mb-6">
+                    <label for="default-input" class="block mb-2 text-sm font-medium text-amber-600 self-start">Kata sandi:</label>
+                    <input type="password" name="password" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan Kata Sandi">
                   </div>
-
-                  <div class="sm:col-span-2">
-                    <label for="nim" class="block mb-2 text-sm font-medium text-gray-900">NIM</label>
-                    <input type="text" name="nim" id="nim" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tulis NIM.." value="<?php echo $get_userinfo[0]['id']; ?>" required>
+                  <div class="mb-6">
+                    <label for="default-input" class="block mb-2 text-sm font-medium text-amber-600">Konfirmasi kata sandi:</label>
+                    <input type="password" name="confirm-password" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" placeholder="Masukkan Konfirmasi Kata Sandi">
                   </div>
-
-                  <div class="sm:col-span-2">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                    <input type="email" name="email" id="email" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Tulis Email.." value="<?php echo $get_userinfo[0]['email']; ?>" required>
+                  <div class="flex justify-evenly">
+                    <button type="submit" name="edit-pass" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                      Ganti Password
+                    </button>
                   </div>
                 </div>
-                <button type="submit" name="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-amber-500 rounded-lg focus:ring-4 focus:ring-amber-200 hover:bg-amber-400">Edit</button>
-                <a href="pass-user.php?uid=<?= $get_userinfo[0]['id'] ?>" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-green-500 rounded-lg focus:ring-4 focus:ring-green-200 hover:bg-green-400">Ubah Password</a>
               </form>
             </div>
           </section>

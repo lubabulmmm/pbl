@@ -9,7 +9,7 @@
                         <h5 class="mb-1 text-md font-bold tracking-tight text-gray-900 hover:underline "><?= $project['nama_proyek'] ?></h5>
                         <span class="text-sm text-gray-500">Dosen PIC: <?= $project['nama_user'] ?></span>
                     </a>
-                    <img class="w-10 h-10 rounded-full" src="../assets/img/ian.jpeg" alt="Rounded avatar">
+                    <img class="w-10 h-10 rounded-full" src="../assets/img/<?= $project['pict'] ?>.svg" alt="Rounded avatar">
                 </div>
                 <p class="my-4 font-normal text-sm text-ellipsis overflow-hidden whitespace-nowrap w-11/12 text-gray-700"><?= $project['deskripsi_proyek'] ?></p>
                 <a href="./detail-project.php?id=<?= $project['id_proyek'] ?>" class="inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white bg-amber-500 rounded-lg hover:scale-105 duration-300 ease-in-out focus:ring-4 focus:outline-none focus:ring-amber-300">

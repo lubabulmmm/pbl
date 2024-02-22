@@ -1,12 +1,20 @@
 <?php
 
-require_once "/xampp/htdocs/pbl/query/query.php";
+$pagename = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 1);
+
+if ($pagename == 'todo_add.php'  || $pagename == 'doing_add.php' || $pagename == 'done_add.php') {
+   require_once '../../query/query.php';
+} else {
+   require_once "../query/query.php";
+}
+
+
 
 $user_projects_pm = execThis("SELECT bunch.bunch_id, project_id, bunch_name, nama_proyek FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek WHERE leader_id = '" . $_SESSION['email'] . "'");
 
 $user_projects_member = execThis("SELECT bunch.bunch_id, project_id, bunch_name, nama_proyek FROM bunch INNER JOIN proyek ON bunch.project_id = proyek.id_proyek INNER JOIN bunch_member ON bunch.bunch_id = bunch_member.bunch_id WHERE bunch_member.member_id = '" . $_SESSION['email'] . "'");
 
-$pagename = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 1);
+
 
 ?>
 

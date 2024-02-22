@@ -19,16 +19,16 @@ require "../query/query.php";
 
 $fetch_project = execThis("SELECT * FROM bunch_member WHERE member_id = '" . $_SESSION['email'] . "'");
 
-$projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email LIMIT 5");
+$projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, pict, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email");
 
 // Check if the form is submitted
 if (isset($_POST["cari"])) {
   $keyword = $_POST["keyword"];
 
   if (empty($keyword)) {
-    $projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email LIMIT 5");
+    $projects = execThis("SELECT id_proyek, nama_proyek, pict, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email");
   } else {
-    $projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email WHERE nama_proyek LIKE '%$keyword%' ");
+    $projects = execThis("SELECT id_proyek, nama_proyek, pict, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email WHERE nama_proyek LIKE '%$keyword%' ");
   }
   // Use LIKE in the SQL query to search for relevant projects
 }
@@ -66,8 +66,12 @@ if (isset($_POST["cari"])) {
             <div class="flex w-5/12 items-center">
               <img class="w-20 h-20 rounded-xl" src="/pbl/assets/img/<?= $_SESSION['gambar'] ?>" alt="Default avatar">
               <div class="ml-6">
-                <h5 class="mr-3 font-semibold text-gray-900"><?= $_SESSION["nama_user"] ?>'s Dashboard</h5>
-                <p class=" text-gray-400"><?= $_SESSION["email"] ?></p>
+                <h5 class="mr-3 font-semibold text-gray-900">
+                  <?= $_SESSION["nama_user"] ?>'s Dashboard
+                </h5>
+                <p class=" text-gray-400">
+                  <?= $_SESSION["email"] ?>
+                </p>
               </div>
             </div>
             <a href="./profile.php" type="button" class="text-white bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 shadow font-medium rounded-lg text-xs hover:scale-105 duration-300 ease-in-out hover:shadow-md hover:shadow-gray-300 px-4 py-2.5 text-center inline-flex items-center me-2 ">
@@ -113,7 +117,8 @@ if (isset($_POST["cari"])) {
       </div>
 
       <!-- Proyek yang dapat dipilih -->
-      <h2 class="text-xl self-start font-medium px-7 mt-5 w-full" id="chs">Daftar Kumpulan Judul Project Based Learning</h2>
+      <h2 class="text-xl self-start font-medium px-7 mt-5 w-full" id="chs">Daftar Kumpulan Judul Project Based Learning
+      </h2>
       <div class="w-full md:w-1/2 px-7 mt-5">
         <form id="liveSearchForm" class="flex items-center" method="POST">
           <label for="simple-search" class="sr-only">Search</label>

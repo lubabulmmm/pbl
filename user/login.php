@@ -103,15 +103,21 @@ if (isset($_POST["login"])) {
           </h1>
           <!-- Display error messages -->
           <?php if (!empty($emailError)) : ?>
-            <div class="text-red-500 text-sm mb-4"><?php echo $emailError; ?></div>
+            <div class="text-red-500 text-sm mb-4">
+              <?php echo $emailError; ?>
+            </div>
           <?php endif; ?>
 
           <?php if (!empty($passwordError)) : ?>
-            <div class="text-red-500 text-sm mb-4"><?php echo $passwordError; ?></div>
+            <div class="text-red-500 text-sm mb-4">
+              <?php echo $passwordError; ?>
+            </div>
           <?php endif; ?>
 
           <?php if (!empty($loginError)) : ?>
-            <div class="text-red-500 text-sm mb-4"><?php echo $loginError; ?></div>
+            <div class="text-red-500 text-sm mb-4">
+              <?php echo $loginError; ?>
+            </div>
           <?php endif; ?>
           <form class="space-y-4 md:space-y-6" action="" method="post">
             <div>
@@ -125,11 +131,12 @@ if (isset($_POST["login"])) {
             <div class="flex items-center justify-between">
               <div class="flex items-start">
               </div>
-              <a href="showcase.php" class="text-sm font-medium text-blue-600 hover:underline">Lihat Showcase?</a>
+              <a href="register.php" class="text-sm font-medium text-blue-600 hover:underline">Belum Punya Akun?</a>
             </div>
             <button type="submit" name="login" class="w-full text-white bg-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masuk</button>
             <p class="text-sm font-light text-gray-500">
-              <span class="text-sm  sm:text-center">© 2023 <a href="index.php" class="hover:underline">PBL Vokasi</a>. All Rights Reserved.
+              <span class="text-sm  sm:text-center">© 2024 <a href="index.php" class="hover:underline">PBL Vokasi</a>.
+                All Rights Reserved.
             </p>
           </form>
         </div>

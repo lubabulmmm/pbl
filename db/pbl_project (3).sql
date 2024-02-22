@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2024 at 02:02 PM
+-- Generation Time: Feb 12, 2024 at 04:09 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -42,17 +42,14 @@ CREATE TABLE `bunch` (
 
 INSERT INTO `bunch` (`bunch_id`, `bunch_name`, `leader_id`, `project_id`, `grade`, `status_show`) VALUES
 (1, 'SI A7', 'ifan@gmail.com', 43, 60, 'Yes'),
-(2, 'SI A6', 'kelvindwipangga15@gmail.com', 43, 0, 'No'),
 (3, 'SI B3', 'marcelladwi@gmail.com', 44, 60, 'Yes'),
 (10, 'SI A4', 'azeezee12@gmail.com', 44, 0, 'No'),
 (12, 'SI C6', 'ifan@gmail.com', 48, 0, 'No'),
 (13, 'TI C6', 'pedro123@gmail.com', 49, 0, 'No'),
 (15, 'SI D3', 'ibrahim1712@gmail.com', 44, 0, 'No'),
-(16, 'SI H4', 'galih123@gmail.com', 48, 0, 'No'),
 (17, 'SI Y5', 'baskaraadi@gmail.com', 55, 0, 'No'),
 (18, 'SI Y7', 'aagusawan@gmail.com', 55, 0, 'No'),
-(19, 'SI B6', 'nirmanaayu12@gmail.com', 50, 0, 'No'),
-(20, 'SI D7', 'nirmanaayu12@gmail.com', 53, 0, 'No');
+(19, 'SI B6', 'nirmanaayu12@gmail.com', 50, 0, 'No');
 
 -- --------------------------------------------------------
 
@@ -74,14 +71,12 @@ CREATE TABLE `bunch_member` (
 INSERT INTO `bunch_member` (`id`, `bunch_id`, `member_id`, `role`) VALUES
 (1, 1, 'lubabullm@gmail.com', 'Back End'),
 (2, 1, 'icad@student.ub.ac.id', 'Business Analyst'),
-(3, 2, 'arfi@gmail.com', 'Back End'),
 (4, 3, 'nacellaa@gmail.com', 'Back End'),
 (6, 10, 'makelor123@gmail.com', 'Front End'),
 (7, 10, 'pedro123@gmail.com', 'Business Analyst'),
 (8, 12, 'pedro123@gmail.com', 'System Analyst'),
 (9, 12, 'kelvindwipangga15@gmail.com', 'Front End'),
 (10, 13, 'nacellaa@gmail.com', 'System Analyst'),
-(12, 1, 'azeezee12@gmail.com', 'System Analyst'),
 (13, 13, 'mohdiaby@gmail.com', 'Back End'),
 (14, 18, 'stefano99@gmail.com', 'Quality Assurance'),
 (15, 1, 'baskaraadi@gmail.com', 'Front End'),
@@ -129,7 +124,6 @@ CREATE TABLE `comment` (
 INSERT INTO `comment` (`comment_id`, `comment_title`, `comment`, `date_submit`, `bunch_id`) VALUES
 (5, 'Konsultasi', 'Sedikit menambahkan dari notulensi yang telah kalian submit, untuk zona waktu yang dipakai di web adalah Waktu Indonesia Barat', '2024-01-19 21:41:02', 1),
 (6, 'Lanjutkan laporan', 'Tolong minggu ke 4 fokus ke laporan UTS', '2024-01-22 16:43:46', 1),
-(7, 'Mana ini', 'Kok belum ngapa ngapain', '2024-01-23 11:12:46', 2),
 (8, 'Pengumpulan', 'segera di kumpulkan', '2024-01-23 12:04:51', 1),
 (9, 'Minggu Ke-5', 'Untuk minggu ke-5 saya harap semuanya fokus pada proses pengkodean', '2024-01-29 15:34:31', 1),
 (10, 'Halo', 'Halo semuanya', '2024-02-03 09:05:25', 1),
@@ -158,12 +152,11 @@ CREATE TABLE `proyek` (
 --
 
 INSERT INTO `proyek` (`id_proyek`, `nama_proyek`, `deskripsi_proyek`, `id_user`, `req`, `minggu`, `status_show`, `pict`, `category`) VALUES
-(43, 'Sistem Informasi Manajemen Rapat', 'Sistem Informasi Manajemen Rapat (SIM-Rapat) adalah aplikasi atau platform yang dirancang khusus untuk membantu dalam pengelolaan dan pelaksanaan rapat di sebuah kelompok.', 'jurgenthboss@kop.co.uk', 'Perencanaan Rapat, Manajemen Agenda, Konfirmasi Kehadiran dan Pemantauan Rapat Organisasi', 8, 'Yes', '1', 1),
+(43, 'Sistem Informasi Manajemen Rapat', 'Sistem Informasi Manajemen Rapat (SIM-Rapat) adalah aplikasi atau platform yang dirancang khusus untuk membantu dalam pengelolaan dan pelaksanaan rapat di sebuah kelompok.', 'jurgenthboss@kop.co.uk', 'Perencanaan Rapat, Manajemen Agenda, Konfirmasi Kehadiran dan Pemantauan Rapat Organisasi', 8, 'Yes', '1', 2),
 (44, 'Sistem Informasi Antrian Pujasera', 'Sistem Informasi Antrian adalah solusi teknologi yang dirancang untuk mengelola dan mengoptimalkan proses antrian di berbagai jenis organisasi atau layanan, seperti rumah sakit, pusat perbelanjaan, bank, kantor pemerintah, dan tempat-tempat lainnya yang menerima layanan publik.', 'jurgenthboss@kop.co.uk', 'Pendaftaran dan Pengambilan Nomor Antrian, Panggilan dan Pemanggilan Antrian dan Manajemen Antrian', 8, 'No', '2', 1),
 (48, 'Sistem Informasi Pajak', 'Sistem informasi perpajakan merupakan suatu sistem yang dirancang untuk membantu pengelolaan dan pengendalian terkait bidang keuangan dan perpajakan.', 'vincent@gmail.com', 'Sistem informasi perpajakan menyediakan informasi yang dibutuhkan untuk memenuhi tujuan-tujuan manajemen dalam bidang perpajakan.', 9, 'No', '3', 1),
 (49, 'Website PSIK Vokasi', 'Website buat apa ajalah', 'vincent@gmail.com', 'menfess', 10, 'No', '4', 1),
 (50, 'Sistem Informasi Gudang Inventory', 'Suatu sistem yang dirancang untuk membantu perusahaan dalam mengelola persediaan barang di gudang. Sistem ini dapat membantu perusahaan dalam melacak barang masuk dan keluar, memantau stok barang, dan membuat laporan persediaan.', 'jurgenthboss@kop.co.uk', 'Manajemen Stok: Fitur ini memungkinkan perusahaan untuk melacak barang masuk dan keluar, memantau stok barang, dan menentukan level stok minimum dan maksimum, Penerimaan Barang: Fitur ini memungkinkan perusahaan untuk mencatat penerimaan.', 10, 'No', '8', 1),
-(53, 'Aplikasi To Do List with Kotlin', 'To Do List App', 'mikelarteta@ars.co.uk', 'Menambahkan tugas', 0, 'No', '3', 3),
 (54, 'Eye Tracking', 'Eye tracking is the process of measuring either the point of gaze or the motion of an eye relative to the head. An eye tracker is a device for measuring eye positions and eye movement.', 'mikelarteta@ars.co.uk', 'Mengikuti gerak mata', 8, 'No', '7', 2),
 (55, 'Sistem Informasi Penanganan Sampah Desa', 'Saat ini sampah telah menjadi masalah serius yang harus ditangani, terutama dalam memelihara kelestarian dan kesehatan lingkungan. Sampah yang berserakan dapat merusak lingkungan yang berakibat terjadinya pencemaran lingkungan.', 'kevin56@gmail.com', 'CRUD (Create, Read, Update, Delete)', 8, 'No', '7', 1),
 (56, 'Aplikasi Timer', 'Timer Aplikas', 'mikelarteta@ars.co.uk', 'Stop', 9, 'No', '3', 3);
@@ -196,8 +189,7 @@ INSERT INTO `request` (`request_id`, `bunch_id`, `user_id`, `role`, `status_req`
 (8, 13, 'mohdiaby@gmail.com', 'Back End', 'Diterima'),
 (9, 18, 'stefano99@gmail.com', 'Quality Assurance', 'Diterima'),
 (10, 1, 'baskaraadi@gmail.com', 'Front End', 'Diterima'),
-(11, 19, 'aagusawan@gmail.com', 'Business Analyst', 'Diterima'),
-(12, 20, 'baskaraadi@gmail.com', 'Front End Apps', 'Belum Diterima');
+(11, 19, 'aagusawan@gmail.com', 'Business Analyst', 'Diterima');
 
 -- --------------------------------------------------------
 
@@ -225,8 +217,7 @@ INSERT INTO `request_project` (`r_id`, `project_id`, `user_id`, `bunch_name`, `s
 (6, 55, 'aagusawan@gmail.com', 'SI Y7', 'Diterima'),
 (7, 55, 'gustiseptiawan@gmail.com', 'SI Y3', 'Belum Diterima'),
 (8, 55, 'nirmanaayu12@gmail.com', 'SI Y2', 'Belum Diterima'),
-(9, 50, 'nirmanaayu12@gmail.com', 'SI B6', 'Diterima'),
-(10, 53, 'nirmanaayu12@gmail.com', 'SI D7', 'Diterima');
+(9, 50, 'nirmanaayu12@gmail.com', 'SI B6', 'Diterima');
 
 -- --------------------------------------------------------
 
@@ -318,16 +309,14 @@ CREATE TABLE `task` (
 --
 
 INSERT INTO `task` (`id`, `task_name`, `task_desc`, `category`, `bunch_id`, `member_id`, `minggu`) VALUES
-(1, 'Wireframe UI / UX', 'Buat Wireframe UI / UX', 'To Do', 1, 2, 1),
+(1, 'Wireframe UI / UX', 'Buat Wireframe UI / UX', 'To Do', 1, 15, 1),
 (6, 'Rancangan UI / UX', 'Buat rancangan', 'Doing', 1, 1, 1),
 (7, 'DFD Diagram', 'Buat DFD Diagram', 'To Do', 1, 2, 1),
-(10, 'Metode SDLC', 'Memilih metode SDLC (Disarankan agile atau prototype)', 'To Do', 1, 2, 2),
 (11, 'Rancangan Aplikasi', 'Buat Rancangan Aplikasi', 'Doing', 1, 2, 1),
-(12, 'Membuat Laporan Bab 2', 'Bab 2 tentang requirement', 'To Do', 1, 1, 3),
+(12, 'Membuat Laporan Bab 2 dan 3', 'Bab 2 tentang requirement', 'To Do', 1, 1, 3),
 (13, 'Use Case Scenario Login', 'Menyusun Use Case Scenario Halaman Login', 'To Do', 1, 1, 3),
 (14, 'Wireframe', 'Buat wireframe minimal halaman admin', 'To Do', 10, 6, 1),
 (15, 'First Gathering', 'FG di Suhat', 'Done', 1, 2, 1),
-(16, 'Wireframe', 'Buat Wireframe', 'Done', 2, 3, 1),
 (17, 'Diagram Context', 'Buat Diagram Context / DFD Diagram Level 0', 'Done', 10, 6, 1),
 (18, 'System Requirement', 'Buat System Requirement', 'Done', 10, 6, 1),
 (19, 'Konsultasi PIC', 'Konsultasi mengenai timeline perancangan', 'Done', 10, 6, 2),
@@ -335,23 +324,15 @@ INSERT INTO `task` (`id`, `task_name`, `task_desc`, `category`, `bunch_id`, `mem
 (21, 'Jadwal Perancangan', 'Buat jadwal perancangan minggu ke 1 s/d 5', 'Doing', 10, 7, 1),
 (22, 'Activity Diagram', 'Buat activity diagram', 'Doing', 10, 7, 2),
 (23, 'Rancangan Bussines Case', 'Business yang terjadi di lapangan', 'Doing', 10, 7, 3),
-(24, 'Merancang Desain Database', 'Beserta relasinya, foreign key user menggunakan email saja', 'Doing', 1, 12, 3),
-(25, 'Laporan Bab 1', 'Bab 1 tentang pendahuluan', 'Doing', 1, 12, 1),
-(26, 'Tabel Quality Assurance', 'Tabel dalam excel', 'To Do', 1, 12, 2),
-(27, 'Layanan Hosting', 'Hostinger atau Niagahoster', 'To Do', 1, 1, 2),
-(28, 'Dosen', 'Konsultasi', 'To Do', 1, 12, 4),
 (30, 'SR', 'asdf', 'Done', 3, 4, 1),
 (31, 'Tabel Quality Assurance', 'Buat tabel mengenai black box testing', 'To Do', 18, 14, 1),
 (32, 'Rancangan Dokumentasi Proyek', 'Buatlah dokumentasi berdasarkan perintah dosen', 'To Do', 18, 14, 1),
 (33, 'Memilih Framework (Plus/Minusnya)', 'Tailwind, Materialize, Bootstrap', 'Doing', 1, 15, 2),
-(34, 'Notulensi FG', 'FG di minggu ke-1', 'Done', 1, 12, 2),
 (35, 'Wireframe', 'Buat Wireframe', 'Done', 1, 15, 2),
 (36, 'Memilih Framework Back-End', 'Laravel or Codeigniter', 'Done', 1, 1, 3),
 (37, 'System Requirements', 'SR sesuai riset di minggu ke-1', 'Done', 1, 2, 3),
-(38, 'Github', 'Undang semua anggota ke github proyek', 'Done', 1, 12, 3),
 (39, 'Tampilan Admin', 'Tampilan admin sesuai wireframe, kecuali bagian tabel halaman daftar member', 'Doing', 1, 15, 4),
 (40, 'Halaman Login Back-End', 'Halaman login yang kemarin tolong koneksikan ke db', 'Doing', 1, 1, 4),
-(41, 'Laporan Mingguan', 'Laporan Minggu Ke -4', 'Done', 1, 12, 4),
 (42, 'Wireframe UI / UX', 'Buat Wireframe', 'Done', 19, 16, 1);
 
 -- --------------------------------------------------------
@@ -378,7 +359,6 @@ INSERT INTO `task_file` (`tf_id`, `name_file`, `size`, `ekstensi`, `path`, `task
 (7, 'b9b5fbe0ce482fb220303222f70fcac0.jpg', 61787, 'jpg', 'path/b9b5fbe0ce482fb220303222f70fcac0.jpg', 11),
 (8, 'Yellow Playful Illustration Brainstorm Presentation.pdf', 1457, 'pdf', 'path/Yellow Playful Illustration Brainstorm Presentation.pdf', 1),
 (9, 'artworks-000655564504-zeq9sm-t500x500.jpg', 32456, 'jpg', 'path/artworks-000655564504-zeq9sm-t500x500.jpg', 1),
-(10, 'E_TK5o-VUAMgIdn.jpg', 70076, 'jpg', 'path/E_TK5o-VUAMgIdn.jpg', 25),
 (11, 'Yellow Playful Illustration Brainstorm Presentation-1.pdf', 1457, 'pdf', 'path/Yellow Playful Illustration Brainstorm Presentation-1.pdf', 42),
 (12, 'b9b5fbe0ce482fb220303222f70fcac0.jpg', 61787, 'jpg', 'path/b9b5fbe0ce482fb220303222f70fcac0.jpg', 42);
 
@@ -437,8 +417,8 @@ INSERT INTO `user` (`email`, `id`, `nama_user`, `level`, `gambar`, `password`) V
 --
 ALTER TABLE `bunch`
   ADD PRIMARY KEY (`bunch_id`),
-  ADD KEY `leader_id_fk` (`leader_id`),
-  ADD KEY `project_id_fk` (`project_id`);
+  ADD KEY `project_id_fk` (`project_id`),
+  ADD KEY `leader_id_fk` (`leader_id`);
 
 --
 -- Indexes for table `bunch_member`
@@ -466,8 +446,8 @@ ALTER TABLE `comment`
 --
 ALTER TABLE `proyek`
   ADD PRIMARY KEY (`id_proyek`),
-  ADD KEY `id_user_projects` (`id_user`),
-  ADD KEY `id_category_fk` (`category`);
+  ADD KEY `id_category_fk` (`category`),
+  ADD KEY `id_user_projects` (`id_user`);
 
 --
 -- Indexes for table `request`
@@ -482,8 +462,8 @@ ALTER TABLE `request`
 --
 ALTER TABLE `request_project`
   ADD PRIMARY KEY (`r_id`),
-  ADD KEY `user_fk_req` (`user_id`),
-  ADD KEY `project_fk_req` (`project_id`);
+  ADD KEY `project_fk_req` (`project_id`),
+  ADD KEY `user_fk_req` (`user_id`);
 
 --
 -- Indexes for table `role`
@@ -612,73 +592,73 @@ ALTER TABLE `task_file`
 -- Constraints for table `bunch`
 --
 ALTER TABLE `bunch`
-  ADD CONSTRAINT `leader_id_fk` FOREIGN KEY (`leader_id`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `project_id_fk` FOREIGN KEY (`project_id`) REFERENCES `proyek` (`id_proyek`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `leader_id_fk` FOREIGN KEY (`leader_id`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `project_id_fk` FOREIGN KEY (`project_id`) REFERENCES `proyek` (`id_proyek`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `bunch_member`
 --
 ALTER TABLE `bunch_member`
-  ADD CONSTRAINT `bunch_id_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `member_id_fk` FOREIGN KEY (`member_id`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `bunch_id_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `member_id_fk` FOREIGN KEY (`member_id`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `bunch_comment_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`);
+  ADD CONSTRAINT `bunch_comment_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `proyek`
 --
 ALTER TABLE `proyek`
-  ADD CONSTRAINT `id_category_fk` FOREIGN KEY (`category`) REFERENCES `categories` (`c_id`),
-  ADD CONSTRAINT `id_user_projects` FOREIGN KEY (`id_user`) REFERENCES `user` (`email`);
+  ADD CONSTRAINT `id_category_fk` FOREIGN KEY (`category`) REFERENCES `categories` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `id_user_projects` FOREIGN KEY (`id_user`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `request`
 --
 ALTER TABLE `request`
-  ADD CONSTRAINT `request_bunch_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`),
-  ADD CONSTRAINT `user_request_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`email`);
+  ADD CONSTRAINT `request_bunch_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_request_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `request_project`
 --
 ALTER TABLE `request_project`
-  ADD CONSTRAINT `project_fk_req` FOREIGN KEY (`project_id`) REFERENCES `proyek` (`id_proyek`),
-  ADD CONSTRAINT `user_fk_req` FOREIGN KEY (`user_id`) REFERENCES `user` (`email`);
+  ADD CONSTRAINT `project_fk_req` FOREIGN KEY (`project_id`) REFERENCES `proyek` (`id_proyek`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_fk_req` FOREIGN KEY (`user_id`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `role`
 --
 ALTER TABLE `role`
-  ADD CONSTRAINT `cat_fk` FOREIGN KEY (`category`) REFERENCES `categories` (`c_id`);
+  ADD CONSTRAINT `cat_fk` FOREIGN KEY (`category`) REFERENCES `categories` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `submit_file`
 --
 ALTER TABLE `submit_file`
-  ADD CONSTRAINT `submit_f_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`);
+  ADD CONSTRAINT `submit_f_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `submit_links`
 --
 ALTER TABLE `submit_links`
-  ADD CONSTRAINT `submit_l_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`);
+  ADD CONSTRAINT `submit_l_fk` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `task`
 --
 ALTER TABLE `task`
-  ADD CONSTRAINT `bid` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `mid` FOREIGN KEY (`member_id`) REFERENCES `bunch_member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `bid` FOREIGN KEY (`bunch_id`) REFERENCES `bunch` (`bunch_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `mid` FOREIGN KEY (`member_id`) REFERENCES `bunch_member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `task_file`
 --
 ALTER TABLE `task_file`
-  ADD CONSTRAINT `tf_task_fk` FOREIGN KEY (`task_id`) REFERENCES `task` (`id`);
+  ADD CONSTRAINT `tf_task_fk` FOREIGN KEY (`task_id`) REFERENCES `task` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
