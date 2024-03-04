@@ -1,6 +1,6 @@
 <?php
 
-$get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, role, nama_user FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $_GET['bid'] . "");
+$get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, role, nama_user, gambar FROM bunch_member INNER JOIN user ON bunch_member.member_id = user.email WHERE bunch_id =" . $_GET['bid'] . "");
 
 ?>
 
@@ -33,7 +33,7 @@ $get_all_members = execThis("SELECT member_id, bunch_member.id AS id_member, rol
               <li class="pb-3 sm:pb-4 mt-2.5 last:border-0 last:pb-0 first:mt-0 border-b border-gray-200">
                 <div class="flex items-center space-x-4 rtl:space-x-reverse">
                   <div class="flex-shrink-0">
-                    <img class="w-8 h-8 rounded-full" src="../assets/img/ian.jpeg" alt="">
+                    <img class="w-8 h-8 rounded-full" src="../assets/img/<?= $all['gambar'] ?>" alt="">
                   </div>
                   <div class="flex-1 min-w-0">
                     <p class="text-sm font-medium text-gray-900 truncate ">

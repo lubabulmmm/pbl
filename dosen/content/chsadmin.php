@@ -1,33 +1,50 @@
 <?php
 
-$projects = execThis("SELECT id_user, deskripsi_proyek, id_proyek, pict, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_user = '" . $_SESSION['email'] . "'");
+$projects = execThis("SELECT id_user, deskripsi_proyek, id_proyek, pict, minggu, total_groups, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_user = '" . $_SESSION['email'] . "' AND status_info = 'no archive'");
 
 ?>
 
 <h2 class="text-xl self-start font-medium px-7 w-full">Daftar Proyek</h2>
 
-<div class="py-8 px-4 max-w-screen-xl lg:py-6 lg:px-6">
-  <div class="grid gap-8 lg:grid-cols-2">
+<div class="bg-white my-5 border shadow border-gray-200 py-8 px-4 max-w-screen-full lg:py-6 lg:px-6  rounded-lg mx-7">
+
+  <ul class="max-w-full">
     <?php if (empty($projects)) : ?>
-      <a href="./add-projects.php" class="flex py-5 flex-col items-center justify-center bg-white w-full lg:w-3/12 border rounded-lg shadow hover:scale-105 transition duration-300 hover:shadow-sm hover:shadow-blue-100 shadow-blue-200">
-        <svg class="w-12 h-12 text-blue-800 mx-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 7.8v8.4M7.8 12h8.4m4.8 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-        </svg>
-        <p class="w-full text-sm text-center mt-2.5 text-blue-800">Tambah Proyek</p>
-      </a>
+      <div class="h-fit">
+        <h2 class="text-center font-normal text-gray-400 leading-loose">Belum Ada Proyek, <a href="add-projects.php" class="text-blue-600 underline hover:text-amber-500">Tambah Proyek</a></h2>
+      </div>
     <?php endif; ?>
-    <?php foreach ($projects as $upm) : ?>
-      <a href="./kelproj.php?id=<?= $upm['id_proyek'] ?>" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100">
-        <img class="p-4 object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-s-lg" src="../assets/img/<?= $upm['pict'] ?>.svg" alt="">
-        <div class="flex flex-col justify-between p-4 leading-normal">
-          <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900"><?= $upm['nama_proyek'] ?><span class="bg-purple-800 text-purple-200 text-xs font-medium me-2 ml-1.5 px-2.5 py-0.5 rounded"><?= $upm['id_proyek'] ?></span></h5>
-          <div class="mb-3 font-normal text-sm text-gray-700">
-            <p class="hover:underline  text-blue-700 text-md font-semibold flex align-center">Kunjungi Proyek <svg class="w-5 h-5 text-blue-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
-              </svg></p>
+    <?php foreach ($projects as $project) : ?>
+
+      <li class="pb-3 sm:pb-4 mt-2.5 last:border-0 last:pb-0 first:mt-0 border-b border-gray-200">
+        <form action="" method="post">
+          <div class="flex items-center space-x-4 justify-center rtl:space-x-reverse flex-wrap">
+            <div class="flex-shrink-0">
+              <img class="w-8 h-8 rounded-full" src="../assets/img/<?= $project['pict'] ?>.svg" alt="">
+            </div>
+            <div class="flex-1 min-w-0">
+              <a href="./kelproj.php?id=<?= $project['id_proyek'] ?>" class="text-sm my-1 hover:underline font-medium text-gray-900 truncate ">
+                <?= $project['nama_proyek'] ?>
+              </a>
+              <p class="my-1 font-normal text-sm text-ellipsis overflow-hidden whitespace-nowrap w-11/12 text-gray-700">Dosen PIC: <?= $project['nama_user'] ?></p>
+            </div>
+            <div class="flex-1 invisible lg:visible min-w-0">
+              <p class="my-1 font-normal text-sm text-ellipsis overflow-hidden whitespace-nowrap w-10/12 text-gray-700">Jumlah Kelompok: <?= $project['total_groups'] ?></p>
+            </div>
+            <div class="flex-1 invisible lg:visible min-w-0">
+              <p class="my-1 font-normal text-sm text-ellipsis overflow-hidden whitespace-nowrap w-10/12 text-gray-700">Total Minggu: <?= $project['minggu'] ?></p>
+            </div>
+            <div class="inline-flex items-center">
+              <a href="./kelproj.php?id=<?= $project['id_proyek'] ?>" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 invisible lg:visible ">Detail Proyek</a>
+            </div>
+            <div class="inline-flex items-center">
+              <input type="number" class="hidden" name="pid" value="<?= $project['id_proyek'] ?>">
+              <button type="submit" name="archive" class="focus:outline-none text-white bg-violet-500 hover:bg-violet-600 focus:ring-4 focus:ring-violet-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 invisible lg:visible ">Arsipkan</button>
+            </div>
           </div>
-        </div>
-      </a>
+        </form>
+        <?php include("../content/reject-req.php") ?>
+      </li>
     <?php endforeach; ?>
-  </div>
+  </ul>
 </div>

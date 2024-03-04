@@ -35,7 +35,7 @@ if (isset($_POST["submit"])) {
   }
 }
 
-$projects = execThis("SELECT id_user, id_proyek, req, deskripsi_proyek, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_proyek = " . $_GET['id'] . "");
+$projects = execThis("SELECT id_user, id_proyek, req, deskripsi_proyek, total_groups, nama_proyek, nama_user FROM proyek JOIN user ON user.email = proyek.id_user WHERE id_proyek = " . $_GET['id'] . "");
 
 $sum_bunch = mysqli_query($conn, "SELECT * FROM bunch WHERE project_id = " . $_GET['id'] . "");
 $sum_num = mysqli_num_rows($sum_bunch);
@@ -133,7 +133,7 @@ $sum_num = mysqli_num_rows($sum_bunch);
         <div class="flex w-full flex-wrap justify-between items-center">
           <div class="">
             <h2 class="text-2xl mb-2 font-semibold"><?= $projects[0]['nama_proyek'] ?></h2>
-            <?php if ($sum_num == 3) : ?>
+            <?php if ($sum_num == $projects[0]['total_groups']) : ?>
               <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">Proyek Penuh</span>
             <?php endif; ?>
           </div>
@@ -174,8 +174,8 @@ $sum_num = mysqli_num_rows($sum_bunch);
               <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $projects[0]['nama_user'] ?></dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-md font-medium leading-6 text-gray-900">Jumlah Kelompok</dt>
-              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500"><?= $sum_num ?></span> /3</dd>
+              <dt class="text-md font-medium leading-6 text-gray-900">Kelompok Tersedia</dt>
+              <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> <span class="font-semibold text-amber-500"><?= $sum_num ?></span> /<?= $projects[0]['total_groups'] ?></dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt class="text-md font-medium leading-6 text-gray-900">Deskripsi</dt>

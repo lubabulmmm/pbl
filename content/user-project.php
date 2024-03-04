@@ -7,12 +7,12 @@ $user_projects_member = execThis("SELECT bunch.bunch_id, project_id, pict, bunch
 ?>
 
 <?php if (empty($user_projects_pm) && empty($user_projects_member)) : ?>
-  <a href="./groups.php" class="flex py-5 flex-col items-center justify-center bg-white w-full lg:w-3/12 rounded-lg shadow transition duration-300 hover:shadow-lg hover:shadow-blue-100 shadow-blue-200">
+  <button type="button" data-modal-target="choose" data-modal-toggle="choose" class="flex py-5 flex-col items-center justify-center bg-white w-full lg:w-3/12 rounded-lg shadow transition focus:ring-4 focus:outline-none focus:ring-blue-100 duration-300 hover:shadow-lg hover:shadow-blue-100 shadow-blue-200">
     <svg class="w-10 h-10 text-blue-800 mx-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 7.8v8.4M7.8 12h8.4m4.8 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
     </svg>
     <p class="w-full text-center mt-2.5 text-sm text-blue-800">Tambah Proyek</p>
-  </a>
+  </button>
 <?php endif; ?>
 
 <?php foreach ($user_projects_pm as $upm) : ?>

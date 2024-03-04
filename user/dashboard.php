@@ -19,18 +19,17 @@ require "../query/query.php";
 
 $fetch_project = execThis("SELECT * FROM bunch_member WHERE member_id = '" . $_SESSION['email'] . "'");
 
-$projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, pict, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email");
+$projects = execThis("SELECT id_proyek, nama_proyek, deskripsi_proyek, pict, total_groups, minggu, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email");
 
 // Check if the form is submitted
 if (isset($_POST["cari"])) {
   $keyword = $_POST["keyword"];
 
   if (empty($keyword)) {
-    $projects = execThis("SELECT id_proyek, nama_proyek, pict, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email");
+    $projects = execThis("SELECT id_proyek, nama_proyek, pict, total_groups, minggu, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email");
   } else {
-    $projects = execThis("SELECT id_proyek, nama_proyek, pict, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email WHERE nama_proyek LIKE '%$keyword%' ");
+    $projects = execThis("SELECT id_proyek, nama_proyek, pict, total_groups, minggu, deskripsi_proyek, nama_user, gambar FROM proyek INNER JOIN user ON proyek.id_user = user.email WHERE nama_proyek LIKE '%$keyword%' ");
   }
-  // Use LIKE in the SQL query to search for relevant projects
 }
 
 ?>
@@ -146,6 +145,50 @@ if (isset($_POST["cari"])) {
 
   <?php include("../content/req-list.php") ?>
 
+  <div id="choose" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full ">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow req-modal transition-all duration-300">
+        <!-- Modal header -->
+        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+          <h3 class="text-lg font-semibold text-gray-900">
+            Tambah Proyek Kamu
+          </h3>
+          <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="choose">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="p-4 md:p-5">
+          <p class="text-black-500 mb-4 ml-2">Pilih preferensi role kamu:</p>
+          <div class="grid grid-cols-2 gap-3 mb-5">
+
+            <a href="#chs" data-modal-toggle="choose" class="flex py-5 flex-col items-center justify-center bg-white w-full col-span-1 rounded-lg shadow transition focus:ring-4 focus:outline-none focus:ring-blue-100 duration-300 hover:shadow-lg hover:shadow-blue-100 shadow-blue-200">
+              <svg class="w-10 h-10 text-blue-800 mx-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a9 9 0 0 0 5-1.5 4 4 0 0 0-4-3.5h-2a4 4 0 0 0-4 3.5 9 9 0 0 0 5 1.5Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              </svg>
+              <p class="w-full text-center mt-2.5 text-sm text-blue-800">Jadi Ketua Kelompok</p>
+            </a>
+
+            <a href="groups.php" class="flex py-5 flex-col items-center justify-center bg-white w-full col-span-1 rounded-lg shadow transition focus:ring-4 focus:outline-none focus:ring-blue-100 duration-300 hover:shadow-lg hover:shadow-blue-100 shadow-blue-200">
+              <svg class="w-10 h-10 text-blue-800 mx-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="1" d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3a2.5 2.5 0 1 1 2-4.5M19.5 17h.5c.6 0 1-.4 1-1a3 3 0 0 0-3-3h-1m0-3a2.5 2.5 0 1 0-2-4.5m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3c0 .6-.4 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+              </svg>
+              <p class="w-full text-center mt-2.5 text-sm text-blue-800">Gabung Kelompok</p>
+            </a>
+
+
+          </div>
+          <button data-modal-toggle="choose" class="text-white inline-flex w-full justify-center bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            Kembali
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>

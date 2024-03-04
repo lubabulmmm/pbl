@@ -88,7 +88,7 @@ if (empty($get_leader) && empty($get_members)) {
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-lg font-medium text-amber-500 md:ms-2">Tambah Progress</span>
+                <span class="ms-1 text-lg font-medium text-amber-500 md:ms-2">Tambah Tugas</span>
               </div>
             </li>
           </ol>
@@ -98,7 +98,7 @@ if (empty($get_leader) && empty($get_members)) {
 
         <section class="">
           <div class="py-8 px-4 mx-auto max-w-2xl lg:py-13">
-            <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Progress Ke To Do</h2>
+            <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Tugas Ke To Do</h2>
             <form action="" method="post">
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">

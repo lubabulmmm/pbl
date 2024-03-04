@@ -102,11 +102,34 @@ function add_this_project($data_project)
   $minggu = $data_project['week'];
   $pict = $data_project['pict'];
   $category = $data_project['category'];
+  $total = $data_project['total'];
+  $members = $data_project['members'];
 
-  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show, pict, category) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No', '$pict', $category)";
+  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show, pict, category, total_members, total_groups) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No', '$pict', $category, '$total', $members)";
 
 
   mysqli_query($conn, $sql_add_projects);
+
+  return mysqli_affected_rows($conn);
+}
+
+function add_archive($pid)
+{
+  global $conn;
+
+  $archive = "UPDATE proyek SET status_info = 'archive' WHERE proyek.id_proyek =" . $pid;
+
+  mysqli_query($conn, $archive);
+
+  return mysqli_affected_rows($conn);
+}
+function unarchive($pid)
+{
+  global $conn;
+
+  $archive = "UPDATE proyek SET status_info = 'no archive' WHERE proyek.id_proyek =" . $pid;
+
+  mysqli_query($conn, $archive);
 
   return mysqli_affected_rows($conn);
 }

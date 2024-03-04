@@ -77,14 +77,6 @@ $user_projects_member = execThis("SELECT bunch.bunch_id, project_id, bunch_name,
             </a>
          </li>
          <li>
-            <a href="/PBL/user/showcase.php" class="flex items-center hover:bg-blue-50 py-2 px-3 font-medium text-blue-800 text-sm rounded-lg  group">
-               <svg class="flex-shrink-0 w-4 h-4 text-blue-800 text-sm transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 5h1v12a2 2 0 0 1-2 2m0 0a2 2 0 0 1-2-2V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v15a2 2 0 0 0 2 2h14ZM10 4h2m-2 3h2m-8 3h8m-8 3h8m-8 3h8M4 4h3v3H4V4Z" />
-               </svg>
-               <span class="flex-1 ml-4 whitespace-nowrap">Showcase PBL</span>
-            </a>
-         </li>
-         <li>
             <a href="/PBL/user/logout.php" class="flex items-center hover:bg-blue-50 py-2 px-3 font-medium text-blue-800 text-sm rounded-lg  group">
                <svg class="flex-shrink-0 w-4 h-4 text-blue-800 text-sm transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />

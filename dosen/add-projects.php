@@ -89,9 +89,16 @@ $cats = execThis("SELECT * FROM categories");
                   </select>
                 </div>
                 <div>
-
                   <label for="week" class="block mb-2 text-sm font-medium text-gray-900">Minggu</label>
                   <input type="number" name="week" id="number-input" aria-describedby="helper-text-explanation" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan Angka" required>
+                </div>
+                <div>
+                  <label for="total" class="block mb-2 text-sm font-medium text-gray-900">Jumlah Kelompok</label>
+                  <input type="number" name="total" id="number-input" aria-describedby="helper-text-explanation" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan Jumlah Kelompok" required>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="members" class="block mb-2 text-sm font-medium text-gray-900">Jumlah Anggota</label>
+                  <input type="number" name="members" id="members" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Jumlah Anggota" required="">
                 </div>
                 <div class="sm:col-span-2">
                   <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
@@ -121,7 +128,7 @@ $cats = execThis("SELECT * FROM categories");
                 Batal
               </button>
               <a href="./dashadmin.php" type="button" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-red-500 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-red-400">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
                 Kembali
               </a>
             </form>
