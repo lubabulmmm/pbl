@@ -33,7 +33,16 @@ if (check_user_admin($_SESSION['email'], $_GET['id']) == 404) {
   exit;
 }
 
-$get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.bunch_id AS bid, category, user.nama_user, project_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.id =" . $_GET['tid'] . "");
+if (isset($_POST["record"])) {
+
+  if (task_comment($_POST, $_GET['tid'], $_SESSION['email']) > 0) {
+    header("Location: /pbl/dosen/dashadmin.php");
+  } else {
+    header("Location: /pbl/dosen/dashadmin.php");
+  }
+}
+
+$get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, created_at, deadline, task.bunch_id AS bid, category, user.nama_user, project_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.id =" . $_GET['tid'] . "");
 
 
 ?>
@@ -205,6 +214,14 @@ $get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.
                 <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $get_taskinfo[0]['task_desc'] ?></dd>
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-md font-medium leading-6 text-gray-900">Tanggal ditugaskan</dt>
+                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $get_taskinfo[0]['created_at'] ?></dd>
+              </div>
+              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-md font-medium leading-6 text-gray-900">Batas waktu</dt>
+                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= $get_taskinfo[0]['deadline'] ?></dd>
+              </div>
+              <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt class="text-md font-medium leading-6 text-gray-900">File Dilampirkan</dt>
                 <dd class="mt-2 text-md text-gray-900 sm:col-span-2 sm:mt-0">
                   <?php if (empty($get_files)) {
@@ -235,6 +252,10 @@ $get_taskinfo = execThis("SELECT task.id AS task_id, task_name, task_desc, task.
             </dl>
           </div>
         </div>
+
+        <!-- //! CHAT CONTENT -->
+
+        <?php include('../content/progress_list/chats.php') ?>
 
       </div>
     </div>

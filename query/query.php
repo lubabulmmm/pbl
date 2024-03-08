@@ -140,8 +140,10 @@ function add_task($task_data, $category, $week, $bid)
   $task_name = $task_data['name'];
   $task_member = $task_data['member'];
   $task_desc = $task_data['desc'];
+  $date_created = date("F j, Y, g:i a");
+  $deadline = date("F j, Y, g:i a", strtotime(date("F j, Y, g:i a")) + (60 * 60 * 24 * 7));
 
-  $sql = "INSERT INTO task (id, task_name, task_desc, category, bunch_id, member_id, minggu) VALUES ('', '" . $task_name . "', '" . $task_desc . "', '" . $category . "', $bid, $task_member, $week)";
+  $sql = "INSERT INTO task (id, task_name, task_desc, category, bunch_id, member_id, minggu, created_at, deadline) VALUES ('', '" . $task_name . "', '" . $task_desc . "', '" . $category . "', $bid, $task_member, $week, '$date_created', '$deadline')";
 
   mysqli_query($conn, $sql);
   return mysqli_affected_rows($conn);
@@ -194,6 +196,20 @@ function input_date($date_data, $c_bid)
   $time_comment = date("Y-m-d H:i:s");
 
   $sql = "INSERT INTO comment (comment_id, comment_title, comment, date_submit, bunch_id) VALUES (NULL, '" . $title . "', '" . $comment . "', '" . $time_comment . "', " . $c_bid . ")";
+
+  mysqli_query($conn, $sql);
+
+  return mysqli_affected_rows($conn);
+}
+function task_comment($date_data, $c_bid, $uid)
+{
+  global $conn;
+  date_default_timezone_set('Asia/Jakarta');
+  $title = $date_data['title'];
+  $comment = $date_data['comment'];
+  $time_comment = date("Y-m-d H:i:s");
+
+  $sql = "INSERT INTO comment_task (id_comment, comment_title, comment, date_submit, task_id, user_id) VALUES (NULL, '" . $title . "', '" . $comment . "', '" . $time_comment . "', " . $c_bid . ", '$uid')";
 
   mysqli_query($conn, $sql);
 
