@@ -19,17 +19,17 @@ if (isset($_SESSION["level"])) {
 require '../query/query.php';
 
 // ! TO DO
-$todo_fetch = mysqli_query($conn, "SELECT task.id AS task_id, task_name, task.bunch_id, category, nama_user, minggu, gambar, project_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.bunch_id =" . $_GET['bid'] . " AND category = 'To Do'");
+$todo_fetch = mysqli_query($conn, "SELECT task.id AS task_id, task_name, task.bunch_id, category, nama_user, minggu, gambar, project_id, task.minggu as week FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.bunch_id =" . $_GET['bid'] . " AND category = 'To Do'");
 
 $todo_sum = mysqli_num_rows($todo_fetch);
 
 // ? DOING
-$doing_fetch = mysqli_query($conn, "SELECT task.id AS task_id, task_name, task.bunch_id, category, nama_user, minggu, gambar, project_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.bunch_id =" . $_GET['bid'] . " AND category = 'Doing'");
+$doing_fetch = mysqli_query($conn, "SELECT task.id AS task_id, task_name, task.bunch_id, category, nama_user, minggu, gambar, project_id, task.minggu as week FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.bunch_id =" . $_GET['bid'] . " AND category = 'Doing'");
 
 $doing_sum = mysqli_num_rows($doing_fetch);
 
 // * DONE
-$done_fetch = mysqli_query($conn, "SELECT task.id AS task_id, task_name, task.bunch_id, category, nama_user, minggu, gambar, project_id FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.bunch_id =" . $_GET['bid'] . " AND category = 'Done'");
+$done_fetch = mysqli_query($conn, "SELECT task.id AS task_id, task_name, task.bunch_id, category, nama_user, minggu, gambar, project_id, task.minggu as week FROM task INNER JOIN bunch_member ON task.member_id = bunch_member.id INNER JOIN user ON bunch_member.member_id = user.email INNER JOIN bunch ON bunch_member.bunch_id = bunch.bunch_id WHERE task.bunch_id =" . $_GET['bid'] . " AND category = 'Done'");
 
 $done_sum = mysqli_num_rows($done_fetch);
 
@@ -118,8 +118,9 @@ $done_sum = mysqli_num_rows($done_fetch);
                               <?= $tf['task_name'] ?>
                             </a>
                             <p class="text-xs font-semibold text-gray-500 truncate">
-                              <?= $tf['nama_user'] ?> | <span class="bg-red-200 inline-block rounded-lg px-2 text-red-600">To Do</span>
-                            </p>
+                              <?= $tf['nama_user'] ?> |
+                              <span class="bg-red-200 inline-block rounded-lg px-2 text-red-600">To Do</span>
+                              <span class="bg-violet-200 inline-block rounded-lg px-2 text-violet-700">Minggu ke-<?= $tf['week'] ?></span>
                           </div>
                         </div>
                       </li>
@@ -130,7 +131,7 @@ $done_sum = mysqli_num_rows($done_fetch);
 
               <div>
 
-                <p class="text-md font-semibold text-amber-500">Doing (total: <?= $doing_sum ?>)</p>
+                <p class="text-md font-semibold lg:mt-0 mt-5 text-amber-500">Doing (total: <?= $doing_sum ?>)</p>
 
                 <div class="bg-white border shadow border-gray-200 mt-5 p-5 rounded-lg col-span-2">
 
@@ -149,7 +150,9 @@ $done_sum = mysqli_num_rows($done_fetch);
                               <?= $tf['task_name'] ?>
                             </a>
                             <p class="text-xs font-semibold text-gray-500 truncate">
-                              <?= $tf['nama_user'] ?> | <span class="bg-amber-200 inline-block rounded-lg px-2 text-amber-600">Doing</span>
+                              <?= $tf['nama_user'] ?> |
+                              <span class="bg-amber-200 inline-block rounded-lg px-2 text-amber-600">Doing</span>
+                              <span class="bg-violet-200 inline-block rounded-lg px-2 text-violet-700">Minggu ke-<?= $tf['week'] ?></span>
                             </p>
                           </div>
                         </div>
@@ -161,7 +164,7 @@ $done_sum = mysqli_num_rows($done_fetch);
 
               <div>
 
-                <p class="text-md font-semibold text-green-500">Done (total: <?= $done_sum ?>)</p>
+                <p class="text-md font-semibold lg:mt-0 mt-5 text-green-500">Done (total: <?= $done_sum ?>)</p>
 
                 <div class="bg-white border shadow border-gray-200 mt-5 p-5 rounded-lg col-span-2">
 
@@ -180,7 +183,9 @@ $done_sum = mysqli_num_rows($done_fetch);
                               <?= $tf['task_name'] ?>
                             </a>
                             <p class="text-xs font-semibold text-gray-500 truncate">
-                              <?= $tf['nama_user'] ?> | <span class="bg-green-200 inline-block rounded-lg px-2 text-green-600">Done</span>
+                              <?= $tf['nama_user'] ?> |
+                              <span class="bg-green-200 inline-block rounded-lg px-2 text-green-600">Done</span>
+                              <span class="bg-violet-200 inline-block rounded-lg px-2 text-violet-700">Minggu ke-<?= $tf['week'] ?></span>
                             </p>
                           </div>
                         </div>

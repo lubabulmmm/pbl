@@ -538,6 +538,16 @@ function delete_role($data)
 
   return mysqli_affected_rows($conn);
 }
+function delete_member($data_id, $bunch_id)
+{
+  global $conn;
+
+  $sql_delete_member = "DELETE FROM bunch_member WHERE member_id = '$data_id' AND bunch_id = '$bunch_id'";
+
+  mysqli_query($conn, $sql_delete_member);
+
+  return mysqli_affected_rows($conn);
+}
 
 function delete_task($tid)
 {

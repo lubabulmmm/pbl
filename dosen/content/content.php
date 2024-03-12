@@ -1,23 +1,26 @@
 <?php
 
-$bunches = execThis("SELECT bunch_id, project_id, bunch_name, nama_user, nama_proyek FROM bunch INNER JOIN user ON bunch.leader_id = user.email INNER JOIN proyek ON bunch.project_id = proyek.id_proyek WHERE project_id = " . $_GET['id'] . "");
+$bunches = execThis("SELECT bunch_id, project_id, bunch_name, nama_user, nama_proyek, deskripsi_proyek, req FROM bunch INNER JOIN user ON bunch.leader_id = user.email INNER JOIN proyek ON bunch.project_id = proyek.id_proyek WHERE project_id = " . $_GET['id'] . "");
 
 ?>
 
 <div class="py-1 max-w-screen-xl lg:py-2">
+
+  <?php include("./content/detail-proyek.php") ?>
+
   <?php if ($bunches == []) {
     $bunches = execThis("SELECT nama_proyek FROM proyek WHERE id_proyek = " . $_GET['id'] . "");
   ?>
-    <h2 class="text-2xl pb-6 font-medium"><?= $bunches[0]['nama_proyek'] ?></h2>
+    <h2 class="text-2xl font-semibold leading-7 text-gray-900 pt-10 pb-6">Daftar Kelompok</h2>
     <div class="h-fit">
       <h2 class="text-center font-normal text-gray-400 leading-loose">Belum ada kelompok yang mengambil</h2>
     </div>
   <?php } else { ?>
-    <h2 class="text-2xl pb-6 font-medium"><?= $bunches[0]['nama_proyek'] ?></h2>
+    <h2 class="text-xl font-semibold leading-7 text-gray-900 pt-10 pb-6">Daftar Kelompok</h2>
     <div class="grid gap-8 lg:grid-cols-3">
 
       <?php foreach ($bunches as $bunch) : ?>
-        <div class="max-w-full shadow-md p-6 bg-white border border-gray-200 flex flex-col justify-between items-start rounded-lg">
+        <div class="max-w-full p-6 bg-white border border-gray-200 flex flex-col justify-between items-start rounded-lg">
           <div class="flex justify-between w-full items-center mb-4">
             <a href="./projects.php?bid=<?= $bunch['bunch_id'] ?>&id=<?= $_GET['id'] ?>" class="flex flex-col justify-between">
               <h5 class="mb-1 text-md font-bold tracking-tight text-gray-900 hover:underline ">Kelompok <?= $bunch['bunch_name'] ?></h5>

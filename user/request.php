@@ -147,14 +147,15 @@ if (empty($get_leader) && empty($get_members)) {
                               <?= $all['nama_user'] ?>
                             </p>
                             <p class="text-sm text-gray-500 truncate">
-                              <?= $all['member_id'] ?>
+                              <?= $all['role'] ?>
                             </p>
                           </div>
                           <div class="inline-flex items-center text-xs font-semibold text-gray-900 ">
-                            <?= $all['role'] ?>
+                            <button type="button" data-modal-target="kick-modal-reject-<?= $all['member_id'] ?>" data-modal-toggle="kick-modal-reject-<?= $all['member_id'] ?>" class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-md text-xs px-2.5 py-1.5 me-1 mb-1 ">Tendang</button>
                           </div>
                         </div>
                       </li>
+                      <?php include("../content/kick-member.php") ?>
                     <?php endforeach; ?>
                   </ul>
                 </div>
@@ -178,7 +179,7 @@ if (empty($get_leader) && empty($get_members)) {
 
                             <div class="flex-1 min-w-0">
                               <p class="text-sm font-medium text-gray-900 truncate ">
-                                <?= $lr['nama_user'] ?>
+                                <?= $lr['nama_user'] ?> - <?= $lr['role'] ?>
                               </p>
                               <input type="hidden" name="request_id" value="<?= $lr['request_id'] ?>" />
                               <input type="hidden" name="bunch_id" value="<?= $lr['bunch_id'] ?>" />

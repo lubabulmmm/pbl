@@ -15,7 +15,7 @@ $get_comments = execThis("SELECT * FROM comment_task WHERE task_id =" . $_GET['t
     <?php endif; ?>
 
     <?php if ($get_comments != []) : ?>
-      <ol class="relative border-s border-gray-200 mt-5 h-48 ov">
+      <ol class="relative border-s border-gray-200 mt-5 h-48 overflow-y-scroll">
         <?php foreach ($get_comments as $comment) : ?>
           <li class="mb-5 ms-4">
             <div class="absolute w-3 h-3 bg-amber-300 rounded-full mt-1.5 -start-1.5 border border-white "></div>

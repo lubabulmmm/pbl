@@ -15,22 +15,22 @@
                             <img class="w-8 h-8 rounded-full" src="../assets/img/<?= $project['pict'] ?>.svg" alt="">
                         </div>
                         <div class="flex-1 min-w-0">
-                            <a href="./detail-project.php?id=<?= $project['id_proyek'] ?>" class="text-sm my-1 hover:underline font-medium text-gray-900 truncate ">
+                            <a href="./detail-project.php?id=<?= $project['id_proyek'] ?>" class="my-1 hover:underline font-medium text-gray-900 text-sm text-ellipsis overflow-hidden whitespace-nowrap w-11/12 lg:block">
                                 <?= $project['nama_proyek'] ?>
                             </a>
-                            <p class="my-1 font-normal text-sm text-ellipsis overflow-hidden whitespace-nowrap w-11/12 text-gray-700">Dosen PIC: <?= $project['nama_user'] ?></p>
+                            <p class="my-1 font-normal text-sm text-ellipsis overflow-hidden whitespace-nowrap lg:w-11/12 text-gray-700 w-full">Dosen PIC: <?= $project['nama_user'] ?></p>
                         </div>
-                        <div class="flex-1 invisible lg:visible min-w-0">
+                        <div class="flex-1 hidden lg:block min-w-0">
                             <p class="my-1 font-normal text-sm text-ellipsis overflow-hidden whitespace-nowrap w-11/12 text-gray-700">Total Minggu: <?= $project['minggu'] ?></p>
                         </div>
-                        <div class="flex-1 invisible lg:visible min-w-0">
+                        <div class="flex-1 hidden lg:block min-w-0">
                             <p class="my-1 font-normal text-sm text-ellipsis overflow-hidden whitespace-nowrap w-11/12 text-gray-700">Kuota Kelompok: <span class="text-amber-600 font-bold"><?= $sum_num ?></span> /<?= $project['total_groups'] ?></p>
                         </div>
                         <div class="inline-flex items-center">
-                            <a href="./detail-project.php?id=<?= $project['id_proyek'] ?>" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 invisible lg:visible ">Detail Proyek</a>
+                            <a href="./detail-project.php?id=<?= $project['id_proyek'] ?>" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 hidden lg:block ">Detail Proyek</a>
                         </div>
                         <div class="inline-flex items-center">
-                            <button type="button" data-modal-toggle="list-groups-<?= $project['id_proyek'] ?>" data-modal-target="list-groups-<?= $project['id_proyek'] ?>" class="focus:outline-none text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 invisible lg:visible ">Bergabung</button>
+                            <button type="button" data-modal-toggle="list-groups-<?= $project['id_proyek'] ?>" data-modal-target="list-groups-<?= $project['id_proyek'] ?>" class="focus:outline-none text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-2.5 py-1.5 me-1 mb-1 hidden lg:block ">Bergabung</button>
                         </div>
                     </div>
                 </form>
