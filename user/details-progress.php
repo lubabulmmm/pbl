@@ -269,9 +269,7 @@ if (isset($_POST["record"])) {
           </div>
         </div>
 
-        <?php if (!empty($get_leader)) : ?>
-          <?php include('../content/progress_list/chats.php') ?>
-        <?php endif; ?>
+        <?php include('../content/progress_list/chats.php') ?>
 
       </div>
     </div>

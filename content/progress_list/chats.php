@@ -1,6 +1,6 @@
 <?php
 
-$get_comments = execThis("SELECT * FROM comment_task WHERE task_id =" . $_GET['tid'] . " ORDER BY date_submit DESC");
+$get_comments = execThis("SELECT id_comment, comment, task_id, user_id, date_submit, comment_title, nama_user FROM comment_task INNER JOIN user ON user.email = comment_task.user_id WHERE task_id =" . $_GET['tid'] . " ORDER BY date_submit DESC");
 
 ?>
 
@@ -19,7 +19,7 @@ $get_comments = execThis("SELECT * FROM comment_task WHERE task_id =" . $_GET['t
         <?php foreach ($get_comments as $comment) : ?>
           <li class="mb-5 ms-4">
             <div class="absolute w-3 h-3 bg-amber-300 rounded-full mt-1.5 -start-1.5 border border-white "></div>
-            <time class="mb-3 text-xs font-normal leading-none text-gray-400 "><?= get_time_diff(strtotime($comment['date_submit'])) ?></time>
+            <time class="mb-3 text-xs font-normal leading-none text-gray-400 "><?= get_time_diff(strtotime($comment['date_submit'])) ?> - <?= $comment['nama_user'] ?></time>
             <h3 class="text-md my-2 font-semibold text-gray-900"><?= $comment['comment_title'] ?></h3>
             <p class="mb-4 text-sm font-normal text-gray-500"><?= $comment['comment'] ?></p>
           </li>
