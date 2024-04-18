@@ -151,8 +151,8 @@ $get_files = execThis("SELECT * FROM submit_file WHERE bunch_id =" . $_GET['bid'
           <div class="mt-6 border-t border-gray-100">
             <dl class="divide-y divide-gray-100">
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt class="text-md font-medium leading-6 text-gray-900">Link Youtube</dt>
-                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit_links[0]['yt_url'] ?>" class="text-amber-500 underline"><?= $get_submit_links[0]['yt_url'] ?></a></dd>
+                <dt class="text-md font-medium leading-6 text-gray-900">Github (atau version control lainnya)</dt>
+                <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="<?= $get_submit_links[0]['github_url'] ?>" class="text-amber-500 underline"><?= $get_submit_links[0]['github_url'] ?></a></dd>
               </div>
               <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt class="text-md font-medium leading-6 text-gray-900">URL Website/Aplikasi</dt>
@@ -186,8 +186,8 @@ $get_files = execThis("SELECT * FROM submit_file WHERE bunch_id =" . $_GET['bid'
                   <?php endif; ?>
                 </dd>
               </div>
-            </div>
           </div>
+        </div>
 
 </body>
 

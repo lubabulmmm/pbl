@@ -105,7 +105,7 @@ function add_this_project($data_project)
   $total = $data_project['total'];
   $members = $data_project['members'];
 
-  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show, pict, category, total_members, total_groups) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No', '$pict', $category, '$total', $members)";
+  $sql_add_projects = "INSERT INTO proyek (id_proyek, nama_proyek, deskripsi_proyek, id_user, req, minggu, status_show, pict, category, total_members, total_groups, status_info) VALUES ('', '$nama_proyek', '$desc', '$dosen', '$req', '$minggu', 'No', '$pict', $category, '$total', $members, 'no archive')";
 
 
   mysqli_query($conn, $sql_add_projects);
@@ -353,20 +353,20 @@ function insertData($data)
   return mysqli_affected_rows($conn);
 }
 
-function add_links($yt_url, $web_url, $bunch_id)
+function add_links($github_url, $web_url, $bunch_id)
 {
   global $conn;
-  $sql_add_links = "INSERT INTO submit_links (links_id, web_url, yt_url, bunch_id) VALUES ('', '" . $yt_url . "', '" . $web_url . "', '" . $bunch_id . "')";
+  $sql_add_links = "INSERT INTO submit_links (links_id, web_url, github_url, bunch_id) VALUES ('', '" . $web_url . "', '" . $github_url . "', '" . $bunch_id . "')";
 
   mysqli_query($conn, $sql_add_links);
 
   return mysqli_affected_rows($conn);
 }
 
-function insertDataSubmitReport($data, $type)
+function insertDataSubmitReport($data, $path)
 {
   global $conn;
-  $query = "INSERT INTO submit_file (sf_id, bunch_id, name_file, size, ekstensi, path) VALUES ('', " . $data['bunch_id'] . ", '" . $data['title'] . "', '" . $data['size'] . "', '" . $data['ekstensi'] . "', '" . $type . "')";
+  $query = "INSERT INTO submit_file (sf_id, bunch_id, name_file, size, ekstensi, path, type) VALUES ('', " . $data['bunch_id'] . ", '" . $data['title'] . "', '" . $data['size'] . "', '" . $data['ekstensi'] . "', '" . $path . "', '" . $data['type'] . "')";
 
   mysqli_query($conn, $query);
 

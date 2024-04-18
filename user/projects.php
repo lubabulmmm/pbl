@@ -2,15 +2,15 @@
 
 session_start();
 if (!isset($_SESSION["login"])) {
-  header("Location: login.php");
+  header("Location: /pbl/user/login.php");
 }
 
 if (isset($_SESSION["level"])) {
   if ($_SESSION["level"] == "superadmin") {
-    header("Location: /PBL/superadmin/superadmin.php");
+    header("Location: /pbl/superadmin/superadmin.php");
     exit;
   } elseif ($_SESSION["level"] == "admin") {
-    header("Location: dosen/dashadmin.php");
+    header("Location: /pbl/dosen/dashadmin.php");
     exit;
   }
 }

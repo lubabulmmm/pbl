@@ -127,16 +127,20 @@ if (empty($get_leader) && empty($get_members)) {
                 </div>
                 <?php if (empty($get_sfiles) && empty($get_slinks)) { ?>
                   <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 my-1 sm:gap-4 sm:px-0 flex items-center">
-                    <dt class="text-md font-medium leading-6 text-gray-900">URL Video Youtube</dt>
-                    <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                      <input type="text" id="small-input" name="yt_url" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> placeholder="Masukkan URL Video Youtube">
-                    </dd>
-                  </div>
-                  <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 my-1 sm:gap-4 sm:px-0 flex items-center">
                     <dt class="text-md font-medium leading-6 text-gray-900">URL Web/Aplikasi</dt>
                     <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                       <input type="text" name="web_url" id="small-input" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> placeholder="Masukkan URL Web/Aplikasi">
                     </dd>
+                  </div>
+                  <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 my-1 sm:gap-4 sm:px-0 flex items-center">
+                    <dt class="text-md font-medium leading-6 text-gray-900">Github (atau version control lainnya)</dt>
+                    <dd class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                      <input type="text" name="github_url" id="small-input" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> placeholder="Masukkan URL Version Control">
+                    </dd>
+                  </div>
+                  <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 my-1 sm:gap-4 sm:px-0 flex items-center">
+                    <dt class="text-md font-medium leading-6 text-gray-900">Unggah Video</dt>
+                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none sm:col-span-2" id="file_input" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> type="file" name="video">
                   </div>
                   <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 my-1 sm:gap-4 sm:px-0 flex items-center">
                     <dt class="text-md font-medium leading-6 text-gray-900">Unggah Poster</dt>
@@ -145,6 +149,10 @@ if (empty($get_leader) && empty($get_members)) {
                   <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 my-1 sm:gap-4 sm:px-0 flex items-center">
                     <dt class="text-md font-medium leading-6 text-gray-900">Unggah Laporan</dt>
                     <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none sm:col-span-2" id="file_input" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> type="file" name="report">
+                  </div>
+                  <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 my-1 sm:gap-4 sm:px-0 flex items-center">
+                    <dt class="text-md font-medium leading-6 text-gray-900">Unggah Source Code</dt>
+                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none sm:col-span-2" id="file_input" <?= $identifier = (!empty($get_leader)) ? '' : 'disabled' ?> type="file" name="source">
                   </div>
                   <input type="hidden" name="bunch_id" value="<?= $_GET['bid'] ?>">
                   <div class="px-1 py-6 sm:grid grid-cols-1 lg:grid-cols-3 my-1 sm:gap-4 sm:px-0 flex">
