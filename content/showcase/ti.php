@@ -11,10 +11,12 @@
                 <!-- Card -->
                 <?php foreach ($ps as $p) : ?>
                     <?php $rand_color = rand(1, 3) ?>
+                    <?php $bunchID = $p['bunch_id'] ?>
+                    <?php $getPoster = execThis("SELECT * FROM submit_file WHERE bunch_id = $bunchID AND type = 'poster'") ?>
 
                     <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-md shadow-gray-100 rounded-xl">
-                        <div class="h-52 flex flex-col justify-center items-center bg-white-500 rounded-t-xl">
-                            <img class="w-48 h-48" src="../assets/img/<?= $p['pict'] ?>.svg" alt="alo">
+                        <div class="h-52 pt-7 flex flex-col justify-center items-center bg-white-500 rounded-t-xl">
+                            <img class="w-48 h-48 rounded-lg" src="../query/<?= $getPoster[0]['path'] ?>" alt=" alo">
                         </div>
                         <div class="p-4 md:p-6">
                             <span class="block mb-1 text-xs font-semibold uppercase <?= $rand_color == 1 ? 'text-blue-600' : '' ?> <?= $rand_color == 2 ? 'text-rose-600' : '' ?> <?= $rand_color == 3 ? 'text-amber-500' : '' ?>">
