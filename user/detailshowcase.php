@@ -148,7 +148,7 @@ if ($get_bunch[0]['status_show'] == 'No') {
 
                             Github Repo
                         </a>
-                        <a href="<?= $links['github_url'] ?>" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-gradient-to-tl from-amber-600 to-amber-400 hover:from-amber-400 hover:to-amber-600 transition duration-300 ">
+                        <a href="../query/<?= $report[0]['path'] ?>" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-gradient-to-tl from-amber-600 to-amber-400 hover:from-amber-400 hover:to-amber-600 transition duration-300 ">
 
                             <svg class="flex-shrink-0 size-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M10 3v4a1 1 0 0 1-1 1H5m14-4v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z" />
